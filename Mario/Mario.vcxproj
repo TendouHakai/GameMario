@@ -128,10 +128,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="WinMain.cpp" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\debug.cpp" />
+    <ClCompile Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\Game.cpp" />
+    <ClCompile Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\GameObject.cpp" />
+    <ClCompile Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\debug.h" />
+    <ClInclude Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\Game.h" />
+    <ClInclude Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\GameObject.h" />
+    <ClInclude Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
