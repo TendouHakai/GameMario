@@ -108,7 +108,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d10.lib;dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,16 +131,34 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\debug.cpp" />
-    <ClCompile Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\Game.cpp" />
-    <ClCompile Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\GameObject.cpp" />
-    <ClCompile Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\main.cpp" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationFrame.h" />
+    <ClInclude Include="Animations.h" />
+    <ClInclude Include="Brick.h" />
+    <ClInclude Include="debug.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="KeyEventHandler.h" />
+    <ClInclude Include="Mario.h" />
+    <ClInclude Include="SampleKeyEventHandler.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Sprites.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Textures.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\debug.h" />
-    <ClInclude Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\Game.h" />
-    <ClInclude Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\GameObject.h" />
-    <ClInclude Include="..\..\..\example\gamedev-intro-tutorials-master\01-Skeleton\Texture.h" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Animations.cpp" />
+    <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="debug.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mario.cpp" />
+    <ClCompile Include="SampleKeyEventHandler.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Sprites.cpp" />
+    <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
