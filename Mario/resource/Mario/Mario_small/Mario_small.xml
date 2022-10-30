@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:c7fa9221eeb6146df74fa555ca9a147c:6d01bba00fb95ea0f2ee42fe8ab8def9:3c21a22f0f696f1ab2ff6a231f818261$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="Mario_small.png" width="95" height="47">
+    <sprite n="Mario_brace_left.png" x="45" y="31" w="14" h="15"/>
+    <sprite n="Mario_brace_right.png" x="31" y="31" w="14" h="15"/>
+    <sprite n="Mario_dead.png" x="48" y="0" w="16" h="16"/>
+    <sprite n="Mario_idle_left.png" x="83" y="29" w="12" h="14"/>
+    <sprite n="Mario_idle_right.png" x="71" y="31" w="12" h="14"/>
+    <sprite n="Mario_jump_run_left.png" x="32" y="0" w="16" h="16"/>
+    <sprite n="Mario_jump_run_right.png" x="0" y="16" w="16" h="16"/>
+    <sprite n="Mario_jump_walk_left.png" x="16" y="0" w="16" h="16"/>
+    <sprite n="Mario_jump_walk_right.png" x="0" y="0" w="16" h="16"/>
+    <sprite n="Mario_run_left_0.png" x="80" y="0" w="13" h="15"/>
+    <sprite n="Mario_run_left_1.png" x="59" y="31" w="12" h="14"/>
+    <sprite n="Mario_run_right_0.png" x="76" y="15" w="12" h="14"/>
+    <sprite n="Mario_run_right_1.png" x="63" y="16" w="13" h="15"/>
+    <sprite n="Mario_walk_left_0.png" x="32" y="16" w="16" h="15"/>
+    <sprite n="Mario_walk_left_1.png" x="48" y="16" w="15" h="15"/>
+    <sprite n="Mario_walk_left_2.png" x="0" y="32" w="16" h="15"/>
+    <sprite n="Mario_walk_right_0.png" x="16" y="31" w="15" h="15"/>
+    <sprite n="Mario_walk_right_1.png" x="16" y="16" w="16" h="15"/>
+    <sprite n="Mario_walk_right_2.png" x="64" y="0" w="16" h="15"/>
+</TextureAtlas>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:c7fa9221eeb6146df74fa555ca9a147c:6d01bba00fb95ea0f2ee42fe8ab8def9:3c21a22f0f696f1ab2ff6a231f818261$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+
+<Animations>
+    <Animation AnimationID="Mario_brace_left">
+        <Sprite SpriteID="Mario_brace_left"</Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_brace_right">
+        <Sprite SpriteID="Mario_brace_right"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_dead">
+        <Sprite SpriteID="Mario_dead"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_idle_left">
+        <Sprite SpriteID="Mario_idle_left"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_idle_right">
+        <Sprite SpriteID="Mario_idle_right"</Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_jump_run_left">
+        <Sprite SpriteID="Mario_jump_run_left"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_jump_run_right">
+        <Sprite SpriteID="Mario_jump_run_right"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_jump_walk_left">
+        <Sprite SpriteID="Mario_jump_walk_left"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_jump_walk_right">
+        <Sprite SpriteID="Mario_jump_walk_right"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_run_left">
+        <Sprite SpriteID="Mario_run_left_0"></Sprite>
+        <Sprite SpriteID="Mario_run_left_1"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_run_right">
+        <Sprite SpriteID="Mario_run_right_0"></Sprite>
+        <Sprite SpriteID="Mario_run_right_1"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_walk_left">
+        <Sprite SpriteID="Mario_walk_left_0"></Sprite>
+        <Sprite SpriteID="Mario_walk_left_1"></Sprite>
+        <Sprite SpriteID="Mario_walk_left_2"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_walk_right">
+        <Sprite SpriteID="Mario_walk_right_0"></Sprite>
+        <Sprite SpriteID="Mario_walk_right_1"></Sprite>
+        <Sprite SpriteID="Mario_walk_right_2"></Sprite>
+    </Animation>
+</Animations>
