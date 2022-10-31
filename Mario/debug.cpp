@@ -24,3 +24,16 @@ void SetDebugWindow(HWND hwnd)
 {
 	_hwnd = hwnd;
 }
+
+LPCWSTR ToLPCWSTR(string st)
+{
+	const char* str = st.c_str();
+
+	size_t newsize = strlen(str) + 1;
+	wchar_t* wcstring = new wchar_t[newsize];
+	size_t convertedChars = 0;
+	mbstowcs_s(&convertedChars, wcstring, newsize, str, _TRUNCATE);
+
+	wstring* w = new wstring(wcstring);
+	return w->c_str();
+}

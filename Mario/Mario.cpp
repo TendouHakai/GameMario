@@ -29,7 +29,7 @@ void CMario::Update(DWORD dt)
 void CMario::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
-	int aniId = -1;
+	string aniId = "";
 
 	// Mario is still on air check, this will not work when Mario is just stand up
 	if (y < GROUND_Y)   
@@ -82,7 +82,7 @@ void CMario::Render()
 			aniId = ID_ANI_MARIO_WALKING_LEFT;
 	}
 
-	if (aniId == -1) aniId = ID_ANI_MARIO_IDLE_RIGHT;
+	if (aniId == "") aniId = ID_ANI_MARIO_IDLE_RIGHT;
 
 	float d = 0;
 	if (isSitting) d = MARIO_SIT_HEIGHT_ADJUST;

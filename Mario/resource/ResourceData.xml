@@ -22,7 +22,7 @@ triangles  => sprite triangulation, 3 vertex indices per triangle
 <Game>
     <Resource>
         <Textures>
-            <Texture TextureID="Mario_small" path="resource/Mario/Mario_small/Mario_small.png"></Texture>
+            <Texture TextureID="Mario_big" path="resource/Mario/Mario_big/Mario_big.png"></Texture>
         </Textures>
         <Sprites>
             <Sprite path="resource/Mario/Mario.xml"></Sprite>

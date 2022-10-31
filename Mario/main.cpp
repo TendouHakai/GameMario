@@ -25,6 +25,8 @@
 #include "Brick.h"
 
 #include "SampleKeyEventHandler.h"
+#include "tinystr.h"
+#include "tinyxml.h"
 
 #define WINDOW_CLASS_NAME L"SampleWindow"
 #define MAIN_WINDOW_TITLE L"03 - Keyboard and Mario states"
@@ -76,136 +78,107 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	Load all game resources 
 	In this example: load textures, sprites, animations and mario object
 */
+void LoadSprites(const char* path) {
+	CTextures* _textures = CTextures::GetInstance();
+	CSprites* _sprites = CSprites::GetInstance();
+	TiXmlDocument doc(path);
+
+	if (doc.LoadFile()) {
+		TiXmlElement* root = doc.RootElement();
+
+		TiXmlElement* Texture = root->FirstChildElement("Textures");
+		string textureID = Texture->Attribute("TextureID");
+
+		LPTEXTURE texture = _textures->Get(textureID);
+		for (TiXmlElement* node = Texture->FirstChildElement("sprite"); node != NULL; node = node->NextSiblingElement("sprite")) {
+			string id = node->Attribute("SpriteID");
+			int left = 0, top = 0, width = 0, height = 0;
+
+			node->QueryIntAttribute("x", &left);
+			node->QueryIntAttribute("y", &top);
+			node->QueryIntAttribute("w", &width);
+			node->QueryIntAttribute("h", &height);
+			_sprites->Add(id, left, top, left+width, top+height, texture);
+			DebugOut(L"Load Sprite id: %s\n", ToLPCWSTR(id));
+		}
+	}
+}
+void LoadAnimations(const char* path) {
+	CSprites* _sprites = CSprites::GetInstance();
+	CAnimations* _animations = CAnimations::GetInstance();
+	LPANIMATION ani;
+	TiXmlDocument doc(path);
+
+	if (doc.LoadFile()) {
+		TiXmlElement* root = doc.RootElement();
+
+		for (TiXmlElement* nodeAni = root->FirstChildElement("Animation"); nodeAni != NULL; nodeAni = nodeAni->NextSiblingElement("Animation")) {
+			int frameTime = 0;
+			string AniID = "";
+
+			nodeAni->QueryIntAttribute("frameTime", &frameTime);
+			AniID = nodeAni->Attribute("AnimationID");
+
+			ani = new CAnimation(frameTime);
+
+			for (TiXmlElement* nodeSprite = nodeAni->FirstChildElement("Sprite"); nodeSprite != NULL; nodeSprite = nodeSprite->NextSiblingElement("Sprite")) {
+				ani->Add(nodeSprite->Attribute("SpriteID"));
+			}
+
+			_animations->Add(AniID, ani);
+			DebugOut(L"Load Animation id: %s\n", ToLPCWSTR(AniID));
+		}
+	}
+}
 void LoadResources()
 {
-	CTextures * textures = CTextures::GetInstance();
+	CTextures* _textures = CTextures::GetInstance();
+	DebugOut(L"Read xml resource:");
+	TiXmlDocument doc("resource/ResourceData.xml");
+	DebugOut(L"done\n");
 
-	textures->Add(ID_TEX_MARIO, TEXTURE_PATH_MARIO);
-	textures->Add(ID_TEX_MISC, TEXTURE_PATH_MISC);
+	if (doc.LoadFile()) {
+		TiXmlElement* root = doc.RootElement();
+		TiXmlElement* resources = root->FirstChildElement("Resource");
 
-	CSprites * sprites = CSprites::GetInstance();
-	CAnimations * animations = CAnimations::GetInstance();
-	
-	LPTEXTURE texMario = textures->Get(ID_TEX_MARIO);
+		TiXmlElement* textures = resources->FirstChildElement("Textures");
+		TiXmlElement* sprites = resources->FirstChildElement("Sprites");
+		TiXmlElement* animations = resources->FirstChildElement("Animations");
 
-	sprites->Add(10001, 246, 154, 260, 181, texMario);
+		for (TiXmlElement* node = textures->FirstChildElement("Texture"); node != NULL; node = node->NextSiblingElement("Texture")) {
+			_textures->Add(node->Attribute("TextureID"), ToLPCWSTR(node->Attribute("path")));
+			DebugOut(L"Read texture XML: done\n");
+		}
 
-	sprites->Add(10002, 275, 154, 290, 181, texMario);
-	sprites->Add(10003, 304, 154, 321, 181, texMario);
+		for (TiXmlElement* node = sprites->FirstChildElement("Sprite"); node != NULL; node = node->NextSiblingElement("Sprite")) {
+			LoadSprites(node->Attribute("path"));
+			DebugOut(L"Read Sprite XML: done\n");
+		}
 
-	sprites->Add(10011, 186, 154, 200, 181, texMario);
-
-	sprites->Add(10012, 155, 154, 170, 181, texMario);
-	sprites->Add(10013, 125, 154, 140, 181, texMario);
-
-	// RUNNING RIGHT 
-	sprites->Add(10021, 335, 154, 335 + 18, 154 +26, texMario);
-	sprites->Add(10022, 363, 154, 363 + 18, 154 + 26, texMario);
-	sprites->Add(10023, 393, 154, 393 + 18, 154 + 26, texMario);
-
-	// RUNNING LEFT
-	sprites->Add(10031, 92, 154, 92 + 18, 154 + 26, texMario);
-	sprites->Add(10032, 66, 154, 66 + 18, 154 + 26, texMario);
-	sprites->Add(10033, 35, 154, 35 + 18, 154 + 26, texMario);
-
-	// JUMP WALK RIGHT & LEFT 
-	sprites->Add(10041, 395, 275, 395 + 16, 275 + 25, texMario);
-	sprites->Add(10042, 35, 275, 35 + 16, 275 + 25, texMario);
-
-	// JUMP RUN RIGHT & LEFT 
-	sprites->Add(10043, 395, 195, 395 + 18, 195 + 25, texMario);
-	sprites->Add(10044, 33, 195, 33 + 18, 195 + 25, texMario);
-
-	// SIT RIGHT/LEFT
-	sprites->Add(10051, 426, 239, 426 + 14, 239 + 17, texMario);
-	sprites->Add(10052, 5, 239, 5 + 14, 239 + 17, texMario);
-
-	// BRACING RIGHT/LEFT
-	sprites->Add(10061, 425, 154, 425 + 15, 154 + 27, texMario);
-	sprites->Add(10062, 5, 154, 5 + 15, 154 + 27, texMario);
-
-	LPANIMATION ani;
-
-	ani = new CAnimation(100);	
-	ani->Add(10001);
-	animations->Add(ID_ANI_MARIO_IDLE_RIGHT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10011);
-	animations->Add(ID_ANI_MARIO_IDLE_LEFT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10001);
-	ani->Add(10002);
-	ani->Add(10003);
-	animations->Add(ID_ANI_MARIO_WALKING_RIGHT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10011);
-	ani->Add(10012);
-	ani->Add(10013);
-	animations->Add(ID_ANI_MARIO_WALKING_LEFT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10021);
-	ani->Add(10022);
-	ani->Add(10023);
-	animations->Add(ID_ANI_MARIO_RUNNING_RIGHT, ani);
-
-	ani = new CAnimation(50);	// Mario runs faster hence animation speed should be faster
-	ani->Add(10031);
-	ani->Add(10032);
-	ani->Add(10033);
-	animations->Add(ID_ANI_MARIO_RUNNING_LEFT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10041);
-	animations->Add(ID_ANI_MARIO_JUMP_WALK_RIGHT, ani);
-
-	ani = new CAnimation(100);	
-	ani->Add(10042);
-	animations->Add(ID_ANI_MARIO_JUMP_WALK_LEFT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10043);
-	animations->Add(ID_ANI_MARIO_JUMP_RUN_RIGHT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10044);
-	animations->Add(ID_ANI_MARIO_JUMP_RUN_LEFT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10051);
-	animations->Add(ID_ANI_MARIO_SIT_RIGHT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10052);
-	animations->Add(ID_ANI_MARIO_SIT_LEFT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10061);
-	animations->Add(ID_ANI_MARIO_BRACE_RIGHT, ani);
-
-	ani = new CAnimation(100);
-	ani->Add(10062);
-	animations->Add(ID_ANI_MARIO_BRACE_LEFT, ani);
-
+		for (TiXmlElement* node = animations->FirstChildElement("Animation"); node != NULL; node = node->NextSiblingElement("Animation")) {
+			LoadAnimations(node->Attribute("path"));
+			DebugOut(L"Read Animation XML: done\n");
+		}
+		CSprites* _sprites = CSprites::GetInstance();
+		CAnimations* _animations = CAnimations::GetInstance();
+		DebugOut(L"load resource: done");
+	}
 	mario = new CMario(MARIO_START_X, MARIO_START_Y);
 	objects.push_back(mario);
 
 	// Brick objects 
-	LPTEXTURE texMisc = textures->Get(ID_TEX_MISC);
-	sprites->Add(ID_SPRITE_BRICK, 372, 153, 372+15, 153+15, texMisc);
+	//LPTEXTURE texMisc = textures->Get(ID_TEX_MISC);
+	//sprites->Add(ID_SPRITE_BRICK, 372, 153, 372+15, 153+15, texMisc);
 
-	ani = new CAnimation(100);
-	ani->Add(ID_SPRITE_BRICK);
-	animations->Add(ID_ANI_BRICK,ani);
+	//ani = new CAnimation(100);
+	//ani->Add(ID_SPRITE_BRICK);
+	//animations->Add(ID_ANI_BRICK,ani);
 
-	for (int i=0;i<NUM_BRICKS;i++) 
-	{
-		CBrick* b = new CBrick(BRICK_X + i * BRICK_WIDTH, BRICK_Y);
-		objects.push_back(b);
-	}
+	//for (int i=0;i<NUM_BRICKS;i++) 
+	//{
+	//	CBrick* b = new CBrick(BRICK_X + i * BRICK_WIDTH, BRICK_Y);
+	//	objects.push_back(b);
+	//}
 }
 
 /*

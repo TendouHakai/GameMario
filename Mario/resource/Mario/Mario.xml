@@ -19,7 +19,7 @@ vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
 verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
 triangles  => sprite triangulation, 3 vertex indices per triangle
 -->
-<Textures TextureID="Mario_small" width="95" height="47">
+<!-- <Textures TextureID="Mario_small" width="95" height="47">
     <sprite SpriteID="Mario_brace_left" x="45" y="31" w="14" h="15"/>
     <sprite SpriteID="Mario_brace_right" x="31" y="31" w="14" h="15"/>
     <sprite SpriteID="Mario_dead" x="48" y="0" w="16" h="16"/>
@@ -39,4 +39,28 @@ triangles  => sprite triangulation, 3 vertex indices per triangle
     <sprite SpriteID="Mario_walk_right_0" x="16" y="31" w="15" h="15"/>
     <sprite SpriteID="Mario_walk_right_1" x="16" y="16" w="16" h="15"/>
     <sprite SpriteID="Mario_walk_right_2" x="64" y="0" w="16" h="15"/>
-</Textures>
+</Textures> -->
+<Sprites>
+    <Textures TextureID="Mario_big" width="416" height="32">
+        <sprite SpriteID="Mario_brace_left" x="2" y="2" w="16" h="28"/>
+        <sprite SpriteID="Mario_brace_right" x="22" y="2" w="16" h="28"/>
+        <sprite SpriteID="Mario_idle_left" x="174" y="2" w="14" h="27"/>
+        <sprite SpriteID="Mario_idle_right" x="192" y="2" w="14" h="27"/>
+        <sprite SpriteID="Mario_jump_run_left" x="210" y="2" w="19" h="26"/>
+        <sprite SpriteID="Mario_jump_run_right" x="233" y="2" w="19" h="26"/>
+        <sprite SpriteID="Mario_jump_walk_left" x="302" y="2" w="16" h="26"/>
+        <sprite SpriteID="Mario_jump_walk_right" x="322" y="2" w="16" h="26"/>
+        <sprite SpriteID="Mario_run_left_0" x="42" y="2" w="19" h="27"/>
+        <sprite SpriteID="Mario_run_left_1" x="65" y="2" w="19" h="27"/>
+        <sprite SpriteID="Mario_run_left_2" x="256" y="2" w="19" h="26"/>
+        <sprite SpriteID="Mario_run_right_0" x="88" y="2" w="19" h="27"/>
+        <sprite SpriteID="Mario_run_right_1" x="279" y="2" w="19" h="26"/>
+        <sprite SpriteID="Mario_run_right_2" x="111" y="2" w="19" h="27"/>
+        <sprite SpriteID="Mario_sit_left" x="382" y="2" w="14" h="18"/>
+        <sprite SpriteID="Mario_sit_right" x="400" y="2" w="14" h="18"/>
+        <sprite SpriteID="Mario_walk_left_0" x="134" y="2" w="16" h="27"/>
+        <sprite SpriteID="Mario_walk_left_1" x="342" y="2" w="16" h="26"/>
+        <sprite SpriteID="Mario_walk_right_0" x="362" y="2" w="16" h="26"/>
+        <sprite SpriteID="Mario_walk_right_1" x="154" y="2" w="16" h="27"/>
+    </Textures>
+</Sprites>

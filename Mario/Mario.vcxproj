@@ -137,6 +137,7 @@
     <ClInclude Include="Brick.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameConstant.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Mario.h" />

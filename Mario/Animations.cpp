@@ -8,12 +8,12 @@ CAnimations* CAnimations::GetInstance()
 	return __instance;
 }
 
-void CAnimations::Add(int id, LPANIMATION ani)
+void CAnimations::Add(string id, LPANIMATION ani)
 {
 	animations[id] = ani;
 }
 
-LPANIMATION CAnimations::Get(int id)
+LPANIMATION CAnimations::Get(string id)
 {
 	return animations[id];
 }

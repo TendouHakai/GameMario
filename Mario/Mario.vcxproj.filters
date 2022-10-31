@@ -90,6 +90,9 @@
     <ClInclude Include="tinyxml.h">
       <Filter>Header Files\ReadXML</Filter>
     </ClInclude>
+    <ClInclude Include="GameConstant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">

@@ -22,7 +22,7 @@ triangles  => sprite triangulation, 3 vertex indices per triangle
 
 <Animations>
     <Animation AnimationID="Mario_brace_left">
-        <Sprite SpriteID="Mario_brace_left"</Sprite>
+        <Sprite SpriteID="Mario_brace_left"></Sprite>
     </Animation>
     <Animation AnimationID="Mario_brace_right">
         <Sprite SpriteID="Mario_brace_right"></Sprite>
@@ -34,7 +34,7 @@ triangles  => sprite triangulation, 3 vertex indices per triangle
         <Sprite SpriteID="Mario_idle_left"></Sprite>
     </Animation>
     <Animation AnimationID="Mario_idle_right">
-        <Sprite SpriteID="Mario_idle_right"</Sprite>
+        <Sprite SpriteID="Mario_idle_right"></Sprite>
     </Animation>
     <Animation AnimationID="Mario_jump_run_left">
         <Sprite SpriteID="Mario_jump_run_left"></Sprite>
@@ -51,19 +51,25 @@ triangles  => sprite triangulation, 3 vertex indices per triangle
     <Animation AnimationID="Mario_run_left">
         <Sprite SpriteID="Mario_run_left_0"></Sprite>
         <Sprite SpriteID="Mario_run_left_1"></Sprite>
+        <Sprite SpriteID="Mario_run_left_2"></Sprite>
     </Animation>
     <Animation AnimationID="Mario_run_right">
         <Sprite SpriteID="Mario_run_right_0"></Sprite>
         <Sprite SpriteID="Mario_run_right_1"></Sprite>
+        <Sprite SpriteID="Mario_run_right_2"></Sprite>
     </Animation>
     <Animation AnimationID="Mario_walk_left">
         <Sprite SpriteID="Mario_walk_left_0"></Sprite>
         <Sprite SpriteID="Mario_walk_left_1"></Sprite>
-        <Sprite SpriteID="Mario_walk_left_2"></Sprite>
     </Animation>
     <Animation AnimationID="Mario_walk_right">
         <Sprite SpriteID="Mario_walk_right_0"></Sprite>
         <Sprite SpriteID="Mario_walk_right_1"></Sprite>
-        <Sprite SpriteID="Mario_walk_right_2"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_sit_left">
+        <Sprite SpriteID="Mario_sit_left"></Sprite>
+    </Animation>
+    <Animation AnimationID="Mario_sit_right">
+        <Sprite SpriteID="Mario_sit_right"></Sprite>
     </Animation>
 </Animations>
