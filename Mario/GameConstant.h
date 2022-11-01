@@ -4,6 +4,7 @@
 #pragma region Form Mario
 #define MARIO_FORM_BIG		0
 #define MARIO_FORM_SMALL	1
+#define MARIO_FORM_SQUIRREL	2
 #pragma endregion
 
 #pragma region State Mario
@@ -14,11 +15,14 @@
 #define MARIO_STATE_JUMP			300
 #define MARIO_STATE_RELEASE_JUMP    301
 
-#define MARIO_STATE_RUNNING_RIGHT	400
-#define MARIO_STATE_RUNNING_LEFT	500
+#define MARIO_STATE_FLY				400
+#define MARIO_STATE_FLY_RELEASE		401
 
-#define MARIO_STATE_SIT				600
-#define MARIO_STATE_SIT_RELEASE		601
+#define MARIO_STATE_RUNNING_RIGHT	500
+#define MARIO_STATE_RUNNING_LEFT	600
+
+#define MARIO_STATE_SIT				700
+#define MARIO_STATE_SIT_RELEASE		701
 #pragma endregion
 
 #pragma region Animation Mario ID
@@ -62,6 +66,31 @@
 
 #define ID_ANI_MARIO_SMALL_BRACE_RIGHT "small_brace_right"
 #define ID_ANI_MARIO_SMALL_BRACE_LEFT "small_brace_left"
+
+// animation Mario squirrel
+#define ID_ANI_MARIO_SQUIRREL_IDLE_RIGHT "squirrel_idle_right"
+#define ID_ANI_MARIO_SQUIRREL_IDLE_LEFT "squirrel_idle_left"
+
+#define ID_ANI_MARIO_SQUIRREL_FLY_RIGHT "squirrel_fly_right"
+#define ID_ANI_MARIO_SQUIRREL_FLY_LEFT "squirrel_fly_left"
+
+#define ID_ANI_MARIO_SQUIRREL_WALKING_RIGHT "squirrel_walk_right"
+#define ID_ANI_MARIO_SQUIRREL_WALKING_LEFT "squirrel_walk_left"
+
+#define ID_ANI_MARIO_SQUIRREL_RUNNING_RIGHT "squirrel_run_right"
+#define ID_ANI_MARIO_SQUIRREL_RUNNING_LEFT "squirrel_run_left"
+
+#define ID_ANI_MARIO_SQUIRREL_JUMP_WALK_RIGHT "squirrel_jump_walk_right"
+#define ID_ANI_MARIO_SQUIRREL_JUMP_WALK_LEFT "squirrel_jump_walk_left"
+
+#define ID_ANI_MARIO_SQUIRREL_JUMP_RUN_RIGHT "squirrel_jump_run_right"
+#define ID_ANI_MARIO_SQUIRREL_JUMP_RUN_LEFT "squirrel_jump_run_left"
+
+#define ID_ANI_MARIO_SQUIRREL_SIT_RIGHT "squirrel_sit_right"
+#define ID_ANI_MARIO_SQUIRREL_SIT_LEFT "squirrel_sit_left"
+
+#define ID_ANI_MARIO_SQUIRREL_BRACE_RIGHT "squirrel_brace_right"
+#define ID_ANI_MARIO_SQUIRREL_BRACE_LEFT "squirrel_brace_left"
 #pragma endregion
 
 #pragma region Mario stats
@@ -74,7 +103,10 @@
 #define MARIO_JUMP_SPEED_Y		0.45f
 #define MARIO_JUMP_RUN_SPEED_Y	0.5f
 
+#define MARIO_FLY_SPEED		0.04f
+
 #define MARIO_GRAVITY			0.0012f
+#define MARIO_FLY_GRAVITY		0.0004f
 #pragma endregion
 
 

@@ -21,6 +21,10 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_NUMPAD2:
 		mario->SetMarioForm(MARIO_FORM_BIG);
 		break;
+	case DIK_NUMPAD3:
+		mario->SetMarioForm(MARIO_FORM_SQUIRREL);
+		break;
+	
 	}
 }
 
@@ -35,6 +39,8 @@ void CSampleKeyHandler::OnKeyUp(int KeyCode)
 	case DIK_DOWN:
 		mario->SetState(MARIO_STATE_SIT_RELEASE);
 		break;
+	case DIK_UP:
+		mario->SetState(MARIO_STATE_FLY_RELEASE);
 	}
 }
 
@@ -64,5 +70,10 @@ void CSampleKeyHandler::KeyState(BYTE *states)
 	{
 		mario->SetState(MARIO_STATE_SIT);
 	}
+	if (game->IsKeyDown(DIK_UP)) {
+		mario->SetState(MARIO_STATE_FLY);
+	}
+
+
 
 }

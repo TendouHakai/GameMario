@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:619222e6c52ea55f01d8e56346f69d1d:4b651cb13e02eb5f25ced439dd0f69c0:cfc995a827fc14f03d2a3d9c93ed4994$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="Mario_squirrel.png" width="528" height="30">
+    <sprite n="squirrel_brace_left.png" x="0" y="0" w="16" h="30"/>
+    <sprite n="squirrel_brace_right.png" x="16" y="0" w="16" h="30"/>
+    <sprite n="squirrel_fly_left_0.png" x="32" y="0" w="24" h="28"/>
+    <sprite n="squirrel_fly_left_1.png" x="56" y="0" w="24" h="27"/>
+    <sprite n="squirrel_fly_Left_2.png" x="80" y="0" w="24" h="27"/>
+    <sprite n="squirrel_fly_right_0.png" x="104" y="0" w="24" h="28"/>
+    <sprite n="squirrel_fly_right_1.png" x="128" y="0" w="24" h="27"/>
+    <sprite n="squirrel_fly_right_2.png" x="152" y="0" w="24" h="27"/>
+    <sprite n="squirrel_idle_left.png" x="176" y="0" w="21" h="28"/>
+    <sprite n="squirrel_idle_right.png" x="197" y="0" w="21" h="28"/>
+    <sprite n="squirrel_jump_walk_left.png" x="218" y="0" w="23" h="27"/>
+    <sprite n="squirrel_jump_walk_right.png" x="241" y="0" w="23" h="27"/>
+    <sprite n="squirrel_run_left_0.png" x="264" y="0" w="24" h="28"/>
+    <sprite n="squirrel_run_left_1.png" x="288" y="0" w="23" h="28"/>
+    <sprite n="squirrel_run_left_2.png" x="311" y="0" w="21" h="27"/>
+    <sprite n="squirrel_run_right_0.png" x="332" y="0" w="23" h="28"/>
+    <sprite n="squirrel_run_right_1.png" x="355" y="0" w="21" h="27"/>
+    <sprite n="squirrel_run_right_2.png" x="376" y="0" w="24" h="28"/>
+    <sprite n="squirrel_sit_left.png" x="400" y="0" w="21" h="19"/>
+    <sprite n="squirrel_sit_right.png" x="421" y="0" w="21" h="19"/>
+    <sprite n="squirrel_walk_left_0.png" x="442" y="0" w="22" h="28"/>
+    <sprite n="squirrel_walk_left_1.png" x="464" y="0" w="21" h="27"/>
+    <sprite n="squirrel_walk_right_0.png" x="485" y="0" w="22" h="28"/>
+    <sprite n="squirrel_walk_right_1.png" x="507" y="0" w="21" h="27"/>
+</TextureAtlas>
