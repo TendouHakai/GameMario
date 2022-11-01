@@ -21,55 +21,101 @@ triangles  => sprite triangulation, 3 vertex indices per triangle
 -->
 
 <Animations>
-    <Animation AnimationID="Mario_brace_left">
-        <Sprite SpriteID="Mario_brace_left"></Sprite>
+<!--Animation for mario Big-->
+    <Animation AnimationID="big_brace_left" frameTime="100">
+        <Sprite SpriteID="big_brace_left"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_brace_right">
-        <Sprite SpriteID="Mario_brace_right"></Sprite>
+    <Animation AnimationID="big_brace_right" frameTime="100">
+        <Sprite SpriteID="big_brace_right"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_dead">
-        <Sprite SpriteID="Mario_dead"></Sprite>
+    <Animation AnimationID="big_dead" frameTime="100">
+        <Sprite SpriteID="big_dead"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_idle_left">
-        <Sprite SpriteID="Mario_idle_left"></Sprite>
+    <Animation AnimationID="big_idle_left" frameTime="100">
+        <Sprite SpriteID="big_idle_left"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_idle_right">
-        <Sprite SpriteID="Mario_idle_right"></Sprite>
+    <Animation AnimationID="big_idle_right" frameTime="100">
+        <Sprite SpriteID="big_idle_right"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_jump_run_left">
-        <Sprite SpriteID="Mario_jump_run_left"></Sprite>
+    <Animation AnimationID="big_jump_run_left" frameTime="100">
+        <Sprite SpriteID="big_jump_run_left"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_jump_run_right">
-        <Sprite SpriteID="Mario_jump_run_right"></Sprite>
+    <Animation AnimationID="big_jump_run_right" frameTime="100">
+        <Sprite SpriteID="big_jump_run_right"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_jump_walk_left">
-        <Sprite SpriteID="Mario_jump_walk_left"></Sprite>
+    <Animation AnimationID="big_jump_walk_left" frameTime="100">
+        <Sprite SpriteID="big_jump_walk_left"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_jump_walk_right">
-        <Sprite SpriteID="Mario_jump_walk_right"></Sprite>
+    <Animation AnimationID="big_jump_walk_right" frameTime="100">
+        <Sprite SpriteID="big_jump_walk_right"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_run_left">
-        <Sprite SpriteID="Mario_run_left_0"></Sprite>
-        <Sprite SpriteID="Mario_run_left_1"></Sprite>
-        <Sprite SpriteID="Mario_run_left_2"></Sprite>
+    <Animation AnimationID="big_run_left" frameTime="100">
+        <Sprite SpriteID="big_run_left_0"></Sprite>
+        <Sprite SpriteID="big_run_left_1"></Sprite>
+        <Sprite SpriteID="big_run_left_2"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_run_right">
-        <Sprite SpriteID="Mario_run_right_0"></Sprite>
-        <Sprite SpriteID="Mario_run_right_1"></Sprite>
-        <Sprite SpriteID="Mario_run_right_2"></Sprite>
+    <Animation AnimationID="big_run_right" frameTime="100">
+        <Sprite SpriteID="big_run_right_0"></Sprite>
+        <Sprite SpriteID="big_run_right_1"></Sprite>
+        <Sprite SpriteID="big_run_right_2"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_walk_left">
-        <Sprite SpriteID="Mario_walk_left_0"></Sprite>
-        <Sprite SpriteID="Mario_walk_left_1"></Sprite>
+    <Animation AnimationID="big_walk_left" frameTime="100">
+        <Sprite SpriteID="big_idle_left"></Sprite>
+        <Sprite SpriteID="big_walk_left_0"></Sprite>
+        <Sprite SpriteID="big_walk_left_1"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_walk_right">
-        <Sprite SpriteID="Mario_walk_right_0"></Sprite>
-        <Sprite SpriteID="Mario_walk_right_1"></Sprite>
+    <Animation AnimationID="big_walk_right" frameTime="100">
+        <Sprite SpriteID="big_idle_right"></Sprite>
+        <Sprite SpriteID="big_walk_right_0"></Sprite>
+        <Sprite SpriteID="big_walk_right_1"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_sit_left">
-        <Sprite SpriteID="Mario_sit_left"></Sprite>
+    <Animation AnimationID="big_sit_left" frameTime="100">
+        <Sprite SpriteID="big_sit_left"></Sprite>
     </Animation>
-    <Animation AnimationID="Mario_sit_right">
-        <Sprite SpriteID="Mario_sit_right"></Sprite>
+    <Animation AnimationID="big_sit_right" frameTime="100">
+        <Sprite SpriteID="big_sit_right"></Sprite>
+    </Animation>
+<!--Animation for mario small-->
+    <Animation AnimationID="small_brace_left" frameTime="100">
+        <Sprite SpriteID="small_brace_left"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_brace_right" frameTime="100">
+        <Sprite SpriteID="small_brace_right"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_idle_left" frameTime="100">
+        <Sprite SpriteID="small_idle_left"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_idle_right" frameTime="100">
+        <Sprite SpriteID="small_idle_right"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_jump_run_left" frameTime="100">
+        <Sprite SpriteID="small_jump_run_left"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_jump_run_right" frameTime="100">
+        <Sprite SpriteID="small_jump_run_right"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_jump_walk_left" frameTime="100">
+        <Sprite SpriteID="small_jump_walk_left"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_jump_walk_right" frameTime="100">
+        <Sprite SpriteID="small_jump_walk_right"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_run_left" frameTime="100">
+        <Sprite SpriteID="small_run_left_0"></Sprite>
+        <Sprite SpriteID="small_run_left_1"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_run_right" frameTime="100">
+        <Sprite SpriteID="small_run_right_0"></Sprite>
+        <Sprite SpriteID="small_run_right_1"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_walk_left" frameTime="100">
+        <Sprite SpriteID="small_walk_left_0"></Sprite>
+        <Sprite SpriteID="small_walk_left_1"></Sprite>
+        <Sprite SpriteID="small_walk_left_2"></Sprite>
+    </Animation>
+    <Animation AnimationID="small_walk_right" frameTime="100">
+        <Sprite SpriteID="small_walk_right_0"></Sprite>
+        <Sprite SpriteID="small_walk_right_1"></Sprite>
+        <Sprite SpriteID="small_walk_right_2"></Sprite>
     </Animation>
 </Animations>

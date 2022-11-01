@@ -85,21 +85,22 @@ void LoadSprites(const char* path) {
 
 	if (doc.LoadFile()) {
 		TiXmlElement* root = doc.RootElement();
+		for (TiXmlElement* nodeTexture = root->FirstChildElement("Textures"); nodeTexture != NULL; nodeTexture = nodeTexture->NextSiblingElement("Textures"))
+		{
+			string textureID = nodeTexture->Attribute("TextureID");
 
-		TiXmlElement* Texture = root->FirstChildElement("Textures");
-		string textureID = Texture->Attribute("TextureID");
+			LPTEXTURE texture = _textures->Get(textureID);
+			for (TiXmlElement* node = nodeTexture->FirstChildElement("sprite"); node != NULL; node = node->NextSiblingElement("sprite")) {
+				string id = node->Attribute("SpriteID");
+				int left = 0, top = 0, width = 0, height = 0;
 
-		LPTEXTURE texture = _textures->Get(textureID);
-		for (TiXmlElement* node = Texture->FirstChildElement("sprite"); node != NULL; node = node->NextSiblingElement("sprite")) {
-			string id = node->Attribute("SpriteID");
-			int left = 0, top = 0, width = 0, height = 0;
-
-			node->QueryIntAttribute("x", &left);
-			node->QueryIntAttribute("y", &top);
-			node->QueryIntAttribute("w", &width);
-			node->QueryIntAttribute("h", &height);
-			_sprites->Add(id, left, top, left+width, top+height, texture);
-			DebugOut(L"Load Sprite id: %s\n", ToLPCWSTR(id));
+				node->QueryIntAttribute("x", &left);
+				node->QueryIntAttribute("y", &top);
+				node->QueryIntAttribute("w", &width);
+				node->QueryIntAttribute("h", &height);
+				_sprites->Add(id, left, top, left + width, top + height, texture);
+				DebugOut(L"Load Sprite id: %s\n", ToLPCWSTR(id));
+			}
 		}
 	}
 }

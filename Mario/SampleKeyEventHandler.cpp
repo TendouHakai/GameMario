@@ -15,6 +15,12 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_S:
 		mario->SetState(MARIO_STATE_JUMP);
 		break;
+	case DIK_NUMPAD1:
+		mario->SetMarioForm(MARIO_FORM_SMALL);
+		break;
+	case DIK_NUMPAD2:
+		mario->SetMarioForm(MARIO_FORM_BIG);
+		break;
 	}
 }
 

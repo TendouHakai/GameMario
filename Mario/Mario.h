@@ -66,17 +66,23 @@
 
 class CMario : public CGameObject
 {
+	int form;
 	BOOLEAN isSitting;
 	float maxVx;
 	float ax;				// acceleration on x 
 public: 
 	CMario(float x, float y) : CGameObject(x, y) 
 	{
+		form = MARIO_FORM_BIG;
 		isSitting = false;
 		maxVx = 0.0f;
 		ax = 0.0f;
 	}
 	void Update(DWORD dt);
 	void Render();
+	string RenderMarioBig();
+	string RenderMarioSmall();
+
 	void SetState(int state);
+	void SetMarioForm(int form);
 };

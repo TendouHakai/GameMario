@@ -42,25 +42,46 @@ triangles  => sprite triangulation, 3 vertex indices per triangle
 </Textures> -->
 <Sprites>
     <Textures TextureID="Mario_big" width="416" height="32">
-        <sprite SpriteID="Mario_brace_left" x="2" y="2" w="16" h="28"/>
-        <sprite SpriteID="Mario_brace_right" x="22" y="2" w="16" h="28"/>
-        <sprite SpriteID="Mario_idle_left" x="174" y="2" w="14" h="27"/>
-        <sprite SpriteID="Mario_idle_right" x="192" y="2" w="14" h="27"/>
-        <sprite SpriteID="Mario_jump_run_left" x="210" y="2" w="19" h="26"/>
-        <sprite SpriteID="Mario_jump_run_right" x="233" y="2" w="19" h="26"/>
-        <sprite SpriteID="Mario_jump_walk_left" x="302" y="2" w="16" h="26"/>
-        <sprite SpriteID="Mario_jump_walk_right" x="322" y="2" w="16" h="26"/>
-        <sprite SpriteID="Mario_run_left_0" x="42" y="2" w="19" h="27"/>
-        <sprite SpriteID="Mario_run_left_1" x="65" y="2" w="19" h="27"/>
-        <sprite SpriteID="Mario_run_left_2" x="256" y="2" w="19" h="26"/>
-        <sprite SpriteID="Mario_run_right_0" x="88" y="2" w="19" h="27"/>
-        <sprite SpriteID="Mario_run_right_1" x="279" y="2" w="19" h="26"/>
-        <sprite SpriteID="Mario_run_right_2" x="111" y="2" w="19" h="27"/>
-        <sprite SpriteID="Mario_sit_left" x="382" y="2" w="14" h="18"/>
-        <sprite SpriteID="Mario_sit_right" x="400" y="2" w="14" h="18"/>
-        <sprite SpriteID="Mario_walk_left_0" x="134" y="2" w="16" h="27"/>
-        <sprite SpriteID="Mario_walk_left_1" x="342" y="2" w="16" h="26"/>
-        <sprite SpriteID="Mario_walk_right_0" x="362" y="2" w="16" h="26"/>
-        <sprite SpriteID="Mario_walk_right_1" x="154" y="2" w="16" h="27"/>
+        <sprite SpriteID="big_brace_left" x="2" y="2" w="16" h="28"/>
+        <sprite SpriteID="big_brace_right" x="22" y="2" w="16" h="28"/>
+        <sprite SpriteID="big_idle_left" x="174" y="2" w="14" h="27"/>
+        <sprite SpriteID="big_idle_right" x="192" y="2" w="14" h="27"/>
+        <sprite SpriteID="big_jump_run_left" x="210" y="2" w="19" h="26"/>
+        <sprite SpriteID="big_jump_run_right" x="233" y="2" w="19" h="26"/>
+        <sprite SpriteID="big_jump_walk_left" x="302" y="2" w="16" h="26"/>
+        <sprite SpriteID="big_jump_walk_right" x="322" y="2" w="16" h="26"/>
+        <sprite SpriteID="big_run_left_0" x="42" y="2" w="19" h="27"/>
+        <sprite SpriteID="big_run_left_1" x="65" y="2" w="19" h="27"/>
+        <sprite SpriteID="big_run_left_2" x="256" y="2" w="19" h="26"/>
+        <sprite SpriteID="big_run_right_0" x="88" y="2" w="19" h="27"/>
+        <sprite SpriteID="big_run_right_1" x="279" y="2" w="19" h="26"/>
+        <sprite SpriteID="big_run_right_2" x="111" y="2" w="19" h="27"/>
+        <sprite SpriteID="big_sit_left" x="382" y="2" w="14" h="18"/>
+        <sprite SpriteID="big_sit_right" x="400" y="2" w="14" h="18"/>
+        <sprite SpriteID="big_walk_left_0" x="134" y="2" w="16" h="27"/>
+        <sprite SpriteID="big_walk_left_1" x="342" y="2" w="16" h="26"/>
+        <sprite SpriteID="big_walk_right_0" x="362" y="2" w="16" h="26"/>
+        <sprite SpriteID="big_walk_right_1" x="154" y="2" w="16" h="27"/>
+    </Textures>
+
+    <Textures TextureID="Mario_small" width="103" height="52">
+        <sprite SpriteID="small_brace_left" x="57" y="1" w="14" h="15"/>
+        <sprite SpriteID="small_brace_right" x="73" y="1" w="14" h="15"/>
+        <sprite SpriteID="small_idle_left" x="1" y="1" w="12" h="14"/>
+        <sprite SpriteID="small_idle_right" x="15" y="1" w="12" h="14"/>
+        <sprite SpriteID="small_jump_run_left" x="19" y="35" w="16" h="16"/>
+        <sprite SpriteID="small_jump_run_right" x="37" y="35" w="16" h="16"/>
+        <sprite SpriteID="small_jump_walk_left" x="55" y="35" w="16" h="16"/>
+        <sprite SpriteID="small_jump_walk_right" x="73" y="35" w="16" h="16"/>
+        <sprite SpriteID="small_run_left_0" x="29" y="1" w="12" h="14"/>
+        <sprite SpriteID="small_run_left_1" x="89" y="1" w="13" h="15"/>
+        <sprite SpriteID="small_run_right_0" x="43" y="1" w="12" h="14"/>
+        <sprite SpriteID="small_run_right_1" x="1" y="18" w="13" h="15"/>
+        <sprite SpriteID="small_walk_left_0" x="16" y="18" w="15" h="15"/>
+        <sprite SpriteID="small_walk_left_1" x="33" y="18" w="16" h="15"/>
+        <sprite SpriteID="small_walk_left_2" x="51" y="18" w="16" h="15"/>
+        <sprite SpriteID="small_walk_right_0" x="69" y="18" w="15" h="15"/>
+        <sprite SpriteID="small_walk_right_1" x="86" y="18" w="16" h="15"/>
+        <sprite SpriteID="small_walk_right_2" x="1" y="35" w="16" h="15"/>
     </Textures>
 </Sprites>
