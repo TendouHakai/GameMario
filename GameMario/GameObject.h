@@ -43,7 +43,11 @@ public:
 	void RenderBoundingBox();
 
 	CGameObject();
-	CGameObject(float x, float y) :CGameObject() { this->x = x; this->y = y; }
+	CGameObject(float x, float y) :CGameObject() { this->x = x; this->y = y; vx = vy = 0;
+	nx = 1;
+	state = -1;
+	isDeleted = false;
+	}
 
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) = 0;

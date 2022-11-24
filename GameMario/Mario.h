@@ -107,16 +107,19 @@ class CMario : public CGameObject
 	float maxVx;
 	float ax;				// acceleration on x 
 	float ay;				// acceleration on y 
+	float yPlatformNotBlock;
 
 	int level; 
 	int untouchable; 
 	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
+	BOOLEAN isOnPlatformNotBlock;
 	int coin; 
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOLLISIONEVENT e);
 	void OnCollisionWithPortal(LPCOLLISIONEVENT e);
+	void OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e);
 
 	int GetAniIdBig();
 	int GetAniIdSmall();
@@ -133,6 +136,10 @@ public:
 		untouchable = 0;
 		untouchable_start = -1;
 		isOnPlatform = false;
+
+		isOnPlatformNotBlock = false;
+		yPlatformNotBlock = 500;
+
 		coin = 0;
 	}
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);

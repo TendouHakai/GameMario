@@ -9,6 +9,7 @@
 #include "Portal.h"
 #include "Coin.h"
 #include "Platform.h"
+#include "PlatformNotBlock.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -250,6 +251,18 @@ void CPlayScene::Load()
 					cell_width, cell_height, length
 				);
 				
+				break;
+			}
+			case OBJECT_TYPE_PLATFORM_NOTBLOCK: {
+				float cell_width = (float)atof(node->Attribute("cellW"));
+				float cell_height = (float)atof(node->Attribute("cellH"));
+				int length = atoi(node->Attribute("length"));
+
+				obj = new CPlatformNotBlock(
+					x, y,
+					cell_width, cell_height, length
+				);
+
 				break;
 			}
 			}

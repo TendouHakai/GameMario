@@ -1,4 +1,4 @@
-#include <algorithm>
+﻿#include <algorithm>
 #include "debug.h"
 
 #include "Mario.h"
@@ -7,6 +7,7 @@
 #include "Goomba.h"
 #include "Coin.h"
 #include "Portal.h"
+#include "PlatformNotBlock.h"
 
 #include "Collision.h"
 
@@ -23,10 +24,24 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		untouchable_start = 0;
 		untouchable = 0;
 	}
-
+	
 	isOnPlatform = false;
-
+	isOnPlatformNotBlock = false;
+	
 	CCollision::GetInstance()->Process(this, dt, coObjects);
+	if (isOnPlatformNotBlock) {
+		float l, t, r, b;
+		GetBoundingBox(l, t, r, b);
+		float ysize = b - t;
+		if (y + ysize/2 >= yPlatformNotBlock) {
+			if (state == MARIO_STATE_JUMP) {
+				state = MARIO_STATE_IDLE;
+			}
+			y = yPlatformNotBlock - ysize / 2 - 0.005f;
+			vy = 0;
+			yPlatformNotBlock = 500;
+		}
+	}
 }
 
 void CMario::OnNoCollision(DWORD dt)
@@ -40,6 +55,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
 		vy = 0;
+		
 		if (e->ny < 0) isOnPlatform = true;
 	}
 	else 
@@ -54,6 +70,9 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithCoin(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
+	else if (dynamic_cast<CPlatformNotBlock*>(e->obj))
+		OnCollisionWithPlatformNotBlock(e);
+	
 }
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
@@ -100,6 +119,22 @@ void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)
 {
 	CPortal* p = (CPortal*)e->obj;
 	CGame::GetInstance()->InitiateSwitchScene(p->GetSceneId());
+}
+
+void CMario::OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e)
+{
+	CPlatformNotBlock* platform = dynamic_cast<CPlatformNotBlock*>(e->obj);
+	
+	if (e->ny != 0 && this->vy>0) {
+		isOnPlatformNotBlock = true;
+		DebugOut(L"Đã va chạm\n");
+		float x, y;
+		platform->GetPosition(x, y);
+		float l,t,r,b;
+		platform->GetBoundingBox(l,t,r,b);
+		yPlatformNotBlock = y - (b-t)/2;
+	}
+	
 }
 
 //
@@ -170,7 +205,7 @@ int CMario::GetAniIdSmall()
 int CMario::GetAniIdBig()
 {
 	int aniId = -1;
-	if (!isOnPlatform)
+	if (isOnPlatform==false && isOnPlatformNotBlock == false)
 	{
 		if (abs(ax) == MARIO_ACCEL_RUN_X)
 		{
@@ -277,7 +312,7 @@ void CMario::SetState(int state)
 		break;
 	case MARIO_STATE_JUMP:
 		if (isSitting) break;
-		if (isOnPlatform)
+		if (isOnPlatform || isOnPlatformNotBlock)
 		{
 			if (abs(this->vx) == MARIO_RUNNING_SPEED)
 				vy = -MARIO_JUMP_RUN_SPEED_Y;

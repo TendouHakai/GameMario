@@ -131,6 +131,9 @@
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="PlatformNotBlock.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -201,6 +204,9 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PlatformNotBlock.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

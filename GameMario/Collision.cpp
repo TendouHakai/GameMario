@@ -13,6 +13,16 @@ CCollision* CCollision::GetInstance()
 	return __instance;
 }
 
+bool CCollision::isCollising(float ml, float mt, float mr, float mb, float sl, float st, float sr, float sb)
+{
+	float left = ml - sr; // <0
+	float right = mr - sl; //>0
+	float top = mt - sb; // <0
+	float bottom = mb - st; // >0
+
+	return (left<=0 && right >=0 && top<=0 && bottom >=0);
+}
+
 /*
 	SweptAABB 
 */
@@ -142,6 +152,14 @@ LPCOLLISIONEVENT CCollision::SweptAABB(LPGAMEOBJECT objSrc, DWORD dt, LPGAMEOBJE
 	objSrc->GetBoundingBox(ml, mt, mr, mb);
 	objDest->GetBoundingBox(sl, st, sr, sb);
 
+	if (isCollising(ml, mt, mr, mb, sl, st, sr, sb)) {
+		t = 0;
+		nx = 0;
+		ny = 0;
+		CCollisionEvent* e = new CCollisionEvent(t, nx, ny, dx, dy, objDest, objSrc);
+		return e;
+	}
+
 	SweptAABB(
 		ml, mt, mr, mb,
 		dx, dy,
@@ -171,7 +189,7 @@ void CCollision::Scan(LPGAMEOBJECT objSrc, DWORD dt, vector<LPGAMEOBJECT>* objDe
 			delete e;
 	}
 
-	//std::sort(coEvents.begin(), coEvents.end(), CCollisionEvent::compare);
+	std::sort(coEvents.begin(), coEvents.end(), CCollisionEvent::compare);
 }
 
 void CCollision::Filter( LPGAMEOBJECT objSrc,

@@ -45,6 +45,16 @@ struct CCollisionEvent
 
 class CCollision
 {
+	bool isCollising(
+		float ml,			// move left 
+		float mt,			// move top
+		float mr,			// move right 
+		float mb,			// 
+		float sl,			// static left
+		float st,
+		float sr,
+		float sb
+		);
 	static CCollision* __instance;
 public: 
 	static void SweptAABB(
