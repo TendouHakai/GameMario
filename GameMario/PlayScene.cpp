@@ -16,7 +16,8 @@ using namespace std;
 
 CPlayScene::CPlayScene(int id, string filePath):
 	CScene(id, filePath)
-{
+{	
+	map = NULL;
 	player = NULL;
 	key_handler = new CSampleKeyHandler(this);
 }
@@ -95,6 +96,11 @@ CPlayScene::CPlayScene(int id, string filePath):
 //
 //	objects.push_back(obj);
 //}
+
+void CPlayScene::loadMap(string mapFile)
+{
+	map = CGame::GetInstance()->LoadTexture(ToLPCWSTR(mapFile));
+}
 
 void CPlayScene::LoadAssets(string assetFile)
 {
@@ -203,9 +209,11 @@ void CPlayScene::Load()
 	TiXmlDocument doc(sceneFilePath.c_str());
 	if (doc.LoadFile()) {
 		TiXmlElement* root = doc.RootElement();
+		TiXmlElement* mapXML = root->FirstChildElement("MAP");
 		TiXmlElement* assetsXML = root->FirstChildElement("ASSETS");
 		TiXmlElement* objectsXML = root->FirstChildElement("OBJECTS");
-
+		// đọc map
+		loadMap(mapXML->Attribute("link"));
 		// đọc assets
 		for (TiXmlElement* node = assetsXML->FirstChildElement("asset"); node != nullptr; node = node->NextSiblingElement("asset")) {
 			LoadAssets(node->Attribute("link"));
@@ -269,16 +277,30 @@ void CPlayScene::Update(DWORD dt)
 	cy -= game->GetBackBufferHeight() / 2;
 
 	if (cx < 0) cx = 0;
+	if (cy < 0) cy = 0;
 
-	CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
+	CGame::GetInstance()->SetCamPos(cx, 240.0f);
 
 	PurgeDeletedObjects();
 }
 
 void CPlayScene::Render()
 {
+	RECT rect;
+	float cx, cy;
+	CGame::GetInstance()->GetCamPos(cx, cy);
+	float sx, sy;
+	sx = CGame::GetInstance()->GetBackBufferWidth();
+	sy = CGame::GetInstance()->GetBackBufferHeight();
+	rect.left = cx;
+	rect.right = rect.left + sx;
+	
+	rect.bottom = 450;
+	rect.top = rect.bottom - sy;
+	CGame::GetInstance()->Draw(sx/2, sy/2, map, &rect);
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+	DebugOut(L"l,t,r,b map: %d, %d, %d, %d\n", rect.left, rect.top, rect.right, rect.bottom);
 }
 
 /*

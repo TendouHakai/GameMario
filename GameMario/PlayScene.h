@@ -16,7 +16,8 @@ protected:
 	LPGAMEOBJECT player;					
 
 	vector<LPGAMEOBJECT> objects;
-
+	LPTEXTURE map;
+	void loadMap(string mapFile);
 	void LoadAssets(string assetFile);
 	
 public: 

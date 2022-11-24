@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SCENE>
+  <MAP link="textures\SuperMarioBros3_Stage1_1.png">
+  </MAP>
   <ASSETS>
     <asset link="Mario.xml"></asset>
     <asset link="Brick.xml"></asset>
@@ -9,27 +11,27 @@
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="20" y="10"> </object>
+    <object type ="0" x="20" y="350"> </object>
 
-    <object type="1" x="0" y="148"></object>
-    <object type="1" x="0" y="164"></object>
-    <object type="1" x="0" y="180"></object>
-    <object type="1" x="16" y="180"></object>
-    <object type="1" x="32" y="180"></object>
-    <object type="1" x="48" y="180"></object>
-    <object type="1" x="64" y="180"></object>
-    <object type="1" x="80" y="180"></object>
-    <object type="1" x="96" y="180"></object>
-    <object type="1" x="112" y="180"></object>
-    <object type="1" x="128" y="180"></object>
-    <object type="1" x="144" y="180"></object>
-    <object type="1" x="160" y="180"></object>
-    <object type="1" x="176" y="180"></object>
-    <object type="1" x="192" y="180"></object>
-    <object type="1" x="208" y="180"></object>
-    <object type="1" x="224" y="180"></object>
-    <object type="1" x="240" y="180"></object>
-    <object type="1" x="256" y="180"></object>
-    <object type="1" x="272" y="180"></object>
+    <object type="1" x="0" y="383"></object>
+    <object type="1" x="0" y="399"></object>
+    <object type="1" x="0" y="415"></object>
+    <object type="1" x="16" y="415"></object>
+    <object type="1" x="32" y="415"></object>
+    <object type="1" x="48" y="415"></object>
+    <object type="1" x="64" y="415"></object>
+    <object type="1" x="80" y="415"></object>
+    <object type="1" x="96" y="415"></object>
+    <object type="1" x="112" y="415"></object>
+    <object type="1" x="128" y="415"></object>
+    <object type="1" x="144" y="415"></object>
+    <object type="1" x="160" y="415"></object>
+    <object type="1" x="176" y="415"></object>
+    <object type="1" x="192" y="415"></object>
+    <object type="1" x="208" y="415"></object>
+    <object type="1" x="224" y="415"></object>
+    <object type="1" x="240" y="415"></object>
+    <object type="1" x="256" y="415"></object>
+    <object type="1" x="272" y="415"></object>
   </OBJECTS>
 </SCENE>
