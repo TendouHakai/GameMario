@@ -238,7 +238,22 @@ void CPlayScene::Load()
 				DebugOut(L"[INFO] Player object has been created!\n");
 				break;
 			case OBJECT_TYPE_BRICK: obj = new CBrick(x, y); break;
+			case OBJECT_TYPE_PLATFORM:
+			{
+				
+				float cell_width = (float)atof(node->Attribute("cellW"));
+				float cell_height = (float)atof(node->Attribute("cellH"));
+				int length = atoi(node->Attribute("length"));
+				
+				obj = new CPlatform(
+					x, y,
+					cell_width, cell_height, length
+				);
+				
+				break;
 			}
+			}
+
 			obj->SetPosition(x, y);
 			objects.push_back(obj);
 		}
@@ -299,7 +314,6 @@ void CPlayScene::Render()
 	CGame::GetInstance()->Draw(sx/2, sy/2, map, &rect);
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
-	DebugOut(L"l,t,r,b map: %d, %d, %d, %d\n", rect.left, rect.top, rect.right, rect.bottom);
 }
 
 /*

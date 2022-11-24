@@ -13,7 +13,9 @@
   <OBJECTS>
     <object type ="0" x="20" y="350"> </object>
 
-    <object type="1" x="0" y="383"></object>
+    <object type ="5" x="0" y="415" cellW="16" cellH="16" length="16"></object>
+    
+    <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>
     <object type="1" x="0" y="415"></object>
     <object type="1" x="16" y="415"></object>
@@ -32,6 +34,6 @@
     <object type="1" x="224" y="415"></object>
     <object type="1" x="240" y="415"></object>
     <object type="1" x="256" y="415"></object>
-    <object type="1" x="272" y="415"></object>
+    <object type="1" x="272" y="415"></object>-->
   </OBJECTS>
 </SCENE>
