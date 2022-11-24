@@ -289,14 +289,13 @@ void CPlayScene::Render()
 	RECT rect;
 	float cx, cy;
 	CGame::GetInstance()->GetCamPos(cx, cy);
-	float sx, sy;
+	float sx, sy;	
 	sx = CGame::GetInstance()->GetBackBufferWidth();
 	sy = CGame::GetInstance()->GetBackBufferHeight();
 	rect.left = cx;
-	rect.right = rect.left + sx;
-	
+	rect.right = rect.left + sx +1;
 	rect.bottom = 450;
-	rect.top = rect.bottom - sy;
+	rect.top = rect.bottom - sy +1;
 	CGame::GetInstance()->Draw(sx/2, sy/2, map, &rect);
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
