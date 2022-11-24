@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCENCEMANAGER>
+  <SETTINGS>
+    <Start value ="1"></Start>
+    <Width value ="320"></Width>
+    <Height value ="240"></Height>
+  </SETTINGS>
+
+  <SCENCES>
+    <Scence id="0" link="intro.txt"></Scence>
+    <Scence id="1" link="Scene01.xml"></Scence>
+    <Scence id="2" link="scene02.txt"></Scence>
+    <Scence id="5" link="scene0005.txt"></Scence>
+  </SCENCES>
+
+  <TEXTURES>
+    <Texture id="-100" link="textures\bbox.png"></Texture>
+    <Texture id="0" link="textures\mario.png"></Texture>
+    <Texture id="10" link="textures\enemies.png"></Texture>
+    <Texture id="20" link="textures\misc.png"></Texture>
+  </TEXTURES>
+</SCENCEMANAGER>

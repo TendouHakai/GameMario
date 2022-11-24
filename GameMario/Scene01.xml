@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCENE>
+  <ASSETS>
+    <asset link="mario.txt"></asset>
+    <asset link="brick.txt"></asset>
+    <asset link="coin.txt"></asset>
+    <asset link="goomba.txt"></asset>
+    <asset link="cloud.txt"></asset>
+  </ASSETS>
+  
+  <OBJECTS>
+    <object type ="0" x="20" y="10"> </object>
+
+    <object type="1" x="0" y="148"></object>
+    <object type="1" x="0" y="164"></object>
+    <object type="1" x="0" y="180"></object>
+    <object type="1" x="16" y="180"></object>
+    <object type="1" x="32" y="180"></object>
+    <object type="1" x="48" y="180"></object>
+    <object type="1" x="64" y="180"></object>
+    <object type="1" x="80" y="180"></object>
+    <object type="1" x="96" y="180"></object>
+    <object type="1" x="112" y="180"></object>
+    <object type="1" x="128" y="180"></object>
+    <object type="1" x="144" y="180"></object>
+    
+  </OBJECTS>
+</SCENE>
