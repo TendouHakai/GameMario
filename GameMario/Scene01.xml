@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SCENE>
   <ASSETS>
-    <asset link="mario.txt"></asset>
-    <asset link="brick.txt"></asset>
+    <asset link="Mario.xml"></asset>
+    <asset link="Brick.xml"></asset>
     <asset link="coin.txt"></asset>
     <asset link="goomba.txt"></asset>
     <asset link="cloud.txt"></asset>

@@ -23,7 +23,10 @@ protected:
 	void _ParseSection_ASSETS(string line);
 	void _ParseSection_OBJECTS(string line);
 
-	void LoadAssets(LPCWSTR assetFile);
+	void LoadSprites();
+	void LoadAnimations();
+
+	void LoadAssets(string assetFile);
 	
 public: 
 	CPlayScene(int id, string filePath);

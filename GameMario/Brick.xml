@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BRICK>
+  <SPRITES>
+    <Sprite spriteID ="20001" l="372" t="153" r="387" b="168" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="10000">
+      <Sprite SpriteID="20001" time="1000"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</BRICK>

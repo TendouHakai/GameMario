@@ -1,1 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
+<MARIO>
+  <SPRITES>
+    <!--Big-->
+    <!--IDLE-->
+    <Sprite spriteID ="11121" l="246" t="154" r="259" b="181" textureID="0"></Sprite>
+    <Sprite spriteID ="11111" l="186" t="154" r="199" b="181" textureID="0"></Sprite>
+    <!--WALKING RIGHT-->
+    <Sprite spriteID ="11222" l="275" t="154" r="290" b="181" textureID="0"></Sprite>
+    <Sprite spriteID ="11223" l="304" t="154" r="321" b="181" textureID="0"></Sprite>
+    <!--WALKING LEFT-->
+    <Sprite spriteID ="11212" l="155" t="154" r="170" b="181" textureID="0"></Sprite>
+    <Sprite spriteID ="11213" l="125" t="154" r="140" b="181" textureID="0"></Sprite>
+    <!--RUNNING RIGHT-->
+    <Sprite spriteID ="11321" l="334" t="154" r="355" b="181" textureID="0"></Sprite>
+    <Sprite spriteID ="11322" l="334" t="154" r="355" b="181" textureID="0"></Sprite>
+    <Sprite spriteID ="11323" l="392" t="154" r="413" b="181" textureID="0"></Sprite>
+    <!--RUNNING LEFT-->
+    <Sprite spriteID ="11311" l="91" t="154" r="112" b="181" textureID="0"></Sprite>
+    <Sprite spriteID ="11312" l="65" t="154" r="86" b="181" textureID="0"></Sprite>
+    <Sprite spriteID ="11313" l="34" t="154" r="55" b="181" textureID="0"></Sprite>
+    <!--JUMP WALK RIGHT AND LEFT-->
+    <Sprite spriteID ="11417" l="395" t="275" r="412" b="302" textureID="0"></Sprite>
+    <Sprite spriteID ="11413" l="35" t="275" r="52" b="302" textureID="0"></Sprite>
+    <!--JUMP RUN RIGHT AND LEFT-->
+    <Sprite spriteID ="11427" l="394" t="195" r="413" b="222" textureID="0"></Sprite>
+    <Sprite spriteID ="11423" l="35" t="195" r="20" b="222" textureID="0"></Sprite>
+    <!--JUMP SIT RIGHT AND LEFT-->
+    <Sprite spriteID ="11521" l="426" t="239" r="441" b="256" textureID="0"></Sprite>
+    <Sprite spriteID ="11511" l="5" t="239" r="52" b="256" textureID="0"></Sprite>
+    <!--BRACE RIGHT & LEFT-->
+    <Sprite spriteID ="11621" l="425" t="154" r="442" b="181" textureID="0"></Sprite>
+    <Sprite spriteID ="11611" l="5" t="154" r="22" b="181" textureID="0"></Sprite>
+    <!--DIE-->
+    <Sprite spriteID ="13001" l="215" t="120" r="234" b="137" textureID="0"></Sprite>
+  </SPRITES>
+
+  <ANIMATIONS>
+    <!--Big-->
+    <!--IDLE-->
+    <animation aniID="400">
+      <Sprite SpriteID="11121" time="100"></Sprite>
+    </animation>
+    <animation aniID="401">
+      <Sprite SpriteID="11111" time="100"></Sprite>
+    </animation>
+    <!--WALKING RIGHT & LEFT-->
+    <animation aniID="500">
+      <Sprite SpriteID="11121" time="100"></Sprite>
+      <Sprite SpriteID="11222" time="100"></Sprite>
+      <Sprite SpriteID="11223" time="100"></Sprite>
+    </animation>
+    <animation aniID="501">
+      <Sprite SpriteID="11111" time="100"></Sprite>
+      <Sprite SpriteID="11212" time="100"></Sprite>
+      <Sprite SpriteID="11213" time="100"></Sprite>
+    </animation>
+    <!--RUNNING RIGHT & LEFT-->
+    <animation aniID="600">
+      <Sprite SpriteID="11321" time="50"></Sprite>
+      <Sprite SpriteID="11322" time="50"></Sprite>
+      <Sprite SpriteID="11323" time="50"></Sprite>
+    </animation>
+    <animation aniID="601">
+      <Sprite SpriteID="11311" time="50"></Sprite>
+      <Sprite SpriteID="11312" time="50"></Sprite>
+      <Sprite SpriteID="11313" time="50"></Sprite>
+    </animation>
+    <!--JUMP WALK-->
+    <animation aniID="700">
+      <Sprite SpriteID="11417" time="100"></Sprite>
+    </animation>
+    <animation aniID="701">
+      <Sprite SpriteID="11413" time="100"></Sprite>
+    </animation>
+    <!--JUMP RUN-->
+    <animation aniID="800">
+      <Sprite SpriteID="11427" time="100"></Sprite>
+    </animation>
+    <animation aniID="801">
+      <Sprite SpriteID="11423" time="100"></Sprite>
+    </animation>
+    <!--SIT RIGHT & LEFT -->
+    <animation aniID="900">
+      <Sprite SpriteID="11521" time="100"></Sprite>
+    </animation>
+    <animation aniID="901">
+      <Sprite SpriteID="11511" time="100"></Sprite>
+    </animation>
+    <!--BRACE RIGHT & LEFT-->
+    <animation aniID="1000">
+      <Sprite SpriteID="11621" time="100"></Sprite>
+    </animation>
+    <animation aniID="1001">
+      <Sprite SpriteID="11611" time="100"></Sprite>
+    </animation>
+    <!--BRACE RIGHT & LEFT-->
+    <animation aniID="999">
+      <Sprite SpriteID="13001" time="100"></Sprite>
+    </animation>
+  </ANIMATIONS>
+
+</MARIO>

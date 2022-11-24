@@ -63,7 +63,7 @@ void CPlayScene::_ParseSection_ASSETS(string line)
 
 	wstring path = ToWSTR(tokens[0]);
 	
-	LoadAssets(path.c_str());
+	//LoadAssets(path.c_str());
 }
 
 void CPlayScene::_ParseSection_ANIMATIONS(string line)
@@ -161,39 +161,76 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	objects.push_back(obj);
 }
 
-void CPlayScene::LoadAssets(LPCWSTR assetFile)
+void CPlayScene::LoadAssets(string assetFile)
 {
 	DebugOut(L"[INFO] Start loading assets from : %s \n", assetFile);
 
-	ifstream f;
-	f.open(assetFile);
+	//ifstream f;
+	//f.open(assetFile);
 
-	int section = ASSETS_SECTION_UNKNOWN;
+	//int section = ASSETS_SECTION_UNKNOWN;
 
-	char str[MAX_SCENE_LINE];
-	while (f.getline(str, MAX_SCENE_LINE))
-	{
-		string line(str);
+	//char str[MAX_SCENE_LINE];
+	//while (f.getline(str, MAX_SCENE_LINE))
+	//{
+	//	string line(str);
 
-		if (line[0] == '#') continue;	// skip comment lines	
+	//	if (line[0] == '#') continue;	// skip comment lines	
 
-		if (line == "[SPRITES]") { section = ASSETS_SECTION_SPRITES; continue; };
-		if (line == "[ANIMATIONS]") { section = ASSETS_SECTION_ANIMATIONS; continue; };
-		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
+	//	if (line == "[SPRITES]") { section = ASSETS_SECTION_SPRITES; continue; };
+	//	if (line == "[ANIMATIONS]") { section = ASSETS_SECTION_ANIMATIONS; continue; };
+	//	if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
 
-		//
-		// data section
-		//
-		switch (section)
-		{
-		case ASSETS_SECTION_SPRITES: _ParseSection_SPRITES(line); break;
-		case ASSETS_SECTION_ANIMATIONS: _ParseSection_ANIMATIONS(line); break;
+	//	//
+	//	// data section
+	//	//
+	//	switch (section)
+	//	{
+	//	case ASSETS_SECTION_SPRITES: _ParseSection_SPRITES(line); break;
+	//	case ASSETS_SECTION_ANIMATIONS: _ParseSection_ANIMATIONS(line); break;
+	//	}
+	//	
+	//}
+
+	//f.close();
+	TiXmlDocument doc(assetFile.c_str());
+	if (doc.LoadFile()) {
+		TiXmlElement* root = doc.RootElement();
+		TiXmlElement* sprites = root->FirstChildElement("SPRITES");
+		TiXmlElement* animations = root->FirstChildElement("ANIMATIONS");
+
+		// đọc sprites
+		for (TiXmlElement* node = sprites->FirstChildElement("Sprite"); node != nullptr; node = node->NextSiblingElement("Sprite")) {
+			int ID = atoi(node->Attribute("spriteID"));
+			int l = atoi(node->Attribute("l"));
+			int t = atoi(node->Attribute("t"));
+			int r = atoi(node->Attribute("r"));
+			int b = atoi(node->Attribute("b"));
+			int texID = atoi(node->Attribute("textureID"));
+
+			LPTEXTURE tex = CTextures::GetInstance()->Get(texID);
+			if (tex == NULL)
+			{
+				DebugOut(L"[ERROR] Texture ID %d not found!\n", texID);
+				return;
+			}
+
+			CSprites::GetInstance()->Add(ID, l, t, r, b, tex);
 		}
-		
+		// đọc animation
+		for (TiXmlElement* node = animations->FirstChildElement("animation"); node != nullptr; node = node->NextSiblingElement("animation")) {
+			int ani_id = atoi(node->Attribute("aniID"));
+			LPANIMATION ani = new CAnimation();
+			for (TiXmlElement* nodeSprite = node->FirstChildElement("Sprite"); nodeSprite != nullptr; nodeSprite = nodeSprite->NextSiblingElement("Sprite"))	// why i+=2 ?  sprite_id | frame_time  
+			{
+				int sprite_id = atoi(nodeSprite->Attribute("SpriteID"));
+				int frame_time = atoi(nodeSprite->Attribute("time"));
+				ani->Add(sprite_id, frame_time);
+			}
+
+			CAnimations::GetInstance()->Add(ani_id, ani);
+		}
 	}
-
-	f.close();
-
 	DebugOut(L"[INFO] Done loading assets from %s\n", assetFile);
 }
 
@@ -236,8 +273,7 @@ void CPlayScene::Load()
 
 		// đọc assets
 		for (TiXmlElement* node = assetsXML->FirstChildElement("asset"); node != nullptr; node = node->NextSiblingElement("asset")) {
-			_ParseSection_ASSETS(node->Attribute("link"));
-
+			LoadAssets(node->Attribute("link"));
 		}
 		// đọcc objects
 		for (TiXmlElement* node = objectsXML->FirstChildElement("object"); node != nullptr; node = node->NextSiblingElement("object")) {
@@ -261,8 +297,6 @@ void CPlayScene::Load()
 			case OBJECT_TYPE_BRICK: obj = new CBrick(x, y); break;
 			}
 			obj->SetPosition(x, y);
-
-
 			objects.push_back(obj);
 		}
 

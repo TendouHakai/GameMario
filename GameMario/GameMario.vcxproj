@@ -183,6 +183,7 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Brick.xml" />
     <Xml Include="Mario.xml" />
     <Xml Include="Scence.xml" />
     <Xml Include="Scene01.xml" />
