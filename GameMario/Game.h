@@ -60,9 +60,6 @@ class CGame
 	int current_scene;
 	int next_scene = -1;
 
-	void _ParseSection_SETTINGS(string line);
-	void _ParseSection_SCENES(string line);
-
 public:
 	// Init DirectX, Sprite Handler
 	void Init(HWND hWnd, HINSTANCE hInstance);
@@ -114,8 +111,6 @@ public:
 	void Load(LPCWSTR gameFile);
 	void SwitchScene();
 	void InitiateSwitchScene(int scene_id);
-
-	void _ParseSection_TEXTURES(string line);
 
 
 	~CGame();
