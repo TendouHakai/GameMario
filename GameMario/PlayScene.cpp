@@ -10,6 +10,8 @@
 #include "Coin.h"
 #include "Platform.h"
 #include "PlatformNotBlock.h"
+#include "CQuestionBrick.h"
+#include "CCannibalFlower.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -262,7 +264,18 @@ void CPlayScene::Load()
 					x, y,
 					cell_width, cell_height, length
 				);
-
+				break;
+			}
+			case OBJECT_TYPE_QUESTIONBRICK: {
+				obj = new CQuestionBrick(x, y);
+				break;
+			}
+			case OBJECT_TYPE_COIN: {
+				obj = new CCoin(x, y);
+				break;
+			}
+			case OBJECT_TYPE_CANNIBALFLOWER: {
+				obj = new CCannibalFlower(x, y);
 				break;
 			}
 			}
@@ -290,7 +303,7 @@ void CPlayScene::Update(DWORD dt)
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{
-		objects[i]->Update(dt, &coObjects);
+		objects[i]->Update(dt, &objects);
 	}
 
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<QUESTIONBRICK>
+  <SPRITES>    
+    <Sprite spriteID ="60000" l="299" t="116" r="316" b="133" textureID="20"></Sprite>
+    <Sprite spriteID ="60001" l="317" t="116" r="334" b="133" textureID="20"></Sprite>
+    <Sprite spriteID ="60002" l="335" t="116" r="352" b="133" textureID="20"></Sprite>
+    <Sprite spriteID ="60003" l="353" t="116" r="370" b="133" textureID="20"></Sprite>
+    <Sprite spriteID ="60004" l="371" t="116" r="388" b="133" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="12000">
+      <Sprite SpriteID="60000" time="200"></Sprite>
+      <Sprite SpriteID="60001" time="200"></Sprite>
+      <Sprite SpriteID="60002" time="200"></Sprite>
+      <Sprite SpriteID="60003" time="200"></Sprite>
+    </animation>
+    <animation aniID="12001">
+      <Sprite SpriteID="60004" time="100"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</QUESTIONBRICK>

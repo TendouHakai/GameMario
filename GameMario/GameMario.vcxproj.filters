@@ -134,6 +134,12 @@
     <ClInclude Include="PlatformNotBlock.h">
       <Filter>GameObject\OtherObjects</Filter>
     </ClInclude>
+    <ClInclude Include="CQuestionBrick.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CCannibalFlower.h">
+      <Filter>GameObject\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -208,6 +214,12 @@
     <ClCompile Include="PlatformNotBlock.cpp">
       <Filter>GameObject\OtherObjects</Filter>
     </ClCompile>
+    <ClCompile Include="CQuestionBrick.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CCannibalFlower.cpp">
+      <Filter>GameObject\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -220,6 +232,15 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="Brick.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="QuestionBrick.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Coin.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="CannibalFlower.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

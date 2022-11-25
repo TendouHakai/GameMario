@@ -8,6 +8,7 @@
 #include "Coin.h"
 #include "Portal.h"
 #include "PlatformNotBlock.h"
+#include "CQuestionBrick.h"
 
 #include "Collision.h"
 
@@ -72,6 +73,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithPortal(e);
 	else if (dynamic_cast<CPlatformNotBlock*>(e->obj))
 		OnCollisionWithPlatformNotBlock(e);
+	else if (dynamic_cast<CQuestionBrick*>(e->obj))
+		OnCollisionWithQuestionBrick(e);
 	
 }
 
@@ -127,7 +130,6 @@ void CMario::OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e)
 	
 	if (e->ny != 0 && this->vy>0) {
 		isOnPlatformNotBlock = true;
-		DebugOut(L"Đã va chạm\n");
 		float x, y;
 		platform->GetPosition(x, y);
 		float l,t,r,b;
@@ -137,13 +139,23 @@ void CMario::OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e)
 	
 }
 
+void CMario::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
+{
+	CQuestionBrick* questionBr = dynamic_cast<CQuestionBrick*>(e->obj);
+	if (e->ny > 0) {
+		if (questionBr->GetState() == QUESTIONBRICK_STATE_IDLE) {
+			questionBr->SetState(QUESTIONBRICK_STATE_BROKEN);
+		}
+	}
+}
+
 //
 // Get animation ID for small Mario
 //
 int CMario::GetAniIdSmall()
 {
 	int aniId = -1;
-	if (!isOnPlatform)
+	if (isOnPlatform == false && isOnPlatformNotBlock == false)
 	{
 		if (abs(ax) == MARIO_ACCEL_RUN_X)
 		{

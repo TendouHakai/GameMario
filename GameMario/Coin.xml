@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COIN>
+  <SPRITES>
+    <!--IDLE-->
+    <Sprite spriteID ="40001" l="303" t="99" r="312" b="114" textureID="20"></Sprite>
+    <Sprite spriteID ="40002" l="321" t="99" r="330" b="114" textureID="20"></Sprite>
+    <Sprite spriteID ="40003" l="338" t="99" r="347" b="114" textureID="20"></Sprite>
+    <!--COLLECTION-->
+    <Sprite spriteID ="40010" l="457" t="222" r="470" b="231" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="11000">
+      <Sprite SpriteID="40001" time="300"></Sprite>
+      <Sprite SpriteID="40002" time="300"></Sprite>
+      <Sprite SpriteID="40003" time="300"></Sprite>
+    </animation>
+    <animation aniID="11001">
+      <Sprite SpriteID="40010" time="300"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</COIN>
