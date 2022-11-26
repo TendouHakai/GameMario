@@ -10,6 +10,7 @@
     <asset link="cloud.txt"></asset>
     <asset link="QuestionBrick.xml"></asset>
     <asset link="CannibalFlower.xml"></asset>
+    <asset link="Bullet.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
@@ -25,7 +26,7 @@
     <object type ="7" x="232" y="312"></object>
     <object type ="7" x="248" y="312"></object>
 
-    <object type ="8" x="368" y="363"></object>
+    <object type ="8" x="368" y="375"></object>
 
     <object type ="6" x="440" y="368" cellW="80" cellH="15" length="1"></object>
     <object type ="6" x="495" y="335" cellW="62" cellH="15" length="1"></object>

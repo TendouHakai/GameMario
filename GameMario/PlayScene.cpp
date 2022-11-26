@@ -12,6 +12,7 @@
 #include "PlatformNotBlock.h"
 #include "CQuestionBrick.h"
 #include "CCannibalFlower.h"
+#include "CBullet.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -276,6 +277,10 @@ void CPlayScene::Load()
 			}
 			case OBJECT_TYPE_CANNIBALFLOWER: {
 				obj = new CCannibalFlower(x, y);
+				break;
+			}
+			case OBJECT_TYPE_BULLET: {
+				obj = new CBullet(x, y);
 				break;
 			}
 			}

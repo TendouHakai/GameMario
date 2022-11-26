@@ -140,6 +140,7 @@
     <ClInclude Include="CCannibalFlower.h">
       <Filter>GameObject\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="CBullet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -220,6 +221,9 @@
     <ClCompile Include="CCannibalFlower.cpp">
       <Filter>GameObject\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="CBullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -241,6 +245,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="CannibalFlower.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Bullet.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BULLET>
+  <SPRITES>
+    <Sprite spriteID ="80001" l="567" t="117" r="580" b="128" textureID="20"></Sprite>
+    <Sprite spriteID ="80002" l="579" t="117" r="592" b="128" textureID="20"></Sprite>
+    <Sprite spriteID ="80003" l="579" t="129" r="592" b="138" textureID="20"></Sprite>
+    <Sprite spriteID ="80004" l="567" t="129" r="580" b="138" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="14000">
+      <Sprite SpriteID="80001" time="200"></Sprite>
+      <Sprite SpriteID="80002" time="200"></Sprite>
+      <Sprite SpriteID="80003" time="200"></Sprite>
+      <Sprite SpriteID="80004" time="200"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</BULLET>

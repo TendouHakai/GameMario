@@ -136,6 +136,7 @@
     <ClInclude Include="Animations.h" />
     <ClInclude Include="AssetIDs.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="CBullet.h" />
     <ClInclude Include="CCannibalFlower.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="CBullet.cpp" />
     <ClCompile Include="CCannibalFlower.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -190,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Brick.xml" />
+    <Xml Include="Bullet.xml" />
     <Xml Include="CannibalFlower.xml" />
     <Xml Include="Coin.xml" />
     <Xml Include="Mario.xml" />

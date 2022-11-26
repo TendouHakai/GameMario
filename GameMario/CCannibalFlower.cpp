@@ -10,6 +10,16 @@ void CCannibalFlower::GetBoundingBox(float& left, float& top, float& right, floa
 
 void CCannibalFlower::Render()
 {
-	CAnimations::GetInstance()->Get(ID_ANI_CANNIBALFLOWER)->Render(x, y);
+	int aniID;
+	switch (state)
+	{
+	case CANNIBALFLOWER_STATE_ATTACK:
+		aniID = ID_ANI_CANNIBALFLOWER_ATTACK;
+		break;
+	default:
+		aniID = ID_ANI_CANNIBALFLOWER_LOCK;
+		break;
+	}
+	CAnimations::GetInstance()->Get(aniID)->Render(x, y);
 	//RenderBoundingBox();
 }
