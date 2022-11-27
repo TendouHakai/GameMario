@@ -14,12 +14,18 @@ void CCannibalFlower::Render()
 	switch (state)
 	{
 	case CANNIBALFLOWER_STATE_ATTACK:
-		aniID = ID_ANI_CANNIBALFLOWER_ATTACK;
+		if (direct == 0) {
+			aniID = ID_ANI_CANNIBALFLOWER_ATTACK_LEFT;
+		}
+		else aniID = ID_ANI_CANNIBALFLOWER_ATTACK_RIGHT;
 		break;
 	default:
-		aniID = ID_ANI_CANNIBALFLOWER_LOCK;
+		if (direct == 0) {
+			aniID = ID_ANI_CANNIBALFLOWER_LOCK_LEFT;
+		}
+		else aniID = ID_ANI_CANNIBALFLOWER_LOCK_RIGHT;
 		break;
 	}
-	CAnimations::GetInstance()->Get(aniID)->Render(x, y);
+	CAnimations::GetInstance()->Get(aniID)->Render(x, y, 1);
 	//RenderBoundingBox();
 }

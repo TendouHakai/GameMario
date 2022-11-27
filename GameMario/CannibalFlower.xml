@@ -3,6 +3,8 @@
   <SPRITES>
     <Sprite spriteID ="70001" l="52" t="59" r="85" b="86" textureID="10"></Sprite>
     <Sprite spriteID ="70002" l="5" t="59" r="38" b="86" textureID="10"></Sprite>
+    <Sprite spriteID ="70003" l="52" t="59" r="85" b="86" textureID="11"></Sprite>
+    <Sprite spriteID ="70004" l="5" t="59" r="38" b="86" textureID="11"></Sprite>
   </SPRITES>
   <ANIMATIONS>
     <animation aniID="13000">
@@ -10,6 +12,12 @@
     </animation>
     <animation aniID="13001">
       <Sprite SpriteID="70002" time="300"></Sprite>
+    </animation>
+    <animation aniID="13002">
+      <Sprite SpriteID="70003" time="300"></Sprite>
+    </animation>
+    <animation aniID="13003">
+      <Sprite SpriteID="70004" time="300"></Sprite>
     </animation>
   </ANIMATIONS>
 </CANNIBALFLOWER>

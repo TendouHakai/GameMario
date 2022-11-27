@@ -16,7 +16,8 @@
   <TEXTURES>
     <Texture id="-100" link="textures\bbox.png"></Texture>
     <Texture id="0" link="textures\mario.png"></Texture>
-    <Texture id="10" link="textures\enemies.png"></Texture>
+    <Texture id="10" link="textures\enemies_1.png"></Texture>
+    <Texture id="11" link="textures\enemies_2.png"></Texture>
     <Texture id="20" link="textures\misc.png"></Texture>
   </TEXTURES>
 </SCENCEMANAGER>

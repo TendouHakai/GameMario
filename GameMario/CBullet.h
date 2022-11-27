@@ -6,7 +6,7 @@
 #define BULLET_BBOX_WIDTH 10
 #define BULLET_BBOX_HEIGHT 10
 
-#define BULLET_SPEED 0.015f
+#define BULLET_SPEED 0.04f
 
 
 class CBullet :
