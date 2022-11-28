@@ -13,6 +13,7 @@
 #include "CQuestionBrick.h"
 #include "CCannibalFlower.h"
 #include "CBullet.h"
+#include "CTurtle.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -281,6 +282,14 @@ void CPlayScene::Load()
 			}
 			case OBJECT_TYPE_BULLET: {
 				obj = new CBullet(x, y);
+				break;
+			}
+			case OBJECT_TYPE_REDTURTLE: {
+				obj = new CTurtle(x, y);
+				break;
+			}
+			case OBJECT_TYPE_REDTURTLE_CHECK: {
+				obj = new CTurtleCheck(x, y);
 				break;
 			}
 			}

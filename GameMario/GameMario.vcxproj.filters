@@ -140,7 +140,12 @@
     <ClInclude Include="CCannibalFlower.h">
       <Filter>GameObject\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="CBullet.h" />
+    <ClInclude Include="CBullet.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CTurtle.h">
+      <Filter>GameObject\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -222,7 +227,10 @@
       <Filter>GameObject\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="CBullet.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CTurtle.cpp">
+      <Filter>GameObject\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +256,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="Bullet.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="RedTurtle.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

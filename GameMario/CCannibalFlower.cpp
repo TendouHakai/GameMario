@@ -26,6 +26,6 @@ void CCannibalFlower::Render()
 		else aniID = ID_ANI_CANNIBALFLOWER_LOCK_RIGHT;
 		break;
 	}
-	CAnimations::GetInstance()->Get(aniID)->Render(x, y, 1);
+	CAnimations::GetInstance()->Get(aniID)->Render(x, y);
 	//RenderBoundingBox();
 }

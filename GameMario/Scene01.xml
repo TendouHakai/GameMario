@@ -11,10 +11,12 @@
     <asset link="QuestionBrick.xml"></asset>
     <asset link="CannibalFlower.xml"></asset>
     <asset link="Bullet.xml"></asset>
+    <asset link="RedTurtle.xml"></asset>
+    
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="20" y="350"> </object>
+    <object type ="0" x="500" y="350"> </object>
 
     <object type ="5" x="0" y="415" cellW="16" cellH="16" length="40"></object>
     
@@ -32,6 +34,9 @@
     <object type ="6" x="495" y="335" cellW="62" cellH="15" length="1"></object>
     <object type ="6" x="543" y="304" cellW="62" cellH="15" length="1"></object>
     <object type ="6" x="559" y="384" cellW="95" cellH="15" length="1"></object>
+    
+    <object type ="10" x="560" y="355"></object>
+
     
     <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>
