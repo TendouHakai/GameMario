@@ -3,10 +3,10 @@
 
 void CTurtleCheck::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	left = x - TURTLE_BBOX_WIDTH / 2;
-	top = y - TURTLE_BBOX_HEIGHT / 2;
-	right = left + TURTLE_BBOX_WIDTH;
-	bottom = top + TURTLE_BBOX_HEIGHT;
+	left = x - TURTLECHECK_BBOX_WIDTH / 2;
+	top = y - TURTLECHECK_BBOX_HEIGHT / 2;
+	right = left + TURTLECHECK_BBOX_WIDTH;
+	bottom = top + TURTLECHECK_BBOX_HEIGHT;
 }
 
 void CTurtleCheck::OnNoCollision(DWORD dt)

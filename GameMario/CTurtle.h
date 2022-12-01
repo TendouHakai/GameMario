@@ -7,6 +7,9 @@
 #define TURTLE_DEAD_BBOX_WIDTH 18
 #define TURTLE_DEAD_BBOX_HEIGHT 14
 
+#define TURTLECHECK_BBOX_WIDTH 5
+#define TURTLECHECK_BBOX_HEIGHT 28
+
 #define ID_ANI_TURTLE_WALK_LEFT 15000
 #define ID_ANI_TURTLE_WALK_RIGHT 15001
 #define ID_ANI_TURTLE_DEAD 15002
@@ -130,10 +133,10 @@ protected:
 			check->SetPositionY(y);
 		}
 		if (vx > 0) {
-			check->SetPositionX(x + 18);
+			check->SetPositionX(x + 10);
 		}
 		else {
-			check->SetPositionX(x - 18);
+			check->SetPositionX(x - 10);
 		}
 	}
 	virtual void OnNoCollision(DWORD dt);
@@ -150,7 +153,7 @@ public:
 		yPlatformNotBlock = 500;
 		dead_start = 0;
 		revival_start = 0;
-		check = new CTurtleCheck(x+18, y);
+		check = new CTurtleCheck(x+10, y);
 	}
 	int IsCollidable() { return 1; };
 	int IsBlocking() { return 0; }
