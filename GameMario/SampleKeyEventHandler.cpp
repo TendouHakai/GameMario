@@ -25,8 +25,14 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_2:
 		mario->SetLevel(MARIO_LEVEL_BIG);
 		break;
+	case DIK_3:
+		mario->SetLevel(MARIO_LEVEL_RACCON);
+		break;
 	case DIK_0:
 		mario->SetState(MARIO_STATE_DIE);
+		break;
+	case DIK_UP:
+		mario->SetState(MARIO_STATE_FLY); 
 		break;
 	case DIK_R: // reset
 		//Reload();
@@ -46,6 +52,9 @@ void CSampleKeyHandler::OnKeyUp(int KeyCode)
 		break;
 	case DIK_DOWN:
 		mario->SetState(MARIO_STATE_SIT_RELEASE);
+		break;
+	case DIK_UP:
+		mario->SetState(MARIO_STATE_FLY_RELEASE);
 		break;
 	}
 }

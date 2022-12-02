@@ -58,15 +58,18 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
 		vy = 0;
-		
-		if (e->ny < 0) isOnPlatform = true;
+		if (e->ny < 0)
+		{
+			isOnPlatform = true;
+			SetState(MARIO_STATE_FLY_RELEASE);
+		}
 	}
 	else 
 	if (e->nx != 0 && e->obj->IsBlocking())
 	{
 		vx = 0;
 	}
-
+	
 	if (dynamic_cast<CGoomba*>(e->obj))
 		OnCollisionWithGoomba(e);
 	else if (dynamic_cast<CTurtle*>(e->obj))
@@ -249,21 +252,32 @@ int CMario::GetAniIdSmall()
 int CMario::GetAniRaccon()
 {
 	int aniId = -1;
-	if (isOnPlatform == false && isOnPlatformNotBlock == false)
+	if (!isOnPlatform && !isOnPlatformNotBlock)
 	{
+		
 		if (abs(ax) == MARIO_ACCEL_RUN_X)
 		{
 			if (nx >= 0)
-				aniId = ID_ANI_MARIO_RACCON_JUMP_RUN_RIGHT;
+				if(ay<=MARIO_GRAVITY_FLY)
+					aniId = ID_ANI_MARIO_RACCON_FLY_RIGHT;
+				else aniId = ID_ANI_MARIO_RACCON_JUMP_RUN_RIGHT;
 			else
-				aniId = ID_ANI_MARIO_RACCON_JUMP_RUN_LEFT;
+				if(ay<=MARIO_GRAVITY_FLY)
+					aniId = ID_ANI_MARIO_RACCON_FLY_LEFT;
+				else aniId = ID_ANI_MARIO_RACCON_JUMP_RUN_LEFT;
 		}
 		else
 		{
 			if (nx >= 0)
-				aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT;
+				if (ay <= MARIO_GRAVITY)
+				{
+					aniId = ID_ANI_MARIO_RACCON_FLY_RIGHT;
+				}
+				else aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT;
 			else
-				aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT;
+				if(ay<=MARIO_GRAVITY)
+					aniId = ID_ANI_MARIO_RACCON_FLY_LEFT;
+				else aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT;
 		}
 	}
 	else
@@ -432,6 +446,20 @@ void CMario::SetState(int state)
 		if (vy < 0) vy += MARIO_JUMP_SPEED_Y / 2;
 		break;
 
+	case MARIO_STATE_FLY:
+		if (level != MARIO_LEVEL_RACCON) break;
+		if (!isOnPlatform && !isOnPlatformNotBlock) {
+			if (abs(this->vx) == MARIO_RUNNING_SPEED) {
+				ay = 0.0f;
+				vx = MARIO_WALKING_SPEED;
+				vy = -MARIO_WALKING_SPEED;
+			}
+			else ay = MARIO_GRAVITY_FLY;
+		}
+		break;
+	case MARIO_STATE_FLY_RELEASE:
+		ay = MARIO_GRAVITY;
+		break;
 	case MARIO_STATE_SIT:
 		if (isOnPlatform && level != MARIO_LEVEL_SMALL)
 		{

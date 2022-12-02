@@ -93,7 +93,12 @@
     <!--SIT RIGHT AND LEFT-->
     <Sprite spriteID ="14621" l="390" t="677" r="415" b="698" textureID="0"></Sprite>
     <Sprite spriteID ="14611" l="30" t="677" r="55" b="698" textureID="0"></Sprite>
-    
+    <!--FLY RIGHT-->
+    <Sprite spriteID ="14721" l="360" t="712" r="386" b="743" textureID="0"></Sprite>
+    <Sprite spriteID ="14722" l="360" t="753" r="386" b="783" textureID="0"></Sprite>
+    <!--FLY LEFT-->
+    <Sprite spriteID ="14711" l="60" t="712" r="86" b="743" textureID="0"></Sprite>
+    <Sprite spriteID ="14712" l="60" t="753" r="86" b="783" textureID="0"></Sprite>
   </SPRITES>
 
   <ANIMATIONS>
@@ -270,6 +275,16 @@
     <animation aniID="2301">
       <Sprite SpriteID="14611" time="100"></Sprite>
     </animation>
-    
+    <!--LFY RIGHT & LEFT-->
+    <animation aniID="2400">
+      <Sprite SpriteID="14721" time="100"></Sprite>
+      <Sprite SpriteID="14427" time="100"></Sprite>
+      <Sprite SpriteID="14722" time="100"></Sprite>
+    </animation>
+    <animation aniID="2401">
+      <Sprite SpriteID="14711" time="100"></Sprite>
+      <Sprite SpriteID="14423" time="100"></Sprite>
+      <Sprite SpriteID="14712" time="100"></Sprite>
+    </animation>
   </ANIMATIONS>
 </MARIO>
