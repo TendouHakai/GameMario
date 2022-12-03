@@ -16,6 +16,7 @@ protected:
 	float yBrick;
 	float ay;
 	CCoin* coin;
+	BOOLEAN isBroken;
 public:
 	CQuestionBrick(float x, float y) : CBrick(x, y) { state = QUESTIONBRICK_STATE_IDLE; yBrick = y; ay = 0; coin = NULL; }
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects) {
@@ -39,6 +40,7 @@ public:
 			break;
 		}
 		case QUESTIONBRICK_STATE_BROKEN: {
+			
 			vy = -QUESTIONBRICK_SPEED;
 			ay = QUESTIONBRICK_GRAVITY;
 			coin = new CCoin(x, y - 30);

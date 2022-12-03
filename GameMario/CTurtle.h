@@ -18,24 +18,25 @@
 #define TURTLE_STATE_WALK	100
 #define TURTLE_STATE_DEAD	200
 #define TURTLE_STATE_REVIVAL	300
+#define TURTLE_STATE_KICKED_RIGHT	400
+#define TURTLE_STATE_KICKED_LEFT	500
 
 #define TURTLE_SPEED	0.02f
 #define TURTLE_GRAVITY	0.002f
+#define TURTLE_SPEED_KICKED	0.25f
 
 #define TURTLE_DEAD_TIME	2500
 #define TURTLE_REVIVAL_TIME	1500
+#define TURTLE_KICKED_TIME	1500
 
 class CTurtleCheck :
 	public CGameObject
 {
 protected:
 	float ay;
-	float yPlatformNotBlock;
 	BOOLEAN isOnPlatform;
-	BOOLEAN isOnPlatformNotBlock;
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void OnNoCollision(DWORD dt);
-	void OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e);
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 	
 public:
@@ -43,25 +44,12 @@ public:
 		vx = 0;
 		ay = TURTLE_GRAVITY;
 		isOnPlatform = false;
-		isOnPlatformNotBlock = false;
-		yPlatformNotBlock = 500;
 	}
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
 		vy += ay * dt;
 
 		isOnPlatform = false;
-		isOnPlatformNotBlock = false;
 		CCollision::GetInstance()->Process(this, dt, coObjects);
-		if (isOnPlatformNotBlock) {
-			float l, t, r, b;
-			GetBoundingBox(l, t, r, b);
-			float ysize = b - t;
-			if (y + ysize / 2 >= yPlatformNotBlock) {
-				y = yPlatformNotBlock - ysize / 2 - 0.005f;
-				vy = 0;
-				yPlatformNotBlock = 500;
-			}
-		}
 	}
 	virtual void Render() {
 		RenderBoundingBox();
@@ -86,11 +74,11 @@ class CTurtle :
 protected:
 	float xStart;
 	float ay;
-	float yPlatformNotBlock;
 	BOOLEAN isOnPlatform;
-	BOOLEAN isOnPlatformNotBlock;
+
 	ULONGLONG dead_start;
 	ULONGLONG revival_start;
+	ULONGLONG kicked_start;
 
 	CTurtleCheck * check;
 
@@ -99,7 +87,6 @@ protected:
 		vy += ay * dt;
 
 		isOnPlatform = false;
-		isOnPlatformNotBlock = false;
 		check->Update(dt, coObjects);
 
 		if (state == TURTLE_STATE_DEAD) {
@@ -116,21 +103,33 @@ protected:
 				SetState(TURTLE_STATE_WALK);
 			}
 		}
+		else if (state == TURTLE_STATE_KICKED_RIGHT || state == TURTLE_STATE_KICKED_LEFT) {
+			if (GetTickCount64() - kicked_start > TURTLE_KICKED_TIME)
+			{
+				kicked_start = 0;
+				this->Delete();
+			}
+		}
 		
 		CCollision::GetInstance()->Process(this, dt, coObjects);
-		if (check->GetPositionY() > this->y) {
-			vx = -vx;
-			check->SetPositionY(y);
+
+		if (state == TURTLE_STATE_WALK)
+		{
+			if (check->GetPositionY() > this->y) {
+				vx = -vx;
+				check->SetPositionY(y);
+			}
+			if (vx > 0) {
+				check->SetPositionX(x + 10);
+			}
+			else {
+				check->SetPositionX(x - 10);
+			}
 		}
-		if (vx > 0) {
-			check->SetPositionX(x + 10);
-		}
-		else {
-			check->SetPositionX(x - 10);
-		}
+		
 	}
 	virtual void OnNoCollision(DWORD dt);
-	void OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e);
+	virtual void OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e);
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 	virtual void Render();
 public:
@@ -139,10 +138,9 @@ public:
 		ay = TURTLE_GRAVITY; 
 		state = TURTLE_STATE_WALK;
 		isOnPlatform = false; 
-		isOnPlatformNotBlock = false;
-		yPlatformNotBlock = 500;
 		dead_start = 0;
 		revival_start = 0;
+		kicked_start = 0;
 		check = new CTurtleCheck(x+10, y);
 	}
 	int IsCollidable() { return 1; };
@@ -164,6 +162,16 @@ public:
 		}
 		case TURTLE_STATE_REVIVAL: {
 			revival_start = GetTickCount64();
+			break;
+		}
+		case TURTLE_STATE_KICKED_RIGHT: {
+			kicked_start = GetTickCount64();
+			vx = -TURTLE_SPEED_KICKED;
+			break;
+		}
+		case TURTLE_STATE_KICKED_LEFT: {
+			kicked_start = GetTickCount64();
+			vx = TURTLE_SPEED_KICKED;
 			break;
 		}
 		default:

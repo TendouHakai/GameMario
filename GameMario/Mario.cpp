@@ -151,6 +151,12 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 					SetState(MARIO_STATE_DIE);
 				}
 			}
+			else {
+				if (e->nx > 0)
+					turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
+				else if (e->nx<0)
+					turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+			}
 		}
 	}
 }

@@ -1,5 +1,6 @@
 #include "CTurtle.h"
 #include "PlatformNotBlock.h"
+#include "CQuestionBrick.h"
 
 void CTurtleCheck::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -14,24 +15,9 @@ void CTurtleCheck::OnNoCollision(DWORD dt)
 	y += vy * dt;
 }
 
-void CTurtleCheck::OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e)
-{
-	CPlatformNotBlock* platform = dynamic_cast<CPlatformNotBlock*>(e->obj);
-
-	if (e->ny != 0 && this->vy > 0) {
-		isOnPlatformNotBlock = true;
-		float x, y;
-		platform->GetPosition(x, y);
-		float l, t, r, b;
-		platform->GetBoundingBox(l, t, r, b);
-		yPlatformNotBlock = y - (b - t) / 2;
-	}
-}
 
 void CTurtleCheck::OnCollisionWith(LPCOLLISIONEVENT e)
 {
-	if (dynamic_cast<CPlatformNotBlock*>(e->obj))
-		OnCollisionWithPlatformNotBlock(e);
 	if (!e->obj->IsBlocking()) return;
 
 	if (e->ny != 0)
@@ -70,22 +56,22 @@ void CTurtle::OnNoCollision(DWORD dt)
 	}
 }
 
-void CTurtle::OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e)
+void CTurtle::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
 {
-	CPlatformNotBlock* platform = dynamic_cast<CPlatformNotBlock*>(e->obj);
+	CQuestionBrick* brick = dynamic_cast<CQuestionBrick*>(e->obj);
 
-	if (e->ny != 0 && this->vy > 0) {
-		isOnPlatformNotBlock = true;
-		float x, y;
-		platform->GetPosition(x, y);
-		float l, t, r, b;
-		platform->GetBoundingBox(l, t, r, b);
-		yPlatformNotBlock = y - (b - t) / 2;
+	if (e->nx != 0) {
+		brick->SetState(QUESTIONBRICK_STATE_BROKEN);
 	}
 }
 
 void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 {
+	if (state == TURTLE_STATE_KICKED_LEFT || state == TURTLE_STATE_KICKED_RIGHT) {
+		if (dynamic_cast<CQuestionBrick*>(e->obj)) {
+			OnCollisionWithQuestionBrick(e);
+		}
+	}
 	if (!e->obj->IsBlocking()) return;
 
 	if (e->ny != 0)
@@ -101,6 +87,7 @@ void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 void CTurtle::Render()
 {
 	int aniID;
+
 	switch (state)
 	{
 	case TURTLE_STATE_WALK: {
@@ -116,6 +103,14 @@ void CTurtle::Render()
 	}
 	case TURTLE_STATE_REVIVAL: {
 		aniID = ID_ANI_TURTLE_REVIVAL;
+		break;
+	}
+	case TURTLE_STATE_KICKED_RIGHT: {
+		aniID = ID_ANI_TURTLE_DEAD;
+		break;
+	}
+	case TURTLE_STATE_KICKED_LEFT: {
+		aniID = ID_ANI_TURTLE_DEAD;
 		break;
 	}
 	default: {

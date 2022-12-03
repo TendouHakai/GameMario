@@ -42,6 +42,8 @@
     <object type ="5" x="1327" y="415" cellW="351" cellH="15" length="1"></object>
 
     <object type ="12" x="1076" y="327" w="10" h="150" yCamMax="240" yCamMin="50"></object>
+
+    <object type ="7" x="652" y="386"></object>
     
     <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>
