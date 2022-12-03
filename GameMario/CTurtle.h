@@ -118,16 +118,6 @@ protected:
 		}
 		
 		CCollision::GetInstance()->Process(this, dt, coObjects);
-		if (isOnPlatformNotBlock) {
-			float l, t, r, b;
-			GetBoundingBox(l, t, r, b);
-			float ysize = b - t;
-			if (y + ysize / 2 >= yPlatformNotBlock) {
-				y = yPlatformNotBlock - ysize / 2 - 0.005f;
-				vy = 0;
-				yPlatformNotBlock = 500;
-			}
-		}
 		if (check->GetPositionY() > this->y) {
 			vx = -vx;
 			check->SetPositionY(y);
@@ -163,14 +153,12 @@ public:
 		case TURTLE_STATE_WALK: {
 			vx = TURTLE_SPEED;
 			ay = TURTLE_GRAVITY;
-			y -= 8;
+			y -= (TURTLE_BBOX_HEIGHT - TURTLE_DEAD_BBOX_HEIGHT)/2;
 			break;
 		}
 		case TURTLE_STATE_DEAD: {
 			vx = 0;
 			vy = 0;
-			ay = 0;
-			y += 6;
 			dead_start = GetTickCount64();
 			break;
 		}

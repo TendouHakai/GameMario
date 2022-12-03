@@ -14,6 +14,7 @@
 #include "CCannibalFlower.h"
 #include "CBullet.h"
 #include "CTurtle.h"
+#include "ChangeCam.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -292,6 +293,14 @@ void CPlayScene::Load()
 				obj = new CTurtleCheck(x, y);
 				break;
 			}
+			case OBJECT_TYPE_CHANGECAM: {
+				float w = (float)atof(node->Attribute("w"));
+				float h = (float)atof(node->Attribute("h"));
+				float yChangeCamMax = (float)atof(node->Attribute("yCamMax"));
+				float yChangeCamMin = (float)atof(node->Attribute("yCamMin"));
+				obj = new ChangeCam(x, y, w, h, yChangeCamMax, yChangeCamMin);
+				break;
+			}
 			}
 
 			obj->SetPosition(x, y);
@@ -334,7 +343,16 @@ void CPlayScene::Update(DWORD dt)
 	if (cx < 0) cx = 0;
 	if (cy < 0) cy = 0;
 
-	CGame::GetInstance()->SetCamPos(cx, 240.0f);
+	if (CGame::GetInstance()->isForcusPlayer == false) {
+		CGame::GetInstance()->SetCamPos(cx, 240.0f);
+	}
+	else {
+		if (cy > CGame::GetInstance()->yChangeCamMax) cy = CGame::GetInstance()->yChangeCamMax;
+		if (cy < CGame::GetInstance()->yChangeCamMin) cy = CGame::GetInstance()->yChangeCamMin;
+
+		CGame::GetInstance()->SetCamPos(cx, cy);
+	}
+	
 
 	PurgeDeletedObjects();
 }
@@ -349,8 +367,8 @@ void CPlayScene::Render()
 	sy = CGame::GetInstance()->GetBackBufferHeight();
 	rect.left = cx;
 	rect.right = rect.left + sx +1;
-	rect.bottom = 450;
-	rect.top = rect.bottom - sy +1;
+	rect.top = cy+8;
+	rect.bottom = rect.top + sy +1;
 	CGame::GetInstance()->Draw(sx/2, sy/2, map, &rect);
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();

@@ -85,8 +85,8 @@
     <Sprite spriteID ="14511" l="422" t="632" r="443" b="663" textureID="0"></Sprite>
     <Sprite spriteID ="14521" l="2" t="632" r="23" b="663" textureID="0"></Sprite>
     <!--JUMP WALK RIGHT AND LEFT-->
-    <Sprite spriteID ="14417" l="300" t="712" r="325" b="743" textureID="0"></Sprite>
-    <Sprite spriteID ="14413" l="121" t="712" r="144" b="743" textureID="0"></Sprite>
+    <Sprite spriteID ="14417" l="391" t="752" r="416" b="783" textureID="0"></Sprite>
+    <Sprite spriteID ="14413" l="31" t="752" r="56" b="783" textureID="0"></Sprite>
     <!--JUMP RUN RIGHT AND LEFT-->
     <Sprite spriteID ="14427" l="331" t="712" r="356" b="743" textureID="0"></Sprite>
     <Sprite spriteID ="14423" l="91" t="712" r="116" b="743" textureID="0"></Sprite>
@@ -94,11 +94,11 @@
     <Sprite spriteID ="14621" l="390" t="677" r="415" b="698" textureID="0"></Sprite>
     <Sprite spriteID ="14611" l="30" t="677" r="55" b="698" textureID="0"></Sprite>
     <!--FLY RIGHT-->
-    <Sprite spriteID ="14721" l="360" t="712" r="386" b="743" textureID="0"></Sprite>
-    <Sprite spriteID ="14722" l="360" t="753" r="386" b="783" textureID="0"></Sprite>
+    <Sprite spriteID ="14721" l="360" t="712" r="387" b="743" textureID="0"></Sprite>
+    <Sprite spriteID ="14722" l="360" t="752" r="387" b="783" textureID="0"></Sprite>
     <!--FLY LEFT-->
-    <Sprite spriteID ="14711" l="60" t="712" r="86" b="743" textureID="0"></Sprite>
-    <Sprite spriteID ="14712" l="60" t="753" r="86" b="783" textureID="0"></Sprite>
+    <Sprite spriteID ="14711" l="60" t="712" r="87" b="743" textureID="0"></Sprite>
+    <Sprite spriteID ="14712" l="60" t="752" r="87" b="783" textureID="0"></Sprite>
   </SPRITES>
 
   <ANIMATIONS>

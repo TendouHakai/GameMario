@@ -146,6 +146,7 @@
     <ClInclude Include="CTurtle.h">
       <Filter>GameObject\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="ChangeCam.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -231,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="CTurtle.cpp">
       <Filter>GameObject\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeCam.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

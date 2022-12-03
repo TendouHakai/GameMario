@@ -1,5 +1,6 @@
 #include "Collision.h"
 #include "GameObject.h"
+#include "PlatformNotBlock.h"
 
 #include "debug.h"
 
@@ -217,6 +218,11 @@ void CCollision::Filter( LPGAMEOBJECT objSrc,
 		if (filterBlock == 1 && !c->obj->IsBlocking()) 
 		{
 			continue;
+		}
+		
+		if (dynamic_cast<CPlatformNotBlock*>(c->obj)) {
+			if (c->ny > 0 || c->nx!=0)
+				continue;
 		}
 
 		if (c->t < min_tx && c->nx != 0 && filterX == 1) {

@@ -86,8 +86,6 @@ void CTurtle::OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e)
 
 void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 {
-	if (dynamic_cast<CPlatformNotBlock*>(e->obj))
-		OnCollisionWithPlatformNotBlock(e);
 	if (!e->obj->IsBlocking()) return;
 
 	if (e->ny != 0)

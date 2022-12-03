@@ -10,6 +10,7 @@
 #include "PlatformNotBlock.h"
 #include "CQuestionBrick.h"
 #include "CTurtle.h"
+#include "ChangeCam.h"
 
 #include "Collision.h"
 
@@ -18,6 +19,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	vy += ay * dt;
 	vx += ax * dt;
+
+	DebugOut(L"vx, vy: %f, %f\n", vx, vy);
 
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
 
@@ -32,7 +35,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	isOnPlatformNotBlock = false;
 	
 	CCollision::GetInstance()->Process(this, dt, coObjects);
-	if (isOnPlatformNotBlock) {
+	/*if (isOnPlatformNotBlock) {
 		float l, t, r, b;
 		GetBoundingBox(l, t, r, b);
 		float ysize = b - t;
@@ -44,7 +47,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			vy = 0;
 			yPlatformNotBlock = 500;
 		}
-	}
+	}*/
 }
 
 void CMario::OnNoCollision(DWORD dt)
@@ -78,10 +81,12 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithCoin(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
-	else if (dynamic_cast<CPlatformNotBlock*>(e->obj))
-		OnCollisionWithPlatformNotBlock(e);
+	/*else if (dynamic_cast<CPlatformNotBlock*>(e->obj))
+		OnCollisionWithPlatformNotBlock(e);*/
 	else if (dynamic_cast<CQuestionBrick*>(e->obj))
 		OnCollisionWithQuestionBrick(e);
+	else if (dynamic_cast<ChangeCam*>(e->obj))
+		OnCollisionWithChangeCam(e);
 	
 }
 
@@ -124,7 +129,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 	CTurtle* turtle = dynamic_cast<CTurtle*>(e->obj);
 
 	if (e->ny < 0){
-		if (turtle->GetState() != TURTLE_STATE_DEAD)
+		if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
 		{
 			turtle->SetState(TURTLE_STATE_DEAD);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
@@ -184,6 +189,23 @@ void CMario::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
 		if (questionBr->GetState() == QUESTIONBRICK_STATE_IDLE) {
 			questionBr->SetState(QUESTIONBRICK_STATE_BROKEN);
 		}
+	}
+}
+
+void CMario::OnCollisionWithChangeCam(LPCOLLISIONEVENT e)
+{
+	ChangeCam* changeCam = dynamic_cast<ChangeCam*>(e->obj);
+	if(e->nx < 0)
+		if (changeCam->GetChangeCamType() == CHAGE_TYPE_FORCUS_PLAYER) {
+			CGame::GetInstance()->isForcusPlayer = true;
+			CGame::GetInstance()->yChangeCamMax = changeCam->yCamMax;
+			CGame::GetInstance()->yChangeCamMin = changeCam->yCamMin;
+		}
+		else {
+			CGame::GetInstance()->isForcusPlayer = false;
+		}
+	else if (e->nx >	 0) {
+		CGame::GetInstance()->isForcusPlayer = false;
 	}
 }
 
@@ -252,7 +274,7 @@ int CMario::GetAniIdSmall()
 int CMario::GetAniRaccon()
 {
 	int aniId = -1;
-	if (!isOnPlatform && !isOnPlatformNotBlock)
+	if (!isOnPlatform)
 	{
 		
 		if (abs(ax) == MARIO_ACCEL_RUN_X)
@@ -269,15 +291,9 @@ int CMario::GetAniRaccon()
 		else
 		{
 			if (nx >= 0)
-				if (ay <= MARIO_GRAVITY)
-				{
-					aniId = ID_ANI_MARIO_RACCON_FLY_RIGHT;
-				}
-				else aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT;
+				aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT;
 			else
-				if(ay<=MARIO_GRAVITY)
-					aniId = ID_ANI_MARIO_RACCON_FLY_LEFT;
-				else aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT;
+				aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT;
 		}
 	}
 	else
@@ -451,8 +467,7 @@ void CMario::SetState(int state)
 		if (!isOnPlatform && !isOnPlatformNotBlock) {
 			if (abs(this->vx) == MARIO_RUNNING_SPEED) {
 				ay = 0.0f;
-				vx = MARIO_WALKING_SPEED;
-				vy = -MARIO_WALKING_SPEED;
+				vy = -MARIO_RUNNING_SPEED;
 			}
 			else ay = MARIO_GRAVITY_FLY;
 		}

@@ -60,7 +60,12 @@ class CGame
 	int current_scene;
 	int next_scene = -1;
 
+	
+
 public:
+	BOOLEAN isForcusPlayer = false;
+	float yChangeCamMax;
+	float yChangeCamMin;
 	// Init DirectX, Sprite Handler
 	void Init(HWND hWnd, HINSTANCE hInstance);
 
