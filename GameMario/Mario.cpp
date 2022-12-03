@@ -153,9 +153,15 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 			}
 			else {
 				if (e->nx > 0)
+				{
+					isKicking = true;
 					turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
-				else if (e->nx<0)
+				}
+				else if (e->nx < 0)
+				{
+					isKicking = true;
 					turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+				}
 			}
 		}
 	}
@@ -310,8 +316,15 @@ int CMario::GetAniRaccon()
 			else
 				aniId = ID_ANI_MARIO_RACCON_SIT_LEFT;
 		}
-		else
-			if (vx == 0)
+		else 
+			if (isKicking) {
+				isKicking = false;
+				if (vx > 0)
+					aniId = ID_ANI_MARIO_RACCON_KICK_RIGHT;
+				else if (vx < 0)
+					aniId = ID_ANI_MARIO_RACCON_KICK_LEFT;
+			}
+			else if (vx == 0)
 			{
 				if (nx > 0) aniId = ID_ANI_MARIO_RACCON_IDLE_RIGHT;
 				else aniId = ID_ANI_MARIO_RACCON_IDLE_LEFT;
@@ -346,7 +359,7 @@ int CMario::GetAniRaccon()
 int CMario::GetAniIdBig()
 {
 	int aniId = -1;
-	if (isOnPlatform==false && isOnPlatformNotBlock == false)
+	if (isOnPlatform==false)
 	{
 		if (abs(ax) == MARIO_ACCEL_RUN_X)
 		{
@@ -364,7 +377,14 @@ int CMario::GetAniIdBig()
 		}
 	}
 	else
-		if (isSitting)
+		if (isKicking) {
+			isKicking = false;
+			if (vx > 0)
+				aniId = ID_ANI_MARIO_KICK_RIGHT;
+			else if (vx < 0)
+				aniId = ID_ANI_MARIO_KICK_LEFT;
+		}
+		else if (isSitting)
 		{
 			if (nx > 0)
 				aniId = ID_ANI_MARIO_SIT_RIGHT;

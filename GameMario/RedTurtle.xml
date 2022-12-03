@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CANNIBALFLOWER>
+<REDTURTLE>
   <SPRITES>
     <Sprite spriteID ="90001" l="4" t="128" r="23" b="155" textureID="10"></Sprite>
     <Sprite spriteID ="90002" l="26" t="128" r="45" b="155" textureID="10"></Sprite>
     <Sprite spriteID ="90003" l="4" t="128" r="23" b="155" textureID="11"></Sprite>
     <Sprite spriteID ="90004" l="26" t="128" r="45" b="155" textureID="11"></Sprite>
     <Sprite spriteID ="90005" l="47" t="138" r="68" b="155" textureID="11"></Sprite>
-    <Sprite spriteID ="90007" l="305" t="138" r="326" b="155" textureID="10"></Sprite>
-    <Sprite spriteID ="90008" l="334" t="138" r="355" b="155" textureID="10"></Sprite>
     <Sprite spriteID ="90006" l="71" t="138" r="88" b="155" textureID="10"></Sprite>
   </SPRITES>
   <ANIMATIONS>
+    <!--WALK LEFT-->
     <animation aniID="15000">
       <Sprite SpriteID="90001" time="250"></Sprite>
       <Sprite SpriteID="90002" time="250"></Sprite>
     </animation>
+    <!--WALK RIGHT-->
     <animation aniID="15001">
       <Sprite SpriteID="90003" time="250"></Sprite>
       <Sprite SpriteID="90004" time="250"></Sprite>
     </animation>
+    <!--DEAD-->
     <animation aniID="15002">
       <Sprite SpriteID="90005" time="1000"></Sprite>
     </animation>
+    <!--REVIAL-->
     <animation aniID="15003">
-      <Sprite SpriteID="90007" time="200"></Sprite>
-      <Sprite SpriteID="90005" time="200"></Sprite>
-      <Sprite SpriteID="90008" time="200"></Sprite>
-      <Sprite SpriteID="90007" time="200"></Sprite>
-      <Sprite SpriteID="90005" time="200"></Sprite>
       <Sprite SpriteID="90006" time="500"></Sprite>
     </animation>
   </ANIMATIONS>
-</CANNIBALFLOWER>
+</REDTURTLE>

@@ -146,7 +146,10 @@
     <ClInclude Include="CTurtle.h">
       <Filter>GameObject\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ChangeCam.h" />
+    <ClInclude Include="ChangeCam.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CGreenTurtle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -234,6 +237,9 @@
       <Filter>GameObject\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ChangeCam.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CGreenTurtle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -263,6 +269,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="RedTurtle.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="GreenTurtle.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

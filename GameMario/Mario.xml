@@ -31,6 +31,8 @@
     <!--BRACE RIGHT & LEFT-->
     <Sprite spriteID ="11621" l="425" t="154" r="442" b="181" textureID="0"></Sprite>
     <Sprite spriteID ="11611" l="5" t="154" r="22" b="181" textureID="0"></Sprite>
+    
+    
     <!--DIE-->
     <Sprite spriteID ="13001" l="215" t="120" r="234" b="137" textureID="0"></Sprite>
   
@@ -61,6 +63,10 @@
     <!--JUMP RUN RIGHT AND LEFT-->
     <Sprite spriteID ="12423" l="65" t="40" r="80" b="55" textureID="0"></Sprite>
     <Sprite spriteID ="12427" l="365" t="40" r="380" b="55" textureID="0"></Sprite>
+    <!--KICK RIGHT-->
+    <Sprite spriteID ="11811" l="420" t="273" r="445" b="300" textureID="0"></Sprite>
+    <!--KICK LEFT-->
+    <Sprite spriteID ="11821" l="0" t="273" r="25" b="300" textureID="0"></Sprite>
     
     <!--Raccon-->
     <!--IDLE-->
@@ -99,6 +105,10 @@
     <!--FLY LEFT-->
     <Sprite spriteID ="14711" l="60" t="712" r="87" b="743" textureID="0"></Sprite>
     <Sprite spriteID ="14712" l="60" t="752" r="87" b="783" textureID="0"></Sprite>
+    <!--KICK RIGHT-->
+    <Sprite spriteID ="14811" l="420" t="752" r="445" b="783" textureID="0"></Sprite>
+    <!--KICK LEFT-->
+    <Sprite spriteID ="14821" l="0" t="752" r="25" b="783" textureID="0"></Sprite>
   </SPRITES>
 
   <ANIMATIONS>
@@ -163,6 +173,13 @@
     <!--BRACE RIGHT & LEFT-->
     <animation aniID="999">
       <Sprite SpriteID="13001" time="100"></Sprite>
+    </animation>
+    <!--KICK RIGHT & LEFT-->
+    <animation aniID="998">
+      <Sprite SpriteID="11811" time="350"></Sprite>
+    </animation>
+    <animation aniID="997">
+      <Sprite SpriteID="11821" time="350"></Sprite>
     </animation>
   
     <!--Small-->
@@ -285,6 +302,13 @@
       <Sprite SpriteID="14711" time="100"></Sprite>
       <Sprite SpriteID="14423" time="100"></Sprite>
       <Sprite SpriteID="14712" time="100"></Sprite>
+    </animation>
+    <!--KICK RIGHT & LEFT-->
+    <animation aniID="2500">
+      <Sprite SpriteID="14811" time="300"></Sprite>
+    </animation>
+    <animation aniID="2501">
+      <Sprite SpriteID="14821" time="300"></Sprite>
     </animation>
   </ANIMATIONS>
 </MARIO>

@@ -15,6 +15,7 @@
 #include "CBullet.h"
 #include "CTurtle.h"
 #include "ChangeCam.h"
+#include "CGreenTurtle.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -301,6 +302,10 @@ void CPlayScene::Load()
 				obj = new ChangeCam(x, y, w, h, yChangeCamMax, yChangeCamMin);
 				break;
 			}
+			case OBJECT_TYPE_GREENTURTLE: {
+				obj = new CGreenTurtle(x, y);
+				break;
+			}
 			}
 
 			obj->SetPosition(x, y);
@@ -338,7 +343,7 @@ void CPlayScene::Update(DWORD dt)
 
 	CGame *game = CGame::GetInstance();
 	cx -= game->GetBackBufferWidth() / 2;
-	cy -= game->GetBackBufferHeight() / 2;
+	cy -= game->GetBackBufferHeight() / 5;
 
 	if (cx < 0) cx = 0;
 	if (cy < 0) cy = 0;

@@ -63,6 +63,9 @@
 
 #define ID_ANI_MARIO_DIE 999
 
+#define ID_ANI_MARIO_KICK_RIGHT 998
+#define ID_ANI_MARIO_KICK_LEFT 997
+
 // SMALL MARIO
 #define ID_ANI_MARIO_SMALL_IDLE_RIGHT 1100
 #define ID_ANI_MARIO_SMALL_IDLE_LEFT 1102
@@ -106,6 +109,9 @@
 
 #define ID_ANI_MARIO_RACCON_FLY_RIGHT 2400
 #define ID_ANI_MARIO_RACCON_FLY_LEFT 2401
+
+#define ID_ANI_MARIO_RACCON_KICK_RIGHT 2500
+#define ID_ANI_MARIO_RACCON_KICK_LEFT 2501
 #pragma endregion
 
 #define	MARIO_LEVEL_SMALL	1
@@ -138,6 +144,7 @@ class CMario : public CGameObject
 	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
 	BOOLEAN isOnPlatformNotBlock;
+	BOOLEAN isKicking;
 	int coin; 
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
@@ -167,6 +174,8 @@ public:
 
 		isOnPlatformNotBlock = false;
 		yPlatformNotBlock = 500;
+
+		isKicking = false;
 
 		coin = 0;
 	}

@@ -18,6 +18,8 @@
     <Texture id="0" link="textures\mario.png"></Texture>
     <Texture id="10" link="textures\enemies_1.png"></Texture>
     <Texture id="11" link="textures\enemies_2.png"></Texture>
+    <Texture id="12" link="textures\enemies01.png"></Texture>
+    <Texture id="13" link="textures\enemies02.png"></Texture>
     <Texture id="20" link="textures\misc.png"></Texture>
   </TEXTURES>
 </SCENCEMANAGER>

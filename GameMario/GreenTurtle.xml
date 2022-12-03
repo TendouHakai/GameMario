@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GREENTURTLE>
+  <SPRITES>
+    <!--WALK LEFT-->
+    <Sprite spriteID ="100001" l="0" t="50" r="16" b="78" textureID="12"></Sprite>
+    <Sprite spriteID ="100002" l="16" t="50" r="32" b="78" textureID="12"></Sprite>
+    <!--WALK RIGHT-->
+    <Sprite spriteID ="100003" l="672" t="50" r="687" b="78" textureID="13"></Sprite>
+    <Sprite spriteID ="100004" l="656" t="50" r="672" b="78" textureID="13"></Sprite>
+    
+    <!--DEAD-->
+    <Sprite spriteID ="100005" l="32" t="48" r="48" b="63" textureID="12"></Sprite>
+    <!--KICK-->
+    <Sprite spriteID ="100006" l="49" t="48" r="64" b="63" textureID="12"></Sprite>
+    <Sprite spriteID ="100007" l="64" t="48" r="80" b="63" textureID="12"></Sprite>
+    <Sprite spriteID ="100008" l="80" t="48" r="96" b="63" textureID="12"></Sprite>
+    <!--REVIAL-->
+    <Sprite spriteID ="100009" l="32" t="48" r="48" b="63" textureID="12"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--WALK LEFT-->
+    <animation aniID="16000">
+      <Sprite SpriteID="100001" time="250"></Sprite>
+      <Sprite SpriteID="100002" time="250"></Sprite>
+    </animation>
+    <!--WALK RIGHT-->
+    <animation aniID="16001">
+      <Sprite SpriteID="100003" time="250"></Sprite>
+      <Sprite SpriteID="100004" time="250"></Sprite>
+    </animation>
+    <!--DEAD-->
+    <animation aniID="16002">
+      <Sprite SpriteID="100005" time="1000"></Sprite>
+    </animation>
+    <!--REVIAL-->
+    <animation aniID="16003">
+      <Sprite SpriteID="100009" time="1000"></Sprite>
+    </animation>
+    <!--KICK-->
+    <animation aniID="16004">
+      <Sprite SpriteID="100006" time="100"></Sprite>
+      <Sprite SpriteID="100007" time="100"></Sprite>
+      <Sprite SpriteID="100008" time="100"></Sprite>
+    </animation>
+    
+  </ANIMATIONS>
+</GREENTURTLE>
