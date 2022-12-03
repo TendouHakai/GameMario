@@ -2,11 +2,11 @@
 <GREENTURTLE>
   <SPRITES>
     <!--WALK LEFT-->
-    <Sprite spriteID ="100001" l="0" t="50" r="16" b="78" textureID="12"></Sprite>
-    <Sprite spriteID ="100002" l="16" t="50" r="32" b="78" textureID="12"></Sprite>
+    <Sprite spriteID ="100001" l="0" t="49" r="15" b="78" textureID="12"></Sprite>
+    <Sprite spriteID ="100002" l="16" t="49" r="31" b="78" textureID="12"></Sprite>
     <!--WALK RIGHT-->
-    <Sprite spriteID ="100003" l="672" t="50" r="687" b="78" textureID="13"></Sprite>
-    <Sprite spriteID ="100004" l="656" t="50" r="672" b="78" textureID="13"></Sprite>
+    <Sprite spriteID ="100003" l="672" t="49" r="687" b="78" textureID="13"></Sprite>
+    <Sprite spriteID ="100004" l="656" t="49" r="673" b="78" textureID="13"></Sprite>
     
     <!--DEAD-->
     <Sprite spriteID ="100005" l="32" t="48" r="48" b="63" textureID="12"></Sprite>
