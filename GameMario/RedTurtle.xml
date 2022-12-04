@@ -3,8 +3,8 @@
   <SPRITES>
     <Sprite spriteID ="90001" l="4" t="128" r="23" b="155" textureID="10"></Sprite>
     <Sprite spriteID ="90002" l="26" t="128" r="45" b="155" textureID="10"></Sprite>
-    <Sprite spriteID ="90003" l="4" t="128" r="23" b="155" textureID="11"></Sprite>
-    <Sprite spriteID ="90004" l="26" t="128" r="45" b="155" textureID="11"></Sprite>
+    <Sprite spriteID ="90003" l="457" t="128" r="476" b="155" textureID="11"></Sprite>
+    <Sprite spriteID ="90004" l="434" t="128" r="453" b="155" textureID="11"></Sprite>
     <Sprite spriteID ="90005" l="47" t="138" r="68" b="155" textureID="11"></Sprite>
     <Sprite spriteID ="90006" l="71" t="138" r="88" b="155" textureID="10"></Sprite>
   </SPRITES>

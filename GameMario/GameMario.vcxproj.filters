@@ -150,6 +150,7 @@
       <Filter>GameObject\OtherObjects</Filter>
     </ClInclude>
     <ClInclude Include="CGreenTurtle.h" />
+    <ClInclude Include="CWingGreenTurtle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -242,6 +243,9 @@
     <ClCompile Include="CGreenTurtle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CWingGreenTurtle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -272,6 +276,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="GreenTurtle.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="WingGreenTurtle.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GREENTURTLE>
+  <SPRITES>
+    <!--WALK LEFT-->
+    <Sprite spriteID ="101001" l="92" t="127" r="111" b="157" textureID="10"></Sprite>
+    <Sprite spriteID ="101002" l="114" t="127" r="133" b="157" textureID="10"></Sprite>
+    <Sprite spriteID ="101003" l="134" t="127" r="153" b="157" textureID="10"></Sprite>
+    <Sprite spriteID ="101004" l="156" t="127" r="175" b="157" textureID="10"></Sprite>
+    <!--WALK RIGHT-->
+    <Sprite spriteID ="101005" l="369" t="127" r="388" b="157" textureID="11"></Sprite>
+    <Sprite spriteID ="101006" l="348" t="127" r="367" b="157" textureID="11"></Sprite>
+    <Sprite spriteID ="101007" l="328" t="127" r="347" b="157" textureID="11"></Sprite>
+    <Sprite spriteID ="101008" l="306" t="127" r="325" b="157" textureID="11"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--WALK LEFT-->
+    <animation aniID="17000">
+      <Sprite SpriteID="101001" time="250"></Sprite>
+      <Sprite SpriteID="101002" time="250"></Sprite>
+      <Sprite SpriteID="101003" time="250"></Sprite>
+      <Sprite SpriteID="101004" time="250"></Sprite>
+    </animation>
+    <!--WALK RIGHT-->
+    <animation aniID="17001">
+      <Sprite SpriteID="101005" time="250"></Sprite>
+      <Sprite SpriteID="101006" time="250"></Sprite>
+      <Sprite SpriteID="101007" time="250"></Sprite>
+      <Sprite SpriteID="101008" time="250"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</GREENTURTLE>

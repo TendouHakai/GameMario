@@ -16,6 +16,7 @@
 #include "CTurtle.h"
 #include "ChangeCam.h"
 #include "CGreenTurtle.h"
+#include "CWingGreenTurtle.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -304,6 +305,10 @@ void CPlayScene::Load()
 			}
 			case OBJECT_TYPE_GREENTURTLE: {
 				obj = new CGreenTurtle(x, y);
+				break;
+			}
+			case OBJECT_TYPE_WINGGREENTURTLE: {
+				obj = new CWingGreenTurtle(x, y);
 				break;
 			}
 			}

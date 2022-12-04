@@ -13,6 +13,7 @@
     <asset link="Bullet.xml"></asset>
     <asset link="RedTurtle.xml"></asset>
     <asset link="GreenTurtle.xml"></asset>
+    <asset link="WingGreenTurtle.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
@@ -50,6 +51,8 @@
     <object type ="6" x="1383" y="320" cellW="110" cellH="15" length="1"></object>
 
     <object type ="13" x="1390" y="295"></object>
+    
+    <object type ="14" x="1390" y="305"></object>
     
     <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>

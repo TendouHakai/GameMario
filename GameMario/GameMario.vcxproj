@@ -144,6 +144,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CQuestionBrick.h" />
     <ClInclude Include="CTurtle.h" />
+    <ClInclude Include="CWingGreenTurtle.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CTurtle.cpp" />
+    <ClCompile Include="CWingGreenTurtle.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -207,6 +209,7 @@
     <Xml Include="RedTurtle.xml" />
     <Xml Include="Scence.xml" />
     <Xml Include="Scene01.xml" />
+    <Xml Include="WingGreenTurtle.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
