@@ -11,9 +11,9 @@
 #define ID_ANI_WINGGREENTURTLE_WALK_RIGHT   17001
 
 #define WINGGREENTURTLE_SPEED 0.02f
-#define WINGGREENTURTLE_SPEED_Y 0.1f
+#define WINGGREENTURTLE_SPEED_Y 0.2f
 
-#define WINGGREENTURTLE_GRAVITY 0.002f
+#define WINGGREENTURTLE_GRAVITY 0.0005f
 
 class CWingGreenTurtle :
     public CGameObject
@@ -27,8 +27,11 @@ protected:
         vy += ay * dt;
 
         isOnPlatform = false;
+        CCollision::GetInstance()->Process(this, dt, coObjects);
         
     };
+    virtual void OnNoCollision(DWORD dt);
+    virtual void OnCollisionWith(LPCOLLISIONEVENT e);
     virtual void Render();
 public:
     CWingGreenTurtle(float x, float y):CGameObject(x,y){

@@ -8,6 +8,26 @@ void CWingGreenTurtle::GetBoundingBox(float& left, float& top, float& right, flo
 	bottom = top + WINGGREENTURTLE_BBOX_HEIGHT;
 }
 
+void CWingGreenTurtle::OnNoCollision(DWORD dt)
+{
+	x += vx * dt;
+	y += vy * dt;
+}
+
+void CWingGreenTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
+{
+	if (!e->obj->IsBlocking()) return;
+
+	if (e->ny != 0)
+	{
+		vy = -WINGGREENTURTLE_SPEED_Y;
+	}
+	else if (e->nx != 0)
+	{
+		vx = -vx;
+	}
+}
+
 void CWingGreenTurtle::Render()
 {
 	if (vx > 0)
