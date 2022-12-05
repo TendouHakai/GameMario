@@ -20,7 +20,8 @@ void CWingGreenTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 
 	if (e->ny != 0)
 	{
-		vy = -WINGGREENTURTLE_SPEED_Y;
+		if(e->ny<0)
+			vy = -WINGGREENTURTLE_SPEED_Y;
 	}
 	else if (e->nx != 0)
 	{

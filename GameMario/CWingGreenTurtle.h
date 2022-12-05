@@ -1,11 +1,12 @@
 #pragma once
 #include "GameObject.h"
+#include "CGreenTurtle.h"
 
-#define WINGGREENTURTLE_BBOX_WIDTH 18
+#define WINGGREENTURTLE_BBOX_WIDTH 16
 #define WINGGREENTURTLE_BBOX_HEIGHT 28
 
 #define WINGGREENTURTLE_STATE_WALK	100
-#define WINGGREENTURTLE_STATE_DEAD	200
+#define WINGGREENTURTLE_STATE_TO_GREENTURTLE	200
 
 #define ID_ANI_WINGGREENTURTLE_WALK_LEFT   17000
 #define ID_ANI_WINGGREENTURTLE_WALK_RIGHT   17001
@@ -14,6 +15,9 @@
 #define WINGGREENTURTLE_SPEED_Y 0.2f
 
 #define WINGGREENTURTLE_GRAVITY 0.0005f
+
+#define WINGGREENTURTLE_STATE_WALK  1
+#define WINGGREENTURTLE_STATE_DEAD  2
 
 class CWingGreenTurtle :
     public CGameObject
@@ -28,6 +32,12 @@ protected:
 
         isOnPlatform = false;
         CCollision::GetInstance()->Process(this, dt, coObjects);
+
+        if (state == WINGGREENTURTLE_STATE_TO_GREENTURTLE) {
+            this->Delete();
+            CGreenTurtle* greenturtle = new CGreenTurtle(x, y);
+            coObjects->push_back(greenturtle);
+        }
         
     };
     virtual void OnNoCollision(DWORD dt);
@@ -35,12 +45,16 @@ protected:
     virtual void Render();
 public:
     CWingGreenTurtle(float x, float y):CGameObject(x,y){
-        vx = WINGGREENTURTLE_SPEED;
+        vx = - WINGGREENTURTLE_SPEED;
         vy = 0;
         ay = WINGGREENTURTLE_GRAVITY;
     }
 
     virtual int IsCollidable() { return 1; };
     virtual int IsBlocking() { return 0; }
+
+    virtual void SetState(int state) { 
+        this->state = state; 
+    }
 };
 

@@ -11,6 +11,7 @@
 #include "CQuestionBrick.h"
 #include "CTurtle.h"
 #include "ChangeCam.h"
+#include "CWingGreenTurtle.h"
 
 #include "Collision.h"
 
@@ -81,12 +82,12 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithCoin(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
-	/*else if (dynamic_cast<CPlatformNotBlock*>(e->obj))
-		OnCollisionWithPlatformNotBlock(e);*/
 	else if (dynamic_cast<CQuestionBrick*>(e->obj))
 		OnCollisionWithQuestionBrick(e);
 	else if (dynamic_cast<ChangeCam*>(e->obj))
 		OnCollisionWithChangeCam(e);
+	else if (dynamic_cast<CWingGreenTurtle*>(e->obj))
+		OnCollisionWithWingGreenTurtle(e);
 	
 }
 
@@ -216,8 +217,34 @@ void CMario::OnCollisionWithChangeCam(LPCOLLISIONEVENT e)
 		else {
 			CGame::GetInstance()->isForcusPlayer = false;
 		}
-	else if (e->nx >	 0) {
+	else if (e->nx > 0) {
 		CGame::GetInstance()->isForcusPlayer = false;
+	}
+}
+
+void CMario::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e)
+{
+	CWingGreenTurtle* winggreenturtle = dynamic_cast<CWingGreenTurtle*>(e->obj);
+	if (e->ny < 0)
+	{
+		winggreenturtle->SetState(WINGGREENTURTLE_STATE_TO_GREENTURTLE);
+		vy = -MARIO_JUMP_DEFLECT_SPEED;
+	}
+	else // hit by Goomba
+	{
+		if (untouchable == 0)
+		{
+			if (level > MARIO_LEVEL_SMALL)
+			{
+				level = MARIO_LEVEL_SMALL;
+				StartUntouchable();
+			}
+			else
+			{
+				DebugOut(L">>> Mario DIE >>> \n");
+				SetState(MARIO_STATE_DIE);
+			}
+		}
 	}
 }
 

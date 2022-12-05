@@ -154,6 +154,7 @@ class CMario : public CGameObject
 	void OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e);
 	void OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e);
 	void OnCollisionWithChangeCam(LPCOLLISIONEVENT e);
+	void OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e);
 
 	int GetAniRaccon();
 	int GetAniIdBig();
