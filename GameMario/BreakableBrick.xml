@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BREAKABLEBRICK>
+  <SPRITES>
+    <Sprite spriteID ="104001" l="299" t="134" r="316" b="151" textureID="20"></Sprite>
+    <Sprite spriteID ="104002" l="317" t="134" r="334" b="151" textureID="20"></Sprite>
+    <Sprite spriteID ="104003" l="335" t="134" r="352" b="151" textureID="20"></Sprite>
+    <Sprite spriteID ="104004" l="353" t="134" r="370" b="151" textureID="20"></Sprite>
+    <Sprite spriteID ="104005" l="371" t="134" r="388" b="151" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="20001">
+      <Sprite SpriteID="104001" time="200"></Sprite>
+      <Sprite SpriteID="104002" time="200"></Sprite>
+      <Sprite SpriteID="104003" time="200"></Sprite>
+      <Sprite SpriteID="104004" time="200"></Sprite>
+      <Sprite SpriteID="104005" time="200"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</BREAKABLEBRICK>

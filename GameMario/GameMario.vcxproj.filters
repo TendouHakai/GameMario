@@ -153,6 +153,7 @@
     <ClInclude Include="CWingGreenTurtle.h" />
     <ClInclude Include="CPlatformSprite.h" />
     <ClInclude Include="CWoodBrick.h" />
+    <ClInclude Include="CBreakableBrick.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -254,6 +255,9 @@
     <ClCompile Include="CWoodBrick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CBreakableBrick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -293,6 +297,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="Brick2.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="BreakableBrick.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

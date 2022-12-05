@@ -135,11 +135,21 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 			turtle->SetState(TURTLE_STATE_DEAD);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 		}
+		else if (turtle->GetState() == TURTLE_STATE_DEAD) {
+			if (nx < 0) {
+				isKicking = true;
+				turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
+			}
+			else {
+				isKicking = true;
+				turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+			}
+		}
 	}
 	else {
 		if (untouchable == 0)
 		{
-			if (turtle->GetState() != TURTLE_STATE_DEAD)
+			if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
@@ -152,20 +162,20 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 					SetState(MARIO_STATE_DIE);
 				}
 			}
-			else {
+			else 
 				if (e->nx > 0)
 				{
 					isKicking = true;
 					turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
 				}
-				else if (e->nx < 0)
+				else if(e->nx < 0)
 				{
 					isKicking = true;
 					turtle->SetState(TURTLE_STATE_KICKED_LEFT);
 				}
-			}
 		}
 	}
+
 }
 
 void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)

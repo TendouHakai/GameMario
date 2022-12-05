@@ -19,6 +19,7 @@
 #include "CWingGreenTurtle.h"
 #include "CPlatformSprite.h"
 #include "CWoodBrick.h"
+#include "CBreakableBrick.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -255,6 +256,9 @@ void CPlayScene::Load()
 			case OBJECT_TYPE_WOODBRICK: {
 				obj = new CWoodBrick(x, y); break;
 			}
+			case OBJECT_TYPE_BREAKABLEBRICK: {
+				obj = new CBreakableBrick(x, y); break;
+			}
 			case OBJECT_TYPE_PLATFORM:
 			{
 				
@@ -375,7 +379,9 @@ void CPlayScene::Update(DWORD dt)
 	cy -= game->GetBackBufferHeight() / 5;
 
 	if (cx < 0) cx = 0;
+	else if (cx + game->GetBackBufferWidth() > map->getWidth() ) cx = map->getWidth() - game->GetBackBufferWidth();
 	if (cy < 0) cy = 0;
+	
 
 	if (CGame::GetInstance()->isForcusPlayer == false) {
 		CGame::GetInstance()->SetCamPos(cx, 240.0f);

@@ -16,10 +16,11 @@
     <asset link="WingGreenTurtle.xml"></asset>
     <asset link="CloudBrick.xml"></asset>
     <asset link="Brick2.xml"></asset>
+    <asset link="BreakableBrick.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="1300" y="300"> </object>
+    <object type ="0" x="1800" y="300"> </object>
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
     
@@ -100,11 +101,44 @@
     <object type ="16" x="1606" y="392"></object>
     <object type ="16" x="1590" y="392"></object>
     <object type ="16" x="1606" y="376"></object>
-    
-    
-    
-    
-    
+
+    <object type ="16" x="1672" y="408"></object>
+    <object type ="16" x="1688" y="408"></object>
+    <object type ="16" x="1704" y="408"></object>
+    <object type ="16" x="1672" y="392"></object>
+    <object type ="16" x="1688" y="392"></object>
+    <object type ="16" x="1672" y="376"></object>
+
+    <object type ="5" x="1952" y="420" cellW="576" cellH="10" length="1"></object>
+
+    <object type ="17" x="1952" y="408"></object>
+    <object type ="17" x="1968" y="408"></object>
+    <object type ="17" x="1984" y="408"></object>
+    <object type ="17" x="2000" y="408"></object>
+    <object type ="17" x="2016" y="408"></object>
+    <object type ="17" x="2032" y="408"></object>
+    <object type ="17" x="2048" y="408"></object>
+    <object type ="17" x="1968" y="392"></object>
+    <object type ="17" x="1984" y="392"></object>
+    <object type ="17" x="2000" y="392"></object>
+    <object type ="17" x="2016" y="392"></object>
+    <object type ="17" x="2032" y="392"></object>
+    <object type ="17" x="1984" y="376"></object>
+    <object type ="17" x="2000" y="376"></object>
+    <object type ="17" x="2016" y="376"></object>
+    <object type ="17" x="2032" y="376"></object>
+
+    <object type ="17" x="2095" y="408"></object>
+    <object type ="17" x="2111" y="408"></object>
+    <object type ="17" x="2095" y="392"></object>
+
+    <object type ="16" x="2264" y="312"></object>
+    <object type ="16" x="2280" y="312"></object>
+
+    <object type ="16" x="2264" y="376"></object>
+    <object type ="16" x="2280" y="376"></object>
+
+    <object type ="5" x="2532" y="420" cellW="555" cellH="10" length="1"></object>
     
     <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>
