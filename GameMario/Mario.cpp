@@ -170,8 +170,10 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 
 void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)
 {
-	e->obj->Delete();
-	coin++;
+	CCoin* c = dynamic_cast<CCoin*>(e->obj);
+	
+	c->SetState(COIN_PRICE_STATE_COLLECTION);
+	coin+=100;
 }
 
 void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)

@@ -151,6 +151,8 @@
     </ClInclude>
     <ClInclude Include="CGreenTurtle.h" />
     <ClInclude Include="CWingGreenTurtle.h" />
+    <ClInclude Include="CPlatformSprite.h" />
+    <ClInclude Include="CWoodBrick.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -246,6 +248,12 @@
     <ClCompile Include="CWingGreenTurtle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CPlatformSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CWoodBrick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -279,6 +287,12 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="WingGreenTurtle.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="CloudBrick.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Brick2.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

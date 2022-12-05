@@ -17,6 +17,8 @@
 #include "ChangeCam.h"
 #include "CGreenTurtle.h"
 #include "CWingGreenTurtle.h"
+#include "CPlatformSprite.h"
+#include "CWoodBrick.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -245,7 +247,14 @@ void CPlayScene::Load()
 
 				DebugOut(L"[INFO] Player object has been created!\n");
 				break;
-			case OBJECT_TYPE_BRICK: obj = new CBrick(x, y); break;
+			case OBJECT_TYPE_BRICK: 
+			{
+				obj = new CBrick(x, y);
+				break; 
+			}
+			case OBJECT_TYPE_WOODBRICK: {
+				obj = new CWoodBrick(x, y); break;
+			}
 			case OBJECT_TYPE_PLATFORM:
 			{
 				
@@ -309,6 +318,21 @@ void CPlayScene::Load()
 			}
 			case OBJECT_TYPE_WINGGREENTURTLE: {
 				obj = new CWingGreenTurtle(x, y);
+				break;
+			}
+			case OBJECT_TYPE_PLATFORMSPRITE: {
+				float cell_width = (float)atof(node->Attribute("cellW"));
+				float cell_height = (float)atof(node->Attribute("cellH"));
+				int length = atoi(node->Attribute("length"));
+				int idBegin = atoi(node->Attribute("idSpriteBegin"));
+				int idMiddle = atoi(node->Attribute("idSpriteMiddle"));
+				int idEnd = atoi(node->Attribute("idSpriteEnd"));
+
+				obj = new CPlatformSprite(
+					x, y,
+					cell_width, cell_height, length,
+					idBegin, idMiddle, idEnd
+				);
 				break;
 			}
 			}
@@ -377,7 +401,7 @@ void CPlayScene::Render()
 	sy = CGame::GetInstance()->GetBackBufferHeight();
 	rect.left = cx;
 	rect.right = rect.left + sx +1;
-	rect.top = cy+8;
+	rect.top = cy;
 	rect.bottom = rect.top + sy +1;
 	CGame::GetInstance()->Draw(sx/2, sy/2, map, &rect);
 	for (int i = 0; i < objects.size(); i++)

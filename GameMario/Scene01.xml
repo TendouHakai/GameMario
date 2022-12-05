@@ -14,45 +14,97 @@
     <asset link="RedTurtle.xml"></asset>
     <asset link="GreenTurtle.xml"></asset>
     <asset link="WingGreenTurtle.xml"></asset>
+    <asset link="CloudBrick.xml"></asset>
+    <asset link="Brick2.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="1300" y="350"> </object>
+    <object type ="0" x="1300" y="300"> </object>
 
-    <object type ="5" x="0" y="415" cellW="16" cellH="16" length="40"></object>
+    <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
     
-    <object type ="6" x="265" y="365" cellW="50" cellH="15" length="1"></object>
-    <object type ="6" x="296" y="336" cellW="47" cellH="15" length="1"></object>
+    <object type ="6" x="265" y="373" cellW="50" cellH="15" length="1"></object>
+    <object type ="6" x="296" y="344" cellW="47" cellH="15" length="1"></object>
 
-    <object type ="7" x="180" y="360"></object>
-    <object type ="7" x="196" y="360"></object>
-    <object type ="7" x="232" y="312"></object>
-    <object type ="7" x="248" y="312"></object>
+    <object type ="7" x="180" y="368"></object>
+    <object type ="7" x="196" y="368"></object>
+    <object type ="7" x="232" y="320"></object>
+    <object type ="7" x="248" y="320"></object>
 
-    <object type ="8" x="368" y="375"></object>
+    <object type ="8" x="368" y="383"></object>
 
-    <object type ="6" x="440" y="368" cellW="80" cellH="15" length="1"></object>
-    <object type ="6" x="495" y="335" cellW="62" cellH="15" length="1"></object>
-    <object type ="6" x="543" y="304" cellW="62" cellH="15" length="1"></object>
-    <object type ="6" x="559" y="384" cellW="95" cellH="15" length="1"></object>
+    <object type ="6" x="440" y="376" cellW="80" cellH="15" length="1"></object>
+    <object type ="6" x="495" y="343" cellW="62" cellH="15" length="1"></object>
+    <object type ="6" x="543" y="312" cellW="62" cellH="15" length="1"></object>
+    <object type ="6" x="559" y="392" cellW="95" cellH="15" length="1"></object>
     
-    <object type ="10" x="560" y="355"></object>
+    <object type ="10" x="560" y="363"></object>
     
-    <object type ="5" x="853" y="400" cellW="463" cellH="15" length="1"></object>
+    <object type ="5" x="853" y="408" cellW="463" cellH="15" length="1"></object>
     
-    <object type ="5" x="1327" y="415" cellW="351" cellH="15" length="1"></object>
+    <object type ="5" x="1327" y="423" cellW="351" cellH="15" length="1"></object>
 
-    <object type ="12" x="1076" y="327" w="10" h="150" yCamMax="240" yCamMin="50"></object>
+    <object type ="12" x="1076" y="335" w="10" h="150" yCamMax="240" yCamMin="50"></object>
 
-    <object type ="7" x="652" y="386"></object>
+    <object type ="7" x="652" y="396"></object>
 
-    <object type ="6" x="1318" y="384" cellW="110" cellH="15" length="1"></object>
-    <object type ="6" x="1351" y="353" cellW="110" cellH="15" length="1"></object>
-    <object type ="6" x="1383" y="320" cellW="110" cellH="15" length="1"></object>
+    <object type ="6" x="1318" y="392" cellW="110" cellH="15" length="1"></object>
+    <object type ="6" x="1351" y="361" cellW="110" cellH="15" length="1"></object>
+    <object type ="6" x="1383" y="328" cellW="110" cellH="15" length="1"></object>
 
-    <object type ="13" x="1390" y="295"></object>
+    <object type ="13" x="1390" y="303"></object>
     
-    <object type ="14" x="1390" y="305"></object>
+    <object type ="14" x="1390" y="313"></object>
+
+    <object type ="6" x="1345" y="152" cellW="63" cellH="15" length="1"></object>
+
+    <object type ="4" x="1080" y="336"></object>
+    <object type ="4" x="1111" y="303"></object>
+    <object type ="4" x="1144" y="272"></object>
+    <object type ="4" x="1175" y="239"></object>
+    <object type ="4" x="1206" y="208"></object>
+    <object type ="4" x="1020" y="403"></object>
+
+    <object type ="4" x="1334" y="96"></object>
+    <object type ="4" x="1350" y="96"></object>
+    <object type ="4" x="1366" y="96"></object>
+    
+    <object type ="4" x="1480" y="125"></object>
+    <object type ="4" x="1496" y="125"></object>
+
+    <object type ="4" x="1543" y="143"></object>
+    <object type ="4" x="1559" y="143"></object>
+    <object type ="4" x="1575" y="143"></object>
+    <object type ="4" x="1591" y="143"></object>
+
+    <object type ="4" x="1620" y="128"></object>
+    <object type ="4" x="1636" y="128"></object>
+    <object type ="4" x="1652" y="128"></object>
+    <object type ="4" x="1668" y="128"></object>
+
+    <object type ="15" x="1415" y="198" cellW="16" cellH="16" length="4" idSpriteBegin="102001" idSpriteMiddle="102001" idSpriteEnd="102001"></object>
+    <object type ="15" x="1494" y="185" cellW="16" cellH="16" length="13" idSpriteBegin="102001" idSpriteMiddle="102001" idSpriteEnd="102001"></object>
+
+    <object type ="7" x="1446" y="136"></object>
+
+    <object type ="5" x="1575" y="420" cellW="80" cellH="10" length="1"></object>
+
+    <object type ="7" x="1480" y="375"></object>
+    
+    <object type ="16" x="1512" y="350"></object>
+    <object type ="16" x="1528" y="350"></object>
+
+    <object type ="16" x="1606" y="408"></object>
+    <object type ="16" x="1590" y="408"></object>
+    <object type ="16" x="1574" y="408"></object>
+    <object type ="16" x="1606" y="392"></object>
+    <object type ="16" x="1590" y="392"></object>
+    <object type ="16" x="1606" y="376"></object>
+    
+    
+    
+    
+    
     
     <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>

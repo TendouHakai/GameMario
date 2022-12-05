@@ -142,9 +142,11 @@
     <ClInclude Include="ChangeCam.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="CPlatformSprite.h" />
     <ClInclude Include="CQuestionBrick.h" />
     <ClInclude Include="CTurtle.h" />
     <ClInclude Include="CWingGreenTurtle.h" />
+    <ClInclude Include="CWoodBrick.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -175,9 +177,11 @@
     <ClCompile Include="ChangeCam.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CPlatformSprite.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CTurtle.cpp" />
     <ClCompile Include="CWingGreenTurtle.cpp" />
+    <ClCompile Include="CWoodBrick.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -200,8 +204,10 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Brick.xml" />
+    <Xml Include="Brick2.xml" />
     <Xml Include="Bullet.xml" />
     <Xml Include="CannibalFlower.xml" />
+    <Xml Include="CloudBrick.xml" />
     <Xml Include="Coin.xml" />
     <Xml Include="GreenTurtle.xml" />
     <Xml Include="Mario.xml" />
