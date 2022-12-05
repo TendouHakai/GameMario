@@ -20,6 +20,7 @@
 #include "CPlatformSprite.h"
 #include "CWoodBrick.h"
 #include "CBreakableBrick.h"
+#include "CTube.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -337,6 +338,20 @@ void CPlayScene::Load()
 					cell_width, cell_height, length,
 					idBegin, idMiddle, idEnd
 				);
+				break;
+			}
+			case OBJECT_TYPE_GREENTUBE: {
+				float cell_width = (float)atof(node->Attribute("cellW"));
+				float cell_height = (float)atof(node->Attribute("cellH"));
+				int height = atoi(node->Attribute("height"));
+				int idTL = atoi(node->Attribute("idSpriteTL"));
+				int idTR = atoi(node->Attribute("idSpriteTR"));
+				int idML = atoi(node->Attribute("idSpriteML"));
+				int idMR = atoi(node->Attribute("idSpriteMR"));
+				int idBL = atoi(node->Attribute("idSpriteBL"));
+				int idBR = atoi(node->Attribute("idSpriteBR"));
+
+				obj = new CTube(x, y, cell_width, cell_height, height, idTL, idTR, idML, idMR, idBL, idBR);
 				break;
 			}
 			}

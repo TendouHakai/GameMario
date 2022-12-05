@@ -17,10 +17,11 @@
     <asset link="CloudBrick.xml"></asset>
     <asset link="Brick2.xml"></asset>
     <asset link="BreakableBrick.xml"></asset>
+    <asset link="GreenTube.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="1800" y="300"> </object>
+    <object type ="0" x="100" y="300"> </object>
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
     
@@ -32,7 +33,10 @@
     <object type ="7" x="232" y="320"></object>
     <object type ="7" x="248" y="320"></object>
 
-    <object type ="8" x="368" y="383"></object>
+    <object type ="8" x="369" y="383"></object>
+
+    <object type ="18" x="360" y="375" cellW="15" cellH="16" height="2"
+            idSpriteTL="105001" idSpriteTR="105002" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
 
     <object type ="6" x="440" y="376" cellW="80" cellH="15" length="1"></object>
     <object type ="6" x="495" y="343" cellW="62" cellH="15" length="1"></object>

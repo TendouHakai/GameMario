@@ -154,6 +154,7 @@
     <ClInclude Include="CPlatformSprite.h" />
     <ClInclude Include="CWoodBrick.h" />
     <ClInclude Include="CBreakableBrick.h" />
+    <ClInclude Include="CTube.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -258,6 +259,9 @@
     <ClCompile Include="CBreakableBrick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CTube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -300,6 +304,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="BreakableBrick.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="GreenTube.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

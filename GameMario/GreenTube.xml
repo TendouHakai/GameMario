@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GREENTUBE>
+  <SPRITES>
+    <!--TOPLEFT-->
+    <Sprite spriteID ="105001" l="69" t="36" r="86" b="50" textureID="30"></Sprite>
+    <!--TOPRIGHT-->
+    <Sprite spriteID ="105002" l="86" t="36" r="103" b="50" textureID="30"></Sprite>
+    <!--BOTTOMLEFT-->
+    <Sprite spriteID ="105003" l="70" t="52" r="85" b="69" textureID="30"></Sprite>
+    <!--BOTTOMRIGHT-->
+    <Sprite spriteID ="105004" l="86" t="52" r="101" b="69" textureID="30"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+   
+  </ANIMATIONS>
+</GREENTUBE>

@@ -145,6 +145,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CPlatformSprite.h" />
     <ClInclude Include="CQuestionBrick.h" />
+    <ClInclude Include="CTube.h" />
     <ClInclude Include="CTurtle.h" />
     <ClInclude Include="CWingGreenTurtle.h" />
     <ClInclude Include="CWoodBrick.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CPlatformSprite.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
+    <ClCompile Include="CTube.cpp" />
     <ClCompile Include="CTurtle.cpp" />
     <ClCompile Include="CWingGreenTurtle.cpp" />
     <ClCompile Include="CWoodBrick.cpp" />
@@ -212,6 +214,7 @@
     <Xml Include="CannibalFlower.xml" />
     <Xml Include="CloudBrick.xml" />
     <Xml Include="Coin.xml" />
+    <Xml Include="GreenTube.xml" />
     <Xml Include="GreenTurtle.xml" />
     <Xml Include="Mario.xml" />
     <Xml Include="QuestionBrick.xml" />

@@ -21,5 +21,6 @@
     <Texture id="12" link="textures\enemies01.png"></Texture>
     <Texture id="13" link="textures\enemies02.png"></Texture>
     <Texture id="20" link="textures\misc.png"></Texture>
+    <Texture id="30" link="textures\NES - Super Mario Bros 3 - Stage Tiles.png"></Texture>
   </TEXTURES>
 </SCENCEMANAGER>
