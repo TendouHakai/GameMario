@@ -29,10 +29,12 @@ protected:
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
         
     };
-    virtual void Render();
+    
     virtual void SetState(int state) { this->state = state; }
 public:
     CWingOfGoomba(float x, float y) :CGameObject(x, y) { state = WINGS_STATE_FLAPPING; }
+
+    virtual void Render();
 
     virtual int IsBlocking() { return 0; }
     virtual int IsCollidable() { return 0; };

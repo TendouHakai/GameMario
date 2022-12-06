@@ -24,6 +24,7 @@
 #include "CMushroom.h"
 #include "CRedGoomba.h"
 #include "CWingOfGoomba.h"
+#include "CWingRedGoomba.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -370,8 +371,12 @@ void CPlayScene::Load()
 				obj = new CRedGoomba(x, y);
 				break;
 			}
-			case OBJECT_TYPE_WINGODREDGOOMBA: {
+			case OBJECT_TYPE_WINGOFREDGOOMBA: {
 				obj = new CWingOfGoomba(x, y);
+				break;
+			}
+			case OBJECT_TYPE_WINGREDGOOMBA: {
+				obj = new CWingRedGoomba(x, y);
 				break;
 			}
 			}
