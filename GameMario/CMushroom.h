@@ -35,7 +35,7 @@ public:
 		vy += ay * dt;
 		
 		if (state == MUSHROOM_STATE_APPEAR) {
-			if (abs(ystart - y) > 18) {
+			if (abs(ystart - y) > 16) {
 				SetState(MUSHROOM_STATE_RUN);
 			}
 		}

@@ -12,6 +12,7 @@
 #include "CTurtle.h"
 #include "ChangeCam.h"
 #include "CWingGreenTurtle.h"
+#include "CMushroom.h"
 
 #include "Collision.h"
 
@@ -88,6 +89,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithChangeCam(e);
 	else if (dynamic_cast<CWingGreenTurtle*>(e->obj))
 		OnCollisionWithWingGreenTurtle(e);
+	else if (dynamic_cast<CMushroom*>(e->obj))
+		OnCollisionWithRedMushroom(e);
 	
 }
 
@@ -258,6 +261,17 @@ void CMario::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e)
 			}
 		}
 	}
+}
+
+void CMario::OnCollisionWithRedMushroom(LPCOLLISIONEVENT e)
+{
+	CMushroom* mushroom = dynamic_cast<CMushroom*>(e->obj);
+	if (level == MARIO_LEVEL_SMALL)
+		SetLevel(MARIO_LEVEL_BIG);
+	else if (level == MARIO_LEVEL_BIG) {
+		SetLevel(MARIO_LEVEL_RACCON);
+	}
+	mushroom->Delete();
 }
 
 //

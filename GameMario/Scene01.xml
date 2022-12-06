@@ -29,12 +29,11 @@
     <object type ="6" x="265" y="373" cellW="50" cellH="15" length="1"></object>
     <object type ="6" x="296" y="344" cellW="47" cellH="15" length="1"></object>
 
-    <object type ="7" x="180" y="368"></object>
-    <object type ="7" x="196" y="368"></object>
-    <object type ="7" x="232" y="320"></object>
-    <object type ="7" x="248" y="320"></object>
+    <object type ="7" x="180" y="368" brickType="1"></object>
+    <object type ="7" x="196" y="368" brickType="1"></object>
+    <object type ="7" x="232" y="320" brickType="1"></object>
+    <object type ="7" x="248" y="320" brickType="2"></object>
     
-     <object type ="19" x="248" y="320"></object>
 
     <object type ="8" x="369" y="383"></object>
 
@@ -54,7 +53,7 @@
 
     <object type ="12" x="1076" y="335" w="10" h="150" yCamMax="240" yCamMin="50"></object>
 
-    <object type ="7" x="652" y="396"></object>
+    <object type ="7" x="652" y="396" brickType="1"></object>
 
     <object type ="6" x="1318" y="392" cellW="110" cellH="15" length="1"></object>
     <object type ="6" x="1351" y="361" cellW="110" cellH="15" length="1"></object>
@@ -93,11 +92,11 @@
     <object type ="15" x="1415" y="198" cellW="16" cellH="16" length="4" idSpriteBegin="102001" idSpriteMiddle="102001" idSpriteEnd="102001"></object>
     <object type ="15" x="1494" y="185" cellW="16" cellH="16" length="13" idSpriteBegin="102001" idSpriteMiddle="102001" idSpriteEnd="102001"></object>
 
-    <object type ="7" x="1446" y="136"></object>
+    <object type ="7" x="1446" y="136" brickType="1"></object>
 
     <object type ="5" x="1575" y="420" cellW="80" cellH="10" length="1"></object>
 
-    <object type ="7" x="1480" y="375"></object>
+    <object type ="7" x="1480" y="375" brickType="1"></object>
     
     <object type ="16" x="1512" y="350"></object>
     <object type ="16" x="1528" y="350"></object>

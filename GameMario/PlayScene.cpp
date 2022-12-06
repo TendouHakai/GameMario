@@ -287,7 +287,8 @@ void CPlayScene::Load()
 				break;
 			}
 			case OBJECT_TYPE_QUESTIONBRICK: {
-				obj = new CQuestionBrick(x, y);
+				int BrickType = atoi(node->Attribute("brickType"));
+				obj = new CQuestionBrick(x, y, BrickType);
 				break;
 			}
 			case OBJECT_TYPE_COIN: {

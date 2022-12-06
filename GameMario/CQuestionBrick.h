@@ -1,5 +1,6 @@
 #pragma once
 #include "Brick.h"
+#include "CMushroom.h"
 #include "Coin.h"
 #include "debug.h"
 #define ID_ANI_QUESTIONBRICK_IDLE 12000
@@ -10,25 +11,37 @@
 
 #define QUESTIONBRICK_SPEED	0.25f
 #define QUESTIONBRICK_GRAVITY	0.002f
+
+#define QUESTIONBRICK_TYPE_COIN	1
+#define QUESTIONBRICK_TYPE_REDMUSHROOM	2
 class CQuestionBrick :public CBrick
 {
 protected:
 	float yBrick;
 	float ay;
-	CCoin* coin;
+	CGameObject* coin;
 	BOOLEAN isBroken;
+	int type;
 public:
-	CQuestionBrick(float x, float y) : CBrick(x, y) { state = QUESTIONBRICK_STATE_IDLE; yBrick = y; ay = 0; coin = NULL; }
+	CQuestionBrick(float x, float y, int type) : CBrick(x, y) { state = QUESTIONBRICK_STATE_IDLE; yBrick = y; ay = 0; coin = NULL; this->type = type; }
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects) {
 		vy += ay * dt;
 		y += vy * dt;
 		if (coin != NULL && state == QUESTIONBRICK_STATE_BROKEN) {
-			coObjects->push_back(coin);
-			coin = NULL;
+			if (type == QUESTIONBRICK_TYPE_COIN)
+			{
+				coObjects->push_back(coin);
+				coin = NULL;
+			}
 		}
+		
 		if (y > yBrick) {
 			y = yBrick;
 			vy = 0;
+			if (coin != NULL && state == QUESTIONBRICK_STATE_BROKEN && type == QUESTIONBRICK_TYPE_REDMUSHROOM) {
+				coObjects->insert(coObjects->begin() + 1, coin);
+				coin = NULL;
+			}
 		}
 
 	}
@@ -43,8 +56,15 @@ public:
 			
 			vy = -QUESTIONBRICK_SPEED;
 			ay = QUESTIONBRICK_GRAVITY;
-			coin = new CCoin(x, y - 30);
-			coin->SetState(COIN_STATE_COLLECTION);
+			if (type == QUESTIONBRICK_TYPE_COIN)
+			{
+				coin = new CCoin(x, y - 30);
+				coin->SetState(COIN_STATE_COLLECTION);
+			}
+			else if (type == QUESTIONBRICK_TYPE_REDMUSHROOM) {
+				coin = new CMushroom(x, y);
+				coin->SetState(MUSHROOM_STATE_APPEAR);
+			}
 			break;
 		}
 		default:
