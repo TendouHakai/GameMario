@@ -4,7 +4,7 @@ void CTube::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	left = x - cell_width/2;
 	top = y - cell_height/2;
-	right = left + cell_width*2;
+	right = left + cell_width*2+3;
 	bottom = top + cell_height*height;
 }
 
@@ -18,7 +18,7 @@ void CTube::Render()
 	s->Get(this->idSpriteTR)->Draw(x+cell_width, yy);
 	yy += cell_height;
 	// render giua
-	for (int i = 1; i < height; i++) {
+	for (int i = 1; i < height-1; i++) {
 		s->Get(this->idSpriteML)->Draw(x, yy);
 		s->Get(this->idSpriteMR)->Draw(x+cell_width, yy);
 		yy += cell_height;

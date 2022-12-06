@@ -155,6 +155,7 @@
     <ClInclude Include="CWoodBrick.h" />
     <ClInclude Include="CBreakableBrick.h" />
     <ClInclude Include="CTube.h" />
+    <ClInclude Include="CMushroom.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -262,6 +263,9 @@
     <ClCompile Include="CTube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CMushroom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -307,6 +311,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="GreenTube.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Mushroom.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

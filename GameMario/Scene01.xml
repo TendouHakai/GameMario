@@ -18,6 +18,7 @@
     <asset link="Brick2.xml"></asset>
     <asset link="BreakableBrick.xml"></asset>
     <asset link="GreenTube.xml"></asset>
+    <asset link="Mushroom.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
@@ -32,10 +33,12 @@
     <object type ="7" x="196" y="368"></object>
     <object type ="7" x="232" y="320"></object>
     <object type ="7" x="248" y="320"></object>
+    
+     <object type ="19" x="248" y="320"></object>
 
     <object type ="8" x="369" y="383"></object>
 
-    <object type ="18" x="360" y="375" cellW="15" cellH="16" height="2"
+    <object type ="18" x="360" y="375" cellW="15" cellH="16" height="3"
             idSpriteTL="105001" idSpriteTR="105002" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
 
     <object type ="6" x="440" y="376" cellW="80" cellH="15" length="1"></object>

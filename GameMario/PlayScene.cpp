@@ -21,6 +21,7 @@
 #include "CWoodBrick.h"
 #include "CBreakableBrick.h"
 #include "CTube.h"
+#include "CMushroom.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -352,6 +353,10 @@ void CPlayScene::Load()
 				int idBR = atoi(node->Attribute("idSpriteBR"));
 
 				obj = new CTube(x, y, cell_width, cell_height, height, idTL, idTR, idML, idMR, idBL, idBR);
+				break;
+			}
+			case OBJECT_TYPE_MUSHROOM: {
+				obj = new CMushroom(x, y);
 				break;
 			}
 			}

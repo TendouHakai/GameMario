@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MUSHROOM>
+  <SPRITES>
+    <Sprite spriteID ="107001" l="300" t="189" r="315" b="204" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="22001">
+      <Sprite SpriteID="107001" time="100"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</MUSHROOM>

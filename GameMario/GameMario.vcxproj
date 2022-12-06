@@ -141,6 +141,7 @@
     <ClInclude Include="CCannibalFlower.h" />
     <ClInclude Include="CGreenTurtle.h" />
     <ClInclude Include="ChangeCam.h" />
+    <ClInclude Include="CMushroom.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CPlatformSprite.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="CCannibalFlower.cpp" />
     <ClCompile Include="CGreenTurtle.cpp" />
     <ClCompile Include="ChangeCam.cpp" />
+    <ClCompile Include="CMushroom.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CPlatformSprite.cpp" />
@@ -213,6 +215,7 @@
     <Xml Include="Bullet.xml" />
     <Xml Include="CannibalFlower.xml" />
     <Xml Include="CloudBrick.xml" />
+    <Xml Include="Mushroom.xml" />
     <Xml Include="Coin.xml" />
     <Xml Include="GreenTube.xml" />
     <Xml Include="GreenTurtle.xml" />
