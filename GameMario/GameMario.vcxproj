@@ -146,9 +146,12 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CPlatformSprite.h" />
     <ClInclude Include="CQuestionBrick.h" />
+    <ClInclude Include="CRedGoomba.h" />
     <ClInclude Include="CTube.h" />
     <ClInclude Include="CTurtle.h" />
     <ClInclude Include="CWingGreenTurtle.h" />
+    <ClInclude Include="CWingOfGoomba.h" />
+    <ClInclude Include="CWingRedGoomba.h" />
     <ClInclude Include="CWoodBrick.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Game.h" />
@@ -184,9 +187,12 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CPlatformSprite.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
+    <ClCompile Include="CRedGoomba.cpp" />
     <ClCompile Include="CTube.cpp" />
     <ClCompile Include="CTurtle.cpp" />
     <ClCompile Include="CWingGreenTurtle.cpp" />
+    <ClCompile Include="CWingOfGoomba.cpp" />
+    <ClCompile Include="CWingRedGoomba.cpp" />
     <ClCompile Include="CWoodBrick.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -215,16 +221,19 @@
     <Xml Include="Bullet.xml" />
     <Xml Include="CannibalFlower.xml" />
     <Xml Include="CloudBrick.xml" />
+    <Xml Include="Goomba.xml" />
     <Xml Include="Mushroom.xml" />
     <Xml Include="Coin.xml" />
     <Xml Include="GreenTube.xml" />
     <Xml Include="GreenTurtle.xml" />
     <Xml Include="Mario.xml" />
     <Xml Include="QuestionBrick.xml" />
+    <Xml Include="RedGoomba.xml" />
     <Xml Include="RedTurtle.xml" />
     <Xml Include="Scence.xml" />
     <Xml Include="Scene01.xml" />
     <Xml Include="WingGreenTurtle.xml" />
+    <Xml Include="WingOfRedGoomba.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

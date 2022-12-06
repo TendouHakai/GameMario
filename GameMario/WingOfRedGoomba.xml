@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WINGOFREDGOOMBA>
+  <SPRITES>
+    <!--FLYING-->
+    <!--RIGHT-->
+    <Sprite spriteID ="10901" l="136" t="2" r="143" b="15" textureID="12"></Sprite>
+    <!--LEFT-->
+    <Sprite spriteID ="10902" l="544" t="2" r="551" b="15" textureID="13"></Sprite>
+    <!--NOT FLYING-->
+    <!--RIGHT-->
+    <Sprite spriteID ="10903" l="144" t="6" r="151" b="15" textureID="12"></Sprite>
+    <!--LEFT-->
+    <Sprite spriteID ="10904" l="536" t="6" r="543" b="15" textureID="13"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--FLYING-->
+    <!--RIGHT-->
+    <animation aniID="24001">
+      <Sprite SpriteID="10901" time="100"></Sprite>
+    </animation>
+    <!--LEFT-->
+    <animation aniID="24002">
+      <Sprite SpriteID="10902" time="100"></Sprite>
+    </animation>
+    <!--NOT FLYING-->
+    <!--RIGHT-->
+    <animation aniID="24003">
+      <Sprite SpriteID="10903" time="100"></Sprite>
+    </animation>
+    <!--LEFT-->
+    <animation aniID="24004">
+      <Sprite SpriteID="10904" time="100"></Sprite>
+    </animation>
+    
+    <!--FLAPPING RIGHT-->
+    <animation aniID="24005">
+      <Sprite SpriteID="10901" time="250"></Sprite>
+      <Sprite SpriteID="10903" time="250"></Sprite>
+    </animation>
+    <!--FLAPPING LEFT-->
+    <animation aniID="24006">
+      <Sprite SpriteID="10902" time="250"></Sprite>
+      <Sprite SpriteID="10904" time="250"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</WINGOFREDGOOMBA>

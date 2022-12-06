@@ -156,6 +156,9 @@
     <ClInclude Include="CBreakableBrick.h" />
     <ClInclude Include="CTube.h" />
     <ClInclude Include="CMushroom.h" />
+    <ClInclude Include="CRedGoomba.h" />
+    <ClInclude Include="CWingRedGoomba.h" />
+    <ClInclude Include="CWingOfGoomba.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -266,6 +269,15 @@
     <ClCompile Include="CMushroom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CRedGoomba.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CWingRedGoomba.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CWingOfGoomba.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -314,6 +326,15 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="Mushroom.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Goomba.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="RedGoomba.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="WingOfRedGoomba.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

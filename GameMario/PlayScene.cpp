@@ -22,6 +22,8 @@
 #include "CBreakableBrick.h"
 #include "CTube.h"
 #include "CMushroom.h"
+#include "CRedGoomba.h"
+#include "CWingOfGoomba.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -358,6 +360,18 @@ void CPlayScene::Load()
 			}
 			case OBJECT_TYPE_MUSHROOM: {
 				obj = new CMushroom(x, y);
+				break;
+			}
+			case OBJECT_TYPE_GOOMBA: {
+				obj = new CGoomba(x, y);
+				break;
+			}
+			case OBJECT_TYPE_REDGOOMBA: {
+				obj = new CRedGoomba(x, y);
+				break;
+			}
+			case OBJECT_TYPE_WINGODREDGOOMBA: {
+				obj = new CWingOfGoomba(x, y);
 				break;
 			}
 			}

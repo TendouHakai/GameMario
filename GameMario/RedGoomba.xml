@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<REDGOOMBA>
+  <SPRITES>
+    <!--WALKING-->
+    <Sprite spriteID ="10801" l="88" t="0" r="103" b="15" textureID="12"></Sprite>
+    <Sprite spriteID ="10802" l="105" t="0" r="119" b="15" textureID="12"></Sprite>
+    <!--DIE-->
+    <Sprite spriteID ="10803" l="120" t="6" r="135" b="15" textureID="12"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--WALKING-->
+    <animation aniID="23001">
+      <Sprite SpriteID="10801" time="100"></Sprite>
+      <Sprite SpriteID="10802" time="100"></Sprite>
+    </animation>
+    <!--DIE-->
+    <animation aniID="23002">
+      <Sprite SpriteID="10803" time="100"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</REDGOOMBA>

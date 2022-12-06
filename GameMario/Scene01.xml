@@ -19,10 +19,14 @@
     <asset link="BreakableBrick.xml"></asset>
     <asset link="GreenTube.xml"></asset>
     <asset link="Mushroom.xml"></asset>
+    <asset link="Goomba.xml"></asset>
+    <asset link="RedGoomba.xml"></asset>
+    <asset link="WingOfRedGoomba.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
     <object type ="0" x="100" y="300"> </object>
+    <object type ="21" x="150" y="395"> </object>
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
     
@@ -33,7 +37,6 @@
     <object type ="7" x="196" y="368" brickType="1"></object>
     <object type ="7" x="232" y="320" brickType="1"></object>
     <object type ="7" x="248" y="320" brickType="2"></object>
-    
 
     <object type ="8" x="369" y="383"></object>
 
@@ -47,7 +50,11 @@
     
     <object type ="10" x="560" y="363"></object>
     
+    <object type ="2" x="500" y="400"></object>
+    
     <object type ="5" x="853" y="408" cellW="463" cellH="15" length="1"></object>
+
+    <object type ="20" x="900" y="380"></object>
     
     <object type ="5" x="1327" y="423" cellW="351" cellH="15" length="1"></object>
 
