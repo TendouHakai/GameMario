@@ -7,3 +7,16 @@ void CTail::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 	right = left + TAIL_BBOX_WIDTH;
 	bottom = top + TAIL_BBOX_HEIGHT;
 }
+
+void CTail::OnCollisionWithBreakableBrick(LPCOLLISIONEVENT e)
+{
+	CBreakableBrick* brick = dynamic_cast<CBreakableBrick*>(e->obj);
+
+	brick->Delete();
+}
+
+void CTail::OnCollisionWith(LPCOLLISIONEVENT e)
+{
+	if (dynamic_cast<CBreakableBrick*>(e->obj))
+		OnCollisionWithBreakableBrick(e);
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "CBreakableBrick.h"
 
 #define TAIL_BBOX_WIDTH  10
 #define TAIL_BBOX_HEIGHT 6
@@ -13,21 +14,19 @@ class CTail :
     public CGameObject
 {
 protected:
-    BOOLEAN isActive;
     virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-    virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {};
     
+    void OnCollisionWithBreakableBrick(LPCOLLISIONEVENT e);
     
+    void OnNoCollision(DWORD dt){}
+    void OnCollisionWith(LPCOLLISIONEVENT e);
 public:
-    CTail(float x, float y) :CGameObject(x, y) {
-        isActive = false;
-    }
-
+    CTail(float x, float y) :CGameObject(x, y) {}
+    virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
+        CCollision::GetInstance()->Process(this, dt, coObjects);
+    };
     virtual void Render() {
-    }
-
-    void setActive(bool active) {
-        isActive = active;
+        RenderBoundingBox();
     }
 
     virtual int IsCollidable() { return 1; };

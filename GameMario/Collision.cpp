@@ -1,6 +1,7 @@
 #include "Collision.h"
 #include "GameObject.h"
 #include "PlatformNotBlock.h"
+#include "CBreakableBrick.h"
 
 #include "debug.h"
 
@@ -369,7 +370,11 @@ void CCollision::Process(LPGAMEOBJECT objSrc, DWORD dt, vector<LPGAMEOBJECT>* co
 	{
 		LPCOLLISIONEVENT e = coEvents[i];
 		if (e->isDeleted) continue;
-		if (e->obj->IsBlocking()) continue;  // blocking collisions were handled already, skip them
+		if (e->obj->IsBlocking()) { 
+			if (!dynamic_cast<CBreakableBrick*>(e->obj)) {
+				continue;
+			}
+		}  // blocking collisions were handled already, skip them
 
 		objSrc->OnCollisionWith(e);			
 	}

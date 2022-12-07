@@ -36,21 +36,16 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	
 	isOnPlatform = false;
 	isOnPlatformNotBlock = false;
+
+	if (nx > 0)
+		tail->SetPosition(x + MARIO_BIG_BBOX_WIDTH-2, y+6);
+	else tail->SetPosition(x - MARIO_BIG_BBOX_WIDTH+2, y+6);
 	
 	CCollision::GetInstance()->Process(this, dt, coObjects);
-	/*if (isOnPlatformNotBlock) {
-		float l, t, r, b;
-		GetBoundingBox(l, t, r, b);
-		float ysize = b - t;
-		if (y + ysize/2 >= yPlatformNotBlock) {
-			if (state == MARIO_STATE_JUMP) {
-				state = MARIO_STATE_IDLE;
-			}
-			y = yPlatformNotBlock - ysize / 2 - 0.005f;
-			vy = 0;
-			yPlatformNotBlock = 500;
-		}
-	}*/
+
+	if (isTailTurning) {
+		tail->Update(dt, coObjects);
+	}
 }
 
 void CMario::OnNoCollision(DWORD dt)
@@ -374,8 +369,11 @@ int CMario::GetAniRaccon()
 	int aniId = -1;
 	if (!isOnPlatform)
 	{
-		
-		if (abs(ax) == MARIO_ACCEL_RUN_X)
+		if (isTailTurning) {
+			if (nx > 0) aniId = ID_ANI_MARIO_RACCON_TAIL_TURNING_RIGHT;
+			else if (nx < 0) aniId = ID_ANI_MARIO_RACCON_TAIL_TURNING_LEFT;
+		}
+		else if (abs(ax) == MARIO_ACCEL_RUN_X)
 		{
 			if (nx >= 0)
 				if(ay<=MARIO_GRAVITY_FLY)
@@ -538,7 +536,7 @@ void CMario::Render()
 		aniId = GetAniIdSmall();
 
 	animations->Get(aniId)->Render(xx, y);
-	
+	tail->Render();
 
 	RenderBoundingBox();
 	

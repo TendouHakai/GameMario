@@ -317,14 +317,14 @@
     </animation>
     <!--TAIL TURNING RIGHT & LEFT-->
     <animation aniID="2600">
-      <Sprite SpriteID="14911" time="100"></Sprite>
-      <Sprite SpriteID="14931" time="100"></Sprite>
-      <Sprite SpriteID="14921" time="100"></Sprite>
+      <Sprite SpriteID="14911" time="50"></Sprite>
+      <Sprite SpriteID="14931" time="50"></Sprite>
+      <Sprite SpriteID="14921" time="50"></Sprite>
     </animation>
     <animation aniID="2601">
-      <Sprite SpriteID="14911" time="100"></Sprite>
-      <Sprite SpriteID="14941" time="100"></Sprite>
-      <Sprite SpriteID="14921" time="100"></Sprite>
+      <Sprite SpriteID="14911" time="50"></Sprite>
+      <Sprite SpriteID="14941" time="50"></Sprite>
+      <Sprite SpriteID="14921" time="50"></Sprite>
     </animation>
   </ANIMATIONS>
 </MARIO>

@@ -10,5 +10,7 @@ protected:
 public:
     CBreakableBrick(float x, float y):CBrick(x,y){}
     virtual void Render();
+    virtual int IsCollidable() { return 1; };
+    virtual int IsBlocking() { return 1; }
 };
 
