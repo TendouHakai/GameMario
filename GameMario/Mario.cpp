@@ -13,6 +13,7 @@
 #include "ChangeCam.h"
 #include "CWingGreenTurtle.h"
 #include "CMushroom.h"
+#include "CWingRedGoomba.h"
 
 #include "Collision.h"
 
@@ -75,7 +76,9 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		vx = 0;
 	}
 	
-	if (dynamic_cast<CGoomba*>(e->obj))
+	if (dynamic_cast<CWingRedGoomba*>(e->obj))
+		OnCollisionWithWingRedGoomba(e);
+	else if (dynamic_cast<CGoomba*>(e->obj))
 		OnCollisionWithGoomba(e);
 	else if (dynamic_cast<CTurtle*>(e->obj))
 		OnCollisionWithRedTurtle(e);
@@ -170,11 +173,13 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 				{
 					isKicking = true;
 					turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
+
 				}
 				else if(e->nx < 0)
 				{
 					isKicking = true;
 					turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+
 				}
 		}
 	}
@@ -272,6 +277,34 @@ void CMario::OnCollisionWithRedMushroom(LPCOLLISIONEVENT e)
 		SetLevel(MARIO_LEVEL_RACCON);
 	}
 	mushroom->Delete();
+}
+
+void CMario::OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e)
+{
+	CWingRedGoomba* wingredgoomba = dynamic_cast<CWingRedGoomba*>(e->obj);
+
+	if (e->ny < 0) {
+		if (wingredgoomba->GetState() != WINGGOOMBA_STATE_TOREDGOOMBA) {
+			wingredgoomba->SetState(WINGGOOMBA_STATE_TOREDGOOMBA);
+			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			y -= 10;
+		}
+	}
+	else {
+		if (untouchable == 0)
+		{
+			if (level > MARIO_LEVEL_SMALL)
+			{
+				level = MARIO_LEVEL_SMALL;
+				StartUntouchable();
+			}
+			else
+			{
+				DebugOut(L">>> Mario DIE >>> \n");
+				SetState(MARIO_STATE_DIE);
+			}
+		}
+	}
 }
 
 //

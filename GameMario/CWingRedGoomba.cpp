@@ -21,6 +21,11 @@ void CWingRedGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		prepare_start = 0;
 		SetState(WINGGOOMBA_STATE_FLY);
 	}
+	if (state == WINGGOOMBA_STATE_TOREDGOOMBA) {
+		CRedGoomba* goomba = new CRedGoomba(x, y);
+		coObjects->push_back(goomba);
+		this->Delete();
+	}
 	CGameObject::Update(dt, coObjects);
 	CCollision::GetInstance()->Process(this, dt, coObjects);
 	wings->SetPosition(x, y - GOOMBA_BBOX_HEIGHT / 2);
@@ -83,7 +88,9 @@ void CWingRedGoomba::SetState(int state)
 		vy = -WINGGOOMBA_SPEED_Y;
 		break;
 	}
-							 
+	case WINGGOOMBA_STATE_TOREDGOOMBA: {
+		break;
+	}
 	default:
 		break;
 	}
