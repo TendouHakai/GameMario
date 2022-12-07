@@ -3,6 +3,7 @@
 
 #include "Animation.h"
 #include "Animations.h"
+#include "CTail.h"
 
 #include "debug.h"
 
@@ -36,6 +37,9 @@
 
 #define MARIO_STATE_FLY				700
 #define MARIO_STATE_FLY_RELEASE		701
+
+#define MARIO_STATE_TAIL_TURNING	800
+#define MARIO_STATE_TAIL_TURNING_RELEASE	801
 
 
 #pragma region ANIMATION_ID
@@ -112,13 +116,16 @@
 
 #define ID_ANI_MARIO_RACCON_KICK_RIGHT 2500
 #define ID_ANI_MARIO_RACCON_KICK_LEFT 2501
+
+#define ID_ANI_MARIO_RACCON_TAIL_TURNING_RIGHT	2600
+#define ID_ANI_MARIO_RACCON_TAIL_TURNING_LEFT	2601
 #pragma endregion
 
 #define	MARIO_LEVEL_SMALL	1
 #define	MARIO_LEVEL_BIG		2
 #define MARIO_LEVEL_RACCON	3
 
-#define MARIO_BIG_BBOX_WIDTH  16
+#define MARIO_BIG_BBOX_WIDTH  15
 #define MARIO_BIG_BBOX_HEIGHT 24
 #define MARIO_BIG_SITTING_BBOX_WIDTH  14
 #define MARIO_BIG_SITTING_BBOX_HEIGHT 16
@@ -145,7 +152,10 @@ class CMario : public CGameObject
 	BOOLEAN isOnPlatform;
 	BOOLEAN isOnPlatformNotBlock;
 	BOOLEAN isKicking;
+	BOOLEAN isTailTurning;
 	int coin; 
+	CTail* tail;
+	
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithRedTurtle(LPCOLLISIONEVENT e);
@@ -179,6 +189,9 @@ public:
 		yPlatformNotBlock = 500;
 
 		isKicking = false;
+
+		isTailTurning = false;
+		tail = new CTail(x, y);
 
 		coin = 0;
 	}

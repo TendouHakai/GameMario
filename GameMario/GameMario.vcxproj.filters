@@ -159,6 +159,7 @@
     <ClInclude Include="CRedGoomba.h" />
     <ClInclude Include="CWingRedGoomba.h" />
     <ClInclude Include="CWingOfGoomba.h" />
+    <ClInclude Include="CTail.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -278,6 +279,9 @@
     <ClCompile Include="CWingOfGoomba.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CTail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -335,6 +339,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="WingOfRedGoomba.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Tail.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

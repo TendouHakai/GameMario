@@ -109,6 +109,11 @@
     <Sprite spriteID ="14811" l="420" t="752" r="445" b="783" textureID="0"></Sprite>
     <!--KICK LEFT-->
     <Sprite spriteID ="14821" l="0" t="752" r="25" b="783" textureID="0"></Sprite>
+    <!--TAIL TURNING-->
+    <Sprite spriteID ="14911" l="215" t="632" r="230" b="663" textureID="0"></Sprite>
+    <Sprite spriteID ="14931" l="361" t="870" r="390" b="901" textureID="0"></Sprite>
+    <Sprite spriteID ="14941" l="58" t="870" r="81" b="901" textureID="0"></Sprite>
+    <Sprite spriteID ="14921" l="215" t="674" r="230" b="701" textureID="0"></Sprite>
   </SPRITES>
 
   <ANIMATIONS>
@@ -309,6 +314,17 @@
     </animation>
     <animation aniID="2501">
       <Sprite SpriteID="14821" time="300"></Sprite>
+    </animation>
+    <!--TAIL TURNING RIGHT & LEFT-->
+    <animation aniID="2600">
+      <Sprite SpriteID="14911" time="100"></Sprite>
+      <Sprite SpriteID="14931" time="100"></Sprite>
+      <Sprite SpriteID="14921" time="100"></Sprite>
+    </animation>
+    <animation aniID="2601">
+      <Sprite SpriteID="14911" time="100"></Sprite>
+      <Sprite SpriteID="14941" time="100"></Sprite>
+      <Sprite SpriteID="14921" time="100"></Sprite>
     </animation>
   </ANIMATIONS>
 </MARIO>

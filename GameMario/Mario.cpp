@@ -410,6 +410,10 @@ int CMario::GetAniRaccon()
 				else if (vx < 0)
 					aniId = ID_ANI_MARIO_RACCON_KICK_LEFT;
 			}
+			else if (isTailTurning) {
+				if (nx > 0) aniId = ID_ANI_MARIO_RACCON_TAIL_TURNING_RIGHT;
+				else if (nx < 0) aniId = ID_ANI_MARIO_RACCON_TAIL_TURNING_LEFT;
+			}
 			else if (vx == 0)
 			{
 				if (nx > 0) aniId = ID_ANI_MARIO_RACCON_IDLE_RIGHT;
@@ -511,19 +515,32 @@ void CMario::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
 	int aniId = -1;
+	float xx = x;
 
 	if (state == MARIO_STATE_DIE)
 		aniId = ID_ANI_MARIO_DIE;
-	else if (level == MARIO_LEVEL_RACCON)
+	else if (level == MARIO_LEVEL_RACCON) {
 		aniId = GetAniRaccon();
+		if (nx > 0) { 
+			if (!isTailTurning)
+				xx -= 2;
+			else xx += 3;
+		}
+		else { 
+			if (!isTailTurning)
+				xx += 2;
+			else xx -= 3;
+		}
+	}
 	else if (level == MARIO_LEVEL_BIG)
 		aniId = GetAniIdBig();
 	else if (level == MARIO_LEVEL_SMALL)
 		aniId = GetAniIdSmall();
 
-	animations->Get(aniId)->Render(x, y);
+	animations->Get(aniId)->Render(xx, y);
+	
 
-	//RenderBoundingBox();
+	RenderBoundingBox();
 	
 	DebugOutTitle(L"Coins: %d", coin);
 }
@@ -587,6 +604,14 @@ void CMario::SetState(int state)
 	case MARIO_STATE_FLY_RELEASE:
 		ay = MARIO_GRAVITY;
 		break;
+	case MARIO_STATE_TAIL_TURNING: {
+		isTailTurning = true;
+		break;
+	}
+	case MARIO_STATE_TAIL_TURNING_RELEASE: {
+		isTailTurning = false;
+		break;
+	}
 	case MARIO_STATE_SIT:
 		if (isOnPlatform && level != MARIO_LEVEL_SMALL)
 		{
@@ -616,6 +641,7 @@ void CMario::SetState(int state)
 		vx = 0;
 		ax = 0;
 		break;
+	
 	}
 
 	CGameObject::SetState(state);
@@ -647,6 +673,54 @@ void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom
 		right = left + MARIO_SMALL_BBOX_WIDTH;
 		bottom = top + MARIO_SMALL_BBOX_HEIGHT;
 	}
+
+	/*if (level == MARIO_LEVEL_SMALL) {
+		left = x - MARIO_SMALL_BBOX_WIDTH / 2;
+		top = y - MARIO_SMALL_BBOX_HEIGHT / 2;
+		right = left + MARIO_SMALL_BBOX_WIDTH;
+		bottom = top + MARIO_SMALL_BBOX_HEIGHT;
+	}
+	else if (level == MARIO_LEVEL_BIG) {
+		if (isSitting)
+		{
+			left = x - MARIO_BIG_SITTING_BBOX_WIDTH / 2;
+			top = y - MARIO_BIG_SITTING_BBOX_HEIGHT / 2;
+			right = left + MARIO_BIG_SITTING_BBOX_WIDTH;
+			bottom = top + MARIO_BIG_SITTING_BBOX_HEIGHT;
+		}
+		else
+		{
+			left = x - MARIO_BIG_BBOX_WIDTH / 2;
+			top = y - MARIO_BIG_BBOX_HEIGHT / 2;
+			right = left + MARIO_BIG_BBOX_WIDTH;
+			bottom = top + MARIO_BIG_BBOX_HEIGHT;
+		}
+	}
+	else if (level == MARIO_LEVEL_RACCON) {
+		if (isSitting)
+		{
+			left = x - MARIO_BIG_SITTING_BBOX_WIDTH / 2;
+			top = y - MARIO_BIG_SITTING_BBOX_HEIGHT / 2;
+			right = left + MARIO_BIG_SITTING_BBOX_WIDTH;
+			bottom = top + MARIO_BIG_SITTING_BBOX_HEIGHT;
+		}
+		else
+		{
+			if (nx > 0) {
+				left = x - MARIO_BIG_BBOX_WIDTH / 2;
+				top = y - MARIO_BIG_BBOX_HEIGHT / 2;
+				right = left + MARIO_BIG_BBOX_WIDTH;
+				bottom = top + MARIO_BIG_BBOX_HEIGHT;
+			}
+			else {
+				left = x - MARIO_BIG_BBOX_WIDTH / 2;
+				top = y - MARIO_BIG_BBOX_HEIGHT / 2;
+				right = left + MARIO_BIG_BBOX_WIDTH;
+				bottom = top + MARIO_BIG_BBOX_HEIGHT;
+			}
+			
+		}*/
+	
 }
 
 void CMario::SetLevel(int l)

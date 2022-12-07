@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TAIL>
+  <SPRITES>
+    <!--RIGHT-->
+    <Sprite spriteID ="110001" l="407" t="882" r="415" b="889" textureID="0"></Sprite>
+    <!--LEFT-->
+    <Sprite spriteID ="110002" l="423" t="883" r="430" b="889" textureID="0"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--RIGHT-->
+    <animation aniID="25001">
+      <Sprite SpriteID="110001" time="70"></Sprite>
+    </animation>
+    <!--LEFT-->
+    <animation aniID="25002">
+      <Sprite SpriteID="110002" time="70"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</TAIL>

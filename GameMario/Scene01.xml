@@ -22,11 +22,12 @@
     <asset link="Goomba.xml"></asset>
     <asset link="RedGoomba.xml"></asset>
     <asset link="WingOfRedGoomba.xml"></asset>
+    <asset link="Tail.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="100" y="300"> </object>
-    <object type ="22" x="250" y="395"> </object>
+    <object type ="0" x="200" y="300"> </object>
+    <!--<object type ="22" x="250" y="395"> </object>-->
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
     

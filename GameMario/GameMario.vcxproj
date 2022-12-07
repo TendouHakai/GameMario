@@ -147,6 +147,7 @@
     <ClInclude Include="CPlatformSprite.h" />
     <ClInclude Include="CQuestionBrick.h" />
     <ClInclude Include="CRedGoomba.h" />
+    <ClInclude Include="CTail.h" />
     <ClInclude Include="CTube.h" />
     <ClInclude Include="CTurtle.h" />
     <ClInclude Include="CWingGreenTurtle.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="CPlatformSprite.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CRedGoomba.cpp" />
+    <ClCompile Include="CTail.cpp" />
     <ClCompile Include="CTube.cpp" />
     <ClCompile Include="CTurtle.cpp" />
     <ClCompile Include="CWingGreenTurtle.cpp" />
@@ -232,6 +234,7 @@
     <Xml Include="RedTurtle.xml" />
     <Xml Include="Scence.xml" />
     <Xml Include="Scene01.xml" />
+    <Xml Include="Tail.xml" />
     <Xml Include="WingGreenTurtle.xml" />
     <Xml Include="WingOfRedGoomba.xml" />
   </ItemGroup>

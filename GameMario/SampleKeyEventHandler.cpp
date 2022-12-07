@@ -34,6 +34,9 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_UP:
 		mario->SetState(MARIO_STATE_FLY); 
 		break;
+	case DIK_D: 
+		mario->SetState(MARIO_STATE_TAIL_TURNING);
+		break;
 	case DIK_R: // reset
 		//Reload();
 		break;
@@ -55,6 +58,9 @@ void CSampleKeyHandler::OnKeyUp(int KeyCode)
 		break;
 	case DIK_UP:
 		mario->SetState(MARIO_STATE_FLY_RELEASE);
+		break;
+	case DIK_D:
+		mario->SetState(MARIO_STATE_TAIL_TURNING_RELEASE);
 		break;
 	}
 }
