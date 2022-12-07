@@ -30,7 +30,6 @@ protected:
         
     };
     
-    virtual void SetState(int state) { this->state = state; }
 public:
     CWingOfGoomba(float x, float y) :CGameObject(x, y) { state = WINGS_STATE_FLAPPING; }
 
@@ -38,5 +37,7 @@ public:
 
     virtual int IsBlocking() { return 0; }
     virtual int IsCollidable() { return 0; };
+
+    virtual void SetState(int state) { this->state = state; }
 };
 
