@@ -161,6 +161,7 @@
     <ClInclude Include="CWingOfGoomba.h" />
     <ClInclude Include="CTail.h" />
     <ClInclude Include="CPeiceOfBreakableBrick.h" />
+    <ClInclude Include="CEffectHitWithTail.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -284,6 +285,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CPeiceOfBreakableBrick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CEffectHitWithTail.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

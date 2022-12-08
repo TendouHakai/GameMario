@@ -5,6 +5,8 @@
     <Sprite spriteID ="110001" l="407" t="882" r="415" b="889" textureID="0"></Sprite>
     <!--LEFT-->
     <Sprite spriteID ="110002" l="423" t="883" r="430" b="889" textureID="0"></Sprite>
+    <!--EFFECT HIT-->
+    <Sprite spriteID ="110003" l="515" t="67" r="536" b="83" textureID="20"></Sprite>
   </SPRITES>
   <ANIMATIONS>
     <!--RIGHT-->
@@ -14,6 +16,10 @@
     <!--LEFT-->
     <animation aniID="25002">
       <Sprite SpriteID="110002" time="70"></Sprite>
+    </animation>
+    <!--EFFECT HIT-->
+    <animation aniID="25003">
+      <Sprite SpriteID="110003" time="100"></Sprite>
     </animation>
   </ANIMATIONS>
 </TAIL>

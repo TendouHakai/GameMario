@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "debug.h"
+#include "CEffectHitWithTail.h"
 
 #define TURTLE_BBOX_WIDTH 18
 #define TURTLE_BBOX_HEIGHT 28
@@ -20,14 +21,17 @@
 #define TURTLE_STATE_REVIVAL	300
 #define TURTLE_STATE_KICKED_RIGHT	400
 #define TURTLE_STATE_KICKED_LEFT	500
+#define TURTLE_STATE_DEAD_TAILTURNING	600
 
 #define TURTLE_SPEED	0.02f
+#define TURTLE_SPEED_Y	0.3f
 #define TURTLE_GRAVITY	0.002f
 #define TURTLE_SPEED_KICKED	0.25f
 
-#define TURTLE_DEAD_TIME	2500
+#define TURTLE_DEAD_TIME	3000
 #define TURTLE_REVIVAL_TIME	500
 #define TURTLE_KICKED_TIME	1500
+#define TURTLE_UNTOUCHABLE_TIME	500
 
 class CTurtleCheck :
 	public CGameObject
@@ -75,12 +79,15 @@ protected:
 	float xStart;
 	float ay;
 	BOOLEAN isOnPlatform;
+	int isUntouchable;
 
 	ULONGLONG dead_start;
 	ULONGLONG revival_start;
+	ULONGLONG untouchable_start;
 	ULONGLONG kicked_start;
 
 	CTurtleCheck * check;
+	CGameObject* effecthit;
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
@@ -90,6 +97,19 @@ protected:
 		check->Update(dt, coObjects);
 
 		if (state == TURTLE_STATE_DEAD) {
+			if (GetTickCount64() - dead_start > TURTLE_DEAD_TIME)
+			{
+				dead_start = 0;
+				SetState(TURTLE_STATE_REVIVAL);
+			}
+		}
+		else if (state == TURTLE_STATE_DEAD_TAILTURNING) {
+			if (effecthit != NULL)
+			{
+				coObjects->push_back(effecthit);
+				effecthit = NULL;
+			}
+
 			if (GetTickCount64() - dead_start > TURTLE_DEAD_TIME)
 			{
 				dead_start = 0;
@@ -108,6 +128,13 @@ protected:
 			{
 				kicked_start = 0;
 				this->Delete();
+			}
+		}
+
+		if (isUntouchable == 1) {
+			if (GetTickCount64() - untouchable_start > TURTLE_KICKED_TIME) {
+				isUntouchable = 0;
+				untouchable_start = 0;
 			}
 		}
 		
@@ -137,14 +164,17 @@ public:
 		vx = TURTLE_SPEED;  
 		ay = TURTLE_GRAVITY; 
 		state = TURTLE_STATE_WALK;
-		isOnPlatform = false; 
+		isOnPlatform = false;
+		isUntouchable = 0;
 		dead_start = 0;
 		revival_start = 0;
 		kicked_start = 0;
+		effecthit = NULL;
 		check = new CTurtleCheck(x+10, y);
 	}
 	int IsCollidable() { return 1; };
 	int IsBlocking() { return 0; }
+	int IsUntouchable() { return isUntouchable; }
 	void SetState(int state) { 
 		switch (state)
 		{
@@ -167,11 +197,22 @@ public:
 		case TURTLE_STATE_KICKED_RIGHT: {
 			kicked_start = GetTickCount64();
 			vx = -TURTLE_SPEED_KICKED;
+			isUntouchable = 1;
+			untouchable_start = GetTickCount64();
 			break;
 		}
 		case TURTLE_STATE_KICKED_LEFT: {
 			kicked_start = GetTickCount64();
 			vx = TURTLE_SPEED_KICKED;
+			isUntouchable = 1;
+			untouchable_start = GetTickCount64();
+			break;
+		}
+		case TURTLE_STATE_DEAD_TAILTURNING: {
+			vx = 0;
+			dead_start = GetTickCount64();
+			vy = -TURTLE_SPEED_Y;
+			effecthit = new CEffectHitWithTail(x, y);
 			break;
 		}
 		default:

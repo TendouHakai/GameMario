@@ -101,6 +101,10 @@ void CTurtle::Render()
 		aniID = ID_ANI_TURTLE_DEAD;
 		break;
 	}
+	case TURTLE_STATE_DEAD_TAILTURNING: {
+		aniID = ID_ANI_TURTLE_DEAD;
+		break;
+	}
 	case TURTLE_STATE_REVIVAL: {
 		aniID = ID_ANI_TURTLE_REVIVAL;
 		break;

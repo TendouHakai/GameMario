@@ -136,7 +136,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 			turtle->SetState(TURTLE_STATE_DEAD);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 		}
-		else if (turtle->GetState() == TURTLE_STATE_DEAD) {
+		else if (turtle->GetState() == TURTLE_STATE_DEAD || turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
 			if (nx < 0) {
 				isKicking = true;
 				turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
@@ -148,9 +148,9 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 		}
 	}
 	else {
-		if (untouchable == 0)
+		if (untouchable == 0 && turtle->IsUntouchable()==0)
 		{
-			if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
+			if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL && turtle->GetState() != TURTLE_STATE_DEAD_TAILTURNING)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{

@@ -139,6 +139,7 @@
     <ClInclude Include="CBreakableBrick.h" />
     <ClInclude Include="CBullet.h" />
     <ClInclude Include="CCannibalFlower.h" />
+    <ClInclude Include="CEffectHitWithTail.h" />
     <ClInclude Include="CGreenTurtle.h" />
     <ClInclude Include="ChangeCam.h" />
     <ClInclude Include="CMushroom.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="CBreakableBrick.cpp" />
     <ClCompile Include="CBullet.cpp" />
     <ClCompile Include="CCannibalFlower.cpp" />
+    <ClCompile Include="CEffectHitWithTail.cpp" />
     <ClCompile Include="CGreenTurtle.cpp" />
     <ClCompile Include="ChangeCam.cpp" />
     <ClCompile Include="CMushroom.cpp" />
