@@ -12,7 +12,7 @@ void CTail::OnCollisionWithBreakableBrick(LPCOLLISIONEVENT e)
 {
 	CBreakableBrick* brick = dynamic_cast<CBreakableBrick*>(e->obj);
 
-	brick->Delete();
+	brick->SetState(BREAKABLEBRICK_STATE_BROKEN);
 }
 
 void CTail::OnCollisionWith(LPCOLLISIONEVENT e)

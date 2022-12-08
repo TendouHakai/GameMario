@@ -144,6 +144,7 @@
     <ClInclude Include="CMushroom.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="CPeiceOfBreakableBrick.h" />
     <ClInclude Include="CPlatformSprite.h" />
     <ClInclude Include="CQuestionBrick.h" />
     <ClInclude Include="CRedGoomba.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="CMushroom.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CPeiceOfBreakableBrick.cpp" />
     <ClCompile Include="CPlatformSprite.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CRedGoomba.cpp" />

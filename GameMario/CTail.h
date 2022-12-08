@@ -26,7 +26,7 @@ public:
         CCollision::GetInstance()->Process(this, dt, coObjects);
     };
     virtual void Render() {
-        RenderBoundingBox();
+        //RenderBoundingBox();
     }
 
     virtual int IsCollidable() { return 1; };

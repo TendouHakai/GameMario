@@ -160,6 +160,7 @@
     <ClInclude Include="CWingRedGoomba.h" />
     <ClInclude Include="CWingOfGoomba.h" />
     <ClInclude Include="CTail.h" />
+    <ClInclude Include="CPeiceOfBreakableBrick.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -280,6 +281,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CTail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeiceOfBreakableBrick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
