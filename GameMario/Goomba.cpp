@@ -52,10 +52,15 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	vy += ay * dt;
 	vx += ax * dt;
 
-	if ( (state==GOOMBA_STATE_DIE) && (GetTickCount64() - die_start > GOOMBA_DIE_TIMEOUT) )
+	if ( (state==GOOMBA_STATE_DIE || state==GOOMBA_STATE_DIE_TAILTURNING) && (GetTickCount64() - die_start > GOOMBA_DIE_TIMEOUT) )
 	{
 		isDeleted = true;
 		return;
+	}
+
+	if(state== GOOMBA_STATE_DIE_TAILTURNING && effecthit!=NULL){
+		coObjects->push_back(effecthit);
+		effecthit = NULL;
 	}
 
 	CGameObject::Update(dt, coObjects);
@@ -69,6 +74,9 @@ void CGoomba::Render()
 	if (state == GOOMBA_STATE_DIE) 
 	{
 		aniId = ID_ANI_GOOMBA_DIE;
+	}
+	else if (state == GOOMBA_STATE_DIE_TAILTURNING) {
+		aniId = ID_ANI_GOOMBA_DIE_TAILTURNING;
 	}
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x,y);
@@ -89,6 +97,12 @@ void CGoomba::SetState(int state)
 			break;
 		case GOOMBA_STATE_WALKING: 
 			vx = -GOOMBA_WALKING_SPEED;
+			break;
+		case GOOMBA_STATE_DIE_TAILTURNING:
+			vy = -GOOMBA_SPEED_Y;
+			vx = 0;
+			effecthit = new CEffectHitWithTail(x, y);
+			die_start = GetTickCount64();
 			break;
 	}
 }

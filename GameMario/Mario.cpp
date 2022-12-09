@@ -122,7 +122,7 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 	// jump on top >> kill Goomba and deflect a bit 
 	if (e->ny < 0)
 	{
-		if (goomba->GetState() != GOOMBA_STATE_DIE)
+		if (goomba->GetState() != GOOMBA_STATE_DIE && goomba->GetState()!= GOOMBA_STATE_DIE_TAILTURNING)
 		{
 			goomba->SetState(GOOMBA_STATE_DIE);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
@@ -132,7 +132,7 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 	{
 		if (untouchable == 0)
 		{
-			if (goomba->GetState() != GOOMBA_STATE_DIE)
+			if (goomba->GetState() != GOOMBA_STATE_DIE && goomba->GetState() != GOOMBA_STATE_DIE_TAILTURNING)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{

@@ -26,7 +26,7 @@
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="500" y="300"> </object>
+    <object type ="0" x="800" y="300"> </object>
     <!--<object type ="22" x="250" y="395"> </object>-->
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
@@ -55,8 +55,8 @@
     
     <object type ="5" x="853" y="408" cellW="463" cellH="15" length="1"></object>
 
-    <object type ="20" x="900" y="380"></object>
-    <object type ="20" x="920" y="380"></object>
+    <!--<object type ="20" x="900" y="380"></object>
+    <object type ="20" x="920" y="380"></object>-->
     <object type ="22" x="940" y="380"></object>
     
     <object type ="5" x="1327" y="423" cellW="351" cellH="15" length="1"></object>

@@ -6,6 +6,8 @@
     <Sprite spriteID ="31002" l="24" t="13" r="42" b="30" textureID="10"></Sprite>
     <!--DIE-->
     <Sprite spriteID ="32001" l="44" t="19" r="62" b="30" textureID="10"></Sprite>
+    <!--DIE TAIL TURNING-->
+    <Sprite spriteID ="32002" l="374" t="13" r="391" b="30" textureID="10"></Sprite>
   </SPRITES>
   <ANIMATIONS>
     <!--WALKING-->
@@ -15,7 +17,11 @@
     </animation>
     <!--DIE-->
     <animation aniID="5001">
-      <Sprite SpriteID="32001" time="100"></Sprite>
+      <Sprite SpriteID="32001" time="1000"></Sprite>
+    </animation>
+    <!--DIE  TAIL TURNING-->
+    <animation aniID="5002">
+      <Sprite SpriteID="32002" time="1000"></Sprite>
     </animation>
   </ANIMATIONS>
 </GOOMBA>

@@ -6,6 +6,8 @@
     <Sprite spriteID ="10802" l="105" t="0" r="119" b="15" textureID="12"></Sprite>
     <!--DIE-->
     <Sprite spriteID ="10803" l="120" t="6" r="135" b="15" textureID="12"></Sprite>
+    <!--DIE TAILTURNING-->
+    <Sprite spriteID ="10804" l="245" t="1" r="262" b="16" textureID="12"></Sprite>
   </SPRITES>
   <ANIMATIONS>
     <!--WALKING-->
@@ -16,6 +18,10 @@
     <!--DIE-->
     <animation aniID="23002">
       <Sprite SpriteID="10803" time="100"></Sprite>
+    </animation>
+    <!--DIE TAILTURNING-->
+    <animation aniID="23003">
+      <Sprite SpriteID="10804" time="100"></Sprite>
     </animation>
   </ANIMATIONS>
 </REDGOOMBA>

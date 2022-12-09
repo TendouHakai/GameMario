@@ -70,7 +70,7 @@ void CTurtle::OnCollisionWithGoomba(LPCOLLISIONEVENT e) {
 	CGoomba* goomba = dynamic_cast<CGoomba*>(e->obj);
 
 	if (e->nx != 0) {
-		goomba->SetState(GOOMBA_STATE_DIE);
+		goomba->SetState(GOOMBA_STATE_DIE_TAILTURNING);
 	}
 }
 
