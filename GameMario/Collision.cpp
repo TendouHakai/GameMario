@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "PlatformNotBlock.h"
 #include "CBreakableBrick.h"
+#include "CCannibalFlower.h"
+#include "CRedGoomba.h"
 
 #include "debug.h"
 
@@ -151,7 +153,12 @@ LPCOLLISIONEVENT CCollision::SweptAABB(LPGAMEOBJECT objSrc, DWORD dt, LPGAMEOBJE
 	float dx = mdx - sdx;
 	float dy = mdy - sdy;
 
-	objSrc->GetBoundingBox(ml, mt, mr, mb);
+	if (dynamic_cast<CCannibalFlower*>(objSrc)) {
+		CCannibalFlower* flower = dynamic_cast<CCannibalFlower*> (objSrc);
+		flower->GetActiveBox(ml, mt, mr, mb);
+	}
+	else objSrc->GetBoundingBox(ml, mt, mr, mb);
+
 	objDest->GetBoundingBox(sl, st, sr, sb);
 
 	if (isCollising(ml, mt, mr, mb, sl, st, sr, sb)) {

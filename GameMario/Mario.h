@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "Animations.h"
 #include "CTail.h"
+#include "CTurtle.h"
 
 #include "debug.h"
 
@@ -20,6 +21,10 @@
 #define MARIO_GRAVITY_FLY			0.0007f
 
 #define MARIO_JUMP_DEFLECT_SPEED  0.4f
+
+#define MARIO_TIME_KICK	200
+
+// define state
 
 #define MARIO_STATE_DIE				-10
 #define MARIO_STATE_IDLE			0
@@ -41,6 +46,7 @@
 #define MARIO_STATE_TAIL_TURNING	800
 #define MARIO_STATE_TAIL_TURNING_RELEASE	801
 
+#define MARIO_STATE_HOLDING	900
 
 #pragma region ANIMATION_ID
 
@@ -93,14 +99,23 @@
 #define ID_ANI_MARIO_RACCON_IDLE_RIGHT 1700
 #define ID_ANI_MARIO_RACCON_IDLE_LEFT 1701
 
+#define ID_ANI_MARIO_RACCON_IDLE_RIGHT_HOLDING 1702
+#define ID_ANI_MARIO_RACCON_IDLE_LEFT_HOLDING 1703
+
 #define ID_ANI_MARIO_RACCON_WALKING_RIGHT 1800
 #define ID_ANI_MARIO_RACCON_WALKING_LEFT 1801
+
+#define ID_ANI_MARIO_RACCON_WALKING_RIGHT_HOLDING 1802
+#define ID_ANI_MARIO_RACCON_WALKING_LEFT_HOLDING 1803
 
 #define ID_ANI_MARIO_RACCON_RUNNING_RIGHT 1900
 #define ID_ANI_MARIO_RACCON_RUNNING_LEFT 1901
 
 #define ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT 2000
 #define ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT 2001
+
+#define ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT_HOLDING 2002
+#define ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT_HOLDING 2003
 
 #define ID_ANI_MARIO_RACCON_JUMP_RUN_RIGHT 2100
 #define ID_ANI_MARIO_RACCON_JUMP_RUN_LEFT 2101
@@ -149,12 +164,15 @@ class CMario : public CGameObject
 	int level; 
 	int untouchable; 
 	ULONGLONG untouchable_start;
+	ULONGLONG kick_start;
 	BOOLEAN isOnPlatform;
 	BOOLEAN isOnPlatformNotBlock;
 	BOOLEAN isKicking;
 	BOOLEAN isTailTurning;
+	BOOLEAN isHolding;
 	int coin; 
 	CTail* tail;
+	CTurtle* turtleShell;
 	
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
@@ -168,6 +186,7 @@ class CMario : public CGameObject
 	void OnCollisionWithRedMushroom(LPCOLLISIONEVENT e);
 	void OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithBullet(LPCOLLISIONEVENT e);
+	void OnCollisionWithCannibalFlower(LPCOLLISIONEVENT e);
 
 	int GetAniRaccon();
 	int GetAniIdBig();
@@ -194,6 +213,10 @@ public:
 		isTailTurning = false;
 		tail = new CTail(x, y);
 
+		isHolding = false;
+		turtleShell = NULL;
+	
+		kick_start = 0;
 		coin = 0;
 	}
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
@@ -202,10 +225,10 @@ public:
 
 	int IsCollidable()
 	{ 
-		return (state != MARIO_STATE_DIE); 
+		return (state != MARIO_STATE_DIE );
 	}
 
-	int IsBlocking() {/* return (state != MARIO_STATE_DIE && untouchable==0);*/  return 0; }
+	int IsBlocking() { /*return (state != MARIO_STATE_DIE && untouchable==0);*/  return 0; }
 
 	void OnNoCollision(DWORD dt);
 	void OnCollisionWith(LPCOLLISIONEVENT e);

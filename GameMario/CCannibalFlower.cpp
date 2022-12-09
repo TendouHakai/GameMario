@@ -8,6 +8,14 @@ void CCannibalFlower::GetBoundingBox(float& left, float& top, float& right, floa
 	bottom = top + CANNIBALFLOWER_BBOX_HEIGHT;
 }
 
+void CCannibalFlower::GetActiveBox(float& left, float& top, float& right, float& bottom)
+{
+	left = x - CGame::GetInstance()->GetBackBufferWidth() / 2;
+	top = y - CGame::GetInstance()->GetBackBufferHeight() / 2;
+	right = left + CGame::GetInstance()->GetBackBufferWidth();
+	bottom = top + CGame::GetInstance()->GetBackBufferHeight();
+}
+
 void CCannibalFlower::Render()
 {
 	int aniID;
@@ -27,5 +35,12 @@ void CCannibalFlower::Render()
 		break;
 	}
 	CAnimations::GetInstance()->Get(aniID)->Render(x, y);
-	//RenderBoundingBox();
+	RenderBoundingBox();
+}
+
+void CCannibalFlower::OnCollisionWith(LPCOLLISIONEVENT e) {
+
+	if (dynamic_cast<CMario*>(e->obj)) {
+		isActive = true;
+	}
 }

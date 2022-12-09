@@ -114,6 +114,15 @@
     <Sprite spriteID ="14931" l="361" t="870" r="390" b="901" textureID="0"></Sprite>
     <Sprite spriteID ="14941" l="58" t="870" r="81" b="901" textureID="0"></Sprite>
     <Sprite spriteID ="14921" l="215" t="674" r="230" b="701" textureID="0"></Sprite>
+    <!--HOLDING IURTLE SHELL RIGHT-->
+    <Sprite spriteID ="15011" l="242" t="793" r="265" b="822" textureID="0"></Sprite>
+    <Sprite spriteID ="15021" l="272" t="793" r="295" b="822" textureID="0"></Sprite>
+    <Sprite spriteID ="15031" l="302" t="793" r="325" b="822" textureID="0"></Sprite>
+    <!--HOLDING IURTLE SHELL LEFT-->
+    <Sprite spriteID ="15041" l="182" t="793" r="205" b="822" textureID="0"></Sprite>
+    <Sprite spriteID ="15051" l="152" t="793" r="175" b="822" textureID="0"></Sprite>
+    <Sprite spriteID ="15061" l="122" t="793" r="145" b="822" textureID="0"></Sprite>
+    
   </SPRITES>
 
   <ANIMATIONS>
@@ -325,6 +334,31 @@
       <Sprite SpriteID="14911" time="50"></Sprite>
       <Sprite SpriteID="14941" time="50"></Sprite>
       <Sprite SpriteID="14921" time="50"></Sprite>
+    </animation>
+    <!--HOLDING TURTLE SHELL IDLE RIGHT & LEFT-->
+    <animation aniID="1702">
+      <Sprite SpriteID="15011" time="100"></Sprite>
+    </animation>
+    <animation aniID="1703">
+      <Sprite SpriteID="15041" time="100"></Sprite>
+    </animation>
+    <!--HOLDING TURTLE SHELL WALK RIGHT & LEFT-->
+    <animation aniID="1802">
+      <Sprite SpriteID="15011" time="100"></Sprite>
+      <Sprite SpriteID="15021" time="100"></Sprite>
+      <Sprite SpriteID="15031" time="100"></Sprite>
+    </animation>
+    <animation aniID="1803">
+      <Sprite SpriteID="15041" time="100"></Sprite>
+      <Sprite SpriteID="15051" time="100"></Sprite>
+      <Sprite SpriteID="15061" time="100"></Sprite>
+    </animation>
+    <!--HOLDING TURTLE SHELL JUMP RIGHT & LEFT-->
+    <animation aniID="2002">
+      <Sprite SpriteID="15031" time="100"></Sprite>
+    </animation>
+    <animation aniID="2003">
+      <Sprite SpriteID="15061" time="100"></Sprite>
     </animation>
   </ANIMATIONS>
 </MARIO>

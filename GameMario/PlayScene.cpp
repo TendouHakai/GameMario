@@ -492,7 +492,7 @@ void CPlayScene::PurgeDeletedObjects()
 	for (it = objects.begin(); it != objects.end(); it++)
 	{
 		LPGAMEOBJECT o = *it;
-		if (o->IsDeleted())
+		if (o->IsDeleted() && o!=NULL)
 		{
 			delete o;
 			*it = NULL;

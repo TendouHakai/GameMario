@@ -15,6 +15,7 @@
 #define ID_ANI_TURTLE_WALK_RIGHT 15001
 #define ID_ANI_TURTLE_DEAD 15002
 #define ID_ANI_TURTLE_REVIVAL 15003
+#define ID_ANI_TURTLE_DEAD_TAILTURNING 15004
 
 #define TURTLE_STATE_WALK	100
 #define TURTLE_STATE_DEAD	200
@@ -22,6 +23,7 @@
 #define TURTLE_STATE_KICKED_RIGHT	400
 #define TURTLE_STATE_KICKED_LEFT	500
 #define TURTLE_STATE_DEAD_TAILTURNING	600
+#define TURTLE_STATE_ISHOLDED	700
 
 #define TURTLE_SPEED	0.02f
 #define TURTLE_SPEED_Y	0.3f
@@ -79,6 +81,7 @@ protected:
 	float xStart;
 	float ay;
 	BOOLEAN isOnPlatform;
+	BOOLEAN isdeadTailTurning;
 	int isUntouchable;
 
 	ULONGLONG dead_start;
@@ -108,12 +111,6 @@ protected:
 			{
 				coObjects->push_back(effecthit);
 				effecthit = NULL;
-			}
-
-			if (GetTickCount64() - dead_start > TURTLE_DEAD_TIME)
-			{
-				dead_start = 0;
-				SetState(TURTLE_STATE_REVIVAL);
 			}
 		}
 		else if (state == TURTLE_STATE_REVIVAL) {
@@ -157,8 +154,9 @@ protected:
 	}
 	virtual void OnNoCollision(DWORD dt);
 	virtual void OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e);
+	virtual void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
-	virtual void Render();
+	
 public:
 	CTurtle(float x, float y) :CGameObject(x, y) { 
 		vx = TURTLE_SPEED;  
@@ -170,8 +168,10 @@ public:
 		revival_start = 0;
 		kicked_start = 0;
 		effecthit = NULL;
+		isdeadTailTurning = false;
 		check = new CTurtleCheck(x+10, y);
 	}
+	virtual void Render();
 	int IsCollidable() { return 1; };
 	int IsBlocking() { return 0; }
 	int IsUntouchable() { return isUntouchable; }
@@ -197,6 +197,7 @@ public:
 		case TURTLE_STATE_KICKED_RIGHT: {
 			kicked_start = GetTickCount64();
 			vx = -TURTLE_SPEED_KICKED;
+			ay = TURTLE_GRAVITY;
 			isUntouchable = 1;
 			untouchable_start = GetTickCount64();
 			break;
@@ -204,15 +205,23 @@ public:
 		case TURTLE_STATE_KICKED_LEFT: {
 			kicked_start = GetTickCount64();
 			vx = TURTLE_SPEED_KICKED;
+			ay = TURTLE_GRAVITY;
 			isUntouchable = 1;
 			untouchable_start = GetTickCount64();
 			break;
 		}
 		case TURTLE_STATE_DEAD_TAILTURNING: {
+			isdeadTailTurning = true;
 			vx = 0;
 			dead_start = GetTickCount64();
 			vy = -TURTLE_SPEED_Y;
 			effecthit = new CEffectHitWithTail(x, y);
+			break;
+		}
+		case TURTLE_STATE_ISHOLDED: {
+			ay = 0;
+			vx = 0;
+			vy = 0;
 			break;
 		}
 		default:

@@ -7,6 +7,8 @@
     <Sprite spriteID ="90004" l="434" t="128" r="453" b="155" textureID="11"></Sprite>
     <Sprite spriteID ="90005" l="47" t="138" r="68" b="155" textureID="10"></Sprite>
     <Sprite spriteID ="90006" l="71" t="138" r="88" b="155" textureID="10"></Sprite>
+    <!--DEAD TAIL TURNING-->
+    <Sprite spriteID ="90007" l="302" t="136" r="319" b="153" textureID="10"></Sprite>
   </SPRITES>
   <ANIMATIONS>
     <!--WALK LEFT-->
@@ -26,6 +28,10 @@
     <!--REVIAL-->
     <animation aniID="15003">
       <Sprite SpriteID="90006" time="500"></Sprite>
+    </animation>
+    <!--DEAD-->
+    <animation aniID="15004">
+      <Sprite SpriteID="90007" time="1000"></Sprite>
     </animation>
   </ANIMATIONS>
 </REDTURTLE>

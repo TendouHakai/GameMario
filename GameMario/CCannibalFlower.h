@@ -8,8 +8,8 @@
 #define ID_ANI_CANNIBALFLOWER_LOCK_RIGHT	13002
 #define ID_ANI_CANNIBALFLOWER_ATTACK_RIGHT	13003
 
-#define CANNIBALFLOWER_BBOX_WIDTH 33
-#define CANNIBALFLOWER_BBOX_HEIGHT 60
+#define CANNIBALFLOWER_BBOX_WIDTH 17
+#define CANNIBALFLOWER_BBOX_HEIGHT 27
 
 #define CANNIBALFLOWER_STATE_HIDE 100
 #define CANNIBALFLOWER_STATE_ATTACK 200
@@ -28,9 +28,16 @@ protected:
 	int direct;
 	float hide_start;
 	CBullet* bullet;
-	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+
+	BOOLEAN isActive;
+	
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects){
 		y += vy * dt;
+		isActive = false;
+		CCollision::GetInstance()->Process(this, dt, coObjects);
+
+		if (isActive == false)
+			return;
 		CPlayScene* scene = dynamic_cast<CPlayScene*>((CGame::GetInstance()->GetCurrentScene()));
 		float xMario, yMario;
 		scene->GetPlayer()->GetPosition(xMario, yMario);
@@ -62,24 +69,30 @@ protected:
 			SetState(CANNIBALFLOWER_STATE_HIDE);
 		}
 
+		
+		
 	}
 	virtual void Render();
 
 	virtual int IsCollidable() { return 1; };
 	virtual int IsBlocking() { return 0; }
-	/*virtual void OnNoCollision(DWORD dt);
+	virtual void OnNoCollision(DWORD dt){}
 
-	virtual void OnCollisionWith(LPCOLLISIONEVENT e);*/
+	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 public:
 	CCannibalFlower(float x, float y) :CGameObject(x,y) { 
 		state = CANNIBALFLOWER_STATE_HIDE; 
-		yAttack = y-30; 
+		yAttack = y-40; 
 		yHide = y;
 		isWait = true; 
 		hide_start = GetTickCount64(); 
 		bullet = NULL;
 		direct = 0;
+
+		isActive = false;
 	}
+	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+	virtual void GetActiveBox(float& left, float& top, float& right, float& bottom);
 	void SetState(int state) { 
 		switch (state)
 		{

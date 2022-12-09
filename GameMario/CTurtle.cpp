@@ -1,6 +1,7 @@
 #include "CTurtle.h"
 #include "PlatformNotBlock.h"
 #include "CQuestionBrick.h"
+#include "Goomba.h"
 
 void CTurtleCheck::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -65,11 +66,22 @@ void CTurtle::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
 	}
 }
 
+void CTurtle::OnCollisionWithGoomba(LPCOLLISIONEVENT e) {
+	CGoomba* goomba = dynamic_cast<CGoomba*>(e->obj);
+
+	if (e->nx != 0) {
+		goomba->SetState(GOOMBA_STATE_DIE);
+	}
+}
+
 void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	if (state == TURTLE_STATE_KICKED_LEFT || state == TURTLE_STATE_KICKED_RIGHT) {
 		if (dynamic_cast<CQuestionBrick*>(e->obj)) {
 			OnCollisionWithQuestionBrick(e);
+		}
+		else if (dynamic_cast<CGoomba*>(e->obj)) {
+			OnCollisionWithGoomba(e);
 		}
 	}
 	if (!e->obj->IsBlocking()) return;
@@ -82,6 +94,7 @@ void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		vx = -vx;
 	}
+		
 }
 
 void CTurtle::Render()
@@ -102,7 +115,7 @@ void CTurtle::Render()
 		break;
 	}
 	case TURTLE_STATE_DEAD_TAILTURNING: {
-		aniID = ID_ANI_TURTLE_DEAD;
+		aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
 		break;
 	}
 	case TURTLE_STATE_REVIVAL: {
@@ -110,11 +123,19 @@ void CTurtle::Render()
 		break;
 	}
 	case TURTLE_STATE_KICKED_RIGHT: {
-		aniID = ID_ANI_TURTLE_DEAD;
+		if (isdeadTailTurning)
+			aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
+		else aniID = ID_ANI_TURTLE_DEAD;
 		break;
 	}
 	case TURTLE_STATE_KICKED_LEFT: {
-		aniID = ID_ANI_TURTLE_DEAD;
+		if (isdeadTailTurning)
+			aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
+		else aniID = ID_ANI_TURTLE_DEAD;
+		break;
+	}
+	case TURTLE_STATE_ISHOLDED: {
+		aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
 		break;
 	}
 	default: {
