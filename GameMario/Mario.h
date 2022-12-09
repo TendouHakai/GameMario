@@ -167,6 +167,7 @@ class CMario : public CGameObject
 	void OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e);
 	void OnCollisionWithRedMushroom(LPCOLLISIONEVENT e);
 	void OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e);
+	void OnCollisionWithBullet(LPCOLLISIONEVENT e);
 
 	int GetAniRaccon();
 	int GetAniIdBig();

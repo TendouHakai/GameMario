@@ -14,6 +14,7 @@
 #include "CWingGreenTurtle.h"
 #include "CMushroom.h"
 #include "CWingRedGoomba.h"
+#include "CBullet.h"
 
 #include "Collision.h"
 
@@ -89,6 +90,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithWingGreenTurtle(e);
 	else if (dynamic_cast<CMushroom*>(e->obj))
 		OnCollisionWithRedMushroom(e);
+	else if (dynamic_cast<CBullet*>(e->obj))
+		OnCollisionWithBullet(e);
 	
 }
 
@@ -302,6 +305,19 @@ void CMario::OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e)
 	}
 }
 
+void CMario::OnCollisionWithBullet(LPCOLLISIONEVENT e)
+{
+	CBullet* butlet = dynamic_cast<CBullet*>(e->obj);
+	
+	if (level != MARIO_LEVEL_SMALL) {
+		level -= 1;
+	}
+	else {
+		SetState(MARIO_STATE_DIE);
+	}
+
+	butlet->Delete();
+}
 //
 // Get animation ID for small Mario
 //
