@@ -1,6 +1,7 @@
 #include "CTail.h"
 #include "CTurtle.h"
 #include "Goomba.h"
+#include "CWingGreenTurtle.h"
 
 void CTail::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -34,6 +35,14 @@ void CTail::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 	}
 }
 
+void CTail::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e) {
+	CWingGreenTurtle* turtle = dynamic_cast<CWingGreenTurtle*>(e->obj);
+
+	if (turtle->GetState() != WINGGREENTURTLE_STATE_TO_GREENTURTLE && turtle->GetState() != WINGGREENTURTLE_STATE_TAILTURNING) {
+		turtle->SetState(WINGGREENTURTLE_STATE_TAILTURNING);
+	}
+}
+
 void CTail::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	if (dynamic_cast<CBreakableBrick*>(e->obj))
@@ -42,4 +51,6 @@ void CTail::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithRedTurtle(e);
 	else if (dynamic_cast<CGoomba*>(e->obj))
 		OnCollisionWithGoomba(e);
+	else if (dynamic_cast<CWingGreenTurtle*>(e->obj))
+		OnCollisionWithWingGreenTurtle(e);
 }

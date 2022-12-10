@@ -24,6 +24,7 @@ protected:
     void OnCollisionWithBreakableBrick(LPCOLLISIONEVENT e);
     void OnCollisionWithRedTurtle(LPCOLLISIONEVENT e);
     void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
+    void OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e);
     
     void OnNoCollision(DWORD dt){}
     void OnCollisionWith(LPCOLLISIONEVENT e);

@@ -228,7 +228,10 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 	CGreenTurtle* turtle = dynamic_cast<CGreenTurtle*>(e->obj);
 
 	if (e->ny < 0) {
-		if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
+		if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
+			turtle->SetState(GREENTURTLE_STATE_COLLECTION);
+		}
+		else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
 		{
 			turtle->SetState(TURTLE_STATE_DEAD);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
@@ -243,14 +246,7 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 				turtle->SetState(TURTLE_STATE_KICKED_LEFT);
 			}
 		}
-		else if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
-			if (nx < 0) {
-				turtle->SetState(GREENTURTLE_STATE_COLLECTION);
-			}
-			else {
-				turtle->SetState(GREENTURTLE_STATE_COLLECTION);
-			}
-		}
+		
 	}
 	else {
 		if (untouchable == 0 && turtle->IsUntouchable() == 0)
@@ -258,7 +254,7 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
 				turtle->SetState(GREENTURTLE_STATE_COLLECTION);
 			}
-			else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
+			else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL && turtle->GetState() != GREENTURTLE_STATE_COLLECTION)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
