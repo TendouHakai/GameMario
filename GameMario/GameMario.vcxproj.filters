@@ -162,6 +162,7 @@
     <ClInclude Include="CTail.h" />
     <ClInclude Include="CPeiceOfBreakableBrick.h" />
     <ClInclude Include="CEffectHitWithTail.h" />
+    <ClInclude Include="CPrice.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -290,6 +291,9 @@
     <ClCompile Include="CEffectHitWithTail.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CPrice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -350,6 +354,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="Tail.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="CPrice.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

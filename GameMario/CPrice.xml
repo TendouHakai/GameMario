@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PRICE>
+  <SPRITES>
+    <!--100-->
+    <Sprite spriteID ="11001" l="457" t="222" r="470" b="231" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--100-->
+    <animation aniID="25001">
+      <Sprite SpriteID="11001" time="1000"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</PRICE>

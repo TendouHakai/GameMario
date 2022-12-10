@@ -23,6 +23,7 @@
     <asset link="RedGoomba.xml"></asset>
     <asset link="WingOfRedGoomba.xml"></asset>
     <asset link="Tail.xml"></asset>
+    <asset link="CPrice.xml"></asset>
   </ASSETS>
   
   <OBJECTS>

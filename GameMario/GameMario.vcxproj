@@ -147,6 +147,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CPeiceOfBreakableBrick.h" />
     <ClInclude Include="CPlatformSprite.h" />
+    <ClInclude Include="CPrice.h" />
     <ClInclude Include="CQuestionBrick.h" />
     <ClInclude Include="CRedGoomba.h" />
     <ClInclude Include="CTail.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CPeiceOfBreakableBrick.cpp" />
     <ClCompile Include="CPlatformSprite.cpp" />
+    <ClCompile Include="CPrice.cpp" />
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CRedGoomba.cpp" />
     <ClCompile Include="CTail.cpp" />
@@ -227,6 +229,7 @@
     <Xml Include="Bullet.xml" />
     <Xml Include="CannibalFlower.xml" />
     <Xml Include="CloudBrick.xml" />
+    <Xml Include="CPrice.xml" />
     <Xml Include="Goomba.xml" />
     <Xml Include="Mushroom.xml" />
     <Xml Include="Coin.xml" />
