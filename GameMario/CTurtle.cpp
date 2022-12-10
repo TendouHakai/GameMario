@@ -123,13 +123,13 @@ void CTurtle::Render()
 		break;
 	}
 	case TURTLE_STATE_KICKED_RIGHT: {
-		if (isdeadTailTurning)
+		if (isdeadTailTurning==true)
 			aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
 		else aniID = ID_ANI_TURTLE_DEAD;
 		break;
 	}
 	case TURTLE_STATE_KICKED_LEFT: {
-		if (isdeadTailTurning)
+		if (isdeadTailTurning==true)
 			aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
 		else aniID = ID_ANI_TURTLE_DEAD;
 		break;

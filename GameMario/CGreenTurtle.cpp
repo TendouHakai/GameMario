@@ -21,12 +21,20 @@ void CGreenTurtle::Render()
 		aniID = ID_ANI_GREENTURTLE_REVIVAL;
 		break;
 	}
+	case TURTLE_STATE_DEAD_TAILTURNING: {
+		aniID = ID_ANI_GREENTURTLE_DEAD_TAILTURNING;
+		break;
+	}
 	case TURTLE_STATE_KICKED_RIGHT: {
 		aniID = ID_ANI_GREENTURTLE_KICK;
 		break;
 	}
 	case TURTLE_STATE_KICKED_LEFT: {
 		aniID = ID_ANI_GREENTURTLE_KICK;
+		break;
+	}
+	case GREENTURTLE_STATE_COLLECTION: {
+		aniID = ID_ANI_GREENTURTLE_DEAD_TAILTURNING;
 		break;
 	}
 	default: {

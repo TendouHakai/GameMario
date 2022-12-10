@@ -177,6 +177,7 @@ class CMario : public CGameObject
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithRedTurtle(LPCOLLISIONEVENT e);
+	void OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOLLISIONEVENT e);
 	void OnCollisionWithPortal(LPCOLLISIONEVENT e);
 	void OnCollisionWithPlatformNotBlock(LPCOLLISIONEVENT e);

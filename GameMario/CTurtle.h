@@ -81,7 +81,7 @@ protected:
 	float xStart;
 	float ay;
 	BOOLEAN isOnPlatform;
-	BOOLEAN isdeadTailTurning;
+	bool isdeadTailTurning;
 	int isUntouchable;
 
 	ULONGLONG dead_start;
@@ -213,12 +213,12 @@ public:
 		case TURTLE_STATE_DEAD_TAILTURNING: {
 			isdeadTailTurning = true;
 			vx = 0;
-			dead_start = GetTickCount64();
 			vy = -TURTLE_SPEED_Y;
 			effecthit = new CEffectHitWithTail(x, y);
 			break;
 		}
 		case TURTLE_STATE_ISHOLDED: {
+			isdeadTailTurning = true;
 			ay = 0;
 			vx = 0;
 			vy = 0;

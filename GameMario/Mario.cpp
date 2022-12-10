@@ -25,8 +25,6 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	vy += ay * dt;
 	vx += ax * dt;
 
-	DebugOut(L"vx, vy: %f, %f\n", vx, vy);
-
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
 
 	// reset untouchable timer if untouchable time has passed
@@ -94,6 +92,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithWingRedGoomba(e);
 	else if (dynamic_cast<CGoomba*>(e->obj))
 		OnCollisionWithGoomba(e);
+	else if (dynamic_cast<CGreenTurtle*>(e->obj))
+		OnCollisionWithGreenTurtle(e);
 	else if (dynamic_cast<CTurtle*>(e->obj))
 		OnCollisionWithRedTurtle(e);
 	else if (dynamic_cast<CCoin*>(e->obj))
@@ -222,6 +222,70 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 		}
 	}
 
+}
+
+void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
+	CGreenTurtle* turtle = dynamic_cast<CGreenTurtle*>(e->obj);
+
+	if (e->ny < 0) {
+		if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
+		{
+			turtle->SetState(TURTLE_STATE_DEAD);
+			vy = -MARIO_JUMP_DEFLECT_SPEED;
+		}
+		else if (turtle->GetState() == TURTLE_STATE_DEAD) {
+			isKicking = true;
+			kick_start = GetTickCount64();
+			if (nx < 0) {
+				turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
+			}
+			else {
+				turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+			}
+		}
+		else if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
+			if (nx < 0) {
+				turtle->SetState(GREENTURTLE_STATE_COLLECTION);
+			}
+			else {
+				turtle->SetState(GREENTURTLE_STATE_COLLECTION);
+			}
+		}
+	}
+	else {
+		if (untouchable == 0 && turtle->IsUntouchable() == 0)
+		{
+			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
+				turtle->SetState(GREENTURTLE_STATE_COLLECTION);
+			}
+			else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
+			{
+				if (level > MARIO_LEVEL_SMALL)
+				{
+					level = MARIO_LEVEL_SMALL;
+					StartUntouchable();
+				}
+				else
+				{
+					DebugOut(L">>> Mario DIE >>> \n");
+					SetState(MARIO_STATE_DIE);
+				}
+			}
+			else
+				if (e->nx > 0)
+				{
+					isKicking = true;
+					turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
+
+				}
+				else if (e->nx < 0)
+				{
+					isKicking = true;
+					turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+
+				}
+		}
+	}
 }
 
 void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)

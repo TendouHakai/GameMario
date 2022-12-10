@@ -1,10 +1,11 @@
 #pragma once
+#include "GameObject.h"
 #include "CRedGoomba.h"
 #include "CWingOfGoomba.h"
 
 #define WINGGOOMBA_STATE_WALK   100
 #define WINGGOOMBA_STATE_PREPARETOFLY   200
-#define WINGGOOMBA_STATE_FLY   300
+#define WINGGOOMBA_STATE_FLY   500
 #define WINGGOOMBA_STATE_TOREDGOOMBA    400
 
 #define TIME_WALK   1000
