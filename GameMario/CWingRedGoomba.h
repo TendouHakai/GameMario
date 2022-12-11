@@ -35,6 +35,7 @@ public:
 
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 
+    void OnCollisionWithBlockEnemies(LPCOLLISIONEVENT e);
     virtual void OnCollisionWith(LPCOLLISIONEVENT e);
     virtual void Render();
     virtual void SetState(int state);

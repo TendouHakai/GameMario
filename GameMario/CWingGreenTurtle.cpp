@@ -1,4 +1,5 @@
 #include "CWingGreenTurtle.h"
+#include "CBLockEnemies.h"
 
 void CWingGreenTurtle::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -14,8 +15,15 @@ void CWingGreenTurtle::OnNoCollision(DWORD dt)
 	y += vy * dt;
 }
 
+void CWingGreenTurtle::OnCollisionWithBlockEnemies(LPCOLLISIONEVENT e) {
+	if (e->nx != 0)
+		vx = -vx;
+}
+
 void CWingGreenTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 {
+	if (dynamic_cast<CBLockEnemies*>(e->obj))
+		OnCollisionWithBlockEnemies(e);
 	if (!e->obj->IsBlocking()) return;
 
 	if (e->ny != 0)
@@ -35,5 +43,5 @@ void CWingGreenTurtle::Render()
 		CAnimations::GetInstance()->Get(ID_ANI_WINGGREENTURTLE_WALK_RIGHT)->Render(x, y);
 	else CAnimations::GetInstance()->Get(ID_ANI_WINGGREENTURTLE_WALK_LEFT)->Render(x, y);
 
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }

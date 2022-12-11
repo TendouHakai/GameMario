@@ -25,6 +25,7 @@
 #include "CRedGoomba.h"
 #include "CWingOfGoomba.h"
 #include "CWingRedGoomba.h"
+#include "CBLockEnemies.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -379,6 +380,12 @@ void CPlayScene::Load()
 				obj = new CWingRedGoomba(x, y);
 				break;
 			}
+			case OBJECT_TYPE_BLOCKENEMIES: {
+				float width = (float)atof(node->Attribute("width"));
+				float height = (float)atof(node->Attribute("height"));
+				obj = new CBLockEnemies(x, y, width, height);
+				break;
+			}
 			}
 
 			obj->SetPosition(x, y);
@@ -416,23 +423,41 @@ void CPlayScene::Update(DWORD dt)
 
 	CGame *game = CGame::GetInstance();
 	cx -= game->GetBackBufferWidth() / 2;
-	cy -= game->GetBackBufferHeight() / 5;
 
 	if (cx < 0) cx = 0;
 	else if (cx + game->GetBackBufferWidth() > map->getWidth() ) cx = map->getWidth() - game->GetBackBufferWidth();
 	if (cy < 0) cy = 0;
-	
+
+	float height = CGame::GetInstance()->GetBackBufferHeight();
 
 	if (CGame::GetInstance()->isForcusPlayer == false) {
-		CGame::GetInstance()->SetCamPos(cx, 240.0f);
+
+		//cy = CGame::GetInstance()->yChangeCamMax;
+		cy = CGame::GetInstance()->yForcusMin - (1 * height / 4);
 	}
 	else {
-		if (cy > CGame::GetInstance()->yChangeCamMax) cy = CGame::GetInstance()->yChangeCamMax;
-		if (cy < CGame::GetInstance()->yChangeCamMin) cy = CGame::GetInstance()->yChangeCamMin;
+		if (cy <= CGame::GetInstance()->yForcusMin) {
+			CGame::GetInstance()->yForcusMin = cy;
+			CGame::GetInstance()->yForcusMax = cy + height / 2;
+			cy = cy - (1 * height / 4);
+		}
+		else if (cy >= CGame::GetInstance()->yForcusMax) {
+			CGame::GetInstance()->yForcusMax = cy;
+			CGame::GetInstance()->yForcusMin = cy - height / 2;
+			cy = cy - (3 * height / 4);
+		}
+		else {
+			cy = CGame::GetInstance()->yForcusMin - (1 * height / 4);;
+		}
+		if (cy > CGame::GetInstance()->yChangeCamMax) { 
+			cy = CGame::GetInstance()->yChangeCamMax; CGame::GetInstance()->isForcusPlayer = false; 
+			CGame::GetInstance()->yForcusMin = CGame::GetInstance()->yChangeCamMax + (1* height/4);
+			CGame::GetInstance()->yForcusMax = CGame::GetInstance()->yChangeCamMax + (3* height/4);
+		}
+		if (cy < CGame::GetInstance()->yChangeCamMin) cy = CGame::GetInstance()->yChangeCamMin ;
 
-		CGame::GetInstance()->SetCamPos(cx, cy);
 	}
-	
+	CGame::GetInstance()->SetCamPos(cx, cy);
 
 	PurgeDeletedObjects();
 }

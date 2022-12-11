@@ -149,20 +149,50 @@
     <ClInclude Include="ChangeCam.h">
       <Filter>GameObject\OtherObjects</Filter>
     </ClInclude>
-    <ClInclude Include="CGreenTurtle.h" />
-    <ClInclude Include="CWingGreenTurtle.h" />
-    <ClInclude Include="CPlatformSprite.h" />
-    <ClInclude Include="CWoodBrick.h" />
-    <ClInclude Include="CBreakableBrick.h" />
-    <ClInclude Include="CTube.h" />
-    <ClInclude Include="CMushroom.h" />
-    <ClInclude Include="CRedGoomba.h" />
-    <ClInclude Include="CWingRedGoomba.h" />
-    <ClInclude Include="CWingOfGoomba.h" />
-    <ClInclude Include="CTail.h" />
-    <ClInclude Include="CPeiceOfBreakableBrick.h" />
-    <ClInclude Include="CEffectHitWithTail.h" />
-    <ClInclude Include="CPrice.h" />
+    <ClInclude Include="CTail.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrice.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CTube.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CMushroom.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CWoodBrick.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CBreakableBrick.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CWingRedGoomba.h">
+      <Filter>GameObject\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CGreenTurtle.h">
+      <Filter>GameObject\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeiceOfBreakableBrick.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CRedGoomba.h">
+      <Filter>GameObject\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CWingGreenTurtle.h">
+      <Filter>GameObject\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CWingOfGoomba.h">
+      <Filter>GameObject\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CEffectHitWithTail.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlatformSprite.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CBLockEnemies.h" />
+    <ClInclude Include="CLeaf.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -252,46 +282,49 @@
     <ClCompile Include="ChangeCam.cpp">
       <Filter>GameObject\OtherObjects</Filter>
     </ClCompile>
-    <ClCompile Include="CGreenTurtle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CWingGreenTurtle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlatformSprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CWoodBrick.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CBreakableBrick.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CTube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CMushroom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CRedGoomba.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CWingRedGoomba.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CWingOfGoomba.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CTail.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CPeiceOfBreakableBrick.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObject\OtherObjects</Filter>
     </ClCompile>
     <ClCompile Include="CEffectHitWithTail.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CMushroom.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
     </ClCompile>
     <ClCompile Include="CPrice.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CWoodBrick.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlatformSprite.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeiceOfBreakableBrick.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CTail.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CTube.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CGreenTurtle.cpp">
+      <Filter>GameObject\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CRedGoomba.cpp">
+      <Filter>GameObject\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CWingGreenTurtle.cpp">
+      <Filter>GameObject\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CWingOfGoomba.cpp">
+      <Filter>GameObject\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CWingRedGoomba.cpp">
+      <Filter>GameObject\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CLeaf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -359,5 +392,13 @@
     <Xml Include="CPrice.xml">
       <Filter>Resource Files</Filter>
     </Xml>
+    <Xml Include="Leaf.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameMario.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -154,6 +154,8 @@ void CGame::Init(HWND hWnd, HINSTANCE hInstance)
 	pD3DDevice->CreateBlendState(&StateDesc, &this->pBlendStateAlpha);
 
 	DebugOut((wchar_t*)L"[INFO] InitDirectX has been successful\n");
+	yForcusMin = yChangeCamMax + (1 * backBufferHeight / 4) ;
+	yForcusMax = yChangeCamMax + (3 * backBufferHeight / 4) ;
 
 	return;
 }

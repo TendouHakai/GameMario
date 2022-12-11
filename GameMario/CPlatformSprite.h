@@ -16,5 +16,7 @@ public:
         this->spriteIdEnd = spriteIdEnd;
     }
     void Render();
+
+
 };
 

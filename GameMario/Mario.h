@@ -140,7 +140,7 @@
 #define	MARIO_LEVEL_BIG		2
 #define MARIO_LEVEL_RACCON	3
 
-#define MARIO_BIG_BBOX_WIDTH  15
+#define MARIO_BIG_BBOX_WIDTH  14
 #define MARIO_BIG_BBOX_HEIGHT 24
 #define MARIO_BIG_SITTING_BBOX_WIDTH  14
 #define MARIO_BIG_SITTING_BBOX_HEIGHT 16
@@ -185,6 +185,7 @@ class CMario : public CGameObject
 	void OnCollisionWithChangeCam(LPCOLLISIONEVENT e);
 	void OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e);
 	void OnCollisionWithRedMushroom(LPCOLLISIONEVENT e);
+	void OnCollisionWithLeaf(LPCOLLISIONEVENT e);
 	void OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithBullet(LPCOLLISIONEVENT e);
 	void OnCollisionWithCannibalFlower(LPCOLLISIONEVENT e);

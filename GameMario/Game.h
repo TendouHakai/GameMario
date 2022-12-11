@@ -64,8 +64,10 @@ class CGame
 
 public:
 	BOOLEAN isForcusPlayer = false;
-	float yChangeCamMax;
-	float yChangeCamMin;
+	float yChangeCamMax = 240.0f;
+	float yChangeCamMin = 5.0f;
+	float yForcusMin;
+	float yForcusMax;
 	// Init DirectX, Sprite Handler
 	void Init(HWND hWnd, HINSTANCE hInstance);
 

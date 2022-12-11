@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LEAF>
+  <SPRITES>
+    <!--LEFT-->
+    <Sprite spriteID ="120001" l="300" t="208" r="315" b="221" textureID="20"></Sprite>
+    <!--RIGHT-->
+    <Sprite spriteID ="120002" l="283" t="244" r="300" b="257" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--LEFT-->
+    <animation aniID="26001">
+      <Sprite SpriteID="120001" time="1000"></Sprite>
+    </animation>
+    <!--RIGHT-->
+    <animation aniID="26002">
+      <Sprite SpriteID="120002" time="1000"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</LEAF>

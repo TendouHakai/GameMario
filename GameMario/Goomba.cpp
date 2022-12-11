@@ -1,4 +1,5 @@
 #include "Goomba.h"
+#include "CBLockEnemies.h"
 
 CGoomba::CGoomba(float x, float y):CGameObject(x, y)
 {
@@ -32,8 +33,15 @@ void CGoomba::OnNoCollision(DWORD dt)
 	y += vy * dt;
 };
 
+void CGoomba::OnCollisionWithBlockEnemies(LPCOLLISIONEVENT e) {
+	if (e->nx != 0)
+		vx = -vx;
+}
+
 void CGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 {
+	if (dynamic_cast<CBLockEnemies*>(e->obj))
+		OnCollisionWithBlockEnemies(e);
 	if (!e->obj->IsBlocking()) return; 
 	if (dynamic_cast<CGoomba*>(e->obj)) return; 
 

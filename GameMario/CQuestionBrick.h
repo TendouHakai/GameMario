@@ -2,6 +2,7 @@
 #include "Brick.h"
 #include "CMushroom.h"
 #include "Coin.h"
+#include "CLeaf.h"
 #include "debug.h"
 #define ID_ANI_QUESTIONBRICK_IDLE 12000
 #define ID_ANI_QUESTIONBRICK_BROKEN 12001
@@ -14,6 +15,7 @@
 
 #define QUESTIONBRICK_TYPE_COIN	1
 #define QUESTIONBRICK_TYPE_REDMUSHROOM	2
+#define QUESTIONBRICK_TYPE_LEAF	3
 class CQuestionBrick :public CBrick
 {
 protected:
@@ -28,7 +30,7 @@ public:
 		vy += ay * dt;
 		y += vy * dt;
 		if (coin != NULL && state == QUESTIONBRICK_STATE_BROKEN) {
-			if (type == QUESTIONBRICK_TYPE_COIN)
+			if (type == QUESTIONBRICK_TYPE_COIN || type == QUESTIONBRICK_TYPE_LEAF)
 			{
 				coObjects->push_back(coin);
 				coin = NULL;
@@ -64,6 +66,10 @@ public:
 			else if (type == QUESTIONBRICK_TYPE_REDMUSHROOM) {
 				coin = new CMushroom(x, y);
 				coin->SetState(MUSHROOM_STATE_APPEAR);
+			}
+			else if (type == QUESTIONBRICK_TYPE_LEAF) {
+				coin = new CLeaf(x, y-30);
+				coin->SetState(LEAF_STATE_START);
 			}
 			break;
 		}

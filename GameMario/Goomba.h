@@ -38,6 +38,8 @@ protected:
 	virtual int IsBlocking() { return 0; }
 	virtual void OnNoCollision(DWORD dt);
 
+	void OnCollisionWithBlockEnemies(LPCOLLISIONEVENT e);
+
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 
 public: 	

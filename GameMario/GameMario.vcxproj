@@ -136,12 +136,14 @@
     <ClInclude Include="Animations.h" />
     <ClInclude Include="AssetIDs.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="CBLockEnemies.h" />
     <ClInclude Include="CBreakableBrick.h" />
     <ClInclude Include="CBullet.h" />
     <ClInclude Include="CCannibalFlower.h" />
     <ClInclude Include="CEffectHitWithTail.h" />
     <ClInclude Include="CGreenTurtle.h" />
     <ClInclude Include="ChangeCam.h" />
+    <ClInclude Include="CLeaf.h" />
     <ClInclude Include="CMushroom.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
@@ -187,6 +189,7 @@
     <ClCompile Include="CEffectHitWithTail.cpp" />
     <ClCompile Include="CGreenTurtle.cpp" />
     <ClCompile Include="ChangeCam.cpp" />
+    <ClCompile Include="CLeaf.cpp" />
     <ClCompile Include="CMushroom.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -231,6 +234,7 @@
     <Xml Include="CloudBrick.xml" />
     <Xml Include="CPrice.xml" />
     <Xml Include="Goomba.xml" />
+    <Xml Include="Leaf.xml" />
     <Xml Include="Mushroom.xml" />
     <Xml Include="Coin.xml" />
     <Xml Include="GreenTube.xml" />
@@ -244,6 +248,9 @@
     <Xml Include="Tail.xml" />
     <Xml Include="WingGreenTurtle.xml" />
     <Xml Include="WingOfRedGoomba.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameMario.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

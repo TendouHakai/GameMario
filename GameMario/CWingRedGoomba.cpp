@@ -1,4 +1,5 @@
 #include "CWingRedGoomba.h"
+#include "CBLockEnemies.h"
 
 void CWingRedGoomba::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -37,8 +38,15 @@ void CWingRedGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	wings->SetPosition(x, y - GOOMBA_BBOX_HEIGHT / 2);
 }
 
+void CWingRedGoomba::OnCollisionWithBlockEnemies(LPCOLLISIONEVENT e) {
+	if (e->nx != 0)
+		vx = -vx;
+}
+
 void CWingRedGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 {
+	if (dynamic_cast<CBLockEnemies*>(e->obj))
+		OnCollisionWithBlockEnemies(e);
 	if (!e->obj->IsBlocking()) return;
 	if (dynamic_cast<CGoomba*>(e->obj)) return;
 

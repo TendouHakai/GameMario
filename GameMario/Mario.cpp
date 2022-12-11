@@ -37,6 +37,9 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		isKicking = false;
 		kick_start = 0;
 	}
+	if(ay==0 && y>CGame::GetInstance()->yForcusMin){
+		CGame::GetInstance()->isForcusPlayer = true;
+	}
 	
 	isOnPlatform = false;
 	isOnPlatformNotBlock = false;
@@ -108,6 +111,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithWingGreenTurtle(e);
 	else if (dynamic_cast<CMushroom*>(e->obj))
 		OnCollisionWithRedMushroom(e);
+	else if (dynamic_cast<CLeaf*>(e->obj))
+		OnCollisionWithLeaf(e);
 	else if (dynamic_cast<CBullet*>(e->obj))
 		OnCollisionWithBullet(e);
 	else if (dynamic_cast<CCannibalFlower*>(e->obj))
@@ -375,6 +380,16 @@ void CMario::OnCollisionWithRedMushroom(LPCOLLISIONEVENT e)
 		SetLevel(MARIO_LEVEL_RACCON);
 	}
 	mushroom->Delete();
+}
+
+void CMario::OnCollisionWithLeaf(LPCOLLISIONEVENT e) {
+	CLeaf* leaf = dynamic_cast<CLeaf*>(e->obj);
+	if (level == MARIO_LEVEL_SMALL)
+		SetLevel(MARIO_LEVEL_BIG);
+	else if (level == MARIO_LEVEL_BIG) {
+		SetLevel(MARIO_LEVEL_RACCON);
+	}
+	leaf->Delete();
 }
 
 void CMario::OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e)
@@ -685,7 +700,7 @@ void CMario::Render()
 	tail->Render();
 	
 
-	//RenderBoundingBox();
+	RenderBoundingBox();
 	
 	DebugOutTitle(L"Coins: %d", coin);
 }
