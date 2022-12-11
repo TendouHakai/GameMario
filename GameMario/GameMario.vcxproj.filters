@@ -193,6 +193,7 @@
     </ClInclude>
     <ClInclude Include="CBLockEnemies.h" />
     <ClInclude Include="CLeaf.h" />
+    <ClInclude Include="CVenusflytrapFlower.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -327,6 +328,9 @@
     <ClCompile Include="CLeaf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CVenusflytrapFlower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -393,6 +397,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="Leaf.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="VenusflytrapFlower.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

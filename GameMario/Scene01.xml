@@ -25,10 +25,11 @@
     <asset link="Tail.xml"></asset>
     <asset link="CPrice.xml"></asset>
     <asset link="Leaf.xml"></asset>
+    <asset link="VenusflytrapFlower.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="950" y="300"> </object>
+    <object type ="0" x="1700" y="300"> </object>
     <!--<object type ="22" x="250" y="395"> </object>-->
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
@@ -57,6 +58,8 @@
     
     <object type ="5" x="853" y="408" cellW="463" cellH="15" length="1"></object>
 
+    <object type ="2" x="900" y="380"></object>
+    <object type ="2" x="850" y="380"></object>
     <object type ="22" x="940" y="380"></object>
 
     <object type ="23" x="1080" y="350" width="5" height="100"></object>
@@ -72,8 +75,10 @@
     <object type ="6" x="1383" y="328" cellW="110" cellH="15" length="1"></object>
 
     <object type ="13" x="1390" y="303"></object>
-    
+
+    <object type ="14" x="1350" y="313"></object>
     <object type ="14" x="1390" y="313"></object>
+    <object type ="14" x="1430" y="313"></object>
 
     <object type ="6" x="1345" y="152" cellW="63" cellH="15" length="1"></object>
 
@@ -133,6 +138,12 @@
 
     <object type ="5" x="1952" y="420" cellW="576" cellH="10" length="1"></object>
 
+    <object type ="24" x="1808" y="367"></object>
+    <object type ="18" x="1800" y="390" cellW="15" cellH="16" height="2"
+            idSpriteTL="105001" idSpriteTR="105002" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
+    <object type ="18" x="1863" y="375" cellW="15" cellH="16" height="3"
+            idSpriteTL="105001" idSpriteTR="105002" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
+
     <object type ="17" x="1952" y="408"></object>
     <object type ="17" x="1968" y="408"></object>
     <object type ="17" x="1984" y="408"></object>
@@ -154,11 +165,21 @@
     <object type ="17" x="2111" y="408"></object>
     <object type ="17" x="2095" y="392"></object>
 
+    <object type ="6" x="2168" y="375" cellW="48" cellH="15" length="1"></object>
+    <object type ="6" x="2202" y="280" cellW="49" cellH="15" length="1"></object>
+
+    <object type ="18" x="2264" y="120" cellW="15" cellH="16" height="12"
+            idSpriteTL="105001" idSpriteTR="105002" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
+    <object type ="18" x="2264" y="374" cellW="15" cellH="16" height="3"
+            idSpriteTL="105003" idSpriteTR="105004" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
+    <object type ="18" x="2330" y="391" cellW="15" cellH="16" height="2"
+            idSpriteTL="105001" idSpriteTR="105002" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
+
     <object type ="16" x="2264" y="312"></object>
     <object type ="16" x="2280" y="312"></object>
 
-    <object type ="16" x="2264" y="376"></object>
-    <object type ="16" x="2280" y="376"></object>
+    <object type ="16" x="2264" y="372"></object>
+    <object type ="16" x="2280" y="372"></object>
 
     <object type ="5" x="2532" y="420" cellW="555" cellH="10" length="1"></object>
     

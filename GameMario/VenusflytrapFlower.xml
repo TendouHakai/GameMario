@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VenusflytrapFlower>
+  <SPRITES>
+    <!--ATTACK-->
+    <Sprite spriteID ="121001" l="0" t="144" r="15" b="175" textureID="12"></Sprite>
+    <!--NOT ATTACK-->
+    <Sprite spriteID ="121002" l="16" t="144" r="31" b="175" textureID="12"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="27001">
+      <Sprite SpriteID="121001" time="150"></Sprite>
+      <Sprite SpriteID="121002" time="150"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</VenusflytrapFlower>

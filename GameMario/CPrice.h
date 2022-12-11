@@ -1,3 +1,4 @@
+#pragma once
 #include "GameObject.h"
 
 #define TIME_PRICE_EXIST	1000

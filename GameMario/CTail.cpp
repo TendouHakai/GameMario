@@ -2,6 +2,7 @@
 #include "CTurtle.h"
 #include "Goomba.h"
 #include "CWingGreenTurtle.h"
+#include "CVenusflytrapFlower.h"
 
 void CTail::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -43,6 +44,14 @@ void CTail::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e) {
 	}
 }
 
+void CTail::OnCollisionWithVenusflytrapFlower(LPCOLLISIONEVENT e) {
+	CVenusflytrapFlower* flower = dynamic_cast<CVenusflytrapFlower*>(e->obj);
+
+	if (flower->GetState() != VENUSFLYTRAPFLOWER_STATE_DIE_TAILTURNING) {
+		flower->SetState(VENUSFLYTRAPFLOWER_STATE_DIE_TAILTURNING);
+	}
+}
+
 void CTail::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	if (dynamic_cast<CBreakableBrick*>(e->obj))
@@ -53,4 +62,6 @@ void CTail::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithGoomba(e);
 	else if (dynamic_cast<CWingGreenTurtle*>(e->obj))
 		OnCollisionWithWingGreenTurtle(e);
+	else if (dynamic_cast<CVenusflytrapFlower*>(e->obj))
+		OnCollisionWithVenusflytrapFlower(e);
 }

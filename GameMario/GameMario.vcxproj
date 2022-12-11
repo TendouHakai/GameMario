@@ -155,6 +155,7 @@
     <ClInclude Include="CTail.h" />
     <ClInclude Include="CTube.h" />
     <ClInclude Include="CTurtle.h" />
+    <ClInclude Include="CVenusflytrapFlower.h" />
     <ClInclude Include="CWingGreenTurtle.h" />
     <ClInclude Include="CWingOfGoomba.h" />
     <ClInclude Include="CWingRedGoomba.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="CTail.cpp" />
     <ClCompile Include="CTube.cpp" />
     <ClCompile Include="CTurtle.cpp" />
+    <ClCompile Include="CVenusflytrapFlower.cpp" />
     <ClCompile Include="CWingGreenTurtle.cpp" />
     <ClCompile Include="CWingOfGoomba.cpp" />
     <ClCompile Include="CWingRedGoomba.cpp" />
@@ -246,6 +248,7 @@
     <Xml Include="Scence.xml" />
     <Xml Include="Scene01.xml" />
     <Xml Include="Tail.xml" />
+    <Xml Include="VenusflytrapFlower.xml" />
     <Xml Include="WingGreenTurtle.xml" />
     <Xml Include="WingOfRedGoomba.xml" />
   </ItemGroup>

@@ -26,6 +26,7 @@
 #include "CWingOfGoomba.h"
 #include "CWingRedGoomba.h"
 #include "CBLockEnemies.h"
+#include "CVenusflytrapFlower.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -384,6 +385,10 @@ void CPlayScene::Load()
 				float width = (float)atof(node->Attribute("width"));
 				float height = (float)atof(node->Attribute("height"));
 				obj = new CBLockEnemies(x, y, width, height);
+				break;
+			}
+			case OBJECT_TYPE_VENUSFLYTRAPFLOWER: {
+				obj = new CVenusflytrapFlower(x, y);
 				break;
 			}
 			}

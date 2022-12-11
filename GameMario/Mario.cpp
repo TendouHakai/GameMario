@@ -16,6 +16,7 @@
 #include "CWingRedGoomba.h"
 #include "CBullet.h"
 #include "CCannibalFlower.h"
+#include "CVenusflytrapFlower.h"
 
 #include "Collision.h"
 
@@ -117,7 +118,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithBullet(e);
 	else if (dynamic_cast<CCannibalFlower*>(e->obj))
 		OnCollisionWithCannibalFlower(e);
-	
+	else if (dynamic_cast<CVenusflytrapFlower*>(e->obj))
+		OnCollisionWithVenusflytrapFlower(e);
 }
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
@@ -141,7 +143,7 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
-					level = MARIO_LEVEL_SMALL;
+					level -=1;
 					StartUntouchable();
 				}
 				else
@@ -446,6 +448,25 @@ void CMario::OnCollisionWithCannibalFlower(LPCOLLISIONEVENT e) {
 		}
 	}
 }
+
+void CMario::OnCollisionWithVenusflytrapFlower(LPCOLLISIONEVENT e) {
+	CVenusflytrapFlower* flower = dynamic_cast<CVenusflytrapFlower*>(e->obj);
+
+	if (untouchable == 0) {
+		if (flower->GetState() != VENUSFLYTRAPFLOWER_STATE_HIDE) {
+			if (level > MARIO_LEVEL_SMALL)
+			{
+				level -= 1;
+				StartUntouchable();
+			}
+			else
+			{
+				DebugOut(L">>> Mario DIE >>> \n");
+				SetState(MARIO_STATE_DIE);
+			}
+		}
+	}
+}
 //
 // Get animation ID for small Mario
 //
@@ -700,7 +721,7 @@ void CMario::Render()
 	tail->Render();
 	
 
-	RenderBoundingBox();
+	//RenderBoundingBox();
 	
 	DebugOutTitle(L"Coins: %d", coin);
 }
