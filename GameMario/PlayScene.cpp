@@ -27,6 +27,7 @@
 #include "CWingRedGoomba.h"
 #include "CBLockEnemies.h"
 #include "CVenusflytrapFlower.h"
+#include "CBreakableBrickButton.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -389,6 +390,20 @@ void CPlayScene::Load()
 			}
 			case OBJECT_TYPE_VENUSFLYTRAPFLOWER: {
 				obj = new CVenusflytrapFlower(x, y);
+				break;
+			}
+			case OBJECT_TYPE_BREAKBLEBRICKBUTTON: {
+				obj = new CbreakableBrickButton(x, y);
+				CbreakableBrickButton* button = dynamic_cast<CbreakableBrickButton*>(obj);
+				float amount = (float)atof(node->Attribute("amount"));
+				for (size_t i = objects.size()-1; i >0; i--)
+				{
+					if (dynamic_cast<CBreakableBrick*>(objects[i])) {
+						CBreakableBrick* brick = dynamic_cast<CBreakableBrick*>(objects[i]);
+						button->addBrick(brick);
+					}
+				}
+				
 				break;
 			}
 			}

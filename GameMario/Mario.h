@@ -190,6 +190,7 @@ class CMario : public CGameObject
 	void OnCollisionWithBullet(LPCOLLISIONEVENT e);
 	void OnCollisionWithCannibalFlower(LPCOLLISIONEVENT e);
 	void OnCollisionWithVenusflytrapFlower(LPCOLLISIONEVENT e);
+	void OnCollisionWithVenusBreakableBrickButton(LPCOLLISIONEVENT e);
 
 	int GetAniRaccon();
 	int GetAniIdBig();

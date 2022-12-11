@@ -17,6 +17,7 @@
 #include "CBullet.h"
 #include "CCannibalFlower.h"
 #include "CVenusflytrapFlower.h"
+#include "CBreakableBrickButton.h"
 
 #include "Collision.h"
 
@@ -120,6 +121,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithCannibalFlower(e);
 	else if (dynamic_cast<CVenusflytrapFlower*>(e->obj))
 		OnCollisionWithVenusflytrapFlower(e);
+	else if (dynamic_cast<CbreakableBrickButton*>(e->obj))
+		OnCollisionWithVenusBreakableBrickButton(e);
 }
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
@@ -464,6 +467,20 @@ void CMario::OnCollisionWithVenusflytrapFlower(LPCOLLISIONEVENT e) {
 				DebugOut(L">>> Mario DIE >>> \n");
 				SetState(MARIO_STATE_DIE);
 			}
+		}
+	}
+}
+
+void CMario::OnCollisionWithVenusBreakableBrickButton(LPCOLLISIONEVENT e) {
+	CbreakableBrickButton* button = dynamic_cast<CbreakableBrickButton*>(e->obj);
+	if (e->ny > 0) {
+		if (button->GetState() != CBREAKABLEBRICKBUTTON_STATE_BROKEN) {
+			button->SetState(CBREAKABLEBRICKBUTTON_STATE_BROKEN);
+		}
+	}
+	else if (e->ny < 0) {
+		if (button->GetState() == CBREAKABLEBRICKBUTTON_STATE_BROKEN) {
+			button->SetState(CBREAKABLEBRICKBUTTON_STATE_PRESSED);
 		}
 	}
 }

@@ -1,22 +1,32 @@
 #pragma once
 #include "Brick.h"
 #include "CPeiceOfBreakableBrick.h"
+#include "Coin.h"
 
 #define ID_ANI_BREAKABLEBRICK  20001
 
 #define BREAKABLEBRICK_STATE_IDLE   100
 #define BREAKABLEBRICK_STATE_BROKEN 200
+#define BREAKABLEBRICK_STATE_TO_COIN 600
 
 class CBreakableBrick :
     public CBrick
 {
 protected:
-
+    CCoin* coin;
 public:
-    CBreakableBrick(float x, float y) :CBrick(x, y) { state = BREAKABLEBRICK_STATE_IDLE; }
+    CBreakableBrick(float x, float y) :CBrick(x, y) { state = BREAKABLEBRICK_STATE_IDLE; coin = NULL; }
     virtual void Render();
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects) {
-        if (state == BREAKABLEBRICK_STATE_BROKEN) {
+        if (state == BREAKABLEBRICK_STATE_TO_COIN) {
+            if (coin != NULL)
+            {
+                coObjects->push_back(coin);
+                coin = NULL;
+                this->Delete();
+            }
+        }
+        else if (state == BREAKABLEBRICK_STATE_BROKEN) {
             CPeiceOfBreakableBrick* peice1 = new CPeiceOfBreakableBrick(x-BRICK_BBOX_WIDTH/4, y-BRICK_BBOX_HEIGHT/4);
             peice1->SetState(PEICE_STATE_TOPLEFT);
             CPeiceOfBreakableBrick* peice2 = new CPeiceOfBreakableBrick(x+BRICK_BBOX_WIDTH/4, y-BRICK_BBOX_HEIGHT/4);
@@ -45,6 +55,10 @@ public:
         }
         case BREAKABLEBRICK_STATE_BROKEN: {
 
+            break;
+        }
+        case BREAKABLEBRICK_STATE_TO_COIN: {
+            coin = new CCoin(x, y);
             break;
         }
         default:

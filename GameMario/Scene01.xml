@@ -29,7 +29,10 @@
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="1700" y="300"> </object>
+    <object type ="0" x="100" y="300"> </object>
+    <object type ="17" x="90" y="380"> </object>
+    <object type ="17" x="90" y="360"> </object>
+    <object type ="25" x="130" y="380" amount="2"> </object>
     <!--<object type ="22" x="250" y="395"> </object>-->
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
@@ -136,7 +139,7 @@
     <object type ="16" x="1688" y="392"></object>
     <object type ="16" x="1672" y="376"></object>
 
-    <object type ="5" x="1952" y="420" cellW="576" cellH="10" length="1"></object>
+    <object type ="5" x="1952" y="420" cellW="573" cellH="10" length="1"></object>
 
     <object type ="24" x="1808" y="367"></object>
     <object type ="18" x="1800" y="390" cellW="15" cellH="16" height="2"

@@ -138,6 +138,7 @@
     <ClInclude Include="Brick.h" />
     <ClInclude Include="CBLockEnemies.h" />
     <ClInclude Include="CBreakableBrick.h" />
+    <ClInclude Include="CBreakableBrickButton.h" />
     <ClInclude Include="CBullet.h" />
     <ClInclude Include="CCannibalFlower.h" />
     <ClInclude Include="CEffectHitWithTail.h" />
@@ -185,6 +186,7 @@
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="CBreakableBrick.cpp" />
+    <ClCompile Include="CBreakableBrickButton.cpp" />
     <ClCompile Include="CBullet.cpp" />
     <ClCompile Include="CCannibalFlower.cpp" />
     <ClCompile Include="CEffectHitWithTail.cpp" />
