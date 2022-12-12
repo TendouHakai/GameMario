@@ -360,5 +360,9 @@
     <animation aniID="2003">
       <Sprite SpriteID="15061" time="100"></Sprite>
     </animation>
+    <!--TELE-->
+    <animation aniID="2004">
+      <Sprite SpriteID="14911" time="1000"></Sprite>
+    </animation>
   </ANIMATIONS>
 </MARIO>

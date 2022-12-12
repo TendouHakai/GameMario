@@ -195,6 +195,7 @@
     <ClInclude Include="CLeaf.h" />
     <ClInclude Include="CVenusflytrapFlower.h" />
     <ClInclude Include="CBreakableBrickButton.h" />
+    <ClInclude Include="CTelePort.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -333,6 +334,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CBreakableBrickButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTelePort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -396,14 +396,24 @@ void CPlayScene::Load()
 				obj = new CbreakableBrickButton(x, y);
 				CbreakableBrickButton* button = dynamic_cast<CbreakableBrickButton*>(obj);
 				float amount = (float)atof(node->Attribute("amount"));
-				for (size_t i = objects.size()-1; i >0; i--)
+				for (size_t i = objects.size()-1; i>0 && amount>0; i--)
 				{
 					if (dynamic_cast<CBreakableBrick*>(objects[i])) {
 						CBreakableBrick* brick = dynamic_cast<CBreakableBrick*>(objects[i]);
 						button->addBrick(brick);
 					}
+					amount--;
 				}
 				
+				break;
+			}
+			case OBJECT_TYPE_TELEPORT: {
+				float xtele = (float)atof(node->Attribute("xtele"));
+				float ytele = (float)atof(node->Attribute("ytele"));
+				float yChangeCamMin = (float)atof(node->Attribute("yChangeCamMin"));
+				float yChangeCamMax = (float)atof(node->Attribute("yChangeCamMax"));
+
+				obj = new CTelePort(x, y, xtele, ytele, yChangeCamMin, yChangeCamMax);
 				break;
 			}
 			}
@@ -451,8 +461,6 @@ void CPlayScene::Update(DWORD dt)
 	float height = CGame::GetInstance()->GetBackBufferHeight();
 
 	if (CGame::GetInstance()->isForcusPlayer == false) {
-
-		//cy = CGame::GetInstance()->yChangeCamMax;
 		cy = CGame::GetInstance()->yForcusMin - (1 * height / 4);
 	}
 	else {

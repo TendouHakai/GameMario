@@ -30,10 +30,6 @@
   
   <OBJECTS>
     <object type ="0" x="100" y="300"> </object>
-    <object type ="17" x="90" y="380"> </object>
-    <object type ="17" x="90" y="360"> </object>
-    <object type ="25" x="130" y="380" amount="2"> </object>
-    <!--<object type ="22" x="250" y="395"> </object>-->
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
     
@@ -162,11 +158,12 @@
     <object type ="17" x="1984" y="376"></object>
     <object type ="17" x="2000" y="376"></object>
     <object type ="17" x="2016" y="376"></object>
-    <object type ="17" x="2032" y="376"></object>
 
     <object type ="17" x="2095" y="408"></object>
     <object type ="17" x="2111" y="408"></object>
     <object type ="17" x="2095" y="392"></object>
+
+    <object type ="25" x="2032" y="376" amount="18"></object>
 
     <object type ="6" x="2168" y="375" cellW="48" cellH="15" length="1"></object>
     <object type ="6" x="2202" y="280" cellW="49" cellH="15" length="1"></object>
@@ -185,6 +182,32 @@
     <object type ="16" x="2280" y="372"></object>
 
     <object type ="5" x="2532" y="420" cellW="555" cellH="10" length="1"></object>
+    <object type ="26" x="2272" y="118" xtele="2112" ytele="464" yChangeCamMin="5" yChangeCamMax="430"></object>
+
+    <object type ="5" x="2157" y="600" cellW="160" cellH="10" length="1"></object>
+    <object type ="5" x="2085" y="514" cellW="15" cellH="160" length="1"></object>
+    <object type ="5" x="2360" y="466" cellW="15" cellH="66" length="1"></object>
+    <object type ="5" x="2232" y="586" cellW="16" cellH="16" length="1"></object>
+    <object type ="5" x="2248" y="568" cellW="16" cellH="16" length="1"></object>
+    <object type ="5" x="2264" y="553" cellW="16" cellH="16" length="1"></object>
+    <object type ="5" x="2279" y="537" cellW="16" cellH="16" length="1"></object>
+    <object type ="5" x="2297" y="522" cellW="16" cellH="16" length="1"></object>
+    <object type ="5" x="2329" y="506" cellW="50" cellH="16" length="1"></object>
+    <object type ="5" x="2224" y="440" cellW="193" cellH="16" length="1"></object>
+
+    <object type ="4" x="2183" y="489"></object>
+    <object type ="4" x="2199" y="473"></object>
+    <object type ="4" x="2215" y="473"></object>
+    <object type ="4" x="2231" y="489"></object>
+    <object type ="4" x="2199" y="522"></object>
+    <object type ="4" x="2215" y="522"></object>
+    <object type ="4" x="2231" y="538"></object>
+    <object type ="4" x="2231" y="554"></object>
+    <object type ="4" x="2183" y="554"></object>  
+    <object type ="4" x="2199" y="569"></object>  
+    <object type ="4" x="2215" y="569"></object>  
+
+    <object type ="26" x="2336" y="457" xtele="2337" ytele="362" yChangeCamMin="5" yChangeCamMax="240"></object>
     
     <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>

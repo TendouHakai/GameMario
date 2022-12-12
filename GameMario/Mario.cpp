@@ -24,6 +24,21 @@
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+	if (isTele) {
+		if (tele != NULL) {
+			CGame::GetInstance()->yChangeCamMin = tele->yChangeCamMin;
+			CGame::GetInstance()->yChangeCamMax = tele->yChangeCamMax;
+			CGame::GetInstance()->yForcusMin = CGame::GetInstance()->yChangeCamMax + (1 * CGame::GetInstance()->GetBackBufferHeight() / 4);
+			CGame::GetInstance()->yForcusMax = CGame::GetInstance()->yChangeCamMax + (3 * CGame::GetInstance()->GetBackBufferHeight() / 4);
+
+			this->x = tele->xtele;
+			this->y = tele->ytele;
+			isTele = false;
+			tele_start = 0;
+			tele = NULL;
+		}
+	}
+
 	vy += ay * dt;
 	vx += ax * dt;
 
@@ -39,6 +54,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		isKicking = false;
 		kick_start = 0;
 	}
+
 	if(ay==0 && y>CGame::GetInstance()->yForcusMin){
 		CGame::GetInstance()->isForcusPlayer = true;
 	}
@@ -92,8 +108,10 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		vx = 0;
 	}
-	
-	if (dynamic_cast<CWingRedGoomba*>(e->obj))
+
+	if (dynamic_cast<CTelePort*>(e->obj))
+		OnCollisionWithTelePort(e);
+	else if (dynamic_cast<CWingRedGoomba*>(e->obj))
 		OnCollisionWithWingRedGoomba(e);
 	else if (dynamic_cast<CGoomba*>(e->obj))
 		OnCollisionWithGoomba(e);
@@ -474,7 +492,7 @@ void CMario::OnCollisionWithVenusflytrapFlower(LPCOLLISIONEVENT e) {
 void CMario::OnCollisionWithVenusBreakableBrickButton(LPCOLLISIONEVENT e) {
 	CbreakableBrickButton* button = dynamic_cast<CbreakableBrickButton*>(e->obj);
 	if (e->ny > 0) {
-		if (button->GetState() != CBREAKABLEBRICKBUTTON_STATE_BROKEN) {
+		if (button->GetState() != CBREAKABLEBRICKBUTTON_STATE_BROKEN && button->GetState() != CBREAKABLEBRICKBUTTON_STATE_PRESSED) {
 			button->SetState(CBREAKABLEBRICKBUTTON_STATE_BROKEN);
 		}
 	}
@@ -483,6 +501,18 @@ void CMario::OnCollisionWithVenusBreakableBrickButton(LPCOLLISIONEVENT e) {
 			button->SetState(CBREAKABLEBRICKBUTTON_STATE_PRESSED);
 		}
 	}
+}
+
+void CMario::OnCollisionWithTelePort(LPCOLLISIONEVENT e) {
+	CTelePort* tl = dynamic_cast<CTelePort*>(e->obj);
+
+	if (e->ny != 0) {
+		if (isTele == false) {
+			isTele = true;
+			tele = tl;
+		}
+	}
+	
 }
 //
 // Get animation ID for small Mario

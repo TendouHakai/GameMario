@@ -5,6 +5,7 @@
 #include "Animations.h"
 #include "CTail.h"
 #include "CTurtle.h"
+#include "CTelePort.h"
 
 #include "debug.h"
 
@@ -16,6 +17,7 @@
 
 #define MARIO_JUMP_SPEED_Y		0.5f
 #define MARIO_JUMP_RUN_SPEED_Y	0.6f
+#define MARIO_JUMP_TELE_SPEED_Y	0.15f
 
 #define MARIO_GRAVITY			0.002f
 #define MARIO_GRAVITY_FLY			0.0007f
@@ -47,6 +49,8 @@
 #define MARIO_STATE_TAIL_TURNING_RELEASE	801
 
 #define MARIO_STATE_HOLDING	900
+
+#define MARIO_STATE_TELE	901
 
 #pragma region ANIMATION_ID
 
@@ -116,6 +120,7 @@
 
 #define ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT_HOLDING 2002
 #define ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT_HOLDING 2003
+#define ID_ANI_MARIO_RACCON_TELE 2004
 
 #define ID_ANI_MARIO_RACCON_JUMP_RUN_RIGHT 2100
 #define ID_ANI_MARIO_RACCON_JUMP_RUN_LEFT 2101
@@ -170,6 +175,9 @@ class CMario : public CGameObject
 	BOOLEAN isKicking;
 	BOOLEAN isTailTurning;
 	BOOLEAN isHolding;
+	BOOLEAN isTele;
+	ULONGLONG tele_start;
+	CTelePort* tele;
 	int coin; 
 	CTail* tail;
 	CTurtle* turtleShell;
@@ -191,6 +199,7 @@ class CMario : public CGameObject
 	void OnCollisionWithCannibalFlower(LPCOLLISIONEVENT e);
 	void OnCollisionWithVenusflytrapFlower(LPCOLLISIONEVENT e);
 	void OnCollisionWithVenusBreakableBrickButton(LPCOLLISIONEVENT e);
+	void OnCollisionWithTelePort(LPCOLLISIONEVENT e);
 
 	int GetAniRaccon();
 	int GetAniIdBig();
@@ -222,6 +231,10 @@ public:
 	
 		kick_start = 0;
 		coin = 0;
+
+		isTele = false;
+		tele_start = 0;
+		tele = NULL;
 	}
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	void Render();

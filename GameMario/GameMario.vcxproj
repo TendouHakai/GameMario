@@ -154,6 +154,7 @@
     <ClInclude Include="CQuestionBrick.h" />
     <ClInclude Include="CRedGoomba.h" />
     <ClInclude Include="CTail.h" />
+    <ClInclude Include="CTelePort.h" />
     <ClInclude Include="CTube.h" />
     <ClInclude Include="CTurtle.h" />
     <ClInclude Include="CVenusflytrapFlower.h" />
@@ -202,6 +203,7 @@
     <ClCompile Include="CQuestionBrick.cpp" />
     <ClCompile Include="CRedGoomba.cpp" />
     <ClCompile Include="CTail.cpp" />
+    <ClCompile Include="CTelePort.cpp" />
     <ClCompile Include="CTube.cpp" />
     <ClCompile Include="CTurtle.cpp" />
     <ClCompile Include="CVenusflytrapFlower.cpp" />
