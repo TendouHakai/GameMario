@@ -45,7 +45,6 @@ public:
 			untouchable_start = GetTickCount64();
 			isUntouchable = 1;
 			isCollection = 1;
-			isUntouchable = 0;
 			price = new CPrice(x, y);
 			this->state = state;
 			return;

@@ -2,6 +2,8 @@
 <SCENE>
   <MAP link="textures\SuperMarioBros3_Stage1_1.png">
   </MAP>
+  <TILEMAP filePath="TileMap1-1.xml">
+  </TILEMAP>
   <ASSETS>
     <asset link="Mario.xml"></asset>
     <asset link="Brick.xml"></asset>
@@ -30,6 +32,8 @@
   
   <OBJECTS>
     <object type ="0" x="100" y="300"> </object>
+    
+    <object type ="2" x="338" y="400"> </object>
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
     
@@ -68,6 +72,7 @@
     <!--object type ="12" x="1076" y="335" w="10" h="150" yCamMax="240" yCamMin="5"></object>-->
 
     <object type ="7" x="652" y="392" brickType="3"></object>
+    <object type ="7" x="713" y="360" brickType="1"></object>
 
     <object type ="6" x="1318" y="392" cellW="110" cellH="15" length="1"></object>
     <object type ="6" x="1351" y="361" cellW="110" cellH="15" length="1"></object>
@@ -108,6 +113,12 @@
     <object type ="4" x="1636" y="128"></object>
     <object type ="4" x="1652" y="128"></object>
     <object type ="4" x="1668" y="128"></object>
+    
+    <object type ="4" x="1704" y="153"></object>
+    <object type ="4" x="1737" y="120"></object>
+    <object type ="4" x="1770" y="136"></object>
+    <object type ="4" x="1817" y="103"></object>
+    <object type ="4" x="1848" y="136"></object>
 
     <object type ="15" x="1415" y="198" cellW="16" cellH="16" length="4" idSpriteBegin="102001" idSpriteMiddle="102001" idSpriteEnd="102001"></object>
     <object type ="15" x="1494" y="185" cellW="16" cellH="16" length="13" idSpriteBegin="102001" idSpriteMiddle="102001" idSpriteEnd="102001"></object>
@@ -116,7 +127,7 @@
 
     <object type ="5" x="1575" y="420" cellW="80" cellH="10" length="1"></object>
 
-    <object type ="7" x="1480" y="375" brickType="1"></object>
+    <object type ="7" x="1480" y="375" brickType="3"></object>
     
     <object type ="16" x="1512" y="350"></object>
     <object type ="16" x="1528" y="350"></object>
@@ -140,6 +151,7 @@
     <object type ="24" x="1808" y="367"></object>
     <object type ="18" x="1800" y="390" cellW="15" cellH="16" height="2"
             idSpriteTL="105001" idSpriteTR="105002" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
+    <object type ="24" x="1871" y="353"></object>
     <object type ="18" x="1863" y="375" cellW="15" cellH="16" height="3"
             idSpriteTL="105001" idSpriteTR="105002" idSpriteML="105003" idSpriteMR="105004" idSpriteBL="105003" idSpriteBR="105004"></object>
 
@@ -161,9 +173,10 @@
 
     <object type ="17" x="2095" y="408"></object>
     <object type ="17" x="2111" y="408"></object>
+    <object type ="17" x="2111" y="392"></object>
     <object type ="17" x="2095" y="392"></object>
 
-    <object type ="25" x="2032" y="376" amount="18"></object>
+    <object type ="25" x="2032" y="376" amount="19"></object>
 
     <object type ="6" x="2168" y="375" cellW="48" cellH="15" length="1"></object>
     <object type ="6" x="2202" y="280" cellW="49" cellH="15" length="1"></object>
@@ -183,6 +196,8 @@
 
     <object type ="5" x="2532" y="420" cellW="555" cellH="10" length="1"></object>
     <object type ="26" x="2272" y="118" xtele="2112" ytele="464" yChangeCamMin="5" yChangeCamMax="430"></object>
+
+    <object type ="10" x="2102" y="360"></object>
 
     <object type ="5" x="2157" y="600" cellW="160" cellH="10" length="1"></object>
     <object type ="5" x="2085" y="514" cellW="15" cellH="160" length="1"></object>

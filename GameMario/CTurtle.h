@@ -4,12 +4,12 @@
 #include "CEffectHitWithTail.h"
 
 #define TURTLE_BBOX_WIDTH 18
-#define TURTLE_BBOX_HEIGHT 28
+#define TURTLE_BBOX_HEIGHT 26
 #define TURTLE_DEAD_BBOX_WIDTH 18
 #define TURTLE_DEAD_BBOX_HEIGHT 14
 
 #define TURTLECHECK_BBOX_WIDTH 5
-#define TURTLECHECK_BBOX_HEIGHT 28
+#define TURTLECHECK_BBOX_HEIGHT 26
 
 #define ID_ANI_TURTLE_WALK_LEFT 15000
 #define ID_ANI_TURTLE_WALK_RIGHT 15001
@@ -107,6 +107,8 @@ protected:
 			}
 		}
 		else if (state == TURTLE_STATE_DEAD_TAILTURNING) {
+			isUntouchable = 0;
+			untouchable_start = 0;
 			if (effecthit != NULL)
 			{
 				coObjects->push_back(effecthit);

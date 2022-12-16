@@ -51,6 +51,9 @@
     <Filter Include="Game">
       <UniqueIdentifier>{aa3f03ff-3566-47a0-94d1-daa0c677bab1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TileMap">
+      <UniqueIdentifier>{edb76553-0a95-40da-886d-b0a7f18ab75d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -196,6 +199,9 @@
     <ClInclude Include="CVenusflytrapFlower.h" />
     <ClInclude Include="CBreakableBrickButton.h" />
     <ClInclude Include="CTelePort.h" />
+    <ClInclude Include="CTileMap.h">
+      <Filter>TileMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -339,6 +345,9 @@
     <ClCompile Include="CTelePort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CTileMap.cpp">
+      <Filter>TileMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -408,6 +417,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="VenusflytrapFlower.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="TileMap1-1.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

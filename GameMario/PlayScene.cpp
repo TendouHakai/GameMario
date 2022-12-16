@@ -229,10 +229,13 @@ void CPlayScene::Load()
 	if (doc.LoadFile()) {
 		TiXmlElement* root = doc.RootElement();
 		TiXmlElement* mapXML = root->FirstChildElement("MAP");
+		TiXmlElement* tilemap = root->FirstChildElement("TILEMAP");
 		TiXmlElement* assetsXML = root->FirstChildElement("ASSETS");
 		TiXmlElement* objectsXML = root->FirstChildElement("OBJECTS");
 		// đọc map
 		loadMap(mapXML->Attribute("link"));
+		// đọc tile map
+		tileMap = new CTileMap(tilemap->Attribute("filePath"));
 		// đọc assets
 		for (TiXmlElement* node = assetsXML->FirstChildElement("asset"); node != nullptr; node = node->NextSiblingElement("asset")) {
 			LoadAssets(node->Attribute("link"));
@@ -486,13 +489,14 @@ void CPlayScene::Update(DWORD dt)
 
 	}
 	CGame::GetInstance()->SetCamPos(cx, cy);
+	tileMap->SetTileRender(D3DXVECTOR2(cx,cy), D3DXVECTOR2(cx+CGame::GetInstance()->GetBackBufferWidth(), cy+CGame::GetInstance()->GetBackBufferHeight()));
 
 	PurgeDeletedObjects();
 }
 
 void CPlayScene::Render()
 {
-	RECT rect;
+	/*RECT rect;
 	float cx, cy;
 	CGame::GetInstance()->GetCamPos(cx, cy);
 	float sx, sy;	
@@ -502,7 +506,8 @@ void CPlayScene::Render()
 	rect.right = rect.left + sx +1;
 	rect.top = cy;
 	rect.bottom = rect.top + sy +1;
-	CGame::GetInstance()->Draw(sx/2, sy/2, map, &rect);
+	CGame::GetInstance()->Draw(sx/2, sy/2, map, &rect);*/
+	tileMap->Render();
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 }

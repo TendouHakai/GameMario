@@ -37,8 +37,13 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_D: 
 		mario->SetState(MARIO_STATE_TAIL_TURNING);
 		break;
-	case DIK_R: // reset
-		//Reload();
+	case DIK_R: 
+		float xC, yC;
+		CGame::GetInstance()->GetCamPos(xC, yC);
+		if (mario->GetState() == MARIO_STATE_DIE)
+			mario->revival();
+		mario->SetPosition(xC + CGame::GetInstance()->GetBackBufferWidth() / 2, yC + CGame::GetInstance()->GetBackBufferHeight() / 2);
+		
 		break;
 	}
 }
