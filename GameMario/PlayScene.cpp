@@ -489,7 +489,7 @@ void CPlayScene::Update(DWORD dt)
 
 	}
 	CGame::GetInstance()->SetCamPos(cx, cy);
-	tileMap->SetTileRender(D3DXVECTOR2(cx,cy), D3DXVECTOR2(cx+CGame::GetInstance()->GetBackBufferWidth(), cy+CGame::GetInstance()->GetBackBufferHeight()));
+	tileMap->SetTileRender(cx, cy, cx+CGame::GetInstance()->GetBackBufferWidth(), cy+CGame::GetInstance()->GetBackBufferHeight());
 
 	PurgeDeletedObjects();
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="176" height="39" tilewidth="16" tileheight="16">
-  <tileset texID="31" texturePath="textures\Map_1_1_bank.png" width="176" height="144">
+  <tileset firstgid="1">
+    <image texID="31" source="textures\Map_1_1_bank.png" width="176" height="144"/>
+  </tileset>
+  <layer name="ShoeBox Tile Grab" width="176" height ="39" >
+    <data>
       <tile gid="1"/>
       <tile gid="1"/>
       <tile gid="1"/>
@@ -6865,5 +6869,6 @@
       <tile gid="1"/>
       <tile gid="1"/>
       <tile gid="1"/>
-  </tileset>
+    </data>
+  </layer>
 </map>
