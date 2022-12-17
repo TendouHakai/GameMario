@@ -156,6 +156,7 @@ protected:
 	}
 	virtual void OnNoCollision(DWORD dt);
 	virtual void OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e);
+	virtual void OnCollisionWithBreakableBrick(LPCOLLISIONEVENT e);
 	virtual void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 	

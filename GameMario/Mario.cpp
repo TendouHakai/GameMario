@@ -50,6 +50,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		untouchable_start = 0;
 		untouchable = 0;
 	}
+
 	if (isKicking && GetTickCount64() - kick_start > MARIO_TIME_KICK) {
 		isKicking = false;
 		kick_start = 0;
@@ -605,9 +606,13 @@ int CMario::GetAniRaccon()
 		else
 		{
 			if (nx >= 0)
-				aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT;
+				if (ay <= MARIO_GRAVITY_FLY)
+					aniId = ID_ANI_MARIO_RACCON_JUMPFLY_RIGHT;
+				else aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_RIGHT;
 			else
-				aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT;
+				if (ay <= MARIO_GRAVITY_FLY)
+					aniId = ID_ANI_MARIO_RACCON_JUMPFLY_LEFT;
+				else aniId = ID_ANI_MARIO_RACCON_JUMP_WALK_LEFT;
 		}
 	}
 	else

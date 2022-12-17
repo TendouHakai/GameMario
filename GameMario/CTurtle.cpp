@@ -1,5 +1,6 @@
 #include "CTurtle.h"
 #include "PlatformNotBlock.h"
+#include "CBreakableBrick.h"
 #include "CQuestionBrick.h"
 #include "Goomba.h"
 
@@ -66,6 +67,15 @@ void CTurtle::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
 	}
 }
 
+void CTurtle::OnCollisionWithBreakableBrick(LPCOLLISIONEVENT e)
+{
+	CBreakableBrick* brick = dynamic_cast<CBreakableBrick*>(e->obj);
+
+	if (e->nx != 0) {
+		brick->SetState(BREAKABLEBRICK_STATE_BROKEN);
+	}
+}
+
 void CTurtle::OnCollisionWithGoomba(LPCOLLISIONEVENT e) {
 	CGoomba* goomba = dynamic_cast<CGoomba*>(e->obj);
 
@@ -79,6 +89,10 @@ void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 	if (state == TURTLE_STATE_KICKED_LEFT || state == TURTLE_STATE_KICKED_RIGHT) {
 		if (dynamic_cast<CQuestionBrick*>(e->obj)) {
 			OnCollisionWithQuestionBrick(e);
+		}
+		else if (dynamic_cast<CBreakableBrick*>(e->obj))
+		{
+			OnCollisionWithBreakableBrick(e);
 		}
 		else if (dynamic_cast<CGoomba*>(e->obj)) {
 			OnCollisionWithGoomba(e);

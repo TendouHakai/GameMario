@@ -122,7 +122,11 @@
     <Sprite spriteID ="15041" l="182" t="793" r="205" b="822" textureID="0"></Sprite>
     <Sprite spriteID ="15051" l="152" t="793" r="175" b="822" textureID="0"></Sprite>
     <Sprite spriteID ="15061" l="122" t="793" r="145" b="822" textureID="0"></Sprite>
-    
+    <!--JUMP FLY RIGHT & LEFT-->
+    <Sprite spriteID ="17011" l="389" t="873" r="414" b="900" textureID="0"></Sprite>
+    <Sprite spriteID ="17021" l="413" t="873" r="444" b="900" textureID="0"></Sprite>
+    <Sprite spriteID ="17031" l="30" t="872" r="55" b="899" textureID="0"></Sprite>
+    <Sprite spriteID ="17041" l="3" t="872" r="28" b="899" textureID="0"></Sprite>
   </SPRITES>
 
   <ANIMATIONS>
@@ -363,6 +367,17 @@
     <!--TELE-->
     <animation aniID="2004">
       <Sprite SpriteID="14911" time="1000"></Sprite>
+    </animation>
+    <!--JUMP FLY RIGHT & LEFT-->
+    <animation aniID="2005">
+      <Sprite SpriteID="14223" time="100"></Sprite>
+      <Sprite SpriteID="17011" time="100"></Sprite>
+      <Sprite SpriteID="17021" time="100"></Sprite>
+    </animation>
+    <animation aniID="2006">
+      <Sprite SpriteID="14213" time="100"></Sprite>
+      <Sprite SpriteID="17031" time="100"></Sprite>
+      <Sprite SpriteID="17041" time="100"></Sprite>
     </animation>
   </ANIMATIONS>
 </MARIO>

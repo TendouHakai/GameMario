@@ -139,6 +139,9 @@
 
 #define ID_ANI_MARIO_RACCON_TAIL_TURNING_RIGHT	2600
 #define ID_ANI_MARIO_RACCON_TAIL_TURNING_LEFT	2601
+
+#define ID_ANI_MARIO_RACCON_JUMPFLY_RIGHT	2005
+#define ID_ANI_MARIO_RACCON_JUMPFLY_LEFT	2006
 #pragma endregion
 
 #define	MARIO_LEVEL_SMALL	1
@@ -250,7 +253,7 @@ public:
 	void OnNoCollision(DWORD dt);
 	void OnCollisionWith(LPCOLLISIONEVENT e);
 
-	void revival() { this->state = MARIO_STATE_IDLE; }
+	void revival() { this->state = MARIO_STATE_IDLE; this->vy = 0; }
 	void SetLevel(int l);
 	void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount64(); }
 
