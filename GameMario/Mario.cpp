@@ -56,6 +56,12 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		kick_start = 0;
 	}
 
+	if (isTailTurning && GetTickCount64() - tailturning_start > MARIO_TAILTURNING_TIME) {
+		isprepareHolding = true;
+		isTailTurning = false;
+		tailturning_start = 0;
+	}
+
 	if(ay==0 && y>CGame::GetInstance()->yForcusMin){
 		CGame::GetInstance()->isForcusPlayer = true;
 	}
@@ -73,10 +79,17 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		tail->Update(dt, coObjects);
 	}
 
-	if (isHolding) {
-		if (nx > 0)
-			turtleShell->SetPosition(x + MARIO_BIG_BBOX_WIDTH / 2+5, y);
-		else turtleShell->SetPosition(x - MARIO_BIG_BBOX_WIDTH / 2-5, y);
+	if (isHolding && turtleShell!= NULL) {
+		if (level == MARIO_LEVEL_SMALL) {
+			if (nx > 0)
+				turtleShell->SetPosition(x + MARIO_SMALL_BBOX_WIDTH / 2 + 5, y-3);
+			else turtleShell->SetPosition(x - MARIO_SMALL_BBOX_WIDTH / 2 - 5, y-3);
+		}
+		else {
+			if (nx > 0)
+				turtleShell->SetPosition(x + MARIO_BIG_BBOX_WIDTH / 2 + 5, y);
+			else turtleShell->SetPosition(x - MARIO_BIG_BBOX_WIDTH / 2 - 5, y);
+		}
 	}
 	if (isKicking && turtleShell != NULL) {
 		if (nx < 0)
@@ -188,7 +201,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 			turtle->SetState(TURTLE_STATE_DEAD);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 		}
-		else if (turtle->GetState() == TURTLE_STATE_DEAD) {
+		else if (turtle->GetState() == TURTLE_STATE_DEAD || turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
 			isKicking = true;
 			kick_start = GetTickCount64();
 			if (nx < 0) {
@@ -197,9 +210,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 			else {
 				turtle->SetState(TURTLE_STATE_KICKED_LEFT);
 			}
-		}
-		else if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
-			if (nx < 0) {
+			/*if (nx < 0) {
 				isHolding = true;
 				turtleShell = new CTurtle(x, y);
 				turtleShell->SetState(TURTLE_STATE_ISHOLDED);
@@ -210,23 +221,51 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 				turtleShell = new CTurtle(x, y);
 				turtleShell->SetState(TURTLE_STATE_ISHOLDED);
 				turtle->Delete();
-			}
+			}*/
 		}
 	}
 	else {
 		if (untouchable == 0 && turtle->IsUntouchable()==0)
 		{
-			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
-				isHolding = true;
-				turtleShell = new CTurtle(x, y);
-				turtleShell->SetState(TURTLE_STATE_ISHOLDED);
-				turtle->Delete();
+			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING || turtle->GetState() == TURTLE_STATE_DEAD) {
+				if (isprepareHolding) {
+					isHolding = true;
+					turtleShell = new CTurtle(x, y);
+					turtleShell->SetState(TURTLE_STATE_ISHOLDED);
+					turtle->Delete();
+				}
+				else if(turtle->GetState() == TURTLE_STATE_DEAD) {
+					if (e->nx > 0)
+					{
+						isKicking = true;
+						turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
+
+					}
+					else if (e->nx < 0)
+					{
+						isKicking = true;
+						turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+
+					}
+				}
+				else {
+					if (e->nx > 0)
+					{
+						turtle->SetState(TURTLE_STATE_COLLECTION_RIGHT);
+
+					}
+					else if (e->nx < 0)
+					{
+						turtle->SetState(TURTLE_STATE_COLLECTION_LEFT);
+
+					}
+				}
 			}
-			else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
+			else if (turtle->GetState() != TURTLE_STATE_REVIVAL)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
-					level = MARIO_LEVEL_SMALL;
+					level -= 1;
 					StartUntouchable();
 				}
 				else
@@ -235,19 +274,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 					SetState(MARIO_STATE_DIE);
 				}
 			}
-			else 
-				if (e->nx > 0)
-				{
-					isKicking = true;
-					turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
-
-				}
-				else if(e->nx < 0)
-				{
-					isKicking = true;
-					turtle->SetState(TURTLE_STATE_KICKED_LEFT);
-
-				}
+				
 		}
 	}
 
@@ -258,7 +285,9 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 
 	if (e->ny < 0) {
 		if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
-			turtle->SetState(GREENTURTLE_STATE_COLLECTION);
+			if(nx<0)
+				turtle->SetState(GREENTURTLE_STATE_COLLECTION_RIGHT);
+			else turtle->SetState(GREENTURTLE_STATE_COLLECTION_LEFT);
 		}
 		else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
 		{
@@ -281,9 +310,11 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 		if (untouchable == 0 && turtle->IsUntouchable() == 0)
 		{
 			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
-				turtle->SetState(GREENTURTLE_STATE_COLLECTION);
+				if(e->nx<0)
+					turtle->SetState(GREENTURTLE_STATE_COLLECTION_RIGHT);
+				else turtle->SetState(GREENTURTLE_STATE_COLLECTION_LEFT);
 			}
-			else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL && turtle->GetState() != GREENTURTLE_STATE_COLLECTION)
+			else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL && turtle->GetState() != GREENTURTLE_STATE_COLLECTION_RIGHT && turtle->GetState() != GREENTURTLE_STATE_COLLECTION_LEFT)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
@@ -523,7 +554,13 @@ int CMario::GetAniIdSmall()
 	int aniId = -1;
 	if (isOnPlatform == false && isOnPlatformNotBlock == false)
 	{
-		if (abs(ax) == MARIO_ACCEL_RUN_X)
+		if (isHolding) {
+			if (nx >= 0)
+				aniId = ID_ANI_MARIO_SMALL_JUMP_HOLDING_RIGHT;
+			else
+				aniId = ID_ANI_MARIO_SMALL_JUMP_HOLDING_LEFT;
+		}
+		else if (abs(ax) == MARIO_ACCEL_RUN_X)
 		{
 			if (nx >= 0)
 				aniId = ID_ANI_MARIO_SMALL_JUMP_RUN_RIGHT;
@@ -539,7 +576,17 @@ int CMario::GetAniIdSmall()
 		}
 	}
 	else
-		if (isSitting)
+		if (isHolding) {
+			if (vx == 0) {
+				if (nx > 0) aniId = ID_ANI_MARIO_SMALL_IDLE_HOLDING_RIGHT;
+				else aniId = ID_ANI_MARIO_SMALL_IDLE_HOLDING_LEFT;
+			}
+			else {
+				if (nx > 0) aniId = ID_ANI_MARIO_SMALL_HOLDING_RIGHT;
+				else aniId = ID_ANI_MARIO_SMALL_HOLDING_LEFT;
+			}
+		}
+		else if (isSitting)
 		{
 			if (nx > 0)
 				aniId = ID_ANI_MARIO_SIT_RIGHT;
@@ -547,7 +594,13 @@ int CMario::GetAniIdSmall()
 				aniId = ID_ANI_MARIO_SIT_LEFT;
 		}
 		else
-			if (vx == 0)
+			if (isKicking) {
+				if (nx > 0)
+					aniId = ID_ANI_MARIO_SMALL_KICK_RIGHT;
+				else
+					aniId = ID_ANI_MARIO_SMALL_KICK_LEFT;
+			}
+			else if (vx == 0)
 			{
 				if (nx > 0) aniId = ID_ANI_MARIO_SMALL_IDLE_RIGHT;
 				else aniId = ID_ANI_MARIO_SMALL_IDLE_LEFT;
@@ -683,26 +736,47 @@ int CMario::GetAniIdBig()
 	{
 		if (abs(ax) == MARIO_ACCEL_RUN_X)
 		{
-			if (nx >= 0)
-				aniId = ID_ANI_MARIO_JUMP_RUN_RIGHT;
+			if (isHolding) {
+				if (nx >= 0)
+					aniId = ID_ANI_MARIO_JUMP_HOLDING_RIGHT;
+				else
+					aniId = ID_ANI_MARIO_JUMP_HOLDING_LEFT;
+			}
 			else
-				aniId = ID_ANI_MARIO_JUMP_RUN_LEFT;
+			{
+				if (nx >= 0)
+					aniId = ID_ANI_MARIO_JUMP_RUN_RIGHT;
+				else
+					aniId = ID_ANI_MARIO_JUMP_RUN_LEFT;
+			}
 		}
 		else
 		{
-			if (nx >= 0)
-				aniId = ID_ANI_MARIO_JUMP_WALK_RIGHT;
+			if (isHolding) {
+				if (nx >= 0)
+					aniId = ID_ANI_MARIO_JUMP_HOLDING_RIGHT;
+				else
+					aniId = ID_ANI_MARIO_JUMP_HOLDING_LEFT;
+			}
 			else
-				aniId = ID_ANI_MARIO_JUMP_WALK_LEFT;
+			{
+				if (nx >= 0)
+					aniId = ID_ANI_MARIO_JUMP_WALK_RIGHT;
+				else
+					aniId = ID_ANI_MARIO_JUMP_WALK_LEFT;
+			}
 		}
 	}
 	else
-		if (isKicking) {
-			isKicking = false;
-			if (vx > 0)
-				aniId = ID_ANI_MARIO_KICK_RIGHT;
-			else if (vx < 0)
-				aniId = ID_ANI_MARIO_KICK_LEFT;
+		if (isHolding) {
+			if (vx == 0) {
+				if (nx > 0) aniId = ID_ANI_MARIO_IDLE_HOLDING_RIGHT;
+				else aniId = ID_ANI_MARIO_IDLE_HOLDING_LEFT;
+			}
+			else {
+				if (nx > 0) aniId = ID_ANI_MARIO_HOLDING_RIGHT;
+				else aniId = ID_ANI_MARIO_HOLDING_LEFT;
+			}
 		}
 		else if (isSitting)
 		{
@@ -712,7 +786,13 @@ int CMario::GetAniIdBig()
 				aniId = ID_ANI_MARIO_SIT_LEFT;
 		}
 		else
-			if (vx == 0)
+			if (isKicking) {
+				if (nx > 0)
+					aniId = ID_ANI_MARIO_KICK_RIGHT;
+				else
+					aniId = ID_ANI_MARIO_KICK_LEFT;
+			}
+			else if (vx == 0)
 			{
 				if (nx > 0) aniId = ID_ANI_MARIO_IDLE_RIGHT;
 				else aniId = ID_ANI_MARIO_IDLE_LEFT;
@@ -839,18 +919,33 @@ void CMario::SetState(int state)
 		break;
 	case MARIO_STATE_TAIL_TURNING: {
 		if (level == MARIO_LEVEL_RACCON) {
-			if (isHolding)
+			isTailTurning = true;
+			tailturning_start = GetTickCount64();
+			/*if (isHolding)
 			{
 				isHolding = false;
 				isKicking = true;
 				kick_start = GetTickCount64();
 			}
-			else isTailTurning = true;
+			else { 
+				isTailTurning = true; 
+				tailturning_start = GetTickCount64();
+			}*/
+		}
+		else {
+			isprepareHolding = true;
 		}
 		break;
 	}
 	case MARIO_STATE_TAIL_TURNING_RELEASE: {
 		isTailTurning = false;
+		isprepareHolding = false;
+		if (isHolding)
+		{
+			isHolding = false;
+			isKicking = true;
+			kick_start = GetTickCount64();
+		}
 		break;
 	}
 	case MARIO_STATE_SIT:

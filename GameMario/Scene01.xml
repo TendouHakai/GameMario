@@ -31,7 +31,7 @@
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="2000" y="300"> </object>
+    <object type ="0" x="100" y="300"> </object>
     
     <object type ="2" x="338" y="400"> </object>
 
@@ -194,7 +194,7 @@
     <object type ="16" x="2264" y="372"></object>
     <object type ="16" x="2280" y="372"></object>
 
-    <object type ="5" x="2532" y="420" cellW="555" cellH="10" length="1"></object>
+    <object type ="5" x="2535" y="420" cellW="555" cellH="10" length="1"></object>
     <object type ="26" x="2272" y="118" xtele="2112" ytele="464" yChangeCamMin="5" yChangeCamMax="430"></object>
 
     <object type ="10" x="2102" y="360"></object>
@@ -208,7 +208,7 @@
     <object type ="5" x="2279" y="537" cellW="16" cellH="16" length="1"></object>
     <object type ="5" x="2297" y="522" cellW="16" cellH="16" length="1"></object>
     <object type ="5" x="2329" y="506" cellW="50" cellH="16" length="1"></object>
-    <object type ="5" x="2224" y="440" cellW="193" cellH="16" length="1"></object>
+    <!--<object type ="5" x="2224" y="440" cellW="193" cellH="16" length="1"></object>-->
 
     <object type ="4" x="2183" y="489"></object>
     <object type ="4" x="2199" y="473"></object>

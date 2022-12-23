@@ -92,7 +92,6 @@ void CTileMap::Render()
 	for (int i = xStart; i < xEnd; i++) {
 		for (int j = yStart; j < yEnd; j++)
 		{
-			DebugOut(L"%d\n", i + j * xTiles);
 			int pid = Gids[i + j * xTiles];
 			
 			if (pid != 1)

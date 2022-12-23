@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "debug.h"
 #include "CEffectHitWithTail.h"
+#include "CPrice.h"
 
 #define TURTLE_BBOX_WIDTH 18
 #define TURTLE_BBOX_HEIGHT 26
@@ -24,6 +25,8 @@
 #define TURTLE_STATE_KICKED_LEFT	500
 #define TURTLE_STATE_DEAD_TAILTURNING	600
 #define TURTLE_STATE_ISHOLDED	700
+#define TURTLE_STATE_COLLECTION_RIGHT	800
+#define TURTLE_STATE_COLLECTION_LEFT	900
 
 #define TURTLE_SPEED	0.02f
 #define TURTLE_SPEED_Y	0.3f
@@ -33,7 +36,7 @@
 #define TURTLE_DEAD_TIME	3000
 #define TURTLE_REVIVAL_TIME	500
 #define TURTLE_KICKED_TIME	1500
-#define TURTLE_UNTOUCHABLE_TIME	500
+#define TURTLE_UNTOUCHABLE_TIME	50
 
 class CTurtleCheck :
 	public CGameObject
@@ -90,7 +93,9 @@ protected:
 	ULONGLONG kicked_start;
 
 	CTurtleCheck * check;
+
 	CGameObject* effecthit;
+	CGameObject* price;
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
@@ -114,6 +119,11 @@ protected:
 				coObjects->push_back(effecthit);
 				effecthit = NULL;
 			}
+			if (GetTickCount64() - dead_start > TURTLE_DEAD_TIME)
+			{
+				dead_start = 0;
+				SetState(TURTLE_STATE_REVIVAL);
+			}
 		}
 		else if (state == TURTLE_STATE_REVIVAL) {
 			if (GetTickCount64() - revival_start > TURTLE_REVIVAL_TIME)
@@ -129,9 +139,29 @@ protected:
 				this->Delete();
 			}
 		}
+		else 
+			if (state == TURTLE_STATE_COLLECTION_RIGHT || state == TURTLE_STATE_COLLECTION_LEFT) {
+			if (price != NULL) {
+				coObjects->push_back(price);
+				price = NULL;
+			}
+			if (GetTickCount64() - untouchable_start > 1500) {
+				isUntouchable = 0;
+				untouchable_start = 0;
+			}
+		}
 
 		if (isUntouchable == 1) {
-			if (GetTickCount64() - untouchable_start > TURTLE_KICKED_TIME) {
+			ULONGLONG time = TURTLE_UNTOUCHABLE_TIME;
+			if (state == TURTLE_STATE_COLLECTION_LEFT || state == TURTLE_STATE_COLLECTION_RIGHT) {
+				time = 1500;
+				if (GetTickCount64() - untouchable_start > time) {
+					isUntouchable = 0;
+					untouchable_start = 0;
+					this->Delete();
+				}
+			}
+			else if (GetTickCount64() - untouchable_start > time) {
 				isUntouchable = 0;
 				untouchable_start = 0;
 			}
@@ -171,11 +201,12 @@ public:
 		revival_start = 0;
 		kicked_start = 0;
 		effecthit = NULL;
+		price = NULL;
 		isdeadTailTurning = false;
 		check = new CTurtleCheck(x+10, y);
 	}
 	virtual void Render();
-	int IsCollidable() { return 1; };
+	int IsCollidable() { return (state != TURTLE_STATE_COLLECTION_RIGHT && state != TURTLE_STATE_COLLECTION_LEFT); };
 	int IsBlocking() { return 0; }
 	int IsUntouchable() { return isUntouchable; }
 	void SetState(int state) { 
@@ -184,7 +215,7 @@ public:
 		case TURTLE_STATE_WALK: {
 			vx = TURTLE_SPEED;
 			ay = TURTLE_GRAVITY;
-			y -= (TURTLE_BBOX_HEIGHT - TURTLE_DEAD_BBOX_HEIGHT)/2;
+			y -= (TURTLE_BBOX_HEIGHT - TURTLE_DEAD_BBOX_HEIGHT) / 2;
 			break;
 		}
 		case TURTLE_STATE_DEAD: {
@@ -218,13 +249,29 @@ public:
 			vx = 0;
 			vy = -TURTLE_SPEED_Y;
 			effecthit = new CEffectHitWithTail(x, y);
+			dead_start = GetTickCount64();
 			break;
 		}
 		case TURTLE_STATE_ISHOLDED: {
-			isdeadTailTurning = true;
 			ay = 0;
 			vx = 0;
 			vy = 0;
+			break;
+		}
+		case TURTLE_STATE_COLLECTION_RIGHT: {
+			isUntouchable = 1;
+			untouchable_start = GetTickCount64();
+			vy = -TURTLE_SPEED_Y;
+			vx = -0.1f;
+			price = new CPrice(x, y);
+			break;
+		}
+		case TURTLE_STATE_COLLECTION_LEFT: {
+			isUntouchable = 1;
+			untouchable_start = GetTickCount64();
+			vy = -TURTLE_SPEED_Y;
+			vx = 0.1f;
+			price = new CPrice(x, y);
 			break;
 		}
 		default:

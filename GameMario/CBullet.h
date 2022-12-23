@@ -7,6 +7,7 @@
 #define BULLET_BBOX_HEIGHT 10
 
 #define BULLET_SPEED 0.04f
+#define BULLET_TIME 3500
 
 
 class CBullet :
@@ -15,14 +16,18 @@ class CBullet :
 protected:
     float xLock;
     float yLock;
+    ULONGLONG time_start;
     virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
     virtual void Render();
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects) { y += vy * dt; x += vx * dt; }
 public:
-    CBullet(float x, float y) : CGameObject(x, y) { xLock = yLock = 0; }
+    CBullet(float x, float y) : CGameObject(x, y) { xLock = yLock = 0; time_start = GetTickCount64(); }
     void setLockPosition(float x, float y) {
         xLock = x;
         yLock = y;
+
+        if (GetTickCount64() - time_start > BULLET_TIME)
+            this->Delete();
 
         if (xLock - this->x > 0) {
             vx = BULLET_SPEED;

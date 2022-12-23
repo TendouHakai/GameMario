@@ -149,7 +149,21 @@ void CTurtle::Render()
 		break;
 	}
 	case TURTLE_STATE_ISHOLDED: {
-		aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
+		if (isdeadTailTurning == true)
+			aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
+		else aniID = ID_ANI_TURTLE_DEAD;
+		break;
+	}
+	case TURTLE_STATE_COLLECTION_RIGHT: {
+		if (isdeadTailTurning == true)
+			aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
+		else aniID = ID_ANI_TURTLE_DEAD;
+		break;
+	}
+	case TURTLE_STATE_COLLECTION_LEFT: {
+		if (isdeadTailTurning == true)
+			aniID = ID_ANI_TURTLE_DEAD_TAILTURNING;
+		else aniID = ID_ANI_TURTLE_DEAD;
 		break;
 	}
 	default: {
