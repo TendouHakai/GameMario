@@ -18,6 +18,10 @@
     <Sprite spriteID ="100009" l="32" t="48" r="48" b="63" textureID="12"></Sprite>
     <!--DEAD_TAILTURNING-->
     <Sprite spriteID ="100010" l="279" t="9" r="294" b="24" textureID="12"></Sprite>
+    <!--KICK DEAD TAILTURNING-->
+    <Sprite spriteID ="100011" l="295" t="9" r="311" b="24" textureID="12"></Sprite>
+    <Sprite spriteID ="100012" l="311" t="9" r="327" b="24" textureID="12"></Sprite>
+    <Sprite spriteID ="100013" l="327" t="9" r="344" b="24" textureID="12"></Sprite>
   </SPRITES>
   <ANIMATIONS>
     <!--WALK LEFT-->
@@ -48,6 +52,11 @@
       <Sprite SpriteID="100007" time="100"></Sprite>
       <Sprite SpriteID="100008" time="100"></Sprite>
     </animation>
-    
+    <!--KICK TAILTURNING-->
+    <animation aniID="16006">
+      <Sprite SpriteID="100011" time="100"></Sprite>
+      <Sprite SpriteID="100012" time="100"></Sprite>
+      <Sprite SpriteID="100013" time="100"></Sprite>
+    </animation>
   </ANIMATIONS>
 </GREENTURTLE>

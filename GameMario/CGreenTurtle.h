@@ -8,6 +8,7 @@
 #define ID_ANI_GREENTURTLE_REVIVAL 16003
 #define ID_ANI_GREENTURTLE_KICK 16004
 #define ID_ANI_GREENTURTLE_DEAD_TAILTURNING 16005
+#define ID_ANI_GREENTURTLE_KICK_DEAD_TAILTURNING 16006
 
 #define GREENTURTLE_STATE_COLLECTION_RIGHT    800
 #define GREENTURTLE_STATE_COLLECTION_LEFT    900
@@ -18,10 +19,10 @@ class CGreenTurtle :
     public CTurtle
 {
 protected:
-	float isCollection;
-	CPrice* price;
+	//float isCollection;
+	//CPrice* price;
     virtual void Render();
-	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
+	/*virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
 		if (state == GREENTURTLE_STATE_COLLECTION_RIGHT || state == GREENTURTLE_STATE_COLLECTION_LEFT) {
 			vy += ay * dt;
 			
@@ -35,16 +36,14 @@ protected:
 			CCollision::GetInstance()->Process(this, dt, coObjects);
 		}
 		else CTurtle::Update(dt, coObjects);
-	}
+	}*/
 public:
 	CGreenTurtle(float x, float y) :CTurtle(x, y) { 
 		untouchable_start = GetTickCount64();
 		isUntouchable = 1;
-		isCollection = 0; 
-		price = NULL;
 	}
 
-	void SetState(int state) {
+	/*void SetState(int state) {
 		if (state == GREENTURTLE_STATE_COLLECTION_RIGHT) {
 			vy = -TURTLE_SPEED_Y;
 			vx = TURTLE_SPEED;
@@ -68,6 +67,6 @@ public:
 		else CTurtle::SetState(state);
 	}
 
-	int IsCollidable() { return !isCollection; }
+	int IsCollidable() { return !isCollection; }*/
 };
 

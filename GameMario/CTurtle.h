@@ -123,6 +123,7 @@ protected:
 			{
 				dead_start = 0;
 				SetState(TURTLE_STATE_REVIVAL);
+				isdeadTailTurning = false;
 			}
 		}
 		else if (state == TURTLE_STATE_REVIVAL) {
@@ -188,6 +189,8 @@ protected:
 	virtual void OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e);
 	virtual void OnCollisionWithBreakableBrick(LPCOLLISIONEVENT e);
 	virtual void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
+	virtual void OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e);
+	virtual void OnCollisionWithTurtle(LPCOLLISIONEVENT e);
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 	
 public:

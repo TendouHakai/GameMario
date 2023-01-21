@@ -37,8 +37,8 @@
 
     <object type ="5" x="0" y="423" cellW="16" cellH="16" length="40"></object>
     
-    <object type ="6" x="265" y="373" cellW="50" cellH="15" length="1"></object>
-    <object type ="6" x="296" y="344" cellW="47" cellH="15" length="1"></object>
+    <object type ="6" x="265" y="377" cellW="50" cellH="15" length="1"></object>
+    <object type ="6" x="296" y="345" cellW="47" cellH="15" length="1"></object>
 
     <object type ="7" x="180" y="368" brickType="1"></object>
     <object type ="7" x="196" y="368" brickType="1"></object>

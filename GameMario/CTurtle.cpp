@@ -2,6 +2,8 @@
 #include "PlatformNotBlock.h"
 #include "CBreakableBrick.h"
 #include "CQuestionBrick.h"
+#include "CWingGreenTurtle.h"
+#include "CTurtle.h"
 #include "Goomba.h"
 
 void CTurtleCheck::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -84,6 +86,20 @@ void CTurtle::OnCollisionWithGoomba(LPCOLLISIONEVENT e) {
 	}
 }
 
+void CTurtle::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e)
+{
+	CWingGreenTurtle* turtle = dynamic_cast<CWingGreenTurtle*>(e->obj);
+
+	turtle->SetState(WINGGREENTURTLE_STATE_TAILTURNING);
+}
+
+void CTurtle::OnCollisionWithTurtle(LPCOLLISIONEVENT e)
+{
+	CTurtle* turtle = dynamic_cast<CTurtle*>(e->obj);
+
+	turtle->SetState(TURTLE_STATE_DEAD_TAILTURNING);
+}
+
 void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	if (state == TURTLE_STATE_KICKED_LEFT || state == TURTLE_STATE_KICKED_RIGHT) {
@@ -96,6 +112,12 @@ void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)
 		}
 		else if (dynamic_cast<CGoomba*>(e->obj)) {
 			OnCollisionWithGoomba(e);
+		}
+		else if (dynamic_cast<CWingGreenTurtle*>(e->obj)) {
+			OnCollisionWithWingGreenTurtle(e);
+		}
+		else if (dynamic_cast<CTurtle*>(e->obj) && e->obj != this) {
+			OnCollisionWithTurtle(e);
 		}
 	}
 	if (!e->obj->IsBlocking()) return;

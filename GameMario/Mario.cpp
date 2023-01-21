@@ -231,6 +231,8 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 				if (isprepareHolding) {
 					isHolding = true;
 					turtleShell = new CTurtle(x, y);
+					if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING)
+						turtleShell->SetState(TURTLE_STATE_DEAD_TAILTURNING);
 					turtleShell->SetState(TURTLE_STATE_ISHOLDED);
 					turtle->Delete();
 				}
@@ -283,7 +285,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 	CGreenTurtle* turtle = dynamic_cast<CGreenTurtle*>(e->obj);
 
-	if (e->ny < 0) {
+	/*if (e->ny < 0) {
 		if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
 			if(nx<0)
 				turtle->SetState(GREENTURTLE_STATE_COLLECTION_RIGHT);
@@ -340,6 +342,90 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 					turtle->SetState(TURTLE_STATE_KICKED_LEFT);
 
 				}
+		}
+	}*/
+	if (e->ny < 0) {
+		if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
+		{
+			turtle->SetState(TURTLE_STATE_DEAD);
+			vy = -MARIO_JUMP_DEFLECT_SPEED;
+		}
+		else if (turtle->GetState() == TURTLE_STATE_DEAD || turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
+			isKicking = true;
+			kick_start = GetTickCount64();
+			if (nx < 0) {
+				turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
+			}
+			else {
+				turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+			}
+			/*if (nx < 0) {
+				isHolding = true;
+				turtleShell = new CTurtle(x, y);
+				turtleShell->SetState(TURTLE_STATE_ISHOLDED);
+				turtle->Delete();
+			}
+			else {
+				isHolding = true;
+				turtleShell = new CTurtle(x, y);
+				turtleShell->SetState(TURTLE_STATE_ISHOLDED);
+				turtle->Delete();
+			}*/
+		}
+	}
+	else {
+		if (untouchable == 0 && turtle->IsUntouchable() == 0)
+		{
+			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING || turtle->GetState() == TURTLE_STATE_DEAD) {
+				if (isprepareHolding) {
+					isHolding = true;
+					turtleShell = new CGreenTurtle(x, y);
+					if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING)
+						turtleShell->SetState(TURTLE_STATE_DEAD_TAILTURNING);
+					turtleShell->SetState(TURTLE_STATE_ISHOLDED);
+					turtle->Delete();
+				}
+				else if (turtle->GetState() == TURTLE_STATE_DEAD) {
+					if (e->nx > 0)
+					{
+						isKicking = true;
+						turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
+
+					}
+					else if (e->nx < 0)
+					{
+						isKicking = true;
+						turtle->SetState(TURTLE_STATE_KICKED_LEFT);
+
+					}
+				}
+				else {
+					if (e->nx > 0)
+					{
+						turtle->SetState(TURTLE_STATE_COLLECTION_RIGHT);
+
+					}
+					else if (e->nx < 0)
+					{
+						turtle->SetState(TURTLE_STATE_COLLECTION_LEFT);
+
+					}
+				}
+			}
+			else if (turtle->GetState() != TURTLE_STATE_REVIVAL)
+			{
+				if (level > MARIO_LEVEL_SMALL)
+				{
+					level -= 1;
+					StartUntouchable();
+				}
+				else
+				{
+					DebugOut(L">>> Mario DIE >>> \n");
+					SetState(MARIO_STATE_DIE);
+				}
+			}
+
 		}
 	}
 }

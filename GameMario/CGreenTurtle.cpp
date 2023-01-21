@@ -26,19 +26,33 @@ void CGreenTurtle::Render()
 		break;
 	}
 	case TURTLE_STATE_KICKED_RIGHT: {
-		aniID = ID_ANI_GREENTURTLE_KICK;
+		if (isdeadTailTurning == true)
+			aniID = ID_ANI_GREENTURTLE_KICK_DEAD_TAILTURNING;
+		else aniID = ID_ANI_GREENTURTLE_KICK;
 		break;
 	}
 	case TURTLE_STATE_KICKED_LEFT: {
-		aniID = ID_ANI_GREENTURTLE_KICK;
+		if (isdeadTailTurning == true)
+			aniID = ID_ANI_GREENTURTLE_KICK_DEAD_TAILTURNING;
+		else aniID = ID_ANI_GREENTURTLE_KICK;
 		break;
 	}
-	case GREENTURTLE_STATE_COLLECTION_RIGHT: {
-		aniID = ID_ANI_GREENTURTLE_DEAD_TAILTURNING;
+	case TURTLE_STATE_ISHOLDED: {
+		if (isdeadTailTurning == true)
+			aniID = ID_ANI_GREENTURTLE_DEAD_TAILTURNING;
+		else aniID = ID_ANI_GREENTURTLE_DEAD;
 		break;
 	}
-	case GREENTURTLE_STATE_COLLECTION_LEFT: {
-		aniID = ID_ANI_GREENTURTLE_DEAD_TAILTURNING;
+	case TURTLE_STATE_COLLECTION_RIGHT: {
+		if (isdeadTailTurning == true)
+			aniID = ID_ANI_GREENTURTLE_DEAD_TAILTURNING;
+		else aniID = ID_ANI_GREENTURTLE_DEAD;
+		break;
+	}
+	case TURTLE_STATE_COLLECTION_LEFT: {
+		if (isdeadTailTurning == true)
+			aniID = ID_ANI_GREENTURTLE_DEAD_TAILTURNING;
+		else aniID = ID_ANI_GREENTURTLE_DEAD;
 		break;
 	}
 	default: {
