@@ -1,4 +1,5 @@
 #include "MarioWorldMaps.h"
+#include "debug.h"
 
 void MarioWorldMaps::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -11,6 +12,7 @@ void MarioWorldMaps::GetBoundingBox(float& left, float& top, float& right, float
 void MarioWorldMaps::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
+	//DebugOut(L"%f, %f: \n", x, y);
 	animations->Get(ID_ANI_MARIOW)->Render(x, y);
 	//RenderBoundingBox();
 }

@@ -16,6 +16,7 @@ using namespace std;
 #include "KeyEventHandler.h"
 #include "Scene.h"
 #include "tinyxml.h"
+#include "CWorldMap.h"
 
 #define MAX_FRAME_RATE 100
 #define KEYBOARD_BUFFER_SIZE 1024
@@ -60,8 +61,9 @@ class CGame
 	int current_scene;
 	int next_scene = -1;
 
-	
-
+	unordered_map<int, LPNodeMap> maps;
+	//int current_worldmap;
+	int current_nodemap;
 public:
 	BOOLEAN isForcusPlayer = false;
 	float yChangeCamMax = 240.0f;
@@ -119,6 +121,11 @@ public:
 	void SwitchScene();
 	void InitiateSwitchScene(int scene_id);
 
+	// world map
+	void addNodemap(int nodeId, LPNodeMap node);
+	void setCurrentNodeMap(int id);
+	LPNodeMap getNodeMap(int id);
+	LPNodeMap getCurrentNodeMap();
 
 	~CGame();
 };

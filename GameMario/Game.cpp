@@ -505,6 +505,26 @@ void CGame::InitiateSwitchScene(int scene_id)
 }
 
 
+void CGame::addNodemap(int nodeId, LPNodeMap node)
+{
+	maps[nodeId] = node;
+}
+
+void CGame::setCurrentNodeMap(int id)
+{
+	current_nodemap = id;
+}
+
+LPNodeMap CGame::getNodeMap(int id)
+{
+	return maps[id];
+}
+
+LPNodeMap CGame::getCurrentNodeMap()
+{
+	return maps[current_nodemap];
+}
+
 CGame::~CGame()
 {
 	pBlendStateAlpha->Release();

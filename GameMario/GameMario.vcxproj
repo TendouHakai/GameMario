@@ -250,6 +250,7 @@
     <Xml Include="Goomba.xml" />
     <Xml Include="intro1.xml" />
     <Xml Include="Leaf.xml" />
+    <Xml Include="NodeMap.xml" />
     <Xml Include="TileMap1-1.xml" />
     <Xml Include="Mushroom.xml" />
     <Xml Include="Coin.xml" />

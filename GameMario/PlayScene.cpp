@@ -188,6 +188,19 @@ void CPlayScene::Load()
 			mapT = atoi(mapXML->Attribute("t"));
 			mapR = atoi(mapXML->Attribute("r"));
 			mapB = atoi(mapXML->Attribute("b"));
+			// load nodemaps
+			for (TiXmlElement* node = mapXML->FirstChildElement("nodemap"); node != nullptr; node = node->NextSiblingElement("nodemap")) {
+				int nodemapID = atoi(node->Attribute("id"));
+				float x = (float)atoi(node->Attribute("x"));
+				float y = (float)atoi(node->Attribute("y"));
+				int idLEFT = atoi(node->Attribute("left"));
+				int idRIGHT = atoi(node->Attribute("right"));
+				int idTOP = atoi(node->Attribute("top"));
+				int idBOTTOM = atoi(node->Attribute("bottom"));
+
+				LPNodeMap nodeMap = new CNodeMap(x, y, idLEFT, idRIGHT, idTOP, idBOTTOM);
+				CGame::GetInstance()->addNodemap(nodemapID, nodeMap);
+			}
 		}
 		// đọc tile map
 		if (tilemap != NULL)
@@ -208,16 +221,21 @@ void CPlayScene::Load()
 				CGameObject* obj = NULL;
 				switch (objectID)
 				{
-				case OBJECT_TYPE_MARIO_WORLDMAP:
+				case OBJECT_TYPE_MARIO_WORLDMAP: {
 					if (player != NULL) {
 						DebugOut(L"[ERROR] MARIO object was created before!\n");
 						return;
 					}
+					int start = atoi(node->Attribute("start"));
+					CGame::GetInstance()->setCurrentNodeMap(start);
+					x = CGame::GetInstance()->getNodeMap(start)->x;
+					y = CGame::GetInstance()->getNodeMap(start)->y;
 					obj = new MarioWorldMaps(x, y);
 					player = (MarioWorldMaps*)obj;
 
 					DebugOut(L"[INFO] Player object has been created!\n");
 					break;
+				}
 				case OBJECT_TYPE_MARIO:
 					if (player != NULL)
 					{
@@ -431,33 +449,42 @@ void CPlayScene::Update(DWORD dt)
 	else if (cx + game->GetBackBufferWidth() > map->getWidth() ) cx = map->getWidth() - game->GetBackBufferWidth();
 	if (cy < 0) cy = 0;
 
-	float height = CGame::GetInstance()->GetBackBufferHeight();
+	if (id < 1000) {
+		float height = CGame::GetInstance()->GetBackBufferHeight();
 
-	if (CGame::GetInstance()->isForcusPlayer == false) {
-		cy = CGame::GetInstance()->yForcusMin - (1 * height / 4);
-	}
-	else {
-		if (cy <= CGame::GetInstance()->yForcusMin) {
-			CGame::GetInstance()->yForcusMin = cy;
-			CGame::GetInstance()->yForcusMax = cy + height / 2;
-			cy = cy - (1 * height / 4);
-		}
-		else if (cy >= CGame::GetInstance()->yForcusMax) {
-			CGame::GetInstance()->yForcusMax = cy;
-			CGame::GetInstance()->yForcusMin = cy - height / 2;
-			cy = cy - (3 * height / 4);
+		if (CGame::GetInstance()->isForcusPlayer == false) {
+			cy = CGame::GetInstance()->yForcusMin - (1 * height / 4);
 		}
 		else {
-			cy = CGame::GetInstance()->yForcusMin - (1 * height / 4);;
-		}
-		if (cy > CGame::GetInstance()->yChangeCamMax) { 
-			cy = CGame::GetInstance()->yChangeCamMax; CGame::GetInstance()->isForcusPlayer = false; 
-			CGame::GetInstance()->yForcusMin = CGame::GetInstance()->yChangeCamMax + (1* height/4);
-			CGame::GetInstance()->yForcusMax = CGame::GetInstance()->yChangeCamMax + (3* height/4);
-		}
-		if (cy < CGame::GetInstance()->yChangeCamMin) cy = CGame::GetInstance()->yChangeCamMin ;
+			if (cy <= CGame::GetInstance()->yForcusMin) {
+				CGame::GetInstance()->yForcusMin = cy;
+				CGame::GetInstance()->yForcusMax = cy + height / 2;
+				cy = cy - (1 * height / 4);
+			}
+			else if (cy >= CGame::GetInstance()->yForcusMax) {
+				CGame::GetInstance()->yForcusMax = cy;
+				CGame::GetInstance()->yForcusMin = cy - height / 2;
+				cy = cy - (3 * height / 4);
+			}
+			else {
+				cy = CGame::GetInstance()->yForcusMin - (1 * height / 4);;
+			}
+			if (cy > CGame::GetInstance()->yChangeCamMax) {
+				cy = CGame::GetInstance()->yChangeCamMax; CGame::GetInstance()->isForcusPlayer = false;
+				CGame::GetInstance()->yForcusMin = CGame::GetInstance()->yChangeCamMax + (1 * height / 4);
+				CGame::GetInstance()->yForcusMax = CGame::GetInstance()->yChangeCamMax + (3 * height / 4);
+			}
+			if (cy < CGame::GetInstance()->yChangeCamMin) cy = CGame::GetInstance()->yChangeCamMin;
 
+		}
 	}
+	else {
+		float xC, yC;
+		CGame::GetInstance()->GetCamPos(xC, yC);
+		cy = yC;
+		cx = xC;
+	}
+	
 	CGame::GetInstance()->SetCamPos(cx, cy);
 	if(id<1000)
 		tileMap->SetTileRender(cx, cy, cx+CGame::GetInstance()->GetBackBufferWidth(), cy+CGame::GetInstance()->GetBackBufferHeight());

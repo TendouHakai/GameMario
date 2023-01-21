@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TAIL>
+  <SPRITES>
+    <!--DONE-->
+    <Sprite spriteID ="122001" l="272" t="93" r="287" b="108" textureID="1"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--DONE-->
+    <animation aniID="26001">
+      <Sprite SpriteID="122001" time="1000"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</TAIL>
