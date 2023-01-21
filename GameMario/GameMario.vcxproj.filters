@@ -202,6 +202,9 @@
     <ClInclude Include="CTileMap.h">
       <Filter>TileMap</Filter>
     </ClInclude>
+    <ClInclude Include="IntroKeyEventHandler.h" />
+    <ClInclude Include="MarioWorldMaps.h" />
+    <ClInclude Include="CWorldMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -348,6 +351,15 @@
     <ClCompile Include="CTileMap.cpp">
       <Filter>TileMap</Filter>
     </ClCompile>
+    <ClCompile Include="IntroKeyEventHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MarioWorldMaps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CWorldMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -420,6 +432,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="TileMap1-1.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="intro1.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

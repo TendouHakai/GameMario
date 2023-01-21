@@ -30,6 +30,7 @@
 #include "CBreakableBrickButton.h"
 
 #include "SampleKeyEventHandler.h"
+#include "IntroKeyEventHandler.h"
 
 using namespace std;
 
@@ -38,7 +39,9 @@ CPlayScene::CPlayScene(int id, string filePath):
 {	
 	map = NULL;
 	player = NULL;
-	key_handler = new CSampleKeyHandler(this);
+	if (id > 1000)
+		key_handler = new IntroKeyEventHandler(this);
+	else key_handler = new CSampleKeyHandler(this);
 }
 
 
@@ -125,34 +128,6 @@ void CPlayScene::LoadAssets(string assetFile)
 {
 	DebugOut(L"[INFO] Start loading assets from : %s \n", assetFile);
 
-	//ifstream f;
-	//f.open(assetFile);
-
-	//int section = ASSETS_SECTION_UNKNOWN;
-
-	//char str[MAX_SCENE_LINE];
-	//while (f.getline(str, MAX_SCENE_LINE))
-	//{
-	//	string line(str);
-
-	//	if (line[0] == '#') continue;	// skip comment lines	
-
-	//	if (line == "[SPRITES]") { section = ASSETS_SECTION_SPRITES; continue; };
-	//	if (line == "[ANIMATIONS]") { section = ASSETS_SECTION_ANIMATIONS; continue; };
-	//	if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }
-
-	//	//
-	//	// data section
-	//	//
-	//	switch (section)
-	//	{
-	//	case ASSETS_SECTION_SPRITES: _ParseSection_SPRITES(line); break;
-	//	case ASSETS_SECTION_ANIMATIONS: _ParseSection_ANIMATIONS(line); break;
-	//	}
-	//	
-	//}
-
-	//f.close();
 	TiXmlDocument doc(assetFile.c_str());
 	if (doc.LoadFile()) {
 		TiXmlElement* root = doc.RootElement();
@@ -198,33 +173,6 @@ void CPlayScene::Load()
 {
 	DebugOut(L"[INFO] Start loading scene from : %s \n", sceneFilePath);
 
-	//ifstream f;
-	//f.open(sceneFilePath);
-
-	//// current resource section flag
-	//int section = SCENE_SECTION_UNKNOWN;					
-
-	//char str[MAX_SCENE_LINE];
-	//while (f.getline(str, MAX_SCENE_LINE))
-	//{
-	//	string line(str);
-
-	//	if (line[0] == '#') continue;	// skip comment lines	
-	//	if (line == "[ASSETS]") { section = SCENE_SECTION_ASSETS; continue; };
-	//	if (line == "[OBJECTS]") { section = SCENE_SECTION_OBJECTS; continue; };
-	//	if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }	
-
-	//	//
-	//	// data section
-	//	//
-	//	switch (section)
-	//	{ 
-	//		case SCENE_SECTION_ASSETS: _ParseSection_ASSETS(line); break;
-	//		case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
-	//	}
-	//}
-
-	//f.close();
 	TiXmlDocument doc(sceneFilePath.c_str());
 	if (doc.LoadFile()) {
 		TiXmlElement* root = doc.RootElement();
@@ -233,197 +181,219 @@ void CPlayScene::Load()
 		TiXmlElement* assetsXML = root->FirstChildElement("ASSETS");
 		TiXmlElement* objectsXML = root->FirstChildElement("OBJECTS");
 		// đọc map
-		loadMap(mapXML->Attribute("link"));
+		if (mapXML != NULL)
+		{
+			loadMap(mapXML->Attribute("link"));
+			mapL = atoi(mapXML->Attribute("l"));
+			mapT = atoi(mapXML->Attribute("t"));
+			mapR = atoi(mapXML->Attribute("r"));
+			mapB = atoi(mapXML->Attribute("b"));
+		}
 		// đọc tile map
-		tileMap = new CTileMap(tilemap->Attribute("filePath"));
+		if (tilemap != NULL)
+		{
+			tileMap = new CTileMap(tilemap->Attribute("filePath"));	
+		}
 		// đọc assets
-		for (TiXmlElement* node = assetsXML->FirstChildElement("asset"); node != nullptr; node = node->NextSiblingElement("asset")) {
-			LoadAssets(node->Attribute("link"));
-		}
+		if(assetsXML!=NULL)
+			for (TiXmlElement* node = assetsXML->FirstChildElement("asset"); node != nullptr; node = node->NextSiblingElement("asset")) {
+				LoadAssets(node->Attribute("link"));
+			}
 		// đọcc objects
-		for (TiXmlElement* node = objectsXML->FirstChildElement("object"); node != nullptr; node = node->NextSiblingElement("object")) {
-			int objectID = atoi(node->Attribute("type"));
-			float x = (float)atoi(node->Attribute("x"));
-			float y = (float)atoi(node->Attribute("y"));
-			CGameObject* obj = NULL;
-			switch (objectID)
-			{
-			case OBJECT_TYPE_MARIO:
-				if (player != NULL)
+		if(objectsXML !=NULL)
+			for (TiXmlElement* node = objectsXML->FirstChildElement("object"); node != nullptr; node = node->NextSiblingElement("object")) {
+				int objectID = atoi(node->Attribute("type"));
+				float x = (float)atoi(node->Attribute("x"));
+				float y = (float)atoi(node->Attribute("y"));
+				CGameObject* obj = NULL;
+				switch (objectID)
 				{
-					DebugOut(L"[ERROR] MARIO object was created before!\n");
-					return;
-				}
-				obj = new CMario(x, y);
-				player = (CMario*)obj;
-
-				DebugOut(L"[INFO] Player object has been created!\n");
-				break;
-			case OBJECT_TYPE_BRICK: 
-			{
-				obj = new CBrick(x, y);
-				break; 
-			}
-			case OBJECT_TYPE_WOODBRICK: {
-				obj = new CWoodBrick(x, y); break;
-			}
-			case OBJECT_TYPE_BREAKABLEBRICK: {
-				obj = new CBreakableBrick(x, y); break;
-			}
-			case OBJECT_TYPE_PLATFORM:
-			{
-				
-				float cell_width = (float)atof(node->Attribute("cellW"));
-				float cell_height = (float)atof(node->Attribute("cellH"));
-				int length = atoi(node->Attribute("length"));
-				
-				obj = new CPlatform(
-					x, y,
-					cell_width, cell_height, length
-				);
-				
-				break;
-			}
-			case OBJECT_TYPE_PLATFORM_NOTBLOCK: {
-				float cell_width = (float)atof(node->Attribute("cellW"));
-				float cell_height = (float)atof(node->Attribute("cellH"));
-				int length = atoi(node->Attribute("length"));
-
-				obj = new CPlatformNotBlock(
-					x, y,
-					cell_width, cell_height, length
-				);
-				break;
-			}
-			case OBJECT_TYPE_QUESTIONBRICK: {
-				int BrickType = atoi(node->Attribute("brickType"));
-				obj = new CQuestionBrick(x, y, BrickType);
-				break;
-			}
-			case OBJECT_TYPE_COIN: {
-				obj = new CCoin(x, y);
-				break;
-			}
-			case OBJECT_TYPE_CANNIBALFLOWER: {
-				obj = new CCannibalFlower(x, y);
-				break;
-			}
-			case OBJECT_TYPE_BULLET: {
-				obj = new CBullet(x, y);
-				break;
-			}
-			case OBJECT_TYPE_REDTURTLE: {
-				obj = new CTurtle(x, y);
-				break;
-			}
-			case OBJECT_TYPE_REDTURTLE_CHECK: {
-				obj = new CTurtleCheck(x, y);
-				break;
-			}
-			case OBJECT_TYPE_CHANGECAM: {
-				float w = (float)atof(node->Attribute("w"));
-				float h = (float)atof(node->Attribute("h"));
-				float yChangeCamMax = (float)atof(node->Attribute("yCamMax"));
-				float yChangeCamMin = (float)atof(node->Attribute("yCamMin"));
-				obj = new ChangeCam(x, y, w, h, yChangeCamMax, yChangeCamMin);
-				break;
-			}
-			case OBJECT_TYPE_GREENTURTLE: {
-				obj = new CGreenTurtle(x, y);
-				break;
-			}
-			case OBJECT_TYPE_WINGGREENTURTLE: {
-				obj = new CWingGreenTurtle(x, y);
-				break;
-			}
-			case OBJECT_TYPE_PLATFORMSPRITE: {
-				float cell_width = (float)atof(node->Attribute("cellW"));
-				float cell_height = (float)atof(node->Attribute("cellH"));
-				int length = atoi(node->Attribute("length"));
-				int idBegin = atoi(node->Attribute("idSpriteBegin"));
-				int idMiddle = atoi(node->Attribute("idSpriteMiddle"));
-				int idEnd = atoi(node->Attribute("idSpriteEnd"));
-
-				obj = new CPlatformSprite(
-					x, y,
-					cell_width, cell_height, length,
-					idBegin, idMiddle, idEnd
-				);
-				break;
-			}
-			case OBJECT_TYPE_GREENTUBE: {
-				float cell_width = (float)atof(node->Attribute("cellW"));
-				float cell_height = (float)atof(node->Attribute("cellH"));
-				int height = atoi(node->Attribute("height"));
-				int idTL = atoi(node->Attribute("idSpriteTL"));
-				int idTR = atoi(node->Attribute("idSpriteTR"));
-				int idML = atoi(node->Attribute("idSpriteML"));
-				int idMR = atoi(node->Attribute("idSpriteMR"));
-				int idBL = atoi(node->Attribute("idSpriteBL"));
-				int idBR = atoi(node->Attribute("idSpriteBR"));
-
-				obj = new CTube(x, y, cell_width, cell_height, height, idTL, idTR, idML, idMR, idBL, idBR);
-				break;
-			}
-			case OBJECT_TYPE_MUSHROOM: {
-				obj = new CMushroom(x, y);
-				break;
-			}
-			case OBJECT_TYPE_GOOMBA: {
-				obj = new CGoomba(x, y);
-				break;
-			}
-			case OBJECT_TYPE_REDGOOMBA: {
-				obj = new CRedGoomba(x, y);
-				break;
-			}
-			case OBJECT_TYPE_WINGOFREDGOOMBA: {
-				obj = new CWingOfGoomba(x, y);
-				break;
-			}
-			case OBJECT_TYPE_WINGREDGOOMBA: {
-				obj = new CWingRedGoomba(x, y);
-				break;
-			}
-			case OBJECT_TYPE_BLOCKENEMIES: {
-				float width = (float)atof(node->Attribute("width"));
-				float height = (float)atof(node->Attribute("height"));
-				obj = new CBLockEnemies(x, y, width, height);
-				break;
-			}
-			case OBJECT_TYPE_VENUSFLYTRAPFLOWER: {
-				obj = new CVenusflytrapFlower(x, y);
-				break;
-			}
-			case OBJECT_TYPE_BREAKBLEBRICKBUTTON: {
-				obj = new CbreakableBrickButton(x, y);
-				CbreakableBrickButton* button = dynamic_cast<CbreakableBrickButton*>(obj);
-				float amount = (float)atof(node->Attribute("amount"));
-				for (size_t i = objects.size()-1; i>0 && amount>0; i--)
-				{
-					if (dynamic_cast<CBreakableBrick*>(objects[i])) {
-						CBreakableBrick* brick = dynamic_cast<CBreakableBrick*>(objects[i]);
-						button->addBrick(brick);
+				case OBJECT_TYPE_MARIO_WORLDMAP:
+					if (player != NULL) {
+						DebugOut(L"[ERROR] MARIO object was created before!\n");
+						return;
 					}
-					amount--;
+					obj = new MarioWorldMaps(x, y);
+					player = (MarioWorldMaps*)obj;
+
+					DebugOut(L"[INFO] Player object has been created!\n");
+					break;
+				case OBJECT_TYPE_MARIO:
+					if (player != NULL)
+					{
+						DebugOut(L"[ERROR] MARIO object was created before!\n");
+						return;
+					}
+					obj = new CMario(x, y);
+					player = (CMario*)obj;
+
+					DebugOut(L"[INFO] Player object has been created!\n");
+					break;
+				case OBJECT_TYPE_BRICK: 
+				{
+					obj = new CBrick(x, y);
+					break; 
 				}
+				case OBJECT_TYPE_WOODBRICK: {
+					obj = new CWoodBrick(x, y); break;
+				}
+				case OBJECT_TYPE_BREAKABLEBRICK: {
+					obj = new CBreakableBrick(x, y); break;
+				}
+				case OBJECT_TYPE_PLATFORM:
+				{
 				
-				break;
-			}
-			case OBJECT_TYPE_TELEPORT: {
-				float xtele = (float)atof(node->Attribute("xtele"));
-				float ytele = (float)atof(node->Attribute("ytele"));
-				float yChangeCamMin = (float)atof(node->Attribute("yChangeCamMin"));
-				float yChangeCamMax = (float)atof(node->Attribute("yChangeCamMax"));
+					float cell_width = (float)atof(node->Attribute("cellW"));
+					float cell_height = (float)atof(node->Attribute("cellH"));
+					int length = atoi(node->Attribute("length"));
+				
+					obj = new CPlatform(
+						x, y,
+						cell_width, cell_height, length
+					);
+				
+					break;
+				}
+				case OBJECT_TYPE_PLATFORM_NOTBLOCK: {
+					float cell_width = (float)atof(node->Attribute("cellW"));
+					float cell_height = (float)atof(node->Attribute("cellH"));
+					int length = atoi(node->Attribute("length"));
 
-				obj = new CTelePort(x, y, xtele, ytele, yChangeCamMin, yChangeCamMax);
-				break;
-			}
-			}
+					obj = new CPlatformNotBlock(
+						x, y,
+						cell_width, cell_height, length
+					);
+					break;
+				}
+				case OBJECT_TYPE_QUESTIONBRICK: {
+					int BrickType = atoi(node->Attribute("brickType"));
+					obj = new CQuestionBrick(x, y, BrickType);
+					break;
+				}
+				case OBJECT_TYPE_COIN: {
+					obj = new CCoin(x, y);
+					break;
+				}
+				case OBJECT_TYPE_CANNIBALFLOWER: {
+					obj = new CCannibalFlower(x, y);
+					break;
+				}
+				case OBJECT_TYPE_BULLET: {
+					obj = new CBullet(x, y);
+					break;
+				}
+				case OBJECT_TYPE_REDTURTLE: {
+					obj = new CTurtle(x, y);
+					break;
+				}
+				case OBJECT_TYPE_REDTURTLE_CHECK: {
+					obj = new CTurtleCheck(x, y);
+					break;
+				}
+				case OBJECT_TYPE_CHANGECAM: {
+					float w = (float)atof(node->Attribute("w"));
+					float h = (float)atof(node->Attribute("h"));
+					float yChangeCamMax = (float)atof(node->Attribute("yCamMax"));
+					float yChangeCamMin = (float)atof(node->Attribute("yCamMin"));
+					obj = new ChangeCam(x, y, w, h, yChangeCamMax, yChangeCamMin);
+					break;
+				}
+				case OBJECT_TYPE_GREENTURTLE: {
+					obj = new CGreenTurtle(x, y);
+					break;
+				}
+				case OBJECT_TYPE_WINGGREENTURTLE: {
+					obj = new CWingGreenTurtle(x, y);
+					break;
+				}
+				case OBJECT_TYPE_PLATFORMSPRITE: {
+					float cell_width = (float)atof(node->Attribute("cellW"));
+					float cell_height = (float)atof(node->Attribute("cellH"));
+					int length = atoi(node->Attribute("length"));
+					int idBegin = atoi(node->Attribute("idSpriteBegin"));
+					int idMiddle = atoi(node->Attribute("idSpriteMiddle"));
+					int idEnd = atoi(node->Attribute("idSpriteEnd"));
 
-			obj->SetPosition(x, y);
-			objects.push_back(obj);
-		}
+					obj = new CPlatformSprite(
+						x, y,
+						cell_width, cell_height, length,
+						idBegin, idMiddle, idEnd
+					);
+					break;
+				}
+				case OBJECT_TYPE_GREENTUBE: {
+					float cell_width = (float)atof(node->Attribute("cellW"));
+					float cell_height = (float)atof(node->Attribute("cellH"));
+					int height = atoi(node->Attribute("height"));
+					int idTL = atoi(node->Attribute("idSpriteTL"));
+					int idTR = atoi(node->Attribute("idSpriteTR"));
+					int idML = atoi(node->Attribute("idSpriteML"));
+					int idMR = atoi(node->Attribute("idSpriteMR"));
+					int idBL = atoi(node->Attribute("idSpriteBL"));
+					int idBR = atoi(node->Attribute("idSpriteBR"));
+
+					obj = new CTube(x, y, cell_width, cell_height, height, idTL, idTR, idML, idMR, idBL, idBR);
+					break;
+				}
+				case OBJECT_TYPE_MUSHROOM: {
+					obj = new CMushroom(x, y);
+					break;
+				}
+				case OBJECT_TYPE_GOOMBA: {
+					obj = new CGoomba(x, y);
+					break;
+				}
+				case OBJECT_TYPE_REDGOOMBA: {
+					obj = new CRedGoomba(x, y);
+					break;
+				}
+				case OBJECT_TYPE_WINGOFREDGOOMBA: {
+					obj = new CWingOfGoomba(x, y);
+					break;
+				}
+				case OBJECT_TYPE_WINGREDGOOMBA: {
+					obj = new CWingRedGoomba(x, y);
+					break;
+				}
+				case OBJECT_TYPE_BLOCKENEMIES: {
+					float width = (float)atof(node->Attribute("width"));
+					float height = (float)atof(node->Attribute("height"));
+					obj = new CBLockEnemies(x, y, width, height);
+					break;
+				}
+				case OBJECT_TYPE_VENUSFLYTRAPFLOWER: {
+					obj = new CVenusflytrapFlower(x, y);
+					break;
+				}
+				case OBJECT_TYPE_BREAKBLEBRICKBUTTON: {
+					obj = new CbreakableBrickButton(x, y);
+					CbreakableBrickButton* button = dynamic_cast<CbreakableBrickButton*>(obj);
+					float amount = (float)atof(node->Attribute("amount"));
+					for (size_t i = objects.size()-1; i>0 && amount>0; i--)
+					{
+						if (dynamic_cast<CBreakableBrick*>(objects[i])) {
+							CBreakableBrick* brick = dynamic_cast<CBreakableBrick*>(objects[i]);
+							button->addBrick(brick);
+						}
+						amount--;
+					}
+				
+					break;
+				}
+				case OBJECT_TYPE_TELEPORT: {
+					float xtele = (float)atof(node->Attribute("xtele"));
+					float ytele = (float)atof(node->Attribute("ytele"));
+					float yChangeCamMin = (float)atof(node->Attribute("yChangeCamMin"));
+					float yChangeCamMax = (float)atof(node->Attribute("yChangeCamMax"));
+
+					obj = new CTelePort(x, y, xtele, ytele, yChangeCamMin, yChangeCamMax);
+					break;
+				}
+				}
+
+				obj->SetPosition(x, y);
+				objects.push_back(obj);
+			}
 
 	}
 
@@ -489,25 +459,29 @@ void CPlayScene::Update(DWORD dt)
 
 	}
 	CGame::GetInstance()->SetCamPos(cx, cy);
-	tileMap->SetTileRender(cx, cy, cx+CGame::GetInstance()->GetBackBufferWidth(), cy+CGame::GetInstance()->GetBackBufferHeight());
+	if(id<1000)
+		tileMap->SetTileRender(cx, cy, cx+CGame::GetInstance()->GetBackBufferWidth(), cy+CGame::GetInstance()->GetBackBufferHeight());
 
 	PurgeDeletedObjects();
 }
 
 void CPlayScene::Render()
 {
-	/*RECT rect;
-	float cx, cy;
-	CGame::GetInstance()->GetCamPos(cx, cy);
-	float sx, sy;	
-	sx = CGame::GetInstance()->GetBackBufferWidth();
-	sy = CGame::GetInstance()->GetBackBufferHeight();
-	rect.left = cx;
-	rect.right = rect.left + sx +1;
-	rect.top = cy;
-	rect.bottom = rect.top + sy +1;
-	CGame::GetInstance()->Draw(sx/2, sy/2, map, &rect);*/
-	tileMap->Render();
+	if (id > 1000)
+	{
+		RECT rect;
+		float cx, cy;
+		CGame::GetInstance()->GetCamPos(cx, cy);
+		float sx, sy;
+		sx = CGame::GetInstance()->GetBackBufferWidth();
+		sy = CGame::GetInstance()->GetBackBufferHeight();
+		rect.left = mapL;
+		rect.right = mapR;
+		rect.top = mapT;
+		rect.bottom = mapB;
+		CGame::GetInstance()->Draw(sx / 2, sy / 2 - 15, map, &rect);
+	}
+	else tileMap->Render();
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 }

@@ -140,6 +140,10 @@
     <Sprite spriteID ="17021" l="413" t="873" r="444" b="900" textureID="0"></Sprite>
     <Sprite spriteID ="17031" l="30" t="872" r="55" b="899" textureID="0"></Sprite>
     <Sprite spriteID ="17041" l="3" t="872" r="28" b="899" textureID="0"></Sprite>
+    
+    <!--MARIO WORLD MAP-->
+    <Sprite spriteID ="18011" l="251" t="115" r="266" b="132" textureID="1"></Sprite>
+    <Sprite spriteID ="18021" l="271" t="115" r="286" b="132" textureID="1"></Sprite>
   </SPRITES>
 
   <ANIMATIONS>
@@ -444,6 +448,12 @@
       <Sprite SpriteID="14213" time="100"></Sprite>
       <Sprite SpriteID="17031" time="100"></Sprite>
       <Sprite SpriteID="17041" time="100"></Sprite>
+    </animation>
+    
+    <!--MARIO WORLD MAP-->
+    <animation aniID="2007">
+      <Sprite SpriteID="18011" time="200"></Sprite>
+      <Sprite SpriteID="18021" time="200"></Sprite>
     </animation>
   </ANIMATIONS>
 </MARIO>

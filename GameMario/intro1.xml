@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCENE>
+  <MAP link="textures\WorldMaps.png" l="3" t="39" r="239" b="204">
+  </MAP>
+  <ASSETS>
+    <asset link="Mario.xml"></asset>
+  </ASSETS>
+  <OBJECTS>
+    <object type ="1000" x="100" y="300"> </object>
+  </OBJECTS>
+</SCENE>

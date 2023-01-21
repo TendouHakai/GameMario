@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "Brick.h"
 #include "Mario.h"
+#include "MarioWorldMaps.h"
 #include "Goomba.h"
 //#include "Koopas.h"
 #include "CTileMap.h"
@@ -18,6 +19,11 @@ protected:
 
 	vector<LPGAMEOBJECT> objects;
 	LPTEXTURE map;
+	int mapL;
+	int mapT;
+	int mapR;
+	int mapB;
+
 	CTileMap* tileMap;
 	void loadMap(string mapFile);
 	void LoadAssets(string assetFile);
