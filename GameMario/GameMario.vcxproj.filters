@@ -83,9 +83,6 @@
     <ClInclude Include="AssetIDs.h">
       <Filter>ConstantInGame</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="Mario.h">
       <Filter>GameObject\Mario</Filter>
     </ClInclude>
@@ -206,6 +203,10 @@
     <ClInclude Include="MarioWorldMaps.h" />
     <ClInclude Include="CWorldMap.h" />
     <ClInclude Include="CNodeMapG.h" />
+    <ClInclude Include="CHUB.h" />
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -364,6 +365,9 @@
     <ClCompile Include="CNodeMapG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CHUB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -442,6 +446,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="NodeMap.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="HUB.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

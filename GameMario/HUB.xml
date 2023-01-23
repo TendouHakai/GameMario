@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HUB>
+  <SPRITES>
+    <Sprite spriteID ="123001" l="11" t="127" r="164" b="156" textureID="2"></Sprite>
+    <!--NUMBER-->
+
+    <Sprite spriteID ="123002" l="76" t="31" r="85" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123003" l="86" t="31" r="95" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123004" l="96" t="31" r="105" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123005" l="106" t="31" r="115" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123006" l="116" t="31" r="125" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123007" l="126" t="31" r="135" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123008" l="136" t="31" r="145" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123009" l="146" t="31" r="155" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123010" l="156" t="31" r="165" b="38" textureID="2"></Sprite>
+    <Sprite spriteID ="123011" l="166" t="31" r="175" b="38" textureID="2"></Sprite>
+    
+    <!--P-->
+    <Sprite spriteID ="123012" l="91" t="162" r="98" b="169" textureID="2"></Sprite>
+    <Sprite spriteID ="123013" l="101" t="162" r="114" b="169" textureID="2"></Sprite>
+
+    <Sprite spriteID ="123014" l="63" t="162" r="72" b="169" textureID="2"></Sprite>
+    <Sprite spriteID ="123015" l="73" t="162" r="88" b="169" textureID="2"></Sprite>
+    
+    <!--M or L-->
+    <Sprite spriteID ="123016" l="15" t="160" r="32" b="169" textureID="2"></Sprite>
+    
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="28001">
+      <Sprite SpriteID="123001" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28002">
+      <Sprite SpriteID="123002" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28003">
+      <Sprite SpriteID="123003" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28004">
+      <Sprite SpriteID="123004" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28005">
+      <Sprite SpriteID="123005" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28006">
+      <Sprite SpriteID="123006" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28007">
+      <Sprite SpriteID="123007" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28008">
+      <Sprite SpriteID="123008" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28009">
+      <Sprite SpriteID="123009" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28010">
+      <Sprite SpriteID="123010" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28011">
+      <Sprite SpriteID="123011" time="1000"></Sprite>
+    </animation>
+
+    <animation aniID="28012">
+      <Sprite SpriteID="123012" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28013">
+      <Sprite SpriteID="123013" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28014">
+      <Sprite SpriteID="123014" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28015">
+      <Sprite SpriteID="123015" time="1000"></Sprite>
+    </animation>
+
+    <animation aniID="28016">
+      <Sprite SpriteID="123016" time="1000"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</HUB>

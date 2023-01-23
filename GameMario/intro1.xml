@@ -26,6 +26,7 @@
   <ASSETS>
     <asset link="Mario.xml"></asset>
     <asset link="NodeMap.xml"></asset>
+    <asset link="HUB.xml"></asset>
   </ASSETS>
   <OBJECTS>
     <object type ="1001" x="0" y="0" nodeId="3" nodeType="1"></object>

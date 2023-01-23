@@ -66,8 +66,8 @@ class CGame
 	int current_nodemap;
 public:
 	BOOLEAN isForcusPlayer = false;
-	float yChangeCamMax = 240.0f;
-	float yChangeCamMin = 5.0f;
+	float yChangeCamMax = 245.0f;
+	float yChangeCamMin = 10.0f;
 	float yForcusMin;
 	float yForcusMax;
 	// Init DirectX, Sprite Handler

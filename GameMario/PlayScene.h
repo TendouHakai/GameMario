@@ -9,6 +9,7 @@
 #include "Goomba.h"
 //#include "Koopas.h"
 #include "CTileMap.h"
+#include "CHUB.h"
 
 class CPlayScene: public CScene
 {
@@ -25,6 +26,7 @@ protected:
 	int mapB;
 
 	CTileMap* tileMap;
+	CHUB* hub;
 	void loadMap(string mapFile);
 	void LoadAssets(string assetFile);
 	

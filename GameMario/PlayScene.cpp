@@ -173,6 +173,8 @@ void CPlayScene::LoadAssets(string assetFile)
 void CPlayScene::Load()
 {
 	DebugOut(L"[INFO] Start loading scene from : %s \n", sceneFilePath);
+	// create HUB
+	hub = new CHUB(50,400);
 
 	TiXmlDocument doc(sceneFilePath.c_str());
 	if (doc.LoadFile()) {
@@ -475,12 +477,12 @@ void CPlayScene::Update(DWORD dt)
 		float height = CGame::GetInstance()->GetBackBufferHeight();
 
 		if (CGame::GetInstance()->isForcusPlayer == false) {
-			cy = CGame::GetInstance()->yForcusMin - (1 * height / 4);
+			cy = CGame::GetInstance()->yForcusMin - (0.7 * height / 4);
 		}
 		else {
 			if (cy <= CGame::GetInstance()->yForcusMin) {
 				CGame::GetInstance()->yForcusMin = cy;
-				CGame::GetInstance()->yForcusMax = cy + height / 2;
+				CGame::GetInstance()->yForcusMax = cy + height / 2 + 0.3*height/4;
 				cy = cy - (1 * height / 4);
 			}
 			else if (cy >= CGame::GetInstance()->yForcusMax) {
@@ -516,11 +518,11 @@ void CPlayScene::Update(DWORD dt)
 
 void CPlayScene::Render()
 {
+	float cx, cy;
+	CGame::GetInstance()->GetCamPos(cx, cy);
 	if (id > 1000)
 	{
 		RECT rect;
-		float cx, cy;
-		CGame::GetInstance()->GetCamPos(cx, cy);
 		DebugOut(L"xCam, yCam: %f, %f\n", cx, cy);
 		float sx, sy;
 		sx = CGame::GetInstance()->GetBackBufferWidth();
@@ -534,6 +536,8 @@ void CPlayScene::Render()
 	else tileMap->Render();
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+	hub->SetPosition(cx+95, cy+185);
+	hub->Render();
 }
 
 /*
