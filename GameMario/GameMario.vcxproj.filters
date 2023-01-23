@@ -205,6 +205,7 @@
     <ClInclude Include="IntroKeyEventHandler.h" />
     <ClInclude Include="MarioWorldMaps.h" />
     <ClInclude Include="CWorldMap.h" />
+    <ClInclude Include="CNodeMapG.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -358,6 +359,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CWorldMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CNodeMapG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

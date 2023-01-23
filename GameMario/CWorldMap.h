@@ -8,9 +8,10 @@
 #define NODEMAP_TYPE_SCENE	1
 
 #define NODEMAP_STATE_DONE	100
+#define NODEMAP_STATE_NOTDONE	200
 class CNodeMap {
 public:
-	int type;
+	int status;
 	float x, y;
 	int sceneID;
 	int nodeUPId;
@@ -18,17 +19,22 @@ public:
 	int nodeLEFTId;
 	int nodeRIGHTId;
 
-	CNodeMap(float x, float y, int left = -1, int right = -1 , int up = -1, int down = -1) {
+	CNodeMap(float x, float y, int left = -1, int right = -1 , int up = -1, int down = -1, int idscene = -1) {
 		this->x = x;
 		this->y = y;
 		this->nodeUPId = up;
 		this->nodeDOWNId = down;
 		this->nodeLEFTId = left;
 		this->nodeRIGHTId = right;
+		this->sceneID = idscene;
+
+		this->status = NODEMAP_STATE_NOTDONE;
 	}
 
+	void setDone() {
+		this->status = NODEMAP_STATE_DONE;
+	}
 };
-
 
 typedef CNodeMap* LPNodeMap;
 

@@ -146,6 +146,7 @@
     <ClInclude Include="ChangeCam.h" />
     <ClInclude Include="CLeaf.h" />
     <ClInclude Include="CMushroom.h" />
+    <ClInclude Include="CNodeMapG.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CPeiceOfBreakableBrick.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="ChangeCam.cpp" />
     <ClCompile Include="CLeaf.cpp" />
     <ClCompile Include="CMushroom.cpp" />
+    <ClCompile Include="CNodeMapG.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CPeiceOfBreakableBrick.cpp" />

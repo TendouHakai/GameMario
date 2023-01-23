@@ -17,9 +17,6 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 	MarioWorldMaps* mario = (MarioWorldMaps*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
 	switch (KeyCode)
 	{
-	case DIK_S:
-		DebugOut(L"Switch scene\n");
-		break;
 	case DIK_UP:
 	{
 		LPNodeMap nodeMap = game->getCurrentNodeMap();
@@ -54,9 +51,9 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		}
 		break;
 	}
-	case DIK_RIGHT:
+	case DIK_RIGHT: {
 		LPNodeMap nodeMap = game->getCurrentNodeMap();
-		
+
 		if (nodeMap->nodeRIGHTId == -1)
 			break;
 		else {
@@ -65,6 +62,15 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 			mario->SetPosition(nodeMap->x, nodeMap->y);
 		}
 		break;
+	}
+	case DIK_S: {
+		LPNodeMap nodeMap = game->getCurrentNodeMap();
+		if (nodeMap->sceneID == -1)
+			break;
+		CGame::GetInstance()->InitiateSwitchScene(nodeMap->sceneID);
+		break;
+	}
+		
 	}
 }
 

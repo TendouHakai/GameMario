@@ -510,6 +510,11 @@ void CGame::addNodemap(int nodeId, LPNodeMap node)
 	maps[nodeId] = node;
 }
 
+void CGame::setcurrentWorldMap()
+{
+	this->current_worldmap = current_scene;
+}
+
 void CGame::setCurrentNodeMap(int id)
 {
 	current_nodemap = id;
@@ -523,6 +528,14 @@ LPNodeMap CGame::getNodeMap(int id)
 LPNodeMap CGame::getCurrentNodeMap()
 {
 	return maps[current_nodemap];
+}
+
+bool CGame::checkWorldMap()
+{
+	if (current_worldmap != -1) {
+		return true;
+	}
+	return false;
 }
 
 CGame::~CGame()

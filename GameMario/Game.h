@@ -62,7 +62,7 @@ class CGame
 	int next_scene = -1;
 
 	unordered_map<int, LPNodeMap> maps;
-	//int current_worldmap;
+	int current_worldmap = -1;
 	int current_nodemap;
 public:
 	BOOLEAN isForcusPlayer = false;
@@ -123,9 +123,11 @@ public:
 
 	// world map
 	void addNodemap(int nodeId, LPNodeMap node);
+	void setcurrentWorldMap();
 	void setCurrentNodeMap(int id);
 	LPNodeMap getNodeMap(int id);
 	LPNodeMap getCurrentNodeMap();
+	bool checkWorldMap();
 
 	~CGame();
 };

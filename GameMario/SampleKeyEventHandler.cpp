@@ -37,6 +37,11 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_D: 
 		mario->SetState(MARIO_STATE_TAIL_TURNING);
 		break;
+	case DIK_ESCAPE: {
+		CGame::GetInstance()->getCurrentNodeMap()->setDone();
+		CGame::GetInstance()->InitiateSwitchScene(1001);
+		break;
+	}
 	case DIK_R: 
 		float xC, yC;
 		CGame::GetInstance()->GetCamPos(xC, yC);

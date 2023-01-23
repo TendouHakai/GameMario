@@ -28,6 +28,7 @@
 #include "CBLockEnemies.h"
 #include "CVenusflytrapFlower.h"
 #include "CBreakableBrickButton.h"
+#include "CNodeMapG.h"
 
 #include "SampleKeyEventHandler.h"
 #include "IntroKeyEventHandler.h"
@@ -184,22 +185,27 @@ void CPlayScene::Load()
 		if (mapXML != NULL)
 		{
 			loadMap(mapXML->Attribute("link"));
-			mapL = atoi(mapXML->Attribute("l"));
-			mapT = atoi(mapXML->Attribute("t"));
-			mapR = atoi(mapXML->Attribute("r"));
-			mapB = atoi(mapXML->Attribute("b"));
-			// load nodemaps
-			for (TiXmlElement* node = mapXML->FirstChildElement("nodemap"); node != nullptr; node = node->NextSiblingElement("nodemap")) {
-				int nodemapID = atoi(node->Attribute("id"));
-				float x = (float)atoi(node->Attribute("x"));
-				float y = (float)atoi(node->Attribute("y"));
-				int idLEFT = atoi(node->Attribute("left"));
-				int idRIGHT = atoi(node->Attribute("right"));
-				int idTOP = atoi(node->Attribute("top"));
-				int idBOTTOM = atoi(node->Attribute("bottom"));
+			if (id > 1000 && !CGame::GetInstance()->checkWorldMap())
+			{
+				mapL = atoi(mapXML->Attribute("l"));
+				mapT = atoi(mapXML->Attribute("t"));
+				mapR = atoi(mapXML->Attribute("r"));
+				mapB = atoi(mapXML->Attribute("b"));
+				// load nodemaps
+				for (TiXmlElement* node = mapXML->FirstChildElement("nodemap"); node != nullptr; node = node->NextSiblingElement("nodemap")) {
+					int nodemapID = atoi(node->Attribute("id"));
+					float x = (float)atoi(node->Attribute("x"));
+					float y = (float)atoi(node->Attribute("y"));
+					int idLEFT = atoi(node->Attribute("left"));
+					int idRIGHT = atoi(node->Attribute("right"));
+					int idTOP = atoi(node->Attribute("top"));
+					int idBOTTOM = atoi(node->Attribute("bottom"));
+					int sceneID = atoi(node->Attribute("sceneID"));
 
-				LPNodeMap nodeMap = new CNodeMap(x, y, idLEFT, idRIGHT, idTOP, idBOTTOM);
-				CGame::GetInstance()->addNodemap(nodemapID, nodeMap);
+					LPNodeMap nodeMap = new CNodeMap(x, y, idLEFT, idRIGHT, idTOP, idBOTTOM, sceneID);
+					CGame::GetInstance()->addNodemap(nodemapID, nodeMap);
+				}
+				CGame::GetInstance()->setcurrentWorldMap();
 			}
 		}
 		// đọc tile map
@@ -226,14 +232,30 @@ void CPlayScene::Load()
 						DebugOut(L"[ERROR] MARIO object was created before!\n");
 						return;
 					}
-					int start = atoi(node->Attribute("start"));
-					CGame::GetInstance()->setCurrentNodeMap(start);
-					x = CGame::GetInstance()->getNodeMap(start)->x;
-					y = CGame::GetInstance()->getNodeMap(start)->y;
+					if (CGame::GetInstance()->getCurrentNodeMap()!= nullptr) {
+						x = CGame::GetInstance()->getCurrentNodeMap()->x;
+						y = CGame::GetInstance()->getCurrentNodeMap()->y;
+					}
+					else{
+						int start = atoi(node->Attribute("start"));
+						CGame::GetInstance()->setCurrentNodeMap(start);
+						x = CGame::GetInstance()->getNodeMap(start)->x;
+						y = CGame::GetInstance()->getNodeMap(start)->y;
+					}
 					obj = new MarioWorldMaps(x, y);
 					player = (MarioWorldMaps*)obj;
 
 					DebugOut(L"[INFO] Player object has been created!\n");
+					break;
+				}
+				case OBJECT_TYPE_NODEMAP_WORLDMAP: {
+					int nodeid = atoi(node->Attribute("nodeId"));
+					x = CGame::GetInstance()->getNodeMap(nodeid)->x;
+					y = CGame::GetInstance()->getNodeMap(nodeid)->y;
+					int nodeType = atoi(node->Attribute("nodeType"));
+
+					obj = new CNodeMapG(x, y, nodeType);
+					obj->SetState(CGame::GetInstance()->getNodeMap(nodeid)->status);
 					break;
 				}
 				case OBJECT_TYPE_MARIO:
@@ -499,6 +521,7 @@ void CPlayScene::Render()
 		RECT rect;
 		float cx, cy;
 		CGame::GetInstance()->GetCamPos(cx, cy);
+		DebugOut(L"xCam, yCam: %f, %f\n", cx, cy);
 		float sx, sy;
 		sx = CGame::GetInstance()->GetBackBufferWidth();
 		sy = CGame::GetInstance()->GetBackBufferHeight();
@@ -539,6 +562,8 @@ void CPlayScene::Unload()
 
 	objects.clear();
 	player = NULL;
+
+	CGame::GetInstance()->SetCamPos(0, 0);
 
 	DebugOut(L"[INFO] Scene %d unloaded! \n", id);
 }

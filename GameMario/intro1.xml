@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SCENE>
   <MAP link="textures\WorldMap1.png" l="3" t="0" r="237" b="165">
-    <nodemap id="1" x="65" y="50" left="-1" right="2" top="-1" bottom="-1"></nodemap>
-    <nodemap id="2" x="96" y="50" left="1" right="-1" top="3" bottom="-1"></nodemap>
-    <nodemap id="3" x="96" y="17" left="-1" right="4" top="-1" bottom="2"></nodemap>
-    <nodemap id="4" x="133" y="17" left="3" right="5" top="-1" bottom="-1"></nodemap>
-    <nodemap id="5" x="160" y="17" left="4" right="6" top="-1" bottom="10"></nodemap>
-    <nodemap id="6" x="193" y="17" left="5" right="7" top="-1" bottom="-1"></nodemap>
-    <nodemap id="7" x="230" y="17" left="6" right="-1" top="-1" bottom="8"></nodemap>
-    <nodemap id="8" x="230" y="50" left="9" right="-1" top="7" bottom="-1"></nodemap>
-    <nodemap id="9" x="193" y="50" left="10" right="8" top="-1" bottom="-1"></nodemap>
-    <nodemap id="10" x="160" y="50" left="-1" right="9" top="5" bottom="11"></nodemap>
-    <nodemap id="11" x="160" y="80" left="12" right="-1" top="10" bottom="-1"></nodemap>
-    <nodemap id="12" x="133" y="80" left="13" right="11" top="-1" bottom="-1"></nodemap>
-    <nodemap id="13" x="96" y="80" left="-1" right="12" top="-1" bottom="14"></nodemap>
-    <nodemap id="14" x="96" y="115" left="-1" right="-1" top="13" bottom="15"></nodemap>
-    <nodemap id="15" x="96" y="145" left="-1" right="16" top="14" bottom="-1"></nodemap>
-    <nodemap id="16" x="133" y="145" left="15" right="17" top="-1" bottom="-1"></nodemap>
-    <nodemap id="17" x="160" y="145" left="16" right="-1" top="18" bottom="-1"></nodemap>
-    <nodemap id="18" x="160" y="115" left="19" right="20" top="-1" bottom="17"></nodemap>
-    <nodemap id="19" x="133" y="115" left="-1" right="18" top="-1" bottom="-1"></nodemap>
-    <nodemap id="20" x="193" y="115" left="19" right="21" top="-1" bottom="-1"></nodemap>
-    <nodemap id="21" x="230" y="115" left="20" right="-1" top="-1" bottom="-1"></nodemap>
+    <nodemap id="1" x="65" y="50" left="-1" right="2" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="2" x="96" y="50" left="1" right="-1" top="3" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="3" x="96" y="17" left="-1" right="4" top="-1" bottom="2" sceneID="1"></nodemap>
+    <nodemap id="4" x="133" y="17" left="3" right="5" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="5" x="160" y="17" left="4" right="6" top="-1" bottom="10" sceneID="-1"></nodemap>
+    <nodemap id="6" x="193" y="17" left="5" right="7" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="7" x="230" y="17" left="6" right="-1" top="-1" bottom="8" sceneID="-1"></nodemap>
+    <nodemap id="8" x="230" y="50" left="9" right="-1" top="7" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="9" x="193" y="50" left="10" right="8" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="10" x="160" y="50" left="-1" right="9" top="5" bottom="11" sceneID="-1"></nodemap>
+    <nodemap id="11" x="160" y="80" left="12" right="-1" top="10" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="12" x="133" y="80" left="13" right="11" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="13" x="96" y="80" left="-1" right="12" top="-1" bottom="14" sceneID="-1"></nodemap>
+    <nodemap id="14" x="96" y="115" left="-1" right="-1" top="13" bottom="15" sceneID="-1"></nodemap>
+    <nodemap id="15" x="96" y="145" left="-1" right="16" top="14" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="16" x="133" y="145" left="15" right="17" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="17" x="160" y="145" left="16" right="-1" top="18" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="18" x="160" y="115" left="19" right="20" top="-1" bottom="17" sceneID="-1"></nodemap>
+    <nodemap id="19" x="133" y="115" left="-1" right="18" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="20" x="193" y="115" left="19" right="21" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="21" x="230" y="115" left="20" right="-1" top="-1" bottom="-1" sceneID="-1"></nodemap>
   </MAP>
   <ASSETS>
     <asset link="Mario.xml"></asset>
+    <asset link="NodeMap.xml"></asset>
   </ASSETS>
   <OBJECTS>
+    <object type ="1001" x="0" y="0" nodeId="3" nodeType="1"></object>
+    <object type ="1001" x="0" y="0" nodeId="5" nodeType="1"></object>
+    <object type ="1001" x="0" y="0" nodeId="6" nodeType="1"></object>
     <object type ="1000" x="0" y="0" start="1"></object>
   </OBJECTS>
 </SCENE>
