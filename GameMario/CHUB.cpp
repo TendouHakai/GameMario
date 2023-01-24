@@ -73,6 +73,12 @@ void CHUB::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
 	animations->Get(ID_ANI_HUB)->Render(x, y);
+	this->coin = CGame::GetInstance()->coin;
+	this->countCoin = CGame::GetInstance()->countCoin;
+	this->W = CGame::GetInstance()->W;
+	this->M = CGame::GetInstance()->M;
+	this->time = CGame::GetInstance()->time;
+	this->level = CGame::GetInstance()->level;
 
 	// render W
 	renderNumber(W, x - 36, y - 3);

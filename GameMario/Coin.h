@@ -72,6 +72,8 @@ public:
 				isCollecting = 1;
 				vy = -COIN_PRICE_SPEED;
 				ay = COIN_PRICE_GRAVITY;
+				CGame::GetInstance()->coin += 100;
+				CGame::GetInstance()->countCoin += 1;
 			}
 		}
 		default:

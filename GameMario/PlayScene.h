@@ -27,6 +27,10 @@ protected:
 
 	CTileMap* tileMap;
 	CHUB* hub;
+
+	// timer
+	int isStart = 0;
+	ULONGLONG timeStart = 0;
 	void loadMap(string mapFile);
 	void LoadAssets(string assetFile);
 	

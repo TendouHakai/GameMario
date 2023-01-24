@@ -20,7 +20,7 @@
 #include "CBreakableBrickButton.h"
 
 #include "Collision.h"
-
+#include <math.h>
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -43,6 +43,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	vx += ax * dt;
 
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
+
+	// update HUB
+	float speedMario = abs(vx) - MARIO_WALKING_SPEED;
+	float speed = (MARIO_RUNNING_SPEED - MARIO_WALKING_SPEED) / 6;
+	CGame::GetInstance()->level = int(speedMario/speed);
 
 	// reset untouchable timer if untouchable time has passed
 	if (untouchable ==1 && GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME)
@@ -435,7 +440,6 @@ void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)
 	CCoin* c = dynamic_cast<CCoin*>(e->obj);
 	
 	c->SetState(COIN_PRICE_STATE_COLLECTION);
-	coin+=100;
 }
 
 void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)

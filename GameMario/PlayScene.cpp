@@ -174,6 +174,12 @@ void CPlayScene::Load()
 {
 	DebugOut(L"[INFO] Start loading scene from : %s \n", sceneFilePath);
 	// create HUB
+	if (id < 1000)
+	{
+		isStart = 1;
+		timeStart = GetTickCount64();
+	}
+	else isStart = 0;
 	hub = new CHUB(50,400);
 
 	TiXmlDocument doc(sceneFilePath.c_str());
@@ -447,6 +453,13 @@ void CPlayScene::Update(DWORD dt)
 {
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
+
+	// update HUB
+	if (isStart == 1 && GetTickCount64() - timeStart > 1000)
+	{
+		CGame::GetInstance()->time += 1;
+		timeStart = GetTickCount64();
+	}
 
 	vector<LPGAMEOBJECT> coObjects;
 	for (size_t i = 1; i < objects.size(); i++)

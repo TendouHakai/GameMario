@@ -70,6 +70,13 @@ public:
 	float yChangeCamMin = 10.0f;
 	float yForcusMin;
 	float yForcusMax;
+	// info for HUB
+	int coin = 0;
+	int time = 0;
+	int M = 0;
+	int W = 1;
+	int countCoin = 0;
+	int level = 0;
 	// Init DirectX, Sprite Handler
 	void Init(HWND hWnd, HINSTANCE hInstance);
 
