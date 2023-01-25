@@ -471,13 +471,19 @@ void CPlayScene::Update(DWORD dt)
 		}
 	}
 
+	if (isPAUSEMario) {
+		if (GetTickCount64() - PAUSEMario_start > 1000) {
+			isPAUSEMario = false;
+		}
+	}
+
 	vector<LPGAMEOBJECT> coObjects;
 	for (size_t i = 1; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
 	}
 
-	if(isPAUSE==false){
+	if(isPAUSE==false && isPAUSEMario==false){
 		for (size_t i = 0; i < objects.size(); i++)
 		{
 			objects[i]->Update(dt, &objects);

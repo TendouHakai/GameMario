@@ -144,6 +144,22 @@
     <!--MARIO WORLD MAP-->
     <Sprite spriteID ="18011" l="251" t="115" r="266" b="132" textureID="1"></Sprite>
     <Sprite spriteID ="18021" l="271" t="115" r="286" b="132" textureID="1"></Sprite>
+    
+    <!--MARIO EFFECT TO BIG-->
+    <!--LEFT-->
+    <Sprite spriteID ="19001" l="67" t="1083" r="80" b="1110" textureID="0"></Sprite>
+    <Sprite spriteID ="19002" l="97" t="1083" r="110" b="1110" textureID="0"></Sprite>
+    <Sprite spriteID ="19003" l="127" t="1083" r="141" b="1110" textureID="0"></Sprite>
+    <Sprite spriteID ="19004" l="157" t="1083" r="171" b="1110" textureID="0"></Sprite>
+
+    <Sprite spriteID ="19011" l="9" t="1083" r="22" b="1110" textureID="0"></Sprite>
+    <!--RIGHT-->
+    <Sprite spriteID ="19005" l="365" t="1083" r="378" b="1110" textureID="0"></Sprite>
+    <Sprite spriteID ="19006" l="335" t="1083" r="348" b="1110" textureID="0"></Sprite>
+    <Sprite spriteID ="19007" l="305" t="1083" r="318" b="1110" textureID="0"></Sprite>
+    <Sprite spriteID ="19008" l="275" t="1083" r="288" b="1110" textureID="0"></Sprite>
+
+    <Sprite spriteID ="19021" l="395" t="1083" r="408" b="1110" textureID="0"></Sprite>
   </SPRITES>
 
   <ANIMATIONS>
@@ -454,6 +470,32 @@
     <animation aniID="2007">
       <Sprite SpriteID="18011" time="200"></Sprite>
       <Sprite SpriteID="18021" time="200"></Sprite>
+    </animation>
+    
+    <!--CHANGE MODE TO BIG-->
+    <!--LEFT-->
+    <animation aniID="2008">
+      <Sprite SpriteID="19011" time="100"></Sprite>
+      <Sprite SpriteID="19001" time="100"></Sprite>
+      <Sprite SpriteID="19011" time="100"></Sprite>
+      <Sprite SpriteID="19002" time="100"></Sprite>
+      <Sprite SpriteID="19011" time="100"></Sprite>
+      <Sprite SpriteID="19003" time="100"></Sprite>
+      <Sprite SpriteID="19011" time="100"></Sprite>
+      <Sprite SpriteID="19004" time="100"></Sprite>
+      <Sprite SpriteID="11111" time="200"></Sprite>
+    </animation>
+    <!--RIGHT-->
+    <animation aniID="2009">
+      <Sprite SpriteID="19021" time="100"></Sprite>
+      <Sprite SpriteID="19005" time="100"></Sprite>
+      <Sprite SpriteID="19021" time="100"></Sprite>
+      <Sprite SpriteID="19006" time="100"></Sprite>
+      <Sprite SpriteID="19021" time="100"></Sprite>
+      <Sprite SpriteID="19007" time="100"></Sprite>
+      <Sprite SpriteID="19021" time="100"></Sprite>
+      <Sprite SpriteID="19008" time="100"></Sprite>
+      <Sprite SpriteID="11121" time="200"></Sprite>
     </animation>
   </ANIMATIONS>
 </MARIO>

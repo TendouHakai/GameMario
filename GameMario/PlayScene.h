@@ -41,6 +41,8 @@ public:
 	ULONGLONG timeStart = 0;
 	// is PAUSE
 	bool isPAUSE = false;
+	bool isPAUSEMario = false;
+	ULONGLONG PAUSEMario_start = 0;
 	// is GameOver
 	int selectGameOverMenu = GAME_OVER_SELECT_CONTINUE;
 	CPlayScene(int id, string filePath);

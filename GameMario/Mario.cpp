@@ -830,6 +830,7 @@ int CMario::GetAniRaccon()
 int CMario::GetAniIdBig()
 {
 	int aniId = -1;
+
 	if (isOnPlatform==false)
 	{
 		if (abs(ax) == MARIO_ACCEL_RUN_X)
@@ -927,7 +928,15 @@ void CMario::Render()
 	int aniId = -1;
 	float xx = x;
 
-	if (state == MARIO_STATE_DIE)
+	CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
+	if (C_scene->isPAUSEMario) {
+		if (level == MARIO_LEVEL_BIG) {
+			if (nx > 0)
+				aniId = ID_ANI_MARIO_CHANGEMODETOBIG_RIGHT;
+			else aniId = ID_ANI_MARIO_CHANGEMODETOBIG_LEFT;
+		}
+	}
+	else if (state == MARIO_STATE_DIE)
 		aniId = ID_ANI_MARIO_DIE;
 	else if (level == MARIO_LEVEL_RACCON) {
 		aniId = GetAniRaccon();
@@ -1172,6 +1181,17 @@ void CMario::SetLevel(int l)
 	if (this->level == MARIO_LEVEL_SMALL)
 	{
 		y -= (MARIO_BIG_BBOX_HEIGHT - MARIO_SMALL_BBOX_HEIGHT) / 2;
+	}
+	CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
+	switch (l)
+	{
+	case MARIO_LEVEL_BIG: {
+		C_scene->isPAUSEMario = true;
+		C_scene->PAUSEMario_start = GetTickCount64();
+		break;
+	}
+	default:
+		break;
 	}
 	level = l;
 }
