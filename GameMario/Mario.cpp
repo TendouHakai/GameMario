@@ -935,6 +935,9 @@ void CMario::Render()
 				aniId = ID_ANI_MARIO_CHANGEMODETOBIG_RIGHT;
 			else aniId = ID_ANI_MARIO_CHANGEMODETOBIG_LEFT;
 		}
+		else if (level == MARIO_LEVEL_RACCON) {
+			aniId = ID_ANI_MARIO_CHANGEMODETORACCON;
+		}
 	}
 	else if (state == MARIO_STATE_DIE)
 		aniId = ID_ANI_MARIO_DIE;
@@ -1186,6 +1189,11 @@ void CMario::SetLevel(int l)
 	switch (l)
 	{
 	case MARIO_LEVEL_BIG: {
+		C_scene->isPAUSEMario = true;
+		C_scene->PAUSEMario_start = GetTickCount64();
+		break;
+	}
+	case MARIO_LEVEL_RACCON: {
 		C_scene->isPAUSEMario = true;
 		C_scene->PAUSEMario_start = GetTickCount64();
 		break;

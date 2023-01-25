@@ -184,6 +184,7 @@
 
 #define ID_ANI_MARIO_CHANGEMODETOBIG_LEFT	2008
 #define ID_ANI_MARIO_CHANGEMODETOBIG_RIGHT	2009
+#define ID_ANI_MARIO_CHANGEMODETORACCON	2010
 
 class CMario : public CGameObject
 {
@@ -290,4 +291,7 @@ public:
 	void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount64(); }
 
 	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+	int Getlevel() {
+		return level;
+	}
 };

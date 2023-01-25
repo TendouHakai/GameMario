@@ -472,9 +472,18 @@ void CPlayScene::Update(DWORD dt)
 	}
 
 	if (isPAUSEMario) {
-		if (GetTickCount64() - PAUSEMario_start > 1000) {
-			isPAUSEMario = false;
+		CMario* mario = (CMario*)(player);
+		if (mario->Getlevel() == MARIO_LEVEL_BIG) {
+			if (GetTickCount64() - PAUSEMario_start > 1000) {
+				isPAUSEMario = false;
+			}
 		}
+		else if (mario->Getlevel() == MARIO_LEVEL_RACCON) {
+			if (GetTickCount64() - PAUSEMario_start > 600) {
+				isPAUSEMario = false;
+			}
+		}
+		
 	}
 
 	vector<LPGAMEOBJECT> coObjects;

@@ -28,9 +28,6 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_3:
 		mario->SetLevel(MARIO_LEVEL_RACCON);
 		break;
-	case DIK_0:
-		mario->SetLevel(MARIO_LEVEL_BIG);
-		break;
 	case DIK_UP:
 		mario->SetState(MARIO_STATE_FLY); 
 		break;
