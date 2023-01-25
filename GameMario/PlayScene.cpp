@@ -36,6 +36,9 @@
 #define ID_ANI_PAUSE	28021
 #define ID_TEX_PAUSE_BACKGROUND	-101
 
+#define ID_ANI_GAMEOVER_MENU	28022
+#define ID_ANI_GAMEOVER_POINT	28023
+
 using namespace std;
 
 CPlayScene::CPlayScene(int id, string filePath):
@@ -185,6 +188,7 @@ void CPlayScene::Load()
 	else isStart = 0;
 	hub = new CHUB(50,400);
 	isPAUSE = false;
+	selectGameOverMenu = GAME_OVER_SELECT_CONTINUE;
 
 	TiXmlDocument doc(sceneFilePath.c_str());
 	if (doc.LoadFile()) {
@@ -567,7 +571,6 @@ void CPlayScene::Render()
 	if (id > 1000)
 	{
 		RECT rect;
-		DebugOut(L"xCam, yCam: %f, %f\n", cx, cy);
 		rect.left = mapL;
 		rect.right = mapR;
 		rect.top = mapT;
@@ -584,6 +587,23 @@ void CPlayScene::Render()
 		RenderPauseBackground();
 		CAnimations::GetInstance()->Get(ID_ANI_PAUSE)->Render(cx + sx / 2, cy + sy / 2);
 	}
+	// render GameOver
+	if (CGame::GetInstance()->isGameOver) {
+		CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_MENU)->Render(cx + sx / 2, cy + sy / 2 - 20);
+		switch (selectGameOverMenu)
+		{
+		case GAME_OVER_SELECT_CONTINUE: {
+			CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_POINT)->Render(cx + sx / 2 - 22, cy + sy / 2 - 8);
+			break;
+		}
+		case GAME_OVER_SELECT_END: {
+			CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_POINT)->Render(cx + sx / 2 - 22, cy + sy / 2 );
+			break;
+		}
+		default:
+			break;
+		}
+	}
 }
 
 /*
@@ -597,6 +617,7 @@ void CPlayScene::Clear()
 		delete (*it);
 	}
 	objects.clear();
+	player = nullptr;
 }
 
 /*

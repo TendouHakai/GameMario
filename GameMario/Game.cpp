@@ -538,6 +538,13 @@ bool CGame::checkWorldMap()
 	return false;
 }
 
+void CGame::clearWorlMap()
+{
+	maps.clear();
+	current_worldmap = -1;
+	current_nodemap = 0;
+}
+
 CGame::~CGame()
 {
 	pBlendStateAlpha->Release();

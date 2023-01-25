@@ -50,6 +50,14 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGame::GetInstance()->level = int(speedMario/speed);
 
 	// reset untouchable timer if untouchable time has passed
+	if (state == MARIO_STATE_DIE && GetTickCount64() - die_start > 1500) {
+		if (CGame::GetInstance()->M == 0) {
+			CGame::GetInstance()->isGameOver = true;
+		}
+		else CGame::GetInstance()->M--;
+		CGame::GetInstance()->InitiateSwitchScene(1001);
+	}
+
 	if (untouchable ==1 && GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME)
 	{
 		untouchable_start = 0;
@@ -1066,6 +1074,13 @@ void CMario::SetState(int state)
 		vy = -MARIO_JUMP_DEFLECT_SPEED;
 		vx = 0;
 		ax = 0;
+		die_start = GetTickCount64();
+
+		//if (CGame::GetInstance()->M == 0) {
+		//	CGame::GetInstance()->isGameOver = true;
+		//}
+		//else CGame::GetInstance()->M--;
+		//CGame::GetInstance()->InitiateSwitchScene(1001);
 		break;
 	case MARIO_STATE_HOLDING:
 		isHolding = true;

@@ -19,24 +19,38 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 	{
 	case DIK_UP:
 	{
-		LPNodeMap nodeMap = game->getCurrentNodeMap();
-		if (nodeMap->nodeUPId == -1)
-			break;
+		CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
+		if (CGame::GetInstance()->isGameOver == true) {
+			if (C_scene->selectGameOverMenu > 0)
+				C_scene->selectGameOverMenu--;
+		}
 		else {
-			game->setCurrentNodeMap(nodeMap->nodeUPId);
-			nodeMap = game->getNodeMap(nodeMap->nodeUPId);
-			mario->SetPosition(nodeMap->x, nodeMap->y);
+			LPNodeMap nodeMap = game->getCurrentNodeMap();
+			if (nodeMap->nodeUPId == -1)
+				break;
+			else {
+				game->setCurrentNodeMap(nodeMap->nodeUPId);
+				nodeMap = game->getNodeMap(nodeMap->nodeUPId);
+				mario->SetPosition(nodeMap->x, nodeMap->y);
+			}
 		}
 		break;
 	}
 	case DIK_DOWN: {
-		LPNodeMap nodeMap = game->getCurrentNodeMap();
-		if (nodeMap->nodeDOWNId == -1)
-			break;
+		CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
+		if (CGame::GetInstance()->isGameOver == true) {
+			if (C_scene->selectGameOverMenu < 1)
+				C_scene->selectGameOverMenu++;
+		}
 		else {
-			game->setCurrentNodeMap(nodeMap->nodeDOWNId);
-			nodeMap = game->getNodeMap(nodeMap->nodeDOWNId);
-			mario->SetPosition(nodeMap->x, nodeMap->y);
+			LPNodeMap nodeMap = game->getCurrentNodeMap();
+			if (nodeMap->nodeDOWNId == -1)
+				break;
+			else {
+				game->setCurrentNodeMap(nodeMap->nodeDOWNId);
+				nodeMap = game->getNodeMap(nodeMap->nodeDOWNId);
+				mario->SetPosition(nodeMap->x, nodeMap->y);
+			}
 		}
 		break;
 	}
@@ -64,10 +78,25 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		break;
 	}
 	case DIK_S: {
-		LPNodeMap nodeMap = game->getCurrentNodeMap();
-		if (nodeMap->sceneID == -1)
-			break;
-		CGame::GetInstance()->InitiateSwitchScene(nodeMap->sceneID);
+		CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
+		if (CGame::GetInstance()->isGameOver) {
+			if (C_scene->selectGameOverMenu == GAME_OVER_SELECT_CONTINUE) {
+				CGame::GetInstance()->M = 4;
+				CGame::GetInstance()->isGameOver = false;
+				CGame::GetInstance()->clearWorlMap();
+				C_scene->Clear();
+				C_scene->Load();
+			}
+			else {
+				exit(0);
+			}
+		}
+		else {
+			LPNodeMap nodeMap = game->getCurrentNodeMap();
+			if (nodeMap->sceneID == -1)
+				break;
+			CGame::GetInstance()->InitiateSwitchScene(nodeMap->sceneID);
+		}
 		break;
 	}
 		

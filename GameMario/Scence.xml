@@ -17,6 +17,7 @@
     <Texture id="0" link="textures\mario.png"></Texture>
     <Texture id="1" link="textures\WorldMaps.png"></Texture>
     <Texture id="2" link="textures\HUB.png"></Texture>
+    <Texture id="3" link="textures\gameOverMenu.png"></Texture>
     <Texture id="10" link="textures\enemies_1.png"></Texture>
     <Texture id="11" link="textures\enemies_2.png"></Texture>
     <Texture id="12" link="textures\enemies01.png"></Texture>

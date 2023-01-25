@@ -33,6 +33,10 @@
     
     <!--PAUSE-->
     <Sprite spriteID ="123021" l="79" t="347" r="120" b="356" textureID="2"></Sprite>
+    
+    <!--GAME OVER-->
+    <Sprite spriteID ="123022" l="5" t="6" r="132" b="69" textureID="3"></Sprite>
+    <Sprite spriteID ="123023" l="10" t="81" r="17" b="88" textureID="3"></Sprite>
 
   </SPRITES>
   <ANIMATIONS>
@@ -103,5 +107,13 @@
     <animation aniID="28021">
       <Sprite SpriteID="123021" time="1000"></Sprite>
     </animation>
+
+    <animation aniID="28022">
+      <Sprite SpriteID="123022" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28023">
+      <Sprite SpriteID="123023" time="1000"></Sprite>
+    </animation>
+    
   </ANIMATIONS>
 </HUB>

@@ -73,6 +73,7 @@ public:
 	// info for HUB
 	int coin = 0;
 	int time = 0;
+	bool isGameOver = false;
 	int M = 0;
 	int W = 1;
 	int countCoin = 0;
@@ -135,6 +136,7 @@ public:
 	LPNodeMap getNodeMap(int id);
 	LPNodeMap getCurrentNodeMap();
 	bool checkWorldMap();
+	void clearWorlMap();
 
 	~CGame();
 };

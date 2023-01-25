@@ -11,6 +11,9 @@
 #include "CTileMap.h"
 #include "CHUB.h"
 
+#define GAME_OVER_SELECT_CONTINUE	0
+#define GAME_OVER_SELECT_END	1
+
 class CPlayScene: public CScene
 {
 protected: 
@@ -38,6 +41,8 @@ public:
 	ULONGLONG timeStart = 0;
 	// is PAUSE
 	bool isPAUSE = false;
+	// is GameOver
+	int selectGameOverMenu = GAME_OVER_SELECT_CONTINUE;
 	CPlayScene(int id, string filePath);
 
 	virtual void Load();

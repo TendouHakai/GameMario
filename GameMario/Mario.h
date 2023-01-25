@@ -207,6 +207,8 @@ class CMario : public CGameObject
 	int coin; 
 	CTail* tail;
 	CTurtle* turtleShell;
+	// dead
+	ULONGLONG die_start;
 	
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
@@ -263,6 +265,8 @@ public:
 		isTele = false;
 		tele_start = 0;
 		tele = NULL;
+
+		die_start = 0;
 	}
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	void Render();
