@@ -13,6 +13,7 @@
 
   <TEXTURES>
     <Texture id="-100" link="textures\bbox.png"></Texture>
+    <Texture id="-101" link="textures\PAUSE background.png"></Texture>
     <Texture id="0" link="textures\mario.png"></Texture>
     <Texture id="1" link="textures\WorldMaps.png"></Texture>
     <Texture id="2" link="textures\HUB.png"></Texture>

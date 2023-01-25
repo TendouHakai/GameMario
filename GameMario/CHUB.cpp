@@ -117,8 +117,33 @@ void CHUB::Render()
 		}
 	}
 
-	// render M
+	// render Mode M or L
 	animations->Get(ID_ANI_M)->Render(x - 64, y + 5);
+
+	// render spoil
+	for (int i = 0; i < 3; i++) {
+		switch (Spoils[i])
+		{
+		case SPOIL_TYPE_EMPTY: {
+			animations->Get(ID_ANI_SPOIL_EMPTY)->Render(x + 100 + i*24 , y);
+			break;
+		}
+		case SPOIL_TYPE_MUSHROOM: {
+			animations->Get(ID_ANI_SPOIL_MUSHROOM)->Render(x + 100 + i * 24, y);
+			break;
+		}
+		case SPOIL_TYPE_FLOWER: {
+			animations->Get(ID_ANI_SPOIL_FLOWER)->Render(x + 100 + i * 24, y);
+			break;
+		}
+		case SPOIL_TYPE_STAR: {
+			animations->Get(ID_ANI_SPOIL_STAR)->Render(x + 100 + i * 24, y);
+			break;
+		}
+		default:
+			break;
+		}
+	}
 
 	//RenderBoundingBox();
 }

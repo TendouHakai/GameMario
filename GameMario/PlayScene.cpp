@@ -33,6 +33,9 @@
 #include "SampleKeyEventHandler.h"
 #include "IntroKeyEventHandler.h"
 
+#define ID_ANI_PAUSE	28021
+#define ID_TEX_PAUSE_BACKGROUND	-101
+
 using namespace std;
 
 CPlayScene::CPlayScene(int id, string filePath):
@@ -181,6 +184,7 @@ void CPlayScene::Load()
 	}
 	else isStart = 0;
 	hub = new CHUB(50,400);
+	isPAUSE = false;
 
 	TiXmlDocument doc(sceneFilePath.c_str());
 	if (doc.LoadFile()) {
@@ -455,10 +459,12 @@ void CPlayScene::Update(DWORD dt)
 	// TO-DO: This is a "dirty" way, need a more organized way 
 
 	// update HUB
-	if (isStart == 1 && GetTickCount64() - timeStart > 1000)
-	{
-		CGame::GetInstance()->time += 1;
-		timeStart = GetTickCount64();
+	if (isPAUSE == false) {
+		if (isStart == 1 && GetTickCount64() - timeStart > 1000)
+		{
+			CGame::GetInstance()->time += 1;
+			timeStart = GetTickCount64();
+		}
 	}
 
 	vector<LPGAMEOBJECT> coObjects;
@@ -467,9 +473,11 @@ void CPlayScene::Update(DWORD dt)
 		coObjects.push_back(objects[i]);
 	}
 
-	for (size_t i = 0; i < objects.size(); i++)
-	{
-		objects[i]->Update(dt, &objects);
+	if(isPAUSE==false){
+		for (size_t i = 0; i < objects.size(); i++)
+		{
+			objects[i]->Update(dt, &objects);
+		}
 	}
 
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
@@ -529,17 +537,37 @@ void CPlayScene::Update(DWORD dt)
 	PurgeDeletedObjects();
 }
 
+void CPlayScene::RenderPauseBackground()
+{
+	RECT rect;
+	float sx, sy;
+	sx = CGame::GetInstance()->GetBackBufferWidth();
+	sy = CGame::GetInstance()->GetBackBufferHeight();
+
+	LPTEXTURE bbox = CTextures::GetInstance()->Get(ID_TEX_PAUSE_BACKGROUND);
+
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = CGame::GetInstance()->GetBackBufferWidth();
+	rect.bottom = CGame::GetInstance()->GetBackBufferHeight();
+
+	float cx, cy;
+	CGame::GetInstance()->GetCamPos(cx, cy);
+
+	CGame::GetInstance()->Draw(sx/2, sy/2, bbox, &rect, BBOX_ALPHA);
+}
+
 void CPlayScene::Render()
 {
 	float cx, cy;
+	float sx, sy;
+	sx = CGame::GetInstance()->GetBackBufferWidth();
+	sy = CGame::GetInstance()->GetBackBufferHeight();
 	CGame::GetInstance()->GetCamPos(cx, cy);
 	if (id > 1000)
 	{
 		RECT rect;
 		DebugOut(L"xCam, yCam: %f, %f\n", cx, cy);
-		float sx, sy;
-		sx = CGame::GetInstance()->GetBackBufferWidth();
-		sy = CGame::GetInstance()->GetBackBufferHeight();
 		rect.left = mapL;
 		rect.right = mapR;
 		rect.top = mapT;
@@ -551,6 +579,11 @@ void CPlayScene::Render()
 		objects[i]->Render();
 	hub->SetPosition(cx+95, cy+185);
 	hub->Render();
+	// render PAUSE
+	if (isPAUSE) {
+		RenderPauseBackground();
+		CAnimations::GetInstance()->Get(ID_ANI_PAUSE)->Render(cx + sx / 2, cy + sy / 2);
+	}
 }
 
 /*

@@ -27,6 +27,17 @@
 // Mode M or L
 #define ID_ANI_M	28016
 
+// SPOIL
+#define ID_ANI_SPOIL_EMPTY	28017
+#define ID_ANI_SPOIL_MUSHROOM	28018
+#define ID_ANI_SPOIL_FLOWER	28019
+#define ID_ANI_SPOIL_STAR	28020
+
+#define SPOIL_TYPE_EMPTY	100
+#define SPOIL_TYPE_MUSHROOM	200
+#define SPOIL_TYPE_FLOWER	300
+#define SPOIL_TYPE_STAR	400
+
 class CHUB :
     public CGameObject
 {
@@ -39,6 +50,7 @@ public:
 	int W = 1;
 	int countCoin = 0;
 	int level = 3;
+	int Spoils[3];
 
 	CHUB(float x, float y) : CGameObject(x, y){
 		coin = 0;
@@ -47,6 +59,9 @@ public:
 		W = 1;
 		countCoin = 0;
 		level = 3;
+		Spoils[0] = SPOIL_TYPE_STAR;
+		Spoils[1] = SPOIL_TYPE_MUSHROOM;
+		Spoils[2] = SPOIL_TYPE_FLOWER;
 	}
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {};

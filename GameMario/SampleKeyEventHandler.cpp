@@ -42,6 +42,18 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 		CGame::GetInstance()->InitiateSwitchScene(1001);
 		break;
 	}
+	case DIK_P: {
+		CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
+		if (C_scene->isPAUSE) {
+			C_scene->isPAUSE = false;
+			C_scene->timeStart = GetTickCount64();
+		}
+		else {
+			C_scene->isPAUSE = true;
+		}
+		
+		break;
+	}
 	case DIK_R: 
 		float xC, yC;
 		CGame::GetInstance()->GetCamPos(xC, yC);

@@ -28,17 +28,21 @@ protected:
 	CTileMap* tileMap;
 	CHUB* hub;
 
-	// timer
-	int isStart = 0;
-	ULONGLONG timeStart = 0;
+	
 	void loadMap(string mapFile);
 	void LoadAssets(string assetFile);
 	
 public: 
+	// timer
+	int isStart = 0;
+	ULONGLONG timeStart = 0;
+	// is PAUSE
+	bool isPAUSE = false;
 	CPlayScene(int id, string filePath);
 
 	virtual void Load();
 	virtual void Update(DWORD dt);
+	void RenderPauseBackground();
 	virtual void Render();
 	virtual void Unload();
 

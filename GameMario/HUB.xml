@@ -25,6 +25,15 @@
     <!--M or L-->
     <Sprite spriteID ="123016" l="15" t="160" r="32" b="169" textureID="2"></Sprite>
     
+    <!--spoil-->
+    <Sprite spriteID ="123017" l="159" t="158" r="184" b="187" textureID="2"></Sprite>
+    <Sprite spriteID ="123018" l="185" t="158" r="208" b="187" textureID="2"></Sprite>
+    <Sprite spriteID ="123019" l="208" t="158" r="231" b="187" textureID="2"></Sprite>
+    <Sprite spriteID ="123020" l="232" t="158" r="255" b="187" textureID="2"></Sprite>
+    
+    <!--PAUSE-->
+    <Sprite spriteID ="123021" l="79" t="347" r="120" b="356" textureID="2"></Sprite>
+
   </SPRITES>
   <ANIMATIONS>
     <animation aniID="28001">
@@ -76,6 +85,23 @@
 
     <animation aniID="28016">
       <Sprite SpriteID="123016" time="1000"></Sprite>
+    </animation>
+
+    <animation aniID="28017">
+      <Sprite SpriteID="123017" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28018">
+      <Sprite SpriteID="123018" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28019">
+      <Sprite SpriteID="123019" time="1000"></Sprite>
+    </animation>
+    <animation aniID="28020">
+      <Sprite SpriteID="123020" time="1000"></Sprite>
+    </animation>
+
+    <animation aniID="28021">
+      <Sprite SpriteID="123021" time="1000"></Sprite>
     </animation>
   </ANIMATIONS>
 </HUB>
