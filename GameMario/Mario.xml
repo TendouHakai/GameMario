@@ -140,6 +140,8 @@
     <Sprite spriteID ="17021" l="413" t="873" r="444" b="900" textureID="0"></Sprite>
     <Sprite spriteID ="17031" l="30" t="872" r="55" b="899" textureID="0"></Sprite>
     <Sprite spriteID ="17041" l="3" t="872" r="28" b="899" textureID="0"></Sprite>
+    <!--EFFECT TELE-->
+    <Sprite spriteID ="17051" l="215" t="632" r="232" b="663" textureID="0"></Sprite>
     
     <!--MARIO WORLD MAP-->
     <Sprite spriteID ="18011" l="251" t="115" r="266" b="132" textureID="1"></Sprite>
@@ -470,6 +472,10 @@
       <Sprite SpriteID="14213" time="100"></Sprite>
       <Sprite SpriteID="17031" time="100"></Sprite>
       <Sprite SpriteID="17041" time="100"></Sprite>
+    </animation>
+    <!--EFFECT TELE-->
+    <animation aniID="2011">
+      <Sprite SpriteID="17051" time="100"></Sprite>
     </animation>
     
     <!--MARIO WORLD MAP-->

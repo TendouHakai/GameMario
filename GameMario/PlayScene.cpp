@@ -441,8 +441,9 @@ void CPlayScene::Load()
 					float ytele = (float)atof(node->Attribute("ytele"));
 					float yChangeCamMin = (float)atof(node->Attribute("yChangeCamMin"));
 					float yChangeCamMax = (float)atof(node->Attribute("yChangeCamMax"));
+					int teleType = atoi(node->Attribute("teletype"));
 
-					obj = new CTelePort(x, y, xtele, ytele, yChangeCamMin, yChangeCamMax);
+					obj = new CTelePort(x, y, xtele, ytele, yChangeCamMin, yChangeCamMax, teleType);
 					break;
 				}
 				}

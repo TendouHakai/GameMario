@@ -162,6 +162,8 @@
 
 #define ID_ANI_MARIO_RACCON_JUMPFLY_RIGHT	2005
 #define ID_ANI_MARIO_RACCON_JUMPFLY_LEFT	2006
+
+#define ID_ANI_MARIO_RACCON_EFFECT_TELE	2011
 #pragma endregion
 
 #define	MARIO_LEVEL_SMALL	1
@@ -282,7 +284,7 @@ public:
 
 	int IsCollidable()
 	{ 
-		return (state != MARIO_STATE_DIE );
+		return (state != MARIO_STATE_DIE && isTele==false);
 	}
 
 	int IsBlocking() { /*return (state != MARIO_STATE_DIE && untouchable==0);*/  return 0; }

@@ -32,7 +32,7 @@
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="100" y="300"> </object>
+    <object type ="0" x="2500" y="300"> </object>
     
     <object type ="2" x="338" y="400"> </object>
 
@@ -196,7 +196,7 @@
     <object type ="16" x="2280" y="372"></object>
 
     <object type ="5" x="2535" y="420" cellW="555" cellH="10" length="1"></object>
-    <object type ="26" x="2272" y="118" xtele="2112" ytele="464" yChangeCamMin="5" yChangeCamMax="430"></object>
+    <object type ="26" x="2272" y="118" xtele="2112" ytele="450" yChangeCamMin="5" yChangeCamMax="430" teletype="0"></object>
 
     <object type ="10" x="2102" y="360"></object>
 
@@ -223,7 +223,7 @@
     <object type ="4" x="2199" y="569"></object>  
     <object type ="4" x="2215" y="569"></object>  
 
-    <object type ="26" x="2336" y="457" xtele="2337" ytele="362" yChangeCamMin="5" yChangeCamMax="240"></object>
+    <object type ="26" x="2336" y="457" xtele="2337" ytele="400" yChangeCamMin="5" yChangeCamMax="240" teletype="1"></object>
     
     <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>

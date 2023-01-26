@@ -23,22 +23,7 @@
 #include <math.h>
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
-{
-	if (isTele) {
-		if (tele != NULL) {
-			CGame::GetInstance()->yChangeCamMin = tele->yChangeCamMin;
-			CGame::GetInstance()->yChangeCamMax = tele->yChangeCamMax;
-			CGame::GetInstance()->yForcusMin = CGame::GetInstance()->yChangeCamMax + (1 * CGame::GetInstance()->GetBackBufferHeight() / 4);
-			CGame::GetInstance()->yForcusMax = CGame::GetInstance()->yChangeCamMax + (3 * CGame::GetInstance()->GetBackBufferHeight() / 4);
-
-			this->x = tele->xtele;
-			this->y = tele->ytele;
-			isTele = false;
-			tele_start = 0;
-			tele = NULL;
-		}
-	}
-
+{			
 	vy += ay * dt;
 	vx += ax * dt;
 
@@ -50,6 +35,26 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGame::GetInstance()->level = int(speedMario/speed);
 
 	// reset untouchable timer if untouchable time has passed
+	if (isTele) {
+		if (GetTickCount64() - tele_start > 500) {
+			isTele = false;
+			ay = MARIO_GRAVITY;
+			if (tele != NULL) {
+				CGame::GetInstance()->yChangeCamMin = tele->yChangeCamMin;
+				CGame::GetInstance()->yChangeCamMax = tele->yChangeCamMax;
+				CGame::GetInstance()->yForcusMin = CGame::GetInstance()->yChangeCamMax + (1 * CGame::GetInstance()->GetBackBufferHeight() / 4);
+				CGame::GetInstance()->yForcusMax = CGame::GetInstance()->yChangeCamMax + (3 * CGame::GetInstance()->GetBackBufferHeight() / 4);
+
+				this->x = tele->xtele;
+				this->y = tele->ytele;
+				isTele = true;
+				tele_start = GetTickCount64();
+				ay = 0;
+				tele = NULL;
+			}
+		}
+	}
+
 	if (state == MARIO_STATE_DIE && GetTickCount64() - die_start > 1500) {
 		if (CGame::GetInstance()->M == 0) {
 			CGame::GetInstance()->isGameOver = true;
@@ -646,7 +651,14 @@ void CMario::OnCollisionWithTelePort(LPCOLLISIONEVENT e) {
 	if (e->ny != 0) {
 		if (isTele == false) {
 			isTele = true;
+			tele_start = GetTickCount64();
 			tele = tl;
+
+			if (tele->type == TELEPORT_TYPE_DOWN)
+				vy = 0.08f;
+			else vy = -0.08f;
+			vx = 0; 
+			ay = 0;
 		}
 	}
 	
@@ -938,6 +950,11 @@ void CMario::Render()
 	if (isEffectUntouchable) {
 		return;
 	}
+	
+	if (isTele) {
+		animations->Get(ID_ANI_MARIO_RACCON_TELE)->Render(xx, y);
+		return;
+	}
 
 	CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
 	if (C_scene->isPAUSEMario) {
@@ -1022,7 +1039,7 @@ void CMario::SetState(int state)
 		break;
 
 	case MARIO_STATE_RELEASE_JUMP:
-		if (vy < 0) vy += MARIO_JUMP_SPEED_Y / 2;
+		if (vy < 0 && isTele==false) vy += MARIO_JUMP_SPEED_Y / 2;
 		break;
 
 	case MARIO_STATE_FLY:

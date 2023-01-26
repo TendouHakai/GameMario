@@ -7,6 +7,8 @@
 
 #define TELEPORT_STATE_TELE	100
 
+#define TELEPORT_TYPE_DOWN 0
+#define TELEPORT_TYPE_UP 1
 class CTelePort : public CGameObject
 {
 protected:
@@ -20,15 +22,18 @@ protected:
 
 		this->state = state; 
 	}
+
 public:
 	float xtele, ytele;
 	float yChangeCamMax;
 	float yChangeCamMin;
-	CTelePort(float x, float y, float xtele, float ytele, float yChangeCamMin, float yChangeCamMax):CGameObject(x,y){
+	int type;
+	CTelePort(float x, float y, float xtele, float ytele, float yChangeCamMin, float yChangeCamMax, int type):CGameObject(x,y){
 		this->xtele = xtele;
 		this->ytele = ytele;
 		this->yChangeCamMax = yChangeCamMax;
 		this->yChangeCamMin = yChangeCamMin;
+		this->type = type;
 	}
 
 	virtual int IsBlocking() { return 0; }
