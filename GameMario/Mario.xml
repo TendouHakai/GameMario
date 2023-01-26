@@ -506,10 +506,10 @@
     
     <!--CHANGE MODE TO RACCON-->
     <animation aniID="2010">
-      <Sprite SpriteID="19009" time="150"></Sprite>
-      <Sprite SpriteID="19010" time="150"></Sprite>
-      <Sprite SpriteID="19012" time="150"></Sprite>
-      <Sprite SpriteID="19013" time="150"></Sprite>
+      <Sprite SpriteID="19009" time="100"></Sprite>
+      <Sprite SpriteID="19010" time="100"></Sprite>
+      <Sprite SpriteID="19012" time="100"></Sprite>
+      <Sprite SpriteID="19013" time="100"></Sprite>
     </animation>
   </ANIMATIONS>
 </MARIO>

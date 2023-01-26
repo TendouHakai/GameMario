@@ -58,10 +58,17 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		CGame::GetInstance()->InitiateSwitchScene(1001);
 	}
 
-	if (untouchable ==1 && GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME)
+	if (untouchable ==1)
 	{
-		untouchable_start = 0;
-		untouchable = 0;
+		if (GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME) {
+			untouchable_start = 0;
+			untouchable = 0;
+			isEffectUntouchable = false;
+		}
+		else if (GetTickCount64() - untouchable_effect_start > 50) {
+			isEffectUntouchable = !isEffectUntouchable;
+			untouchable_effect_start = GetTickCount64();
+		}
 	}
 
 	if (isKicking && GetTickCount64() - kick_start > MARIO_TIME_KICK) {
@@ -927,6 +934,10 @@ void CMario::Render()
 	CAnimations* animations = CAnimations::GetInstance();
 	int aniId = -1;
 	float xx = x;
+
+	if (isEffectUntouchable) {
+		return;
+	}
 
 	CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
 	if (C_scene->isPAUSEMario) {

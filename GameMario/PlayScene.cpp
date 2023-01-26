@@ -479,7 +479,7 @@ void CPlayScene::Update(DWORD dt)
 			}
 		}
 		else if (mario->Getlevel() == MARIO_LEVEL_RACCON) {
-			if (GetTickCount64() - PAUSEMario_start > 600) {
+			if (GetTickCount64() - PAUSEMario_start > 400) {
 				isPAUSEMario = false;
 			}
 		}

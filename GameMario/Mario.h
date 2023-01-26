@@ -197,6 +197,8 @@ class CMario : public CGameObject
 	int level; 
 	int untouchable; 
 	ULONGLONG untouchable_start;
+	int isEffectUntouchable;
+	ULONGLONG untouchable_effect_start;
 	ULONGLONG kick_start;
 	BOOLEAN isOnPlatform;
 	BOOLEAN isOnPlatformNotBlock;
@@ -248,6 +250,8 @@ public:
 		level = MARIO_LEVEL_SMALL;
 		untouchable = 0;
 		untouchable_start = -1;
+		isEffectUntouchable = false;
+		untouchable_effect_start = 0;
 		isOnPlatform = false;
 
 		isOnPlatformNotBlock = false;
