@@ -670,8 +670,15 @@ void CMario::OnCollisionWithGoalCard(LPCOLLISIONEVENT e)
 {
 	CGoalCard* goalcard = dynamic_cast<CGoalCard*>(e->obj);
 
-	if(goalcard->GetState()==GOALCARD_STATE_IDLE)
+	if (goalcard->GetState() == GOALCARD_STATE_IDLE)
+	{
 		goalcard->SetState(GOALCARD_STATE_COLLECT);
+		CGame::GetInstance()->getCurrentNodeMap()->setDone();
+	}
+
+	isWin = true;
+	vx = MARIO_WALKING_SPEED;
+	ax = MARIO_ACCEL_WALK_X;
 }
 //
 // Get animation ID for small Mario

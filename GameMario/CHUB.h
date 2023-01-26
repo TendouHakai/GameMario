@@ -80,6 +80,7 @@ public:
 			if (GetTickCount64() - timestart > 1500) {
 				SetState(HUB_STATE_IDLE);
 				isEffectAddCard = false;
+				CGame::GetInstance()->InitiateSwitchScene(1001);
 			}
 			else if (GetTickCount64() - timeEffecAddCard > 150) {
 				isEffectAddCard = !isEffectAddCard;

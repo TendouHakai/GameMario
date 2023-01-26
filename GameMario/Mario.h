@@ -215,6 +215,7 @@ class CMario : public CGameObject
 	int coin; 
 	CTail* tail;
 	CTurtle* turtleShell;
+	bool isWin;
 	// dead
 	ULONGLONG die_start;
 	
@@ -278,6 +279,8 @@ public:
 		tele = NULL;
 
 		die_start = 0;
+
+		isWin = false;
 	}
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	void Render();
@@ -298,6 +301,9 @@ public:
 	void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount64(); }
 
 	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+	bool IsWin() {
+		return isWin;
+	}
 	int Getlevel() {
 		return level;
 	}
