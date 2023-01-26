@@ -30,6 +30,7 @@
 #include "CBreakableBrickButton.h"
 #include "CNodeMapG.h"
 #include "CGoalCard.h"
+#include "CTurtleWorldMap.h"
 
 #include "SampleKeyEventHandler.h"
 #include "IntroKeyEventHandler.h"
@@ -263,6 +264,28 @@ void CPlayScene::Load()
 					player = (MarioWorldMaps*)obj;
 
 					DebugOut(L"[INFO] Player object has been created!\n");
+					break;
+				}
+				case OBJECT_TYPE_TURTLE_WORLDMAP: {
+					int isNext = false;
+					if (CGame::GetInstance()->getCurretnNodeMapTurtle() != nullptr) {
+						x = CGame::GetInstance()->getCurretnNodeMapTurtle()->x;
+						y = CGame::GetInstance()->getCurretnNodeMapTurtle()->y;
+						isNext = true;
+					}
+					else {
+						int start = atoi(node->Attribute("start"));
+						CGame::GetInstance()->setCurrentNodeMapTurtle(start);
+						x = CGame::GetInstance()->getNodeMap(start)->x;
+						y = CGame::GetInstance()->getNodeMap(start)->y;
+					}
+
+					obj = new CTurtleWorldMap(x, y);
+					if (isNext) {
+						CTurtleWorldMap* tutle = (CTurtleWorldMap*)obj;
+						tutle->Next();
+					}
+						
 					break;
 				}
 				case OBJECT_TYPE_NODEMAP_WORLDMAP: {

@@ -208,6 +208,7 @@
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="CGoalCard.h" />
+    <ClInclude Include="CTurtleWorldMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -372,6 +373,9 @@
     <ClCompile Include="CGoalCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CTurtleWorldMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -456,6 +460,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="CGoalCard.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="CTurtleW.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

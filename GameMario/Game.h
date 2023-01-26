@@ -64,6 +64,7 @@ class CGame
 	unordered_map<int, LPNodeMap> maps;
 	int current_worldmap = -1;
 	int current_nodemap;
+	int current_nodemap_tutle;
 public:
 	BOOLEAN isForcusPlayer = false;
 	float yChangeCamMax = 245.0f;
@@ -135,8 +136,10 @@ public:
 	void addNodemap(int nodeId, LPNodeMap node);
 	void setcurrentWorldMap();
 	void setCurrentNodeMap(int id);
+	void setCurrentNodeMapTurtle(int id);
 	LPNodeMap getNodeMap(int id);
 	LPNodeMap getCurrentNodeMap();
+	LPNodeMap getCurretnNodeMapTurtle();
 	bool checkWorldMap();
 	void clearWorlMap();
 

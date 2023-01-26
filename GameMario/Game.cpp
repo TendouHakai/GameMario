@@ -520,6 +520,10 @@ void CGame::setCurrentNodeMap(int id)
 	current_nodemap = id;
 }
 
+void CGame::setCurrentNodeMapTurtle(int id) {
+	current_nodemap_tutle = id;
+}
+
 LPNodeMap CGame::getNodeMap(int id)
 {
 	return maps[id];
@@ -528,6 +532,9 @@ LPNodeMap CGame::getNodeMap(int id)
 LPNodeMap CGame::getCurrentNodeMap()
 {
 	return maps[current_nodemap];
+}
+LPNodeMap CGame::getCurretnNodeMapTurtle() {
+	return maps[current_nodemap_tutle];
 }
 
 bool CGame::checkWorldMap()

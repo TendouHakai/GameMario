@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GOALCARD>
+  <SPRITES>
+    <!--LEFT-->
+    <Sprite spriteID ="125001" l="333" t="73" r="350" b="90" textureID="1"></Sprite>
+    <Sprite spriteID ="125002" l="353" t="73" r="370" b="90" textureID="1"></Sprite>
+    <!--RIGHT-->
+    <Sprite spriteID ="125003" l="535" t="73" r="552" b="90" textureID="1"></Sprite>
+    <Sprite spriteID ="125004" l="515" t="73" r="532" b="90" textureID="1"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--LEFT-->
+    <animation aniID="30001">
+      <Sprite SpriteID="125002" time="200"></Sprite>
+      <Sprite SpriteID="125001" time="200"></Sprite>
+    </animation>
+    <!--RIGHT-->
+    <animation aniID="30002">
+      <Sprite SpriteID="125004" time="200"></Sprite>
+      <Sprite SpriteID="125003" time="200"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</GOALCARD>

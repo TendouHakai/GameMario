@@ -161,6 +161,7 @@
     <ClInclude Include="CTileMap.h" />
     <ClInclude Include="CTube.h" />
     <ClInclude Include="CTurtle.h" />
+    <ClInclude Include="CTurtleWorldMap.h" />
     <ClInclude Include="CVenusflytrapFlower.h" />
     <ClInclude Include="CWingGreenTurtle.h" />
     <ClInclude Include="CWingOfGoomba.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="CTileMap.cpp" />
     <ClCompile Include="CTube.cpp" />
     <ClCompile Include="CTurtle.cpp" />
+    <ClCompile Include="CTurtleWorldMap.cpp" />
     <ClCompile Include="CVenusflytrapFlower.cpp" />
     <ClCompile Include="CWingGreenTurtle.cpp" />
     <ClCompile Include="CWingOfGoomba.cpp" />
@@ -254,6 +256,7 @@
     <Xml Include="CGoalCard.xml" />
     <Xml Include="CloudBrick.xml" />
     <Xml Include="CPrice.xml" />
+    <Xml Include="CTurtleW.xml" />
     <Xml Include="Goomba.xml" />
     <Xml Include="HUB.xml" />
     <Xml Include="intro1.xml" />

@@ -31,7 +31,10 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 			else {
 				game->setCurrentNodeMap(nodeMap->nodeUPId);
 				nodeMap = game->getNodeMap(nodeMap->nodeUPId);
-				mario->SetPosition(nodeMap->x, nodeMap->y);
+				mario->xNext = nodeMap->x;
+				mario->yNext = nodeMap->y;
+				mario->SetState(MARIOW_STATE_UP);
+				//mario->SetPosition(nodeMap->x, nodeMap->y);
 			}
 		}
 		break;
@@ -49,7 +52,10 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 			else {
 				game->setCurrentNodeMap(nodeMap->nodeDOWNId);
 				nodeMap = game->getNodeMap(nodeMap->nodeDOWNId);
-				mario->SetPosition(nodeMap->x, nodeMap->y);
+				mario->xNext = nodeMap->x;
+				mario->yNext = nodeMap->y;
+				mario->SetState(MARIOW_STATE_DOWN);
+				//mario->SetPosition(nodeMap->x, nodeMap->y);
 			}
 		}
 		break;
@@ -61,7 +67,10 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		else {
 			game->setCurrentNodeMap(nodeMap->nodeLEFTId);
 			nodeMap = game->getNodeMap(nodeMap->nodeLEFTId);
-			mario->SetPosition(nodeMap->x, nodeMap->y);
+			mario->xNext = nodeMap->x;
+			mario->yNext = nodeMap->y;
+			mario->SetState(MARIOW_STATE_LEFT);
+			//mario->SetPosition(nodeMap->x, nodeMap->y);
 		}
 		break;
 	}
@@ -73,7 +82,10 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		else {
 			game->setCurrentNodeMap(nodeMap->nodeRIGHTId);
 			nodeMap = game->getNodeMap(nodeMap->nodeRIGHTId);
-			mario->SetPosition(nodeMap->x, nodeMap->y);
+			mario->xNext = nodeMap->x;
+			mario->yNext = nodeMap->y;
+			mario->SetState(MARIOW_STATE_RIGHT);
+			//mario->SetPosition(nodeMap->x, nodeMap->y);
 		}
 		break;
 	}

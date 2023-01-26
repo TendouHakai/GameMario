@@ -20,18 +20,20 @@
     <nodemap id="17" x="160" y="145" left="16" right="-1" top="18" bottom="-1" sceneID="-1"></nodemap>
     <nodemap id="18" x="160" y="115" left="19" right="20" top="-1" bottom="17" sceneID="-1"></nodemap>
     <nodemap id="19" x="133" y="115" left="-1" right="18" top="-1" bottom="-1" sceneID="-1"></nodemap>
-    <nodemap id="20" x="193" y="115" left="19" right="21" top="-1" bottom="-1" sceneID="-1"></nodemap>
+    <nodemap id="20" x="193" y="115" left="18" right="21" top="-1" bottom="-1" sceneID="-1"></nodemap>
     <nodemap id="21" x="230" y="115" left="20" right="-1" top="-1" bottom="-1" sceneID="-1"></nodemap>
   </MAP>
   <ASSETS>
     <asset link="Mario.xml"></asset>
     <asset link="NodeMap.xml"></asset>
     <asset link="HUB.xml"></asset>
+    <asset link="CTurtleW.xml"></asset>
   </ASSETS>
   <OBJECTS>
     <object type ="1001" x="0" y="0" nodeId="3" nodeType="1"></object>
     <object type ="1001" x="0" y="0" nodeId="5" nodeType="1"></object>
     <object type ="1001" x="0" y="0" nodeId="6" nodeType="1"></object>
     <object type ="1000" x="0" y="0" start="1"></object>
+    <object type ="1002" x="0" y="0" start="20"></object>
   </OBJECTS>
 </SCENE>
