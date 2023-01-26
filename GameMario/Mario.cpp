@@ -18,6 +18,7 @@
 #include "CCannibalFlower.h"
 #include "CVenusflytrapFlower.h"
 #include "CBreakableBrickButton.h"
+#include "CGoalCard.h"
 
 #include "Collision.h"
 #include <math.h>
@@ -180,6 +181,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithVenusflytrapFlower(e);
 	else if (dynamic_cast<CbreakableBrickButton*>(e->obj))
 		OnCollisionWithVenusBreakableBrickButton(e);
+	else if (dynamic_cast<CGoalCard*>(e->obj))
+		OnCollisionWithGoalCard(e);
 }
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
@@ -662,6 +665,13 @@ void CMario::OnCollisionWithTelePort(LPCOLLISIONEVENT e) {
 		}
 	}
 	
+}
+void CMario::OnCollisionWithGoalCard(LPCOLLISIONEVENT e)
+{
+	CGoalCard* goalcard = dynamic_cast<CGoalCard*>(e->obj);
+
+	if(goalcard->GetState()==GOALCARD_STATE_IDLE)
+		goalcard->SetState(GOALCARD_STATE_COLLECT);
 }
 //
 // Get animation ID for small Mario

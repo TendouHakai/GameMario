@@ -29,6 +29,7 @@
     <asset link="Leaf.xml"></asset>
     <asset link="VenusflytrapFlower.xml"></asset>
     <asset link="HUB.xml"></asset>
+    <asset link="CGoalCard.xml"></asset>
   </ASSETS>
   
   <OBJECTS>
@@ -224,7 +225,9 @@
     <object type ="4" x="2215" y="569"></object>  
 
     <object type ="26" x="2336" y="457" xtele="2337" ytele="400" yChangeCamMin="5" yChangeCamMax="240" teletype="1"></object>
-    
+
+    <object type ="27" x="2697" y="345"></object>
+
     <!--<object type="1" x="0" y="383"></object>
     <object type="1" x="0" y="399"></object>
     <object type="1" x="0" y="415"></object>

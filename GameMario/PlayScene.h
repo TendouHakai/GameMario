@@ -29,13 +29,14 @@ protected:
 	int mapB;
 
 	CTileMap* tileMap;
-	CHUB* hub;
 
 	
 	void loadMap(string mapFile);
 	void LoadAssets(string assetFile);
 	
 public: 
+	//HUB
+	CHUB* hub;
 	// timer
 	int isStart = 0;
 	ULONGLONG timeStart = 0;

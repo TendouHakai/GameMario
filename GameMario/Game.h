@@ -78,6 +78,8 @@ public:
 	int W = 1;
 	int countCoin = 0;
 	int level = 0;
+	int nCard = 0;
+	int spoils[3] = { 100 ,100 ,100 };
 	// Init DirectX, Sprite Handler
 	void Init(HWND hWnd, HINSTANCE hInstance);
 

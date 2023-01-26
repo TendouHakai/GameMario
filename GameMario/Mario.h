@@ -236,6 +236,7 @@ class CMario : public CGameObject
 	void OnCollisionWithVenusflytrapFlower(LPCOLLISIONEVENT e);
 	void OnCollisionWithVenusBreakableBrickButton(LPCOLLISIONEVENT e);
 	void OnCollisionWithTelePort(LPCOLLISIONEVENT e);
+	void OnCollisionWithGoalCard(LPCOLLISIONEVENT e);
 
 	int GetAniRaccon();
 	int GetAniIdBig();

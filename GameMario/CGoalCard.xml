@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GOALCARD>
+  <SPRITES>
+    <Sprite spriteID ="124001" l="381" t="348" r="404" b="373" textureID="21"></Sprite>
+    <Sprite spriteID ="124002" l="408" t="348" r="433" b="373" textureID="21"></Sprite>
+    <Sprite spriteID ="124003" l="436" t="348" r="461" b="373" textureID="21"></Sprite>
+    
+    <!--MUSHROOM-->
+    <Sprite spriteID ="124004" l="257" t="373" r="274" b="390" textureID="21"></Sprite>
+    <Sprite spriteID ="124005" l="319" t="373" r="330" b="390" textureID="21"></Sprite>
+    <Sprite spriteID ="124006" l="363" t="373" r="364" b="390" textureID="21"></Sprite>
+    
+    <!--FLOWER-->
+    <Sprite spriteID ="124007" l="277" t="373" r="294" b="390" textureID="21"></Sprite>
+    <Sprite spriteID ="124008" l="332" t="373" r="341" b="390" textureID="21"></Sprite>
+
+    <!--STAR-->
+    <Sprite spriteID ="124009" l="297" t="373" r="314" b="390" textureID="21"></Sprite>
+    <Sprite spriteID ="124010" l="347" t="373" r="358" b="390" textureID="21"></Sprite>
+    
+    <!--TITLE 1-->
+    <Sprite spriteID ="124011" l="69" t="373" r="178" b="382" textureID="21"></Sprite>
+    <!--TITLE 2-->
+    <Sprite spriteID ="124012" l="53" t="391" r="200" b="420" textureID="21"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="29001">
+      <Sprite SpriteID="124001" time="150"></Sprite>
+      <Sprite SpriteID="124002" time="150"></Sprite>
+      <Sprite SpriteID="124003" time="150"></Sprite>
+    </animation>
+
+    <!--MUSHROOM-->
+    <animation aniID="29002">
+      <Sprite SpriteID="124004" time="120"></Sprite>
+      <Sprite SpriteID="124005" time="120"></Sprite>
+      <Sprite SpriteID="124006" time="120"></Sprite>
+      <Sprite SpriteID="124005" time="120"></Sprite>
+    </animation>
+
+    <!--FLOWER-->
+    <animation aniID="29003">
+      <Sprite SpriteID="124007" time="120"></Sprite>
+      <Sprite SpriteID="124008" time="120"></Sprite>
+      <Sprite SpriteID="124006" time="120"></Sprite>
+      <Sprite SpriteID="124008" time="120"></Sprite>
+    </animation>
+
+    <!--STAR-->
+    <animation aniID="29004">
+      <Sprite SpriteID="124009" time="120"></Sprite>
+      <Sprite SpriteID="124010" time="120"></Sprite>
+      <Sprite SpriteID="124006" time="120"></Sprite>
+      <Sprite SpriteID="124010" time="120"></Sprite>
+    </animation>
+    
+    <!--TITLE 1-->
+    <animation aniID="29005">
+      <Sprite SpriteID="124011" time="1000"></Sprite>
+    </animation>
+
+    <!--TITLE 2-->
+    <animation aniID="29006">
+      <Sprite SpriteID="124012" time="1000"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</GOALCARD>

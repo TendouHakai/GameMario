@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "debug.h"
 
 #define HUB_BBOX_WIDTH	152
 #define HUB_BBOX_HEIGHT	20
@@ -34,9 +35,13 @@
 #define ID_ANI_SPOIL_STAR	28020
 
 #define SPOIL_TYPE_EMPTY	100
-#define SPOIL_TYPE_MUSHROOM	200
-#define SPOIL_TYPE_FLOWER	300
-#define SPOIL_TYPE_STAR	400
+#define SPOIL_TYPE_MUSHROOM	0
+#define SPOIL_TYPE_FLOWER	1
+#define SPOIL_TYPE_STAR	2
+
+#define HUB_STATE_IDLE	100
+#define HUB_STATE_ADDCARD	200
+
 
 class CHUB :
     public CGameObject
@@ -50,7 +55,11 @@ public:
 	int W = 1;
 	int countCoin = 0;
 	int level = 3;
+	int nCard = 0;
 	int Spoils[3];
+	ULONGLONG timestart;
+	bool isEffectAddCard = false;
+	ULONGLONG timeEffecAddCard;
 
 	CHUB(float x, float y) : CGameObject(x, y){
 		coin = 0;
@@ -59,14 +68,41 @@ public:
 		W = 1;
 		countCoin = 0;
 		level = 3;
-		Spoils[0] = SPOIL_TYPE_STAR;
-		Spoils[1] = SPOIL_TYPE_MUSHROOM;
-		Spoils[2] = SPOIL_TYPE_FLOWER;
+		nCard = 0;
+		isEffectAddCard = false;
+		Spoils[0] = SPOIL_TYPE_EMPTY;
+		Spoils[1] = SPOIL_TYPE_EMPTY;
+		Spoils[2] = SPOIL_TYPE_EMPTY;
 	}
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {};
+	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
+		if (state == HUB_STATE_ADDCARD) {
+			if (GetTickCount64() - timestart > 1500) {
+				SetState(HUB_STATE_IDLE);
+				isEffectAddCard = false;
+			}
+			else if (GetTickCount64() - timeEffecAddCard > 150) {
+				isEffectAddCard = !isEffectAddCard;
+				timeEffecAddCard = GetTickCount64();
+			}
+		}
+	};
 	void renderNumber(int number, int xx, int yy);
+	void addCard(int card);
 	virtual void Render();
+
+	virtual void SetState(int state) { 
+		switch (state)
+		{
+		case HUB_STATE_ADDCARD:{
+			timestart = GetTickCount64();
+			break;
+		}
+		default:
+			break;
+		}
+		this->state = state; 
+	}
 
 };
 

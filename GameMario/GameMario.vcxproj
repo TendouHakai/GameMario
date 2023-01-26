@@ -142,6 +142,7 @@
     <ClInclude Include="CBullet.h" />
     <ClInclude Include="CCannibalFlower.h" />
     <ClInclude Include="CEffectHitWithTail.h" />
+    <ClInclude Include="CGoalCard.h" />
     <ClInclude Include="CGreenTurtle.h" />
     <ClInclude Include="ChangeCam.h" />
     <ClInclude Include="CHUB.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="CBullet.cpp" />
     <ClCompile Include="CCannibalFlower.cpp" />
     <ClCompile Include="CEffectHitWithTail.cpp" />
+    <ClCompile Include="CGoalCard.cpp" />
     <ClCompile Include="CGreenTurtle.cpp" />
     <ClCompile Include="ChangeCam.cpp" />
     <ClCompile Include="CHUB.cpp" />
@@ -249,6 +251,7 @@
     <Xml Include="Brick2.xml" />
     <Xml Include="Bullet.xml" />
     <Xml Include="CannibalFlower.xml" />
+    <Xml Include="CGoalCard.xml" />
     <Xml Include="CloudBrick.xml" />
     <Xml Include="CPrice.xml" />
     <Xml Include="Goomba.xml" />

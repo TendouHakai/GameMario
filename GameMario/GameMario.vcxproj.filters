@@ -207,6 +207,7 @@
     <ClInclude Include="GameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="CGoalCard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -368,6 +369,9 @@
     <ClCompile Include="CHUB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CGoalCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -449,6 +453,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="HUB.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="CGoalCard.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

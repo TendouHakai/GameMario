@@ -29,6 +29,7 @@
 #include "CVenusflytrapFlower.h"
 #include "CBreakableBrickButton.h"
 #include "CNodeMapG.h"
+#include "CGoalCard.h"
 
 #include "SampleKeyEventHandler.h"
 #include "IntroKeyEventHandler.h"
@@ -446,6 +447,11 @@ void CPlayScene::Load()
 					obj = new CTelePort(x, y, xtele, ytele, yChangeCamMin, yChangeCamMax, teleType);
 					break;
 				}
+				case OBJECT_TYPE_GOADCARD: {
+
+					obj = new CGoalCard(x, y);
+					break;
+				}
 				}
 
 				obj->SetPosition(x, y);
@@ -498,6 +504,7 @@ void CPlayScene::Update(DWORD dt)
 		{
 			objects[i]->Update(dt, &objects);
 		}
+		hub->Update(dt);
 	}
 
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)

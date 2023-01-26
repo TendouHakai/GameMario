@@ -69,6 +69,13 @@ void CHUB::renderNumber(int number, int xx, int yy)
 	}
 }
 
+void CHUB::addCard(int card)
+{
+	CGame::GetInstance()->spoils[CGame::GetInstance()->nCard] = card;
+	CGame::GetInstance()->nCard++;
+	SetState(HUB_STATE_ADDCARD);
+}
+
 void CHUB::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
@@ -79,6 +86,10 @@ void CHUB::Render()
 	this->M = CGame::GetInstance()->M;
 	this->time = CGame::GetInstance()->time;
 	this->level = CGame::GetInstance()->level;
+	this->nCard = CGame::GetInstance()->nCard;
+	for (int i = 0; i < nCard; i++) {
+		Spoils[i] = CGame::GetInstance()->spoils[i];
+	}
 
 	// render W
 	renderNumber(W, x - 36, y - 3);
@@ -122,6 +133,9 @@ void CHUB::Render()
 
 	// render spoil
 	for (int i = 0; i < 3; i++) {
+		if (isEffectAddCard && i == nCard-1) {
+			continue;
+		}
 		switch (Spoils[i])
 		{
 		case SPOIL_TYPE_EMPTY: {
