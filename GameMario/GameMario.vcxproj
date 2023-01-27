@@ -141,6 +141,7 @@
     <ClInclude Include="CBreakableBrickButton.h" />
     <ClInclude Include="CBullet.h" />
     <ClInclude Include="CCannibalFlower.h" />
+    <ClInclude Include="CCurtain.h" />
     <ClInclude Include="CEffectHitWithTail.h" />
     <ClInclude Include="CGoalCard.h" />
     <ClInclude Include="CGreenTurtle.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="CTail.h" />
     <ClInclude Include="CTelePort.h" />
     <ClInclude Include="CTileMap.h" />
+    <ClInclude Include="CTitleMarioBros.h" />
     <ClInclude Include="CTube.h" />
     <ClInclude Include="CTurtle.h" />
     <ClInclude Include="CTurtleWorldMap.h" />
@@ -184,6 +186,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
+    <ClInclude Include="StartSceneKeyHandler.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="tinystr.h" />
@@ -198,6 +201,7 @@
     <ClCompile Include="CBreakableBrickButton.cpp" />
     <ClCompile Include="CBullet.cpp" />
     <ClCompile Include="CCannibalFlower.cpp" />
+    <ClCompile Include="CCurtain.cpp" />
     <ClCompile Include="CEffectHitWithTail.cpp" />
     <ClCompile Include="CGoalCard.cpp" />
     <ClCompile Include="CGreenTurtle.cpp" />
@@ -216,6 +220,7 @@
     <ClCompile Include="CTail.cpp" />
     <ClCompile Include="CTelePort.cpp" />
     <ClCompile Include="CTileMap.cpp" />
+    <ClCompile Include="CTitleMarioBros.cpp" />
     <ClCompile Include="CTube.cpp" />
     <ClCompile Include="CTurtle.cpp" />
     <ClCompile Include="CTurtleWorldMap.cpp" />
@@ -240,6 +245,7 @@
     <ClCompile Include="SampleKeyEventHandler.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
+    <ClCompile Include="StartSceneKeyHandler.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="tinystr.cpp" />
     <ClCompile Include="tinyxml.cpp" />
@@ -248,6 +254,7 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="AniStartScene.xml" />
     <Xml Include="BreakableBrick.xml" />
     <Xml Include="Brick.xml" />
     <Xml Include="Brick2.xml" />
@@ -262,6 +269,7 @@
     <Xml Include="intro1.xml" />
     <Xml Include="Leaf.xml" />
     <Xml Include="NodeMap.xml" />
+    <Xml Include="StartScene.xml" />
     <Xml Include="TileMap1-1.xml" />
     <Xml Include="Mushroom.xml" />
     <Xml Include="Coin.xml" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SCENE>
-  <MAP link="textures\WorldMap1.png" l="3" t="0" r="237" b="165">
+  <MAP link="textures\WorldMap1.png" l="3" t="0" r="237" b="165" Br="0" Bg="0" Bb="0">
     <nodemap id="1" x="65" y="50" left="-1" right="2" top="-1" bottom="-1" sceneID="-1"></nodemap>
     <nodemap id="2" x="96" y="50" left="1" right="-1" top="3" bottom="-1" sceneID="-1"></nodemap>
     <nodemap id="3" x="96" y="17" left="-1" right="4" top="-1" bottom="2" sceneID="1"></nodemap>

@@ -14,6 +14,9 @@
 #define GAME_OVER_SELECT_CONTINUE	0
 #define GAME_OVER_SELECT_END	1
 
+#define SELECT_1_PLAYER	0
+#define SELECT_2_PLAYER	1
+
 class CPlayScene: public CScene
 {
 protected: 
@@ -45,7 +48,7 @@ public:
 	bool isPAUSEMario = false;
 	ULONGLONG PAUSEMario_start = 0;
 	// is GameOver
-	int selectGameOverMenu = GAME_OVER_SELECT_CONTINUE;
+	int selectMenu = 1;
 	CPlayScene(int id, string filePath);
 
 	virtual void Load();

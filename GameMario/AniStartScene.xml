@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ANISTARTSCENE>
+  <SPRITES>
+    <!--STAGE-->
+    <Sprite spriteID ="126001" l="322" t="414" r="355" b="449" textureID="4"></Sprite>
+    
+    <!--CURTAIN-->
+    <Sprite spriteID ="126002" l="162" t="226" r="515" b="243" textureID="4"></Sprite>
+    <Sprite spriteID ="126003" l="162" t="244" r="515" b="259" textureID="4"></Sprite>
+    <Sprite spriteID ="126004" l="162" t="260" r="515" b="275" textureID="4"></Sprite>
+    
+    <!--TITLE MARIO BROS-->
+    <Sprite spriteID ="126005" l="324" t="280" r="505" b="395" textureID="4"></Sprite>
+    
+    <!--3-->
+    <Sprite spriteID ="126006" l="134" t="352" r="177" b="393" textureID="4"></Sprite>
+    <Sprite spriteID ="126007" l="180" t="352" r="223" b="393" textureID="4"></Sprite>
+    <Sprite spriteID ="126008" l="227" t="352" r="270" b="393" textureID="4"></Sprite>
+    <Sprite spriteID ="126009" l="273" t="352" r="316" b="393" textureID="4"></Sprite>
+    
+    <!--SELECT-->
+    <Sprite spriteID ="126010" l="30" t="306" r="143" b="333" textureID="4"></Sprite>
+    <Sprite spriteID ="126011" l="154" t="306" r="269" b="333" textureID="4"></Sprite>
+    
+    <!--TREE-->
+    <Sprite spriteID ="126012" l="2" t="383" r="67" b="448" textureID="4"></Sprite>
+    <Sprite spriteID ="126013" l="68" t="351" r="131" b="448" textureID="4"></Sprite>
+    
+    <!--RAMEN-->
+    <Sprite spriteID ="126014" l="159" t="422" r="192" b="439" textureID="4"></Sprite>
+    <Sprite spriteID ="126015" l="193" t="422" r="210" b="439" textureID="4"></Sprite>
+    <Sprite spriteID ="126016" l="724" t="26" r="757" b="43" textureID="4"></Sprite>
+    <Sprite spriteID ="126017" l="517" t="89" r="532" b="98" textureID="4"></Sprite>
+    
+    
+  </SPRITES>
+  <ANIMATIONS>
+    <!--TITLE MARIO BROS-->
+    <animation aniID="32001">
+      <Sprite SpriteID="126005" time="1500"></Sprite>
+    </animation>
+
+    <!--3-->
+    <animation aniID="32002">
+      <Sprite SpriteID="126006" time="150"></Sprite>
+      <Sprite SpriteID="126007" time="150"></Sprite>
+      <Sprite SpriteID="126008" time="150"></Sprite>
+      <Sprite SpriteID="126009" time="150"></Sprite>
+    </animation>
+    
+    <!--SELECT-->
+    <animation aniID="32003">
+      <Sprite SpriteID="126010" time="1500"></Sprite>
+    </animation>
+    <animation aniID="32004">
+      <Sprite SpriteID="126011" time="1500"></Sprite>
+    </animation>
+    
+    <!--TREE-->
+    <animation aniID="32005">
+      <Sprite SpriteID="126012" time="1500"></Sprite>
+    </animation>
+    <animation aniID="32006">
+      <Sprite SpriteID="126013" time="1500"></Sprite>
+    </animation>
+    
+    <!--RAMEN-->
+    <animation aniID="32007">
+      <Sprite SpriteID="126014" time="1500"></Sprite>
+    </animation>
+    <animation aniID="32008">
+      <Sprite SpriteID="126015" time="1500"></Sprite>
+    </animation>
+    <animation aniID="32009">
+      <Sprite SpriteID="126016" time="1500"></Sprite>
+    </animation>
+    <animation aniID="32010">
+      <Sprite SpriteID="126017" time="1500"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</ANISTARTSCENE>

@@ -21,8 +21,8 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 	{
 		CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
 		if (CGame::GetInstance()->isGameOver == true) {
-			if (C_scene->selectGameOverMenu > 0)
-				C_scene->selectGameOverMenu--;
+			if (C_scene->selectMenu > 0)
+				C_scene->selectMenu--;
 		}
 		else {
 			LPNodeMap nodeMap = game->getCurrentNodeMap();
@@ -42,8 +42,8 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 	case DIK_DOWN: {
 		CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
 		if (CGame::GetInstance()->isGameOver == true) {
-			if (C_scene->selectGameOverMenu < 1)
-				C_scene->selectGameOverMenu++;
+			if (C_scene->selectMenu < 1)
+				C_scene->selectMenu++;
 		}
 		else {
 			LPNodeMap nodeMap = game->getCurrentNodeMap();
@@ -91,13 +91,18 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 	}
 	case DIK_S: {
 		CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
-		if (CGame::GetInstance()->isGameOver) {
-			if (C_scene->selectGameOverMenu == GAME_OVER_SELECT_CONTINUE) {
+		if (CGame::GetInstance()->isStartM) {
+			CGame::GetInstance()->isStartM = false;
+		}
+		else if (CGame::GetInstance()->isGameOver) {
+			if (C_scene->selectMenu == GAME_OVER_SELECT_CONTINUE) {
 				CGame::GetInstance()->M = 4;
 				CGame::GetInstance()->isGameOver = false;
+				CGame::GetInstance()->isStartM = true;
 				CGame::GetInstance()->clearWorlMap();
 				C_scene->Clear();
 				C_scene->Load();
+
 			}
 			else {
 				exit(0);

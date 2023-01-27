@@ -31,15 +31,19 @@
 #include "CNodeMapG.h"
 #include "CGoalCard.h"
 #include "CTurtleWorldMap.h"
+#include "CCurtain.h"
+#include "CTitleMarioBros.h"
 
 #include "SampleKeyEventHandler.h"
 #include "IntroKeyEventHandler.h"
+#include "StartSceneKeyHandler.h"
 
 #define ID_ANI_PAUSE	28021
 #define ID_TEX_PAUSE_BACKGROUND	-101
 
 #define ID_ANI_GAMEOVER_MENU	28022
 #define ID_ANI_GAMEOVER_POINT	28023
+#define ID_ANI_STARTM_MENU	28024
 
 using namespace std;
 
@@ -48,7 +52,10 @@ CPlayScene::CPlayScene(int id, string filePath):
 {	
 	map = NULL;
 	player = NULL;
-	if (id > 1000)
+	if (id > 2000) {
+		key_handler = new StartSceneKeyHandler(this);
+	}
+	else if (id > 1000)
 		key_handler = new IntroKeyEventHandler(this);
 	else key_handler = new CSampleKeyHandler(this);
 }
@@ -190,7 +197,7 @@ void CPlayScene::Load()
 	else isStart = 0;
 	hub = new CHUB(50,400);
 	isPAUSE = false;
-	selectGameOverMenu = GAME_OVER_SELECT_CONTINUE;
+	selectMenu = GAME_OVER_SELECT_CONTINUE;
 
 	TiXmlDocument doc(sceneFilePath.c_str());
 	if (doc.LoadFile()) {
@@ -203,12 +210,19 @@ void CPlayScene::Load()
 		if (mapXML != NULL)
 		{
 			loadMap(mapXML->Attribute("link"));
-			if (id > 1000 && !CGame::GetInstance()->checkWorldMap())
+			mapL = atoi(mapXML->Attribute("l"));
+			mapT = atoi(mapXML->Attribute("t"));
+			mapR = atoi(mapXML->Attribute("r"));
+			mapB = atoi(mapXML->Attribute("b"));
+			float r = (float)atof(mapXML->Attribute("Br"));
+			float g = (float)atof(mapXML->Attribute("Bg"));
+			float b = (float)atof(mapXML->Attribute("Bb"));
+			CGame::GetInstance()->setBackgroundColor(r, g, b);
+			if (id > 2000) {
+
+			}
+			else if (id > 1000 && !CGame::GetInstance()->checkWorldMap())
 			{
-				mapL = atoi(mapXML->Attribute("l"));
-				mapT = atoi(mapXML->Attribute("t"));
-				mapR = atoi(mapXML->Attribute("r"));
-				mapB = atoi(mapXML->Attribute("b"));
 				// load nodemaps
 				for (TiXmlElement* node = mapXML->FirstChildElement("nodemap"); node != nullptr; node = node->NextSiblingElement("nodemap")) {
 					int nodemapID = atoi(node->Attribute("id"));
@@ -415,6 +429,20 @@ void CPlayScene::Load()
 					obj = new CTube(x, y, cell_width, cell_height, height, idTL, idTR, idML, idMR, idBL, idBR);
 					break;
 				}
+				case OBJECT_TYPE_CURTAIN: {
+					float cell_width = (float)atof(node->Attribute("cellW"));
+					float cell_height = (float)atof(node->Attribute("cellH"));
+					int height = atoi(node->Attribute("height"));
+					int idTL = atoi(node->Attribute("idSpriteTL"));
+					int idTR = atoi(node->Attribute("idSpriteTR"));
+					int idML = atoi(node->Attribute("idSpriteML"));
+					int idMR = atoi(node->Attribute("idSpriteMR"));
+					int idBL = atoi(node->Attribute("idSpriteBL"));
+					int idBR = atoi(node->Attribute("idSpriteBR"));
+
+					obj = new CCurtain(x, y, cell_width, cell_height, height, idTL, idTR, idML, idMR, idBL, idBR);
+					break;
+				}
 				case OBJECT_TYPE_MUSHROOM: {
 					obj = new CMushroom(x, y);
 					break;
@@ -473,6 +501,11 @@ void CPlayScene::Load()
 				case OBJECT_TYPE_GOADCARD: {
 
 					obj = new CGoalCard(x, y);
+					break;
+				}
+				case OBJECT_TYPE_TITLEMARIOBROS: {
+
+					obj = new CTitleMarioBros(x, y);
 					break;
 				}
 				}
@@ -614,7 +647,11 @@ void CPlayScene::Render()
 	sx = CGame::GetInstance()->GetBackBufferWidth();
 	sy = CGame::GetInstance()->GetBackBufferHeight();
 	CGame::GetInstance()->GetCamPos(cx, cy);
-	if (id > 1000)
+	if (id > 2000)
+	{
+		DebugOut(L"xC, yC: %f, %f\n", cx, cy);
+	}
+	else if (id > 1000)
 	{
 		RECT rect;
 		rect.left = mapL;
@@ -626,30 +663,40 @@ void CPlayScene::Render()
 	else tileMap->Render();
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
-	hub->SetPosition(cx+95, cy+185);
-	hub->Render();
-	// render PAUSE
-	if (isPAUSE) {
-		RenderPauseBackground();
-		CAnimations::GetInstance()->Get(ID_ANI_PAUSE)->Render(cx + sx / 2, cy + sy / 2);
+
+	if (id > 2000) {
+		
 	}
-	// render GameOver
-	if (CGame::GetInstance()->isGameOver) {
-		CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_MENU)->Render(cx + sx / 2, cy + sy / 2 - 20);
-		switch (selectGameOverMenu)
-		{
-		case GAME_OVER_SELECT_CONTINUE: {
-			CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_POINT)->Render(cx + sx / 2 - 22, cy + sy / 2 - 8);
-			break;
+	else {
+		hub->SetPosition(cx + 95, cy + 185);
+		hub->Render();
+		// render PAUSE
+		if (isPAUSE) {
+			RenderPauseBackground();
+			CAnimations::GetInstance()->Get(ID_ANI_PAUSE)->Render(cx + sx / 2, cy + sy / 2);
 		}
-		case GAME_OVER_SELECT_END: {
-			CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_POINT)->Render(cx + sx / 2 - 22, cy + sy / 2 );
-			break;
+		// render GameOver
+		if (CGame::GetInstance()->isGameOver) {
+			CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_MENU)->Render(cx + sx / 2, cy + sy / 2 - 20);
+			switch (selectMenu)
+			{
+			case GAME_OVER_SELECT_CONTINUE: {
+				CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_POINT)->Render(cx + sx / 2 - 22, cy + sy / 2 - 8);
+				break;
+			}
+			case GAME_OVER_SELECT_END: {
+				CAnimations::GetInstance()->Get(ID_ANI_GAMEOVER_POINT)->Render(cx + sx / 2 - 22, cy + sy / 2);
+				break;
+			}
+			default:
+				break;
+			}
 		}
-		default:
-			break;
-		}
+		// render StartM
+		else if (CGame::GetInstance()->isStartM)
+			CAnimations::GetInstance()->Get(ID_ANI_STARTM_MENU)->Render(cx + sx / 2, cy + sy / 2 - 20);
 	}
+
 }
 
 /*

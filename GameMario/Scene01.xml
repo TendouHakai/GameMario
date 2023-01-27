@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SCENE>
-  <MAP link="textures\SuperMarioBros3_Stage1_1.png">
+  <MAP link="textures\SuperMarioBros3_Stage1_1.png" l="-1" t="-1" b="-1" r="-1" Br="175" Bg="249" Bb="240">
   </MAP>
   <TILEMAP filePath="TileMap1-1.xml">
   </TILEMAP>
@@ -33,7 +33,7 @@
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="2500" y="300"> </object>
+    <object type ="0" x="100" y="300"> </object>
     
     <object type ="2" x="338" y="400"> </object>
 

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SCENCEMANAGER>
   <SETTINGS>
-    <Start value ="1001"></Start>
+    <Start value ="2001"></Start>
     <Width value ="320"></Width>
     <Height value ="240"></Height>
   </SETTINGS>
 
   <SCENCES>
+    <Scence id="2001" link="StartScene.xml"></Scence>
     <Scence id="1001" link="intro1.xml"></Scence>
     <Scence id="1" link="Scene01.xml"></Scence>
   </SCENCES>
@@ -18,6 +19,7 @@
     <Texture id="1" link="textures\WorldMaps.png"></Texture>
     <Texture id="2" link="textures\HUB.png"></Texture>
     <Texture id="3" link="textures\gameOverMenu.png"></Texture>
+    <Texture id="4" link="textures\Start Screen.png"></Texture>
     <Texture id="10" link="textures\enemies_1.png"></Texture>
     <Texture id="11" link="textures\enemies_2.png"></Texture>
     <Texture id="12" link="textures\enemies01.png"></Texture>

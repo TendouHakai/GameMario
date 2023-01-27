@@ -65,7 +65,21 @@ class CGame
 	int current_worldmap = -1;
 	int current_nodemap;
 	int current_nodemap_tutle;
+
+	// background color
+	float r = 175.0f;
+	float g = 249.0f;
+	float b = 240.0f;
 public:
+	// get background color
+	void setBackgroundColor(float r, float g, float b) {
+		this->r = r;
+		this->g = g;
+		this->b = b;
+	}
+	D3DXCOLOR GetbackgroundColor() {
+		return D3DXCOLOR(r/255, g/255, b/255, 0.0f);
+	}
 	BOOLEAN isForcusPlayer = false;
 	float yChangeCamMax = 245.0f;
 	float yChangeCamMin = 10.0f;
@@ -75,6 +89,7 @@ public:
 	int coin = 0;
 	int time = 0;
 	bool isGameOver = false;
+	bool isStartM = true;
 	int M = 0;
 	int W = 1;
 	int countCoin = 0;

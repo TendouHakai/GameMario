@@ -37,6 +37,8 @@
     <!--GAME OVER-->
     <Sprite spriteID ="123022" l="5" t="6" r="132" b="69" textureID="3"></Sprite>
     <Sprite spriteID ="123023" l="10" t="81" r="17" b="88" textureID="3"></Sprite>
+    <!--START MENU-->
+    <Sprite spriteID ="123024" l="136" t="6" r="263" b="69" textureID="3"></Sprite>
 
   </SPRITES>
   <ANIMATIONS>
@@ -114,6 +116,9 @@
     <animation aniID="28023">
       <Sprite SpriteID="123023" time="1000"></Sprite>
     </animation>
-    
+
+    <animation aniID="28024">
+      <Sprite SpriteID="123024" time="1000"></Sprite>
+    </animation>
   </ANIMATIONS>
 </HUB>

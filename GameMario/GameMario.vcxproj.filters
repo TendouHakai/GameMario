@@ -209,6 +209,9 @@
     </ClInclude>
     <ClInclude Include="CGoalCard.h" />
     <ClInclude Include="CTurtleWorldMap.h" />
+    <ClInclude Include="CCurtain.h" />
+    <ClInclude Include="CTitleMarioBros.h" />
+    <ClInclude Include="StartSceneKeyHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -376,6 +379,15 @@
     <ClCompile Include="CTurtleWorldMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CCurtain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleMarioBros.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StartSceneKeyHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -463,6 +475,12 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="CTurtleW.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="StartScene.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="AniStartScene.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

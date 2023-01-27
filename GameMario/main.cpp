@@ -87,7 +87,7 @@ void Render()
 	ID3D10RenderTargetView* pRenderTargetView = g->GetRenderTargetView();
 	ID3DX10Sprite* spriteHandler = g->GetSpriteHandler();
 
-	pD3DDevice->ClearRenderTargetView(pRenderTargetView, BACKGROUND_COLOR_MAP1_1);
+	pD3DDevice->ClearRenderTargetView(pRenderTargetView, CGame::GetInstance()->GetbackgroundColor());
 
 	spriteHandler->Begin(D3DX10_SPRITE_SORT_TEXTURE);
 
