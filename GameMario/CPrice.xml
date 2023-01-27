@@ -3,11 +3,32 @@
   <SPRITES>
     <!--100-->
     <Sprite spriteID ="11001" l="457" t="222" r="470" b="231" textureID="20"></Sprite>
+    <!--1000-->
+    <Sprite spriteID ="11002" l="471" t="222" r="488" b="231" textureID="20"></Sprite>
+    <!--200-->
+    <Sprite spriteID ="11003" l="456" t="231" r="469" b="240" textureID="20"></Sprite>
+    <!--1M-->
+    <Sprite spriteID ="11004" l="596" t="175" r="623" b="186" textureID="20"></Sprite>
   </SPRITES>
   <ANIMATIONS>
     <!--100-->
-    <animation aniID="25001">
+    <animation aniID="25004">
       <Sprite SpriteID="11001" time="1000"></Sprite>
+    </animation>
+
+    <!--1000-->
+    <animation aniID="25005">
+      <Sprite SpriteID="11002" time="1000"></Sprite>
+    </animation>
+
+    <!--200-->
+    <animation aniID="25006">
+      <Sprite SpriteID="11003" time="1000"></Sprite>
+    </animation>
+
+    <!--1M-->
+    <animation aniID="25007">
+      <Sprite SpriteID="11004" time="1000"></Sprite>
     </animation>
   </ANIMATIONS>
 </PRICE>

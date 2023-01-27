@@ -1,5 +1,6 @@
 #include "Goomba.h"
 #include "CBLockEnemies.h"
+#include "CPrice.h"
 
 CGoomba::CGoomba(float x, float y):CGameObject(x, y)
 {

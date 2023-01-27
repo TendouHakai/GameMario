@@ -212,6 +212,7 @@
     <ClInclude Include="CCurtain.h" />
     <ClInclude Include="CTitleMarioBros.h" />
     <ClInclude Include="StartSceneKeyHandler.h" />
+    <ClInclude Include="CGreenMushroom.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -386,6 +387,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StartSceneKeyHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CGreenMushroom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

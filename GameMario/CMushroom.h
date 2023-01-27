@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "PlayScene.h"
+#include "CPrice.h"
 
 #define ID_ANI_MUSHROOM 22001
 
@@ -24,6 +25,7 @@ protected:
 
 	void OnNoCollision(DWORD dt);
 	void OnCollisionWith(LPCOLLISIONEVENT e);
+
 public:
 	CMushroom(float x, float y):CGameObject(x,y){
 		SetState(MUSHROOM_STATE_IDLE);
@@ -33,6 +35,12 @@ public:
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
 		vy += ay * dt;
+
+		/*if (isCollect) {
+			CGameObject* obj = new CPrice(x, y, 1000);
+			coObjects->push_back(obj);
+			isCollect = false;
+		}*/
 		
 		if (state == MUSHROOM_STATE_APPEAR) {
 			if (abs(ystart - y) > 16) {
@@ -68,6 +76,7 @@ public:
 			break;
 		}
 		case MUSHROOM_STATE_EATEN: {
+			//isCollect = true;
 			this->Delete();
 			break;
 		}

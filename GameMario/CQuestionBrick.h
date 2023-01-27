@@ -1,6 +1,7 @@
 #pragma once
 #include "Brick.h"
 #include "CMushroom.h"
+#include "CGreenMushroom.h"
 #include "Coin.h"
 #include "CLeaf.h"
 #include "debug.h"
@@ -15,6 +16,7 @@
 
 #define QUESTIONBRICK_TYPE_COIN	1
 #define QUESTIONBRICK_TYPE_REDMUSHROOM	2
+#define QUESTIONBRICK_TYPE_GREENMUSHROOM	4
 #define QUESTIONBRICK_TYPE_LEAF	3
 class CQuestionBrick :public CBrick
 {
@@ -40,7 +42,7 @@ public:
 		if (y > yBrick) {
 			y = yBrick;
 			vy = 0;
-			if (coin != NULL && state == QUESTIONBRICK_STATE_BROKEN && type == QUESTIONBRICK_TYPE_REDMUSHROOM) {
+			if (coin != NULL && state == QUESTIONBRICK_STATE_BROKEN && (type == QUESTIONBRICK_TYPE_REDMUSHROOM || type == QUESTIONBRICK_TYPE_GREENMUSHROOM)) {
 				coObjects->insert(coObjects->begin() + 1, coin);
 				coin = NULL;
 			}
@@ -65,6 +67,10 @@ public:
 			}
 			else if (type == QUESTIONBRICK_TYPE_REDMUSHROOM) {
 				coin = new CMushroom(x, y);
+				coin->SetState(MUSHROOM_STATE_APPEAR);
+			}
+			else if (type == QUESTIONBRICK_TYPE_GREENMUSHROOM) {
+				coin = new CGreenMushroom(x, y);
 				coin->SetState(MUSHROOM_STATE_APPEAR);
 			}
 			else if (type == QUESTIONBRICK_TYPE_LEAF) {

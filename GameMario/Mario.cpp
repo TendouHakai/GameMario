@@ -19,6 +19,7 @@
 #include "CVenusflytrapFlower.h"
 #include "CBreakableBrickButton.h"
 #include "CGoalCard.h"
+#include "CGreenMushroom.h"
 
 #include "Collision.h"
 #include <math.h>
@@ -29,6 +30,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	vx += ax * dt;
 
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
+	if (maxVy != -1.0f && vy > maxVy) vy = maxVy;
 
 	// update HUB
 	float speedMario = abs(vx) - MARIO_WALKING_SPEED;
@@ -101,8 +103,17 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	
 	CCollision::GetInstance()->Process(this, dt, coObjects);
 
+	// add price
+	if (isCollection) {
+		CGameObject* price = new CPrice(xC, yC, numberPrice);
+		coObjects->push_back(price);
+		isCollection = false;
+		CGame::GetInstance()->coin += numberPrice;
+	}
+
 	if (isTailTurning) {
 		tail->Update(dt, coObjects);
+
 	}
 
 	if (isHolding && turtleShell!= NULL) {
@@ -169,6 +180,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithChangeCam(e);
 	else if (dynamic_cast<CWingGreenTurtle*>(e->obj))
 		OnCollisionWithWingGreenTurtle(e);
+	else if (dynamic_cast<CGreenMushroom*>(e->obj))
+		OnCollisionWithGreenMushroom(e);
 	else if (dynamic_cast<CMushroom*>(e->obj))
 		OnCollisionWithRedMushroom(e);
 	else if (dynamic_cast<CLeaf*>(e->obj))
@@ -196,6 +209,9 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 		{
 			goomba->SetState(GOOMBA_STATE_DIE);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			isCollection = true;
+			numberPrice = 100;
+			goomba->GetPosition(xC, yC);
 		}
 	}
 	else // hit by Goomba
@@ -228,6 +244,9 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 		{
 			turtle->SetState(TURTLE_STATE_DEAD);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			isCollection = true;
+			numberPrice = 100;
+			turtle->GetPosition(xC, yC);
 		}
 		else if (turtle->GetState() == TURTLE_STATE_DEAD || turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
 			isKicking = true;
@@ -238,6 +257,9 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 			else {
 				turtle->SetState(TURTLE_STATE_KICKED_LEFT);
 			}
+			isCollection = true;
+			numberPrice = 200;
+			turtle->GetPosition(xC, yC);
 			/*if (nx < 0) {
 				isHolding = true;
 				turtleShell = new CTurtle(x, y);
@@ -270,6 +292,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 						isKicking = true;
 						turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
 
+
 					}
 					else if (e->nx < 0)
 					{
@@ -277,6 +300,9 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 						turtle->SetState(TURTLE_STATE_KICKED_LEFT);
 
 					}
+					isCollection = true;
+					numberPrice = 200;
+					turtle->GetPosition(xC, yC);
 				}
 				else {
 					if (e->nx > 0)
@@ -377,6 +403,9 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 		{
 			turtle->SetState(TURTLE_STATE_DEAD);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			isCollection = true;
+			numberPrice = 100;
+			turtle->GetPosition(xC, yC);
 		}
 		else if (turtle->GetState() == TURTLE_STATE_DEAD || turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
 			isKicking = true;
@@ -426,6 +455,9 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 						turtle->SetState(TURTLE_STATE_KICKED_LEFT);
 
 					}
+					isCollection = true;
+					numberPrice = 200;
+					turtle->GetPosition(xC, yC);
 				}
 				else {
 					if (e->nx > 0)
@@ -520,6 +552,9 @@ void CMario::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e)
 	{
 		winggreenturtle->SetState(WINGGREENTURTLE_STATE_TO_GREENTURTLE);
 		vy = -MARIO_JUMP_DEFLECT_SPEED;
+		isCollection = true;
+		numberPrice = 100;
+		winggreenturtle->GetPosition(xC, yC);
 	}
 	else // hit by Goomba
 	{
@@ -527,7 +562,7 @@ void CMario::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e)
 		{
 			if (level > MARIO_LEVEL_SMALL)
 			{
-				level = MARIO_LEVEL_SMALL;
+				level -=1;
 				StartUntouchable();
 			}
 			else
@@ -547,7 +582,20 @@ void CMario::OnCollisionWithRedMushroom(LPCOLLISIONEVENT e)
 	else if (level == MARIO_LEVEL_BIG) {
 		SetLevel(MARIO_LEVEL_RACCON);
 	}
-	mushroom->Delete();
+	isCollection = true;
+	numberPrice = 1000;
+	mushroom->GetPosition(xC, yC);
+	mushroom->SetState(MUSHROOM_STATE_EATEN);
+}
+
+void CMario::OnCollisionWithGreenMushroom(LPCOLLISIONEVENT e)
+{
+	CGreenMushroom* mushroom = dynamic_cast<CGreenMushroom*>(e->obj);
+	isCollection = true;
+	numberPrice = 1;
+	mushroom->GetPosition(xC, yC);
+	mushroom->SetState(MUSHROOM_STATE_EATEN);
+	CGame::GetInstance()->M++;
 }
 
 void CMario::OnCollisionWithLeaf(LPCOLLISIONEVENT e) {
@@ -569,6 +617,10 @@ void CMario::OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e)
 			wingredgoomba->SetState(WINGGOOMBA_STATE_TOREDGOOMBA);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 			y -= 10;
+
+			isCollection = true;
+			numberPrice = 100;
+			wingredgoomba->GetPosition(xC, yC);
 		}
 	}
 	else {
@@ -576,7 +628,7 @@ void CMario::OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e)
 		{
 			if (level > MARIO_LEVEL_SMALL)
 			{
-				level = MARIO_LEVEL_SMALL;
+				level -= 1;
 				StartUntouchable();
 			}
 			else
@@ -1068,9 +1120,11 @@ void CMario::SetState(int state)
 			}
 			else ay = MARIO_GRAVITY_FLY;
 		}
+		maxVy = MARIO_FLY_MAXSPEED_Y;
 		break;
 	case MARIO_STATE_FLY_RELEASE:
 		ay = MARIO_GRAVITY;
+		maxVy = -1.0f;
 		break;
 	case MARIO_STATE_TAIL_TURNING: {
 		if (level == MARIO_LEVEL_RACCON) {

@@ -24,6 +24,9 @@ void CTail::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 
 	if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_DEAD_TAILTURNING) {
 		turtle->SetState(TURTLE_STATE_DEAD_TAILTURNING);
+
+		numberPrice = 100;
+		turtle->GetPosition(xC, yC);
 	}
 }
 
@@ -33,6 +36,10 @@ void CTail::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 
 	if (goomba->GetState() != GOOMBA_STATE_DIE && goomba->GetState() != GOOMBA_STATE_DIE_TAILTURNING) {
 		goomba->SetState(GOOMBA_STATE_DIE_TAILTURNING);
+
+		isCollection = true;
+		numberPrice = 100;
+		goomba->GetPosition(xC, yC);
 	}
 }
 
@@ -41,6 +48,10 @@ void CTail::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e) {
 
 	if (turtle->GetState() != WINGGREENTURTLE_STATE_TO_GREENTURTLE && turtle->GetState() != WINGGREENTURTLE_STATE_TAILTURNING) {
 		turtle->SetState(WINGGREENTURTLE_STATE_TAILTURNING);
+
+		isCollection = true;
+		numberPrice = 100;
+		turtle->GetPosition(xC, yC);
 	}
 }
 

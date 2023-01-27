@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "CBreakableBrick.h"
+#include "CPrice.h"
 
 #define TAIL_BBOX_WIDTH  10
 #define TAIL_BBOX_HEIGHT 6
@@ -19,6 +20,11 @@ class CTail :
 protected:
     BOOLEAN isHited;
     float effecthit_start;
+    // isCollect
+    bool isCollection = false;
+    int numberPrice = 100;
+    float xC = x, yC = y;
+
     virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
     
     void OnCollisionWithBreakableBrick(LPCOLLISIONEVENT e);
@@ -33,6 +39,13 @@ public:
     CTail(float x, float y) :CGameObject(x, y) { isHited = false; effecthit_start = 0; }
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
         CCollision::GetInstance()->Process(this, dt, coObjects);
+
+        if (isCollection) {
+            CGameObject* price = new CPrice(xC, yC, numberPrice);
+            coObjects->push_back(price);
+            isCollection = false;
+            CGame::GetInstance()->coin += numberPrice;
+        }
     };
     virtual void Render() {
         //RenderBoundingBox();

@@ -18,6 +18,7 @@
 #define MARIO_JUMP_SPEED_Y		0.5f
 #define MARIO_JUMP_RUN_SPEED_Y	0.6f
 #define MARIO_JUMP_TELE_SPEED_Y	0.15f
+#define MARIO_FLY_MAXSPEED_Y	0.05f
 
 #define MARIO_GRAVITY			0.002f
 #define MARIO_GRAVITY_FLY			0.0007f
@@ -192,6 +193,7 @@ class CMario : public CGameObject
 {
 	BOOLEAN isSitting;
 	float maxVx;
+	float maxVy;
 	float ax;				// acceleration on x 
 	float ay;				// acceleration on y 
 	float yPlatformNotBlock;
@@ -218,6 +220,11 @@ class CMario : public CGameObject
 	bool isWin;
 	// dead
 	ULONGLONG die_start;
+
+	// collection
+	bool isCollection = false;
+	int numberPrice = 100;
+	float xC=x, yC=y;
 	
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
@@ -230,6 +237,7 @@ class CMario : public CGameObject
 	void OnCollisionWithChangeCam(LPCOLLISIONEVENT e);
 	void OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e);
 	void OnCollisionWithRedMushroom(LPCOLLISIONEVENT e);
+	void OnCollisionWithGreenMushroom(LPCOLLISIONEVENT e);
 	void OnCollisionWithLeaf(LPCOLLISIONEVENT e);
 	void OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithBullet(LPCOLLISIONEVENT e);
@@ -248,6 +256,7 @@ public:
 	{
 		isSitting = false;
 		maxVx = 0.0f;
+		maxVy = -1.0f;
 		ax = 0.0f;
 		ay = MARIO_GRAVITY; 
 

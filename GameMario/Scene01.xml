@@ -33,7 +33,7 @@
   </ASSETS>
   
   <OBJECTS>
-    <object type ="0" x="100" y="300"> </object>
+    <object type ="0" x="2300" y="300"> </object>
     
     <object type ="2" x="338" y="400"> </object>
 
@@ -125,7 +125,7 @@
     <object type ="15" x="1415" y="198" cellW="16" cellH="16" length="4" idSpriteBegin="102001" idSpriteMiddle="102001" idSpriteEnd="102001"></object>
     <object type ="15" x="1494" y="185" cellW="16" cellH="16" length="13" idSpriteBegin="102001" idSpriteMiddle="102001" idSpriteEnd="102001"></object>
 
-    <object type ="7" x="1446" y="136" brickType="1"></object>
+    <object type ="7" x="1446" y="136" brickType="4"></object>
 
     <object type ="5" x="1575" y="420" cellW="80" cellH="10" length="1"></object>
 
@@ -177,6 +177,8 @@
     <object type ="17" x="2111" y="408"></object>
     <object type ="17" x="2111" y="392"></object>
     <object type ="17" x="2095" y="392"></object>
+    <object type ="18" x="2105" y="440" cellW="15" cellH="16" height="2"
+            idSpriteTL="105005" idSpriteTR="105006" idSpriteML="105007" idSpriteMR="105008" idSpriteBL="105007" idSpriteBR="105008"></object>
 
     <object type ="25" x="2032" y="376" amount="19"></object>
 
@@ -211,6 +213,8 @@
     <object type ="5" x="2297" y="522" cellW="16" cellH="16" length="1"></object>
     <object type ="5" x="2329" y="506" cellW="50" cellH="16" length="1"></object>
     <!--<object type ="5" x="2224" y="440" cellW="193" cellH="16" length="1"></object>-->
+    <object type ="18" x="2328" y="440" cellW="15" cellH="16" height="2"
+            idSpriteTL="105005" idSpriteTR="105006" idSpriteML="105007" idSpriteMR="105008" idSpriteBL="105007" idSpriteBR="105008"></object>
 
     <object type ="4" x="2183" y="489"></object>
     <object type ="4" x="2199" y="473"></object>

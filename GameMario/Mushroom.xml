@@ -2,10 +2,17 @@
 <MUSHROOM>
   <SPRITES>
     <Sprite spriteID ="107001" l="300" t="189" r="315" b="204" textureID="20"></Sprite>
+    
+    <!--GREEN MUSHROOM-->
+    <Sprite spriteID ="107002" l="317" t="189" r="334" b="204" textureID="20"></Sprite>
   </SPRITES>
   <ANIMATIONS>
     <animation aniID="22001">
       <Sprite SpriteID="107001" time="100"></Sprite>
+    </animation>
+    <!--GREEN MUSHROOM-->
+    <animation aniID="22002">
+      <Sprite SpriteID="107002" time="100"></Sprite>
     </animation>
   </ANIMATIONS>
 </MUSHROOM>

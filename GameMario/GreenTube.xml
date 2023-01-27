@@ -9,6 +9,16 @@
     <Sprite spriteID ="105003" l="70" t="52" r="85" b="69" textureID="30"></Sprite>
     <!--BOTTOMRIGHT-->
     <Sprite spriteID ="105004" l="86" t="52" r="101" b="69" textureID="30"></Sprite>
+    
+    <!--TUBE BLACK-->
+    <!--TOPLEFT-->
+    <Sprite spriteID ="105005" l="1" t="86" r="16" b="101" textureID="30"></Sprite>
+    <!--TOPRIGHT-->
+    <Sprite spriteID ="105006" l="19" t="86" r="34" b="101" textureID="30"></Sprite>
+    <!--BOTTOMLEFT-->
+    <Sprite spriteID ="105007" l="1" t="70" r="16" b="85" textureID="30"></Sprite>
+    <!--BOTTOMRIGHT-->
+    <Sprite spriteID ="105008" l="19" t="70" r="34" b="85" textureID="30"></Sprite>
   </SPRITES>
   <ANIMATIONS>
    

@@ -2,7 +2,7 @@
 #include "GameObject.h"
 
 #define TIME_TElE	2000
-#define TELEPORT_BBOX_WIDTH	32
+#define TELEPORT_BBOX_WIDTH	25
 #define TELEPORT_BBOX_HEIGHT	10
 
 #define TELEPORT_STATE_TELE	100
