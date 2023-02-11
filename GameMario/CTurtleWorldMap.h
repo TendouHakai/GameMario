@@ -31,6 +31,7 @@ class CTurtleWorldMap :
     bool isEnd = false;
 public:
     CTurtleWorldMap(float x, float y) : CGameObject(x, y) {
+        vy = 0;
         xMin = x - SPACE;
         xMax = x + SPACE;
         vx = TURTLEW_WALKING_SPEED;
@@ -127,18 +128,23 @@ public:
         {
         case TURTLEW_STATE_UP:
             vy = -TURTLEW_SPEED;
+            vx = 0;
             break;
         case TURTLEW_STATE_DOWN:
             vy = TURTLEW_SPEED;
+            vx = 0;
             break;
         case TURTLEW_STATE_LEFT:
             vx = -TURTLEW_SPEED;
+            vy = 0;
             break;
         case TURTLEW_STATE_RIGHT:
             vx = TURTLEW_SPEED;
+            vy = 0;
             break;
         case TURTLEW_STATE_IDLE:
             vx = TURTLEW_WALKING_SPEED;
+            vy = 0;
             break;
         default:
             break;

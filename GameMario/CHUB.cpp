@@ -14,50 +14,50 @@ void CHUB::renderNumber(int number, int xx, int yy)
 	int sochia = number;
 	int n = 0;
 	if(sochia<1){
-		animations->Get(ID_ANI_NUMBER00)->Render(xx - n * 10, yy);
+		animations->Get(ID_ANI_NUMBER00)->Render(xx - n * 8, yy);
 		return;
 	}
 	while (sochia >= 1) {
 		switch (sochia % 10)
 		{
 		case 0: {
-			animations->Get(ID_ANI_NUMBER00)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER00)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 1: {
-			animations->Get(ID_ANI_NUMBER01)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER01)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 2: {
-			animations->Get(ID_ANI_NUMBER02)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER02)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 3: {
-			animations->Get(ID_ANI_NUMBER03)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER03)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 4: {
-			animations->Get(ID_ANI_NUMBER04)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER04)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 5: {
-			animations->Get(ID_ANI_NUMBER05)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER05)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 6: {
-			animations->Get(ID_ANI_NUMBER06)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER06)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 7: {
-			animations->Get(ID_ANI_NUMBER07)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER07)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 8: {
-			animations->Get(ID_ANI_NUMBER08)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER08)->Render(xx - n * 8, yy);
 			break;
 		}
 		case 9: {
-			animations->Get(ID_ANI_NUMBER09)->Render(xx - n * 10, yy);
+			animations->Get(ID_ANI_NUMBER09)->Render(xx - n * 8, yy);
 			break;
 		}
 		default:

@@ -302,8 +302,7 @@ void CPlayScene::Load()
 					if (isNext) {
 						CTurtleWorldMap* tutle = (CTurtleWorldMap*)obj;
 						tutle->Next();
-					}
-						
+					}	
 					break;
 				}
 				case OBJECT_TYPE_NODEMAP_WORLDMAP: {
@@ -317,20 +316,22 @@ void CPlayScene::Load()
 					break;
 				}
 				case OBJECT_TYPE_MARIO:
+				{
 					if (player != NULL)
 					{
 						DebugOut(L"[ERROR] MARIO object was created before!\n");
 						return;
 					}
+					int level = CGame::GetInstance()->player_level;
 					if (id > 2000) {
-						int level = atoi(node->Attribute("level"));
-						obj = new CMario(x, y, level);
+						level = atoi(node->Attribute("level"));
 					}
-					else obj = new CMario(x, y);
+					obj = new CMario(x, y, level);
 					player = (CMario*)obj;
 
 					DebugOut(L"[INFO] Player object has been created!\n");
 					break;
+				}
 				case OBJECT_TYPE_BRICK: 
 				{
 					obj = new CBrick(x, y);
@@ -548,6 +549,9 @@ void CPlayScene::Update(DWORD dt)
 			hub->time -= 1;
 			timeStart = GetTickCount64();
 		}
+
+		if (hub->time <= 0)
+			player->SetState(MARIO_STATE_DIE);
 	}
 
 	if (isPAUSEMario) {

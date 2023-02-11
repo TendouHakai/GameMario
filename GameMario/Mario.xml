@@ -144,8 +144,15 @@
     <Sprite spriteID ="17051" l="215" t="632" r="232" b="663" textureID="0"></Sprite>
     
     <!--MARIO WORLD MAP-->
+    <!--SMALL-->
     <Sprite spriteID ="18011" l="251" t="115" r="266" b="132" textureID="1"></Sprite>
     <Sprite spriteID ="18021" l="271" t="115" r="286" b="132" textureID="1"></Sprite>
+    <!--BIG-->
+    <Sprite spriteID ="18031" l="291" t="115" r="308" b="138" textureID="1"></Sprite>
+    <Sprite spriteID ="18041" l="311" t="115" r="328" b="138" textureID="1"></Sprite>
+    <!--RACCON-->
+    <Sprite spriteID ="18051" l="333" t="113" r="350" b="138" textureID="1"></Sprite>
+    <Sprite spriteID ="18061" l="353" t="113" r="370" b="138" textureID="1"></Sprite>
     
     <!--MARIO EFFECT TO BIG-->
     <!--LEFT-->
@@ -479,9 +486,20 @@
     </animation>
     
     <!--MARIO WORLD MAP-->
+    <!--SMALL-->
     <animation aniID="2007">
       <Sprite SpriteID="18011" time="200"></Sprite>
       <Sprite SpriteID="18021" time="200"></Sprite>
+    </animation>
+    <!--BIG-->
+    <animation aniID="2011">
+      <Sprite SpriteID="18031" time="200"></Sprite>
+      <Sprite SpriteID="18041" time="200"></Sprite>
+    </animation>
+    <!--RACCON-->
+    <animation aniID="2012">
+      <Sprite SpriteID="18051" time="200"></Sprite>
+      <Sprite SpriteID="18061" time="200"></Sprite>
     </animation>
     
     <!--CHANGE MODE TO BIG-->

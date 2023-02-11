@@ -13,6 +13,10 @@ void MarioWorldMaps::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
 	//DebugOut(L"%f, %f: \n", x, y);
-	animations->Get(ID_ANI_MARIOW)->Render(x, y);
+	if (CGame::GetInstance()->player_level == MARIO_LEVEL_SMALL)
+		animations->Get(ID_ANI_MARIOW_SMALL)->Render(x, y);
+	else if (CGame::GetInstance()->player_level == MARIO_LEVEL_BIG)
+		animations->Get(ID_ANI_MARIOW_BIG)->Render(x, y);
+	else animations->Get(ID_ANI_MARIOW_RACCON)->Render(x, y);
 	//RenderBoundingBox();
 }

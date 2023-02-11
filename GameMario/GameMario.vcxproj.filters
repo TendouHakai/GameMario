@@ -54,6 +54,12 @@
     <Filter Include="TileMap">
       <UniqueIdentifier>{edb76553-0a95-40da-886d-b0a7f18ab75d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Object world map">
+      <UniqueIdentifier>{f6978c81-4f91-418d-927a-ae8f4f11b5ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Object start">
+      <UniqueIdentifier>{08c86a3c-f5ad-42da-96d0-d7550e8546ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -191,29 +197,63 @@
     <ClInclude Include="CPlatformSprite.h">
       <Filter>GameObject\OtherObjects</Filter>
     </ClInclude>
-    <ClInclude Include="CBLockEnemies.h" />
-    <ClInclude Include="CLeaf.h" />
-    <ClInclude Include="CVenusflytrapFlower.h" />
-    <ClInclude Include="CBreakableBrickButton.h" />
-    <ClInclude Include="CTelePort.h" />
     <ClInclude Include="CTileMap.h">
       <Filter>TileMap</Filter>
     </ClInclude>
-    <ClInclude Include="IntroKeyEventHandler.h" />
-    <ClInclude Include="MarioWorldMaps.h" />
-    <ClInclude Include="CWorldMap.h" />
-    <ClInclude Include="CNodeMapG.h" />
-    <ClInclude Include="CHUB.h" />
     <ClInclude Include="GameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="CGoalCard.h" />
-    <ClInclude Include="CTurtleWorldMap.h" />
-    <ClInclude Include="CCurtain.h" />
-    <ClInclude Include="CTitleMarioBros.h" />
-    <ClInclude Include="StartSceneKeyHandler.h" />
-    <ClInclude Include="CGreenMushroom.h" />
-    <ClInclude Include="CGreenMario.h" />
+    <ClInclude Include="IntroKeyEventHandler.h">
+      <Filter>KeyHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="StartSceneKeyHandler.h">
+      <Filter>KeyHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="CBLockEnemies.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CBreakableBrickButton.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CGoalCard.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CGreenMario.h">
+      <Filter>GameObject\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CGreenMushroom.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CHUB.h">
+      <Filter>GameObject\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="CLeaf.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CNodeMapG.h">
+      <Filter>GameObject\Object world map</Filter>
+    </ClInclude>
+    <ClInclude Include="CTelePort.h">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CTitleMarioBros.h">
+      <Filter>GameObject\Object start</Filter>
+    </ClInclude>
+    <ClInclude Include="CCurtain.h">
+      <Filter>GameObject\Object start</Filter>
+    </ClInclude>
+    <ClInclude Include="CTurtleWorldMap.h">
+      <Filter>GameObject\Object world map</Filter>
+    </ClInclude>
+    <ClInclude Include="CVenusflytrapFlower.h">
+      <Filter>GameObject\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorldMap.h">
+      <Filter>GameObject\Object world map</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioWorldMaps.h">
+      <Filter>GameObject\Object world map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -345,56 +385,56 @@
     <ClCompile Include="CWingRedGoomba.cpp">
       <Filter>GameObject\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="CLeaf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CVenusflytrapFlower.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CBreakableBrickButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CTelePort.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CTileMap.cpp">
       <Filter>TileMap</Filter>
     </ClCompile>
     <ClCompile Include="IntroKeyEventHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MarioWorldMaps.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CWorldMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CNodeMapG.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CHUB.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CGoalCard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CTurtleWorldMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CCurtain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CTitleMarioBros.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>KeyHandler</Filter>
     </ClCompile>
     <ClCompile Include="StartSceneKeyHandler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>KeyHandler</Filter>
     </ClCompile>
-    <ClCompile Include="CGreenMushroom.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CBreakableBrickButton.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CGoalCard.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
     </ClCompile>
     <ClCompile Include="CGreenMario.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObject\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CGreenMushroom.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CHUB.cpp">
+      <Filter>GameObject\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CLeaf.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CNodeMapG.cpp">
+      <Filter>GameObject\Object world map</Filter>
+    </ClCompile>
+    <ClCompile Include="CTelePort.cpp">
+      <Filter>GameObject\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleMarioBros.cpp">
+      <Filter>GameObject\Object start</Filter>
+    </ClCompile>
+    <ClCompile Include="CCurtain.cpp">
+      <Filter>GameObject\Object start</Filter>
+    </ClCompile>
+    <ClCompile Include="CTurtleWorldMap.cpp">
+      <Filter>GameObject\Object world map</Filter>
+    </ClCompile>
+    <ClCompile Include="CVenusflytrapFlower.cpp">
+      <Filter>GameObject\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CWorldMap.cpp">
+      <Filter>GameObject\Object world map</Filter>
+    </ClCompile>
+    <ClCompile Include="MarioWorldMaps.cpp">
+      <Filter>GameObject\Object world map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

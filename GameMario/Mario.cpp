@@ -32,6 +32,13 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
 	if (maxVy != -1.0f && vy > maxVy) vy = maxVy;
 
+	// check 
+	if (y > CGame::GetInstance()->yChangeCamMax + CGame::GetInstance()->GetBackBufferHeight() + 50)
+	{
+		if(CGame::GetInstance()->GetCurrentScene()->getID() < 1000 && isWin == false)
+			this->SetState(MARIO_STATE_DIE);
+	}
+
 	// update HUB
 	float speedMario = abs(vx) - MARIO_WALKING_SPEED;
 	float speed = (MARIO_RUNNING_SPEED - MARIO_WALKING_SPEED) / 6;
@@ -108,7 +115,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		CGameObject* price = new CPrice(xC, yC, numberPrice);
 		coObjects->push_back(price);
 		isCollection = false;
-		CGame::GetInstance()->coin += numberPrice;
+		if(numberPrice>=100 && CGame::GetInstance()->GetCurrentScene()->getID()<1000)
+			CGame::GetInstance()->coin += numberPrice;
 	}
 
 	if (isTailTurning) {
@@ -228,6 +236,8 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 				if (level > MARIO_LEVEL_SMALL)
 				{
 					level -=1;
+					if (CGame::GetInstance()->GetCurrentScene()->getID() < 1000)
+						CGame::GetInstance()->player_level = level;
 					StartUntouchable();
 				}
 				else
@@ -327,6 +337,8 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 				if (level > MARIO_LEVEL_SMALL)
 				{
 					level -= 1;
+					if (CGame::GetInstance()->GetCurrentScene()->getID() < 1000)
+						CGame::GetInstance()->player_level = level;
 					StartUntouchable();
 				}
 				else
@@ -482,6 +494,8 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 				if (level > MARIO_LEVEL_SMALL)
 				{
 					level -= 1;
+					if (CGame::GetInstance()->GetCurrentScene()->getID() < 1000)
+						CGame::GetInstance()->player_level = level;
 					StartUntouchable();
 				}
 				else
@@ -568,6 +582,8 @@ void CMario::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e)
 			if (level > MARIO_LEVEL_SMALL)
 			{
 				level -=1;
+				if (CGame::GetInstance()->GetCurrentScene()->getID() < 1000)
+					CGame::GetInstance()->player_level = level;
 				StartUntouchable();
 			}
 			else
@@ -605,6 +621,9 @@ void CMario::OnCollisionWithGreenMushroom(LPCOLLISIONEVENT e)
 
 void CMario::OnCollisionWithLeaf(LPCOLLISIONEVENT e) {
 	CLeaf* leaf = dynamic_cast<CLeaf*>(e->obj);
+	isCollection = true;
+	numberPrice = 1000;
+	leaf->GetPosition(xC, yC);
 	if (level == MARIO_LEVEL_SMALL)
 		SetLevel(MARIO_LEVEL_BIG);
 	else if (level == MARIO_LEVEL_BIG) {
@@ -634,6 +653,8 @@ void CMario::OnCollisionWithWingRedGoomba(LPCOLLISIONEVENT e)
 			if (level > MARIO_LEVEL_SMALL)
 			{
 				level -= 1;
+				if (CGame::GetInstance()->GetCurrentScene()->getID() < 1000)
+					CGame::GetInstance()->player_level = level;
 				StartUntouchable();
 			}
 			else
@@ -651,6 +672,8 @@ void CMario::OnCollisionWithBullet(LPCOLLISIONEVENT e)
 	
 	if (level != MARIO_LEVEL_SMALL) {
 		level -= 1;
+		if (CGame::GetInstance()->GetCurrentScene()->getID() < 1000)
+			CGame::GetInstance()->player_level = level;
 		StartUntouchable();
 	}
 	else {
@@ -664,6 +687,8 @@ void CMario::OnCollisionWithCannibalFlower(LPCOLLISIONEVENT e) {
 	if (untouchable == 0) {
 		if (level != MARIO_LEVEL_SMALL) {
 			level -= 1;
+			if (CGame::GetInstance()->GetCurrentScene()->getID() < 1000)
+				CGame::GetInstance()->player_level = level;
 			StartUntouchable();
 		}
 		else {
@@ -680,6 +705,8 @@ void CMario::OnCollisionWithVenusflytrapFlower(LPCOLLISIONEVENT e) {
 			if (level > MARIO_LEVEL_SMALL)
 			{
 				level -= 1;
+				if (CGame::GetInstance()->GetCurrentScene()->getID() < 1000)
+					CGame::GetInstance()->player_level = level;
 				StartUntouchable();
 			}
 			else
@@ -1306,5 +1333,7 @@ void CMario::SetLevel(int l)
 		break;
 	}
 	level = l;
+	if(C_scene->getID()<1000)
+		CGame::GetInstance()->player_level = l;
 }
 

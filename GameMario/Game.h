@@ -95,6 +95,8 @@ public:
 	int level = 0;
 	int nCard = 0;
 	int spoils[3] = { 100 ,100 ,100 };
+	// info player
+	int player_level = 1;
 	// Init DirectX, Sprite Handler
 	void Init(HWND hWnd, HINSTANCE hInstance);
 
