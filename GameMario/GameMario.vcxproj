@@ -144,6 +144,7 @@
     <ClInclude Include="CCurtain.h" />
     <ClInclude Include="CEffectHitWithTail.h" />
     <ClInclude Include="CGoalCard.h" />
+    <ClInclude Include="CGreenMario.h" />
     <ClInclude Include="CGreenMushroom.h" />
     <ClInclude Include="CGreenTurtle.h" />
     <ClInclude Include="ChangeCam.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="CCurtain.cpp" />
     <ClCompile Include="CEffectHitWithTail.cpp" />
     <ClCompile Include="CGoalCard.cpp" />
+    <ClCompile Include="CGreenMario.cpp" />
     <ClCompile Include="CGreenMushroom.cpp" />
     <ClCompile Include="CGreenTurtle.cpp" />
     <ClCompile Include="ChangeCam.cpp" />
@@ -267,6 +269,7 @@
     <Xml Include="CPrice.xml" />
     <Xml Include="CTurtleW.xml" />
     <Xml Include="Goomba.xml" />
+    <Xml Include="GreenMario.xml" />
     <Xml Include="HUB.xml" />
     <Xml Include="intro1.xml" />
     <Xml Include="Leaf.xml" />

@@ -97,9 +97,13 @@ protected:
 	CGameObject* effecthit;
 	CGameObject* price;
 
+	bool isPause = false;
+
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL) {
 		vy += ay * dt;
+		if (isPause)
+			return;
 
 		isOnPlatform = false;
 		check->Update(dt, coObjects);
@@ -133,23 +137,23 @@ protected:
 				SetState(TURTLE_STATE_WALK);
 			}
 		}
-		else if (state == TURTLE_STATE_KICKED_RIGHT || state == TURTLE_STATE_KICKED_LEFT) {
+		/*else if (state == TURTLE_STATE_KICKED_RIGHT || state == TURTLE_STATE_KICKED_LEFT) {
 			if (GetTickCount64() - kicked_start > TURTLE_KICKED_TIME)
 			{
 				kicked_start = 0;
 				this->Delete();
 			}
-		}
+		}*/
 		else 
 			if (state == TURTLE_STATE_COLLECTION_RIGHT || state == TURTLE_STATE_COLLECTION_LEFT) {
 			if (price != NULL) {
 				coObjects->push_back(price);
 				price = NULL;
 			}
-			if (GetTickCount64() - untouchable_start > 1500) {
+			/*if (GetTickCount64() - untouchable_start > 1500) {
 				isUntouchable = 0;
 				untouchable_start = 0;
-			}
+			}*/
 		}
 
 		if (isUntouchable == 1) {
@@ -194,6 +198,11 @@ protected:
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 	
 public:
+	void IsPause(bool isPause) {
+		this->isPause = isPause;
+		if (isPause == false)
+			dead_start = GetTickCount64();
+	}
 	CTurtle(float x, float y) :CGameObject(x, y) { 
 		vx = TURTLE_SPEED;  
 		ay = TURTLE_GRAVITY; 
@@ -232,7 +241,7 @@ public:
 			break;
 		}
 		case TURTLE_STATE_KICKED_RIGHT: {
-			kicked_start = GetTickCount64();
+			//kicked_start = GetTickCount64();
 			vx = -TURTLE_SPEED_KICKED;
 			ay = TURTLE_GRAVITY;
 			isUntouchable = 1;
@@ -240,7 +249,7 @@ public:
 			break;
 		}
 		case TURTLE_STATE_KICKED_LEFT: {
-			kicked_start = GetTickCount64();
+			//kicked_start = GetTickCount64();
 			vx = TURTLE_SPEED_KICKED;
 			ay = TURTLE_GRAVITY;
 			isUntouchable = 1;

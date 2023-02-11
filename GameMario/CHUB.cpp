@@ -84,7 +84,6 @@ void CHUB::Render()
 	this->countCoin = CGame::GetInstance()->countCoin;
 	this->W = CGame::GetInstance()->W;
 	this->M = CGame::GetInstance()->M;
-	this->time = CGame::GetInstance()->time;
 	this->level = CGame::GetInstance()->level;
 	this->nCard = CGame::GetInstance()->nCard;
 	for (int i = 0; i < nCard; i++) {

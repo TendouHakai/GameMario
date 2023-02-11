@@ -87,7 +87,6 @@ public:
 	float yForcusMax;
 	// info for HUB
 	int coin = 0;
-	int time = 0;
 	bool isGameOver = false;
 	bool isStartM = true;
 	int M = 0;

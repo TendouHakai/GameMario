@@ -96,8 +96,12 @@ void CTurtle::OnCollisionWithWingGreenTurtle(LPCOLLISIONEVENT e)
 void CTurtle::OnCollisionWithTurtle(LPCOLLISIONEVENT e)
 {
 	CTurtle* turtle = dynamic_cast<CTurtle*>(e->obj);
-
-	turtle->SetState(TURTLE_STATE_DEAD_TAILTURNING);
+	
+	if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING)
+		if (e->nx > 0)
+			turtle->SetState(TURTLE_STATE_COLLECTION_RIGHT);
+		else turtle->SetState(TURTLE_STATE_COLLECTION_LEFT);
+	else turtle->SetState(TURTLE_STATE_DEAD_TAILTURNING);
 }
 
 void CTurtle::OnCollisionWith(LPCOLLISIONEVENT e)

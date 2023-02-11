@@ -1,3 +1,4 @@
+#pragma once
 #include "GameObject.h"
 
 #define LEAF_STATE_START	100

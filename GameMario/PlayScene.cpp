@@ -33,6 +33,7 @@
 #include "CTurtleWorldMap.h"
 #include "CCurtain.h"
 #include "CTitleMarioBros.h"
+#include "CGreenMario.h"
 
 #include "SampleKeyEventHandler.h"
 #include "IntroKeyEventHandler.h"
@@ -189,7 +190,10 @@ void CPlayScene::Load()
 {
 	DebugOut(L"[INFO] Start loading scene from : %s \n", sceneFilePath);
 	// create HUB
-	if (id < 1000)
+	if (id > 2000) {
+		timeStart = GetTickCount64();
+	}
+	else if (id < 1000)
 	{
 		isStart = 1;
 		timeStart = GetTickCount64();
@@ -318,7 +322,11 @@ void CPlayScene::Load()
 						DebugOut(L"[ERROR] MARIO object was created before!\n");
 						return;
 					}
-					obj = new CMario(x, y);
+					if (id > 2000) {
+						int level = atoi(node->Attribute("level"));
+						obj = new CMario(x, y, level);
+					}
+					else obj = new CMario(x, y);
 					player = (CMario*)obj;
 
 					DebugOut(L"[INFO] Player object has been created!\n");
@@ -508,6 +516,14 @@ void CPlayScene::Load()
 					obj = new CTitleMarioBros(x, y);
 					break;
 				}
+				case OBJECT_TYPE_GREENMARIO: {
+					if (id > 2000) {
+						int level = atoi(node->Attribute("level"));
+						obj = new CGreenMario(x, y, level);
+					}
+					else obj = new CGreenMario(x, y);
+					break;
+				}
 				}
 
 				obj->SetPosition(x, y);
@@ -529,7 +545,7 @@ void CPlayScene::Update(DWORD dt)
 	if (isPAUSE == false) {
 		if (isStart == 1 && GetTickCount64() - timeStart > 1000)
 		{
-			CGame::GetInstance()->time += 1;
+			hub->time -= 1;
 			timeStart = GetTickCount64();
 		}
 	}
@@ -547,6 +563,89 @@ void CPlayScene::Update(DWORD dt)
 			}
 		}
 		
+	}
+
+	if (id > 2000) {
+		CMario* mario = dynamic_cast<CMario*>(objects[3]);
+		CGreenMario* marioGreen = dynamic_cast<CGreenMario*>(objects[4]);
+		if (GetTickCount64() - timeStart > 23000) {
+			mario->SetState(MARIO_STATE_WALKING_RIGHT);
+		}
+		else if (GetTickCount64() - timeStart > 22000) {
+			mario->SetState(MARIO_STATE_WALKING_LEFT);
+		}
+		else if (GetTickCount64() - timeStart > 21000) {
+			mario->SetState(MARIO_STATE_WALKING_RIGHT);
+		}
+		else if (GetTickCount64() - timeStart > 18500) {
+			mario->SetState(MARIO_STATE_TAIL_TURNING_RELEASE);
+			mario->SetState(MARIO_STATE_IDLE);
+			marioGreen->SetState(MARIO_STATE_WALKING_RIGHT);
+		}
+		else if (GetTickCount64() - timeStart > 17600) {
+			mario->SetState(MARIO_STATE_WALKING_RIGHT);
+		}
+		else if (GetTickCount64() - timeStart > 17500) {
+			mario->SetState(MARIO_STATE_WALKING_RIGHT);
+			mario->SetState(MARIO_STATE_IDLE);
+			mario->SetState(MARIO_STATE_TAIL_TURNING);
+		}
+		else if (GetTickCount64() - timeStart > 17100) {
+			mario->SetState(MARIO_STATE_RELEASE_JUMP);
+		}
+		else if (GetTickCount64() - timeStart > 17000) {
+			mario->SetState(MARIO_STATE_JUMP);
+		}
+		else if (GetTickCount64() - timeStart > 16600) {
+			CTitleMarioBros* title = dynamic_cast<CTitleMarioBros*>(objects[1]);
+			title->greenTurtle = objects[6];
+		}
+		else if (GetTickCount64() - timeStart > 16500) {
+			marioGreen->SetState(MARIO_STATE_TAIL_TURNING_RELEASE);
+		}
+		else if (GetTickCount64() - timeStart > 16300) {
+			marioGreen->SetState(MARIO_STATE_IDLE);
+		}
+		else if (GetTickCount64() - timeStart>16000) {
+			mario->SetState(MARIO_STATE_WALKING_LEFT);
+		}
+		else if (GetTickCount64() - timeStart > 15500) {
+			marioGreen->SetState(MARIO_STATE_TAIL_TURNING);
+			marioGreen->SetState(MARIO_STATE_WALKING_LEFT);
+		}
+		else if (GetTickCount64() - timeStart > 15000) {
+			mario->SetState(MARIO_STATE_IDLE);
+		}
+		else if (GetTickCount64() - timeStart > 13500) {
+			mario->SetState(MARIO_STATE_FLY_RELEASE);
+			mario->SetState(MARIO_STATE_WALKING_RIGHT);
+		}
+		else if (GetTickCount64() - timeStart > 12700) {
+			mario->SetState(MARIO_STATE_WALKING_LEFT);
+			mario->SetState(MARIO_STATE_FLY);
+		}
+		else if (GetTickCount64() - timeStart > 12000) {
+			mario->SetState(MARIO_STATE_JUMP);
+		}
+		else if (GetTickCount64() - timeStart > 6000) {
+			marioGreen->SetState(MARIO_STATE_IDLE);
+		}
+		else if (GetTickCount64() - timeStart > 4500) {
+			marioGreen->SetState(MARIO_STATE_WALKING_RIGHT);
+			mario->SetState(MARIO_STATE_SIT_RELEASE);
+		}
+		else if (GetTickCount64() - timeStart > 3700) {
+			mario->SetState(MARIO_STATE_IDLE);
+			mario->SetState(MARIO_STATE_SIT);
+			marioGreen->SetState(MARIO_STATE_JUMP);
+		}
+		else if (GetTickCount64() - timeStart > 2500)
+		{
+			mario->SetState(MARIO_STATE_WALKING_LEFT);
+			marioGreen->SetState(MARIO_STATE_WALKING_RIGHT);
+		}
+		else if (GetTickCount64() - timeStart == 0)
+			mario->SetState(MARIO_STATE_IDLE);
 	}
 
 	vector<LPGAMEOBJECT> coObjects;

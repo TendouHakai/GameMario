@@ -43,6 +43,7 @@ protected:
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 
 public: 	
+	bool isPause = false;
 	CGoomba(float x, float y);
 	virtual void SetState(int state);
 };

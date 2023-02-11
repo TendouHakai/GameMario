@@ -1,0 +1,21 @@
+#pragma once
+#include "Mario.h"
+
+#define ID_ANI_GREENMARIO_IDLE_RIGHT  33001
+#define ID_ANI_GREENMARIO_IDLE_LEFT  33002
+#define ID_ANI_GREENMARIO_WALKING_RIGHT  33003
+#define ID_ANI_GREENMARIO_WALKING_LEFT  33004
+#define ID_ANI_GREENMARIO_JUMP_WALK_RIGHT  33005
+#define ID_ANI_GREENMARIO_JUMP_WALK_LEFT  33006
+#define ID_ANI_GREENMARIO_HOLDING_LEFT  33007
+#define ID_ANI_GREENMARIO_IDLE_HOLDING_LEFT  33008
+#define ID_ANI_GREENMARIO_KICKING_LEFT  33009
+class CGreenMario :
+    public CMario
+{
+public:
+    CGreenMario(float x, float y, int level = MARIO_LEVEL_SMALL):CMario(x,y, level){
+    }
+    int GetAniIdBig();
+};
+

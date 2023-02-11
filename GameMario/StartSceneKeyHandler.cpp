@@ -26,7 +26,6 @@ void StartSceneKeyHandler::OnKeyDown(int KeyCode)
 		CGame::GetInstance()->InitiateSwitchScene(1001);
 		break;
 	}
-
 	}
 }
 

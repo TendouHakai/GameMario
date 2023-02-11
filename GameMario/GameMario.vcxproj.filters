@@ -213,6 +213,7 @@
     <ClInclude Include="CTitleMarioBros.h" />
     <ClInclude Include="StartSceneKeyHandler.h" />
     <ClInclude Include="CGreenMushroom.h" />
+    <ClInclude Include="CGreenMario.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -392,6 +393,9 @@
     <ClCompile Include="CGreenMushroom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CGreenMario.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -485,6 +489,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="AniStartScene.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="GreenMario.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

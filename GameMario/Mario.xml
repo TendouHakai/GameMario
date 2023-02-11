@@ -27,7 +27,7 @@
     <Sprite spriteID ="11423" l="35" t="195" r="52" b="222" textureID="0"></Sprite>
     <!--JUMP SIT RIGHT AND LEFT-->
     <Sprite spriteID ="11521" l="426" t="239" r="441" b="256" textureID="0"></Sprite>
-    <Sprite spriteID ="11511" l="5" t="239" r="52" b="256" textureID="0"></Sprite>
+    <Sprite spriteID ="11511" l="5" t="239" r="22" b="256" textureID="0"></Sprite>
     <!--BRACE RIGHT & LEFT-->
     <Sprite spriteID ="11621" l="425" t="154" r="442" b="181" textureID="0"></Sprite>
     <Sprite spriteID ="11611" l="5" t="154" r="22" b="181" textureID="0"></Sprite>

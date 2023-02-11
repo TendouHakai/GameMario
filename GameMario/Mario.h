@@ -191,6 +191,7 @@
 
 class CMario : public CGameObject
 {
+protected:
 	BOOLEAN isSitting;
 	float maxVx;
 	float maxVy;
@@ -247,13 +248,11 @@ class CMario : public CGameObject
 	void OnCollisionWithTelePort(LPCOLLISIONEVENT e);
 	void OnCollisionWithGoalCard(LPCOLLISIONEVENT e);
 
-	int GetAniRaccon();
-	int GetAniIdBig();
-	int GetAniIdSmall();
-
 public:
-	CMario(float x, float y) : CGameObject(x, y)
+	CMario(float x, float y, int level = MARIO_LEVEL_SMALL) : CGameObject(x, y)
 	{
+		this->level = level;
+
 		isSitting = false;
 		maxVx = 0.0f;
 		maxVy = -1.0f;
@@ -292,6 +291,10 @@ public:
 		isWin = false;
 	}
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
+
+	int GetAniRaccon();
+	virtual int GetAniIdBig();
+	virtual int GetAniIdSmall();
 	void Render();
 	void SetState(int state);
 

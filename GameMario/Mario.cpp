@@ -196,6 +196,11 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithVenusBreakableBrickButton(e);
 	else if (dynamic_cast<CGoalCard*>(e->obj))
 		OnCollisionWithGoalCard(e);
+	else if (dynamic_cast<CMario*>(e->obj) && this != e->obj)
+	{
+		if(e->ny < 0)
+			vy = -MARIO_JUMP_SPEED_Y;
+	}
 }
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
@@ -1163,7 +1168,7 @@ void CMario::SetState(int state)
 			state = MARIO_STATE_IDLE;
 			isSitting = true;
 			vx = 0; vy = 0.0f;
-			y +=MARIO_SIT_HEIGHT_ADJUST;
+			//y +=MARIO_SIT_HEIGHT_ADJUST;
 		}
 		break;
 

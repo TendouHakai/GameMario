@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GREENMARIO>
+  <SPRITES>
+    <!--Big-->
+    <!--IDLE-->
+    <Sprite spriteID ="127021" l="429" t="1195" r="444" b="1222" textureID="0"></Sprite>
+    <Sprite spriteID ="127011" l="0" t="1126" r="15" b="1155" textureID="0"></Sprite>
+    <!--WALKING RIGHT-->
+    <Sprite spriteID ="127023" l="409" t="1195" r="426" b="1222" textureID="0"></Sprite>
+    <Sprite spriteID ="127022" l="391" t="1195" r="408" b="1222" textureID="0"></Sprite>
+    <!--WALKING LEFT-->
+    <Sprite spriteID ="127025" l="17" t="1126" r="34" b="1155" textureID="0"></Sprite>
+    <Sprite spriteID ="127024" l="36" t="1126" r="53" b="1155" textureID="0"></Sprite>
+    <!--JUMP WALK RIGHT AND LEFT-->
+    <Sprite spriteID ="127017" l="355" t="1195" r="372" b="1222" textureID="0"></Sprite>
+    <Sprite spriteID ="127013" l="72" t="1126" r="89" b="1155" textureID="0"></Sprite>
+    <!--HOLDING LEFT-->
+    <Sprite spriteID ="127027" l="266" t="1126" r="281" b="1155" textureID="0"></Sprite>
+    <Sprite spriteID ="127026" l="284" t="1126" r="301" b="1155" textureID="0"></Sprite>
+    <!--IDLE HOLDING-->
+    <Sprite spriteID ="127061" l="248" t="1126" r="263" b="1155" textureID="0"></Sprite>
+    <!--KICK LEFT-->
+    <Sprite spriteID ="127062" l="305" t="1126" r="326" b="1155" textureID="0"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <!--Big-->
+    <!--IDLE-->
+    <animation aniID="33001">
+      <Sprite SpriteID="127021" time="100"></Sprite>
+    </animation>
+    <animation aniID="33002">
+      <Sprite SpriteID="127011" time="100"></Sprite>
+    </animation>
+    <!--WALKING RIGHT & LEFT-->
+    <animation aniID="33003">
+      <Sprite SpriteID="127021" time="100"></Sprite>
+      <Sprite SpriteID="127023" time="100"></Sprite>
+      <Sprite SpriteID="127022" time="100"></Sprite>
+    </animation>
+    <animation aniID="33004">
+      <Sprite SpriteID="127011" time="100"></Sprite>
+      <Sprite SpriteID="127025" time="100"></Sprite>
+      <Sprite SpriteID="127024" time="100"></Sprite>
+    </animation>
+    <!--JUMP WALK-->
+    <animation aniID="33005">
+      <Sprite SpriteID="127017" time="100"></Sprite>
+    </animation>
+    <animation aniID="33006">
+      <Sprite SpriteID="127013" time="100"></Sprite>
+    </animation>
+    <!--HODLING LEFT-->
+    <animation aniID="33007">
+      <Sprite SpriteID="127061" time="100"></Sprite>
+      <Sprite SpriteID="127027" time="100"></Sprite>
+      <Sprite SpriteID="127026" time="100"></Sprite>
+    </animation>
+    <!--IDLE HOLDING-->
+    <animation aniID="33008">
+      <Sprite SpriteID="127061" time="100"></Sprite>
+    </animation>
+    <!--KICK LEFT-->
+    <animation aniID="33009">
+      <Sprite SpriteID="127062" time="100"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</GREENMARIO>

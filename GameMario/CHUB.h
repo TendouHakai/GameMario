@@ -63,7 +63,7 @@ public:
 
 	CHUB(float x, float y) : CGameObject(x, y){
 		coin = 0;
-		time = 0;
+		time = 300;
 		M = 0;
 		W = 1;
 		countCoin = 0;
