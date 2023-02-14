@@ -177,10 +177,12 @@
     <object type ="17" x="2111" y="408"></object>
     <object type ="17" x="2111" y="392"></object>
     <object type ="17" x="2095" y="392"></object>
+    <object type ="25" x="2032" y="376" amount="19"></object>
+    
     <object type ="18" x="2105" y="440" cellW="15" cellH="16" height="2"
             idSpriteTL="105005" idSpriteTR="105006" idSpriteML="105007" idSpriteMR="105008" idSpriteBL="105007" idSpriteBR="105008"></object>
 
-    <object type ="25" x="2032" y="376" amount="19"></object>
+
 
     <object type ="6" x="2168" y="375" cellW="48" cellH="15" length="1"></object>
     <object type ="6" x="2202" y="280" cellW="49" cellH="15" length="1"></object>

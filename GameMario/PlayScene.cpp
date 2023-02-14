@@ -570,8 +570,8 @@ void CPlayScene::Update(DWORD dt)
 	}
 
 	if (id > 2000) {
-		CMario* mario = dynamic_cast<CMario*>(objects[3]);
-		CGreenMario* marioGreen = dynamic_cast<CGreenMario*>(objects[4]);
+		CMario* mario = dynamic_cast<CMario*>(objects[2]);
+		CGreenMario* marioGreen = dynamic_cast<CGreenMario*>(objects[3]);
 		if (GetTickCount64() - timeStart > 23000) {
 			mario->SetState(MARIO_STATE_WALKING_RIGHT);
 		}
@@ -648,8 +648,11 @@ void CPlayScene::Update(DWORD dt)
 			mario->SetState(MARIO_STATE_WALKING_LEFT);
 			marioGreen->SetState(MARIO_STATE_WALKING_RIGHT);
 		}
-		else if (GetTickCount64() - timeStart == 0)
+		else if (GetTickCount64() - timeStart > 0)
+		{
+			mario->SetState(MARIO_STATE_WALKING_LEFT);
 			mario->SetState(MARIO_STATE_IDLE);
+		}
 	}
 
 	vector<LPGAMEOBJECT> coObjects;

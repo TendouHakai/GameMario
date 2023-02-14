@@ -97,11 +97,12 @@ void CTurtle::OnCollisionWithTurtle(LPCOLLISIONEVENT e)
 {
 	CTurtle* turtle = dynamic_cast<CTurtle*>(e->obj);
 	
-	if(CGame::GetInstance()->GetCurrentScene()->getID() > 2000)
+	if (CGame::GetInstance()->GetCurrentScene()->getID() > 2000) {
 		if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING)
 			if (e->nx > 0)
 				turtle->SetState(TURTLE_STATE_COLLECTION_RIGHT);
 			else turtle->SetState(TURTLE_STATE_COLLECTION_LEFT);
+	}
 	else turtle->SetState(TURTLE_STATE_DEAD_TAILTURNING);
 }
 

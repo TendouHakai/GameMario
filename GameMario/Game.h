@@ -89,7 +89,7 @@ public:
 	int coin = 0;
 	bool isGameOver = false;
 	bool isStartM = true;
-	int M = 0;
+	int M = 4;
 	int W = 1;
 	int countCoin = 0;
 	int level = 0;

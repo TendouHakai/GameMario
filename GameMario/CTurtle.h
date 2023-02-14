@@ -61,7 +61,7 @@ public:
 		CCollision::GetInstance()->Process(this, dt, coObjects);
 	}
 	virtual void Render() {
-		RenderBoundingBox();
+		//RenderBoundingBox();
 	}
 	void SetPositionX(float x) {
 		this->x = x;

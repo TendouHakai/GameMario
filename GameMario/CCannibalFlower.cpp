@@ -35,7 +35,7 @@ void CCannibalFlower::Render()
 		break;
 	}
 	CAnimations::GetInstance()->Get(aniID)->Render(x, y);
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void CCannibalFlower::OnCollisionWith(LPCOLLISIONEVENT e) {
