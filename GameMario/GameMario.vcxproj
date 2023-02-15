@@ -149,6 +149,7 @@
     <ClInclude Include="CGreenTurtle.h" />
     <ClInclude Include="ChangeCam.h" />
     <ClInclude Include="CHUB.h" />
+    <ClInclude Include="CircleShuriken.h" />
     <ClInclude Include="CLeaf.h" />
     <ClInclude Include="CMushroom.h" />
     <ClInclude Include="CNodeMapG.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="CGreenTurtle.cpp" />
     <ClCompile Include="ChangeCam.cpp" />
     <ClCompile Include="CHUB.cpp" />
+    <ClCompile Include="CircleShuriken.cpp" />
     <ClCompile Include="CLeaf.cpp" />
     <ClCompile Include="CMushroom.cpp" />
     <ClCompile Include="CNodeMapG.cpp" />
@@ -265,6 +267,7 @@
     <Xml Include="Bullet.xml" />
     <Xml Include="CannibalFlower.xml" />
     <Xml Include="CGoalCard.xml" />
+    <Xml Include="CircleShuriken.xml" />
     <Xml Include="CloudBrick.xml" />
     <Xml Include="CPrice.xml" />
     <Xml Include="CTurtleW.xml" />

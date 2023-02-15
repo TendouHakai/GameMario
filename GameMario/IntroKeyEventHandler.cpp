@@ -5,6 +5,7 @@
 
 #include "PlayScene.h"
 #include "MarioWorldMaps.h"
+#include "CircleShuriken.h"
 
 void IntroKeyEventHandler::KeyState(BYTE* states)
 {
@@ -26,9 +27,14 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		}
 		else {
 			LPNodeMap nodeMap = game->getCurrentNodeMap();
+			
 			if (nodeMap->nodeUPId == -1)
 				break;
+			else if (nodeMap->type == NODEMAP_TYPE_MISSION && nodeMap->status != NODEMAP_STATE_DONE && game->getNodeMap(nodeMap->nodeUPId)->status != NODEMAP_STATE_DONE)
+				break;
 			else {
+				if (nodeMap->type != NODEMAP_TYPE_MISSION)
+					nodeMap->setDone();
 				game->setCurrentNodeMap(nodeMap->nodeUPId);
 				nodeMap = game->getNodeMap(nodeMap->nodeUPId);
 				mario->xNext = nodeMap->x;
@@ -47,9 +53,14 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		}
 		else {
 			LPNodeMap nodeMap = game->getCurrentNodeMap();
+			
 			if (nodeMap->nodeDOWNId == -1)
 				break;
+			else if (nodeMap->type == NODEMAP_TYPE_MISSION && nodeMap->status != NODEMAP_STATE_DONE && game->getNodeMap(nodeMap->nodeDOWNId)->status != NODEMAP_STATE_DONE)
+				break;
 			else {
+				if(nodeMap->type != NODEMAP_TYPE_MISSION)
+					nodeMap->setDone();
 				game->setCurrentNodeMap(nodeMap->nodeDOWNId);
 				nodeMap = game->getNodeMap(nodeMap->nodeDOWNId);
 				mario->xNext = nodeMap->x;
@@ -64,7 +75,12 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		LPNodeMap nodeMap = game->getCurrentNodeMap();
 		if (nodeMap->nodeLEFTId == -1)
 			break;
+		else if (nodeMap->type == NODEMAP_TYPE_MISSION && nodeMap->status != NODEMAP_STATE_DONE && game->getNodeMap(nodeMap->nodeLEFTId)->status != NODEMAP_STATE_DONE) {
+			break;
+		}
 		else {
+			if (nodeMap->type != NODEMAP_TYPE_MISSION)
+				nodeMap->setDone();
 			game->setCurrentNodeMap(nodeMap->nodeLEFTId);
 			nodeMap = game->getNodeMap(nodeMap->nodeLEFTId);
 			mario->xNext = nodeMap->x;
@@ -79,7 +95,11 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 
 		if (nodeMap->nodeRIGHTId == -1)
 			break;
+		else if (nodeMap->type == NODEMAP_TYPE_MISSION && nodeMap->status != NODEMAP_STATE_DONE && game->getNodeMap(nodeMap->nodeRIGHTId)->status != NODEMAP_STATE_DONE)
+			break;
 		else {
+			if (nodeMap->type != NODEMAP_TYPE_MISSION)
+				nodeMap->setDone();
 			game->setCurrentNodeMap(nodeMap->nodeRIGHTId);
 			nodeMap = game->getNodeMap(nodeMap->nodeRIGHTId);
 			mario->xNext = nodeMap->x;
@@ -93,6 +113,8 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		CPlayScene* C_scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
 		if (CGame::GetInstance()->isStartM) {
 			CGame::GetInstance()->isStartM = false;
+			CGameObject* obj = new CircleShuriken(150, 80, 68, 50);
+			C_scene->addGameObject(obj);
 		}
 		else if (CGame::GetInstance()->isGameOver) {
 			if (C_scene->selectMenu == GAME_OVER_SELECT_CONTINUE) {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CIRCLESHURIKEN>
+  <SPRITES>
+    <Sprite spriteID ="128001" l="601" t="42" r="618" b="59" textureID="20"></Sprite>
+  </SPRITES>
+  <ANIMATIONS>
+    <animation aniID="34001">
+      <Sprite SpriteID="128001" time="1000"></Sprite>
+    </animation>
+  </ANIMATIONS>
+</CIRCLESHURIKEN>

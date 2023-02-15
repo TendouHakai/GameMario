@@ -254,6 +254,7 @@
     <ClInclude Include="MarioWorldMaps.h">
       <Filter>GameObject\Object world map</Filter>
     </ClInclude>
+    <ClInclude Include="CircleShuriken.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -436,6 +437,9 @@
     <ClCompile Include="MarioWorldMaps.cpp">
       <Filter>GameObject\Object world map</Filter>
     </ClCompile>
+    <ClCompile Include="CircleShuriken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Scence.xml">
@@ -532,6 +536,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="GreenMario.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="CircleShuriken.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>
