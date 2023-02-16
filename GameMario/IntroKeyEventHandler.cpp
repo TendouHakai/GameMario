@@ -132,7 +132,7 @@ void IntroKeyEventHandler::OnKeyDown(int KeyCode)
 		}
 		else {
 			LPNodeMap nodeMap = game->getCurrentNodeMap();
-			if (nodeMap->sceneID == -1)
+			if (nodeMap->sceneID == -1 || nodeMap->status == NODEMAP_STATE_DONE)
 				break;
 			CGame::GetInstance()->InitiateSwitchScene(nodeMap->sceneID);
 		}
