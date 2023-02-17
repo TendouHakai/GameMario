@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include <math.h>
 
 #define ID_ANI_BULLET	14000
 
@@ -31,7 +32,7 @@ public:
         xLock = x;
         yLock = y;
 
-        if (xLock - this->x > 0) {
+        /*if (xLock - this->x > 0) {
             vx = BULLET_SPEED;
         }
         else if (xLock - this->x == 0) {
@@ -42,7 +43,11 @@ public:
             return;
         }
         else vx = - BULLET_SPEED;
-        vy = vx * (yLock - this->y) / (xLock - this->x);
+        vy = vx * (yLock - this->y) / (xLock - this->x);*/
+        if(this->y - yLock > 0)
+            vy = -sqrt((BULLET_SPEED * BULLET_SPEED) / (1 + ((this->x - xLock) / (this->y - yLock))* ((this->x - xLock) / (this->y - yLock))));
+        else vy = sqrt((BULLET_SPEED * BULLET_SPEED) / (1 + ((this->x - xLock) / (this->y - yLock))* ((this->x - xLock) / (this->y - yLock))));
+        vx = ((this->x - xLock) / (this->y - yLock)) * vy;
     }
 
     virtual int IsBlocking() { return 0; }
