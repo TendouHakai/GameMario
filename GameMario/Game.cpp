@@ -464,7 +464,6 @@ void CGame::Load(LPCWSTR gameFile)
 			DebugOut(L"load scence: %d / %s\n", id, path);
 			LPSCENE scene = new CPlayScene(id, path);
 			scenes[id] = scene;
-
 		}
 
 		// đọc textures

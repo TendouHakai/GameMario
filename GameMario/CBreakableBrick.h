@@ -15,14 +15,14 @@ class CBreakableBrick :
 protected:
     CCoin* coin;
 public:
-    CBreakableBrick(float x, float y) :CBrick(x, y) { state = BREAKABLEBRICK_STATE_IDLE; coin = NULL; }
+    CBreakableBrick(float x, float y) :CBrick(x, y) { state = BREAKABLEBRICK_STATE_IDLE; coin = nullptr; }
     virtual void Render();
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects) {
         if (state == BREAKABLEBRICK_STATE_TO_COIN) {
-            if (coin != NULL)
+            if (coin != nullptr)
             {
                 coObjects->push_back(coin);
-                coin = NULL;
+                coin = nullptr;
                 this->Delete();
             }
         }

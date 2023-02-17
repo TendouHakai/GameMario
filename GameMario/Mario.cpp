@@ -290,7 +290,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 		}
 	}
 	else {
-		if (untouchable == 0 && turtle->IsUntouchable()==0)
+		if (turtle->IsUntouchable()==0)
 		{
 			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING || turtle->GetState() == TURTLE_STATE_DEAD) {
 				if (isprepareHolding) {
@@ -332,7 +332,7 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 					}
 				}
 			}
-			else if (turtle->GetState() != TURTLE_STATE_REVIVAL)
+			else if (turtle->GetState() != TURTLE_STATE_REVIVAL && untouchable == 0)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
@@ -355,66 +355,6 @@ void CMario::OnCollisionWithRedTurtle(LPCOLLISIONEVENT e)
 
 void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 	CGreenTurtle* turtle = dynamic_cast<CGreenTurtle*>(e->obj);
-
-	/*if (e->ny < 0) {
-		if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
-			if(nx<0)
-				turtle->SetState(GREENTURTLE_STATE_COLLECTION_RIGHT);
-			else turtle->SetState(GREENTURTLE_STATE_COLLECTION_LEFT);
-		}
-		else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
-		{
-			turtle->SetState(TURTLE_STATE_DEAD);
-			vy = -MARIO_JUMP_DEFLECT_SPEED;
-		}
-		else if (turtle->GetState() == TURTLE_STATE_DEAD) {
-			isKicking = true;
-			kick_start = GetTickCount64();
-			if (nx < 0) {
-				turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
-			}
-			else {
-				turtle->SetState(TURTLE_STATE_KICKED_LEFT);
-			}
-		}
-		
-	}
-	else {
-		if (untouchable == 0 && turtle->IsUntouchable() == 0)
-		{
-			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING) {
-				if(e->nx<0)
-					turtle->SetState(GREENTURTLE_STATE_COLLECTION_RIGHT);
-				else turtle->SetState(GREENTURTLE_STATE_COLLECTION_LEFT);
-			}
-			else if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL && turtle->GetState() != GREENTURTLE_STATE_COLLECTION_RIGHT && turtle->GetState() != GREENTURTLE_STATE_COLLECTION_LEFT)
-			{
-				if (level > MARIO_LEVEL_SMALL)
-				{
-					level = MARIO_LEVEL_SMALL;
-					StartUntouchable();
-				}
-				else
-				{
-					DebugOut(L">>> Mario DIE >>> \n");
-					SetState(MARIO_STATE_DIE);
-				}
-			}
-			else
-				if (e->nx > 0)
-				{
-					isKicking = true;
-					turtle->SetState(TURTLE_STATE_KICKED_RIGHT);
-
-				}
-				else if (e->nx < 0)
-				{
-					isKicking = true;
-					turtle->SetState(TURTLE_STATE_KICKED_LEFT);
-
-				}
-		}
-	}*/
 	if (e->ny < 0) {
 		if (turtle->GetState() != TURTLE_STATE_DEAD && turtle->GetState() != TURTLE_STATE_REVIVAL)
 		{
@@ -448,7 +388,7 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 		}
 	}
 	else {
-		if (untouchable == 0 && turtle->IsUntouchable() == 0)
+		if (turtle->IsUntouchable() == 0)
 		{
 			if (turtle->GetState() == TURTLE_STATE_DEAD_TAILTURNING || turtle->GetState() == TURTLE_STATE_DEAD) {
 				if (isprepareHolding) {
@@ -489,7 +429,7 @@ void CMario::OnCollisionWithGreenTurtle(LPCOLLISIONEVENT e){
 					}
 				}
 			}
-			else if (turtle->GetState() != TURTLE_STATE_REVIVAL)
+			else if (turtle->GetState() != TURTLE_STATE_REVIVAL && untouchable == 0)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
@@ -762,7 +702,9 @@ void CMario::OnCollisionWithGoalCard(LPCOLLISIONEVENT e)
 
 	isWin = true;
 	vx = MARIO_WALKING_SPEED;
+	maxVx = MARIO_WALKING_SPEED;
 	ax = MARIO_ACCEL_WALK_X;
+	ay = MARIO_GRAVITY;
 }
 //
 // Get animation ID for small Mario

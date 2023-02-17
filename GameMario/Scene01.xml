@@ -131,22 +131,22 @@
 
     <object type ="7" x="1480" y="375" brickType="3"></object>
     
-    <object type ="16" x="1512" y="350"></object>
-    <object type ="16" x="1528" y="350"></object>
+    <object type ="16" x="1513" y="345"></object>
+    <object type ="16" x="1529" y="345"></object>
 
-    <object type ="16" x="1606" y="408"></object>
-    <object type ="16" x="1590" y="408"></object>
-    <object type ="16" x="1574" y="408"></object>
-    <object type ="16" x="1606" y="392"></object>
-    <object type ="16" x="1590" y="392"></object>
-    <object type ="16" x="1606" y="376"></object>
+    <object type ="16" x="1608" y="408"></object>
+    <object type ="16" x="1592" y="408"></object>
+    <object type ="16" x="1576" y="408"></object>
+    <object type ="16" x="1608" y="392"></object>
+    <object type ="16" x="1592" y="392"></object>
+    <object type ="16" x="1608" y="376"></object>
 
-    <object type ="16" x="1672" y="408"></object>
-    <object type ="16" x="1688" y="408"></object>
-    <object type ="16" x="1704" y="408"></object>
-    <object type ="16" x="1672" y="392"></object>
-    <object type ="16" x="1688" y="392"></object>
-    <object type ="16" x="1672" y="376"></object>
+    <object type ="16" x="1674" y="408"></object>
+    <object type ="16" x="1690" y="408"></object>
+    <object type ="16" x="1706" y="408"></object>
+    <object type ="16" x="1674" y="392"></object>
+    <object type ="16" x="1690" y="392"></object>
+    <object type ="16" x="1674" y="376"></object>
 
     <object type ="5" x="1952" y="420" cellW="573" cellH="10" length="1"></object>
 

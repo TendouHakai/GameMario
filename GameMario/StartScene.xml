@@ -15,7 +15,7 @@
     <asset link="Mushroom.xml"></asset>
   </ASSETS>
   <OBJECTS>
-    <object type ="15" x="0" y="185" cellW="32" cellH="35" length="12" idSpriteBegin="126001" idSpriteMiddle="126001" idSpriteEnd="126001"></object>
+    <object type ="15" x="-40" y="185" cellW="32" cellH="35" length="16" idSpriteBegin="126001" idSpriteMiddle="126001" idSpriteEnd="126001"></object>
     <object type ="29" x="150" y="-60"></object>
     <object type ="0" x="290" y="150" level="2"></object>
     <object type ="30" x="20" y="150" level="2"></object>

@@ -39,6 +39,10 @@ public:
     CGameObject* leaf;
     CGameObject* goomba;
     CGameObject* mushroom;
+    CGameObject* greenTurtle1;
+    CGameObject* greenTurtle2;
+    CGameObject* greenTurtle3;
+
     CTitleMarioBros(float x, float y): CGameObject(x,y){
         timestart = GetTickCount64();
         isLight = false;
@@ -57,6 +61,23 @@ public:
             y = 70;
         if (GetTickCount64() - timestart > 24000) {
             isSelect = true;
+        }
+        else if (GetTickCount64() - timestart > 23500) {
+            if (greenTurtle1 == nullptr) {
+                greenTurtle1 = new CGreenTurtle(-5, 145);
+                greenTurtle1->SetState(TURTLE_STATE_WALK);
+                greenTurtle1->SetSpeed(TURTLE_SPEED, 0);
+                greenTurtle2 = new CGreenTurtle(-25, 145);
+                greenTurtle2->SetState(TURTLE_STATE_WALK);
+                greenTurtle2->SetSpeed(TURTLE_SPEED, 0);
+                greenTurtle3 = new CGreenTurtle(-45, 145);
+                greenTurtle3->SetState(TURTLE_STATE_WALK);
+                greenTurtle3->SetSpeed(TURTLE_SPEED, 0);
+
+                coObjects->push_back(greenTurtle1);
+                coObjects->push_back(greenTurtle2);
+                coObjects->push_back(greenTurtle3);
+            }
         }
         else if (GetTickCount64() - timestart > 19500) {
             if (greenTurtle == nullptr)

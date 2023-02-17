@@ -30,8 +30,11 @@ protected:
 			if (isChangeCoin) {
 				for (size_t i = 0; i < listBrick.size(); i++)
 				{
-					if(!listBrick[i]->IsDeleted() && listBrick[i] != nullptr )
-						listBrick[i]->SetState(BREAKABLEBRICK_STATE_TO_COIN);
+					try {
+						if (!listBrick[i]->IsDeleted())
+							listBrick[i]->SetState(BREAKABLEBRICK_STATE_TO_COIN);
+					}
+					catch(exception e){}
 				}
 				isChangeCoin = false;
 			}
